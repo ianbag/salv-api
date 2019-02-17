@@ -2,7 +2,7 @@
  * @author Ian Rotondo Bagliotti
  * @email ian.bagliotti@gmail.com
  * @create date 2019-02-17 11:32:03
- * @modify date 2019-02-17 12:01:34
+ * @modify date 2019-02-17 17:09:22
  * @desc Pessoa Model
  */
 
@@ -12,22 +12,25 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             required: true,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
+            allowNull: false
         },
         NOME: {
             type: DataTypes.STRING,
             required: true,
-            max: 50
+            max: 50,
+            allowNull: false
         },
         SOBRENOME: {
             type: DataTypes.STRING,
             required: true,
-            max: 50
+            max: 50,
+            allowNull: false
         },
         RG: {
             type: DataTypes.STRING,
             unique: true,
-            max: 9
+            max: 9,
         },
         CPF: {
             type: DataTypes.STRING,
@@ -43,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
             max: 1
         },
         DATA_NASCIMENTO: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             max: 8
         },
         RELIGIAO: {
