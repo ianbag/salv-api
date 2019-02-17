@@ -79,7 +79,7 @@ describe('TDD Pessoa', function () {
                     delete result.CODIGO
                     expect(result).to.eql(MOCK_PESSOA_DEFAULT)
                     done()
-                })
+            })
         })
     })
 
@@ -93,9 +93,8 @@ describe('TDD Pessoa', function () {
                     expect(res.statusCode).to.eql(200)
                     expect(result).to.eql(MOCK_PESSOA_DEFAULT)
                     done()
-                })
+            })
         })
-
     })
 
     describe('/POST: ', () => {
@@ -105,11 +104,11 @@ describe('TDD Pessoa', function () {
                 .send(MOCK_PESSOA_CADASTRAR)
                 .end((error, res) => {
                     const result = res.body
-                    //delete result.CODIGO
+                    delete result.CODIGO
                     expect(res.statusCode).to.eql(200)
                     expect(result).to.eql(MOCK_PESSOA_CADASTRAR)
                     done()
-                })
+            })
         })
         it('Deve retornar erro ao adicionar Pessoa, por faltar o campo NOME', (done) => {
             chai.request(app)
