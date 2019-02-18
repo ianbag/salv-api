@@ -97,13 +97,42 @@ describe('Test Driven Development SALV-API Familiar', function () {
 
         it('Deve retornar erro ao tentar adicionar familiar que esteja com campo obrigatório em branco', (done) => {
             chai.request(app)
-                .post('/pessoa')
+                .post('/familiar')
                 .send(MOCK_FAMILIAR_ERROR)
                 .end((error, res) => {
                     const [result] = res.body.errors
                     expect(res.statusCode).to.eql(200)
                     expect(result.path).to.eql('PARENTESCO')
                     expect(result.type).to.eql('notNull Violation')
+                    done()
+                })
+        })
+    })
+
+    //TESTE PUT
+
+    describe('/PUT/ID: ', () => {
+        it('Deve atualizar os dados do familiar de acordo com seu ID', (done) => {
+            chai.request(app)
+                .put(`/familiar/${MOCK_FAMILIAR_CODIGO}`)
+                .send(MOCK_FAMILIAR_ATUALIZAR)
+                .end((error, res) => {
+                    expect(res.statusCode).to.eql(200)
+                    expect(res.body).to.eql([1])
+                    done()
+                })
+        })
+    })
+
+    //TESTE DELETE
+
+    describe('/DELETE/ID: ', () => {
+        it('Deve apagar um familiar dado seu ID', (done) => {
+            chai.request(app)
+                .delete(`/familiar/${MOCK_FAMILIAR_CODIGO}`)
+                .end((error, res) => {
+                    expect(res.statusCode).to.eql(200)
+                    expect(res.body).to.eql(1)
                     done()
                 })
         })
