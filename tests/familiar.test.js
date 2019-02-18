@@ -11,7 +11,9 @@ const expect = chai.expect
 chai.use(chaiHttp)
 
 const app = require('./../app')
-//MODEL FAMILIAR (ADICIONAR AO SER FEITO)
+const { FamiliarModel } = require('./../app/models')
+
+//MOCANOD VALORES
 
 const MOCK_FAMILIAR_DEFAULT = {
     NOME: 'VALDECIR',
@@ -32,10 +34,46 @@ const MOCK_FAMILIAR_ATUALIZAR = {
 
 let MOCK_FAMILIAR_CODIGO
 
+//INICIO DOS TESTES
+
 describe('Test Driven Development SALV-API Familiar', function () {
-    this.beforeAll(async()=>{
-        await //ADICIONAR MODEL// FamiliarModel.destroy({where: {}})
+    this.beforeAll(async () => {
+        await FamiliarModel.destroy({ where: {} })
         const result = await FamiliarModel.create(MOCK_FAMILIAR_DEFAULT)
         MOCK_FAMILIAR_CODIGO = result.codigo
     })
+
+    //TESTE GET ALL
+
+    describe('/GET: ', () => {
+        it('Deve retornar os familiares presentes na base de dados', (done) => {
+            chai.request(app)
+                .get('/familiar')
+                .end((error, res) => {
+                    const [result] = res.body
+                    delete result.CODIGO
+                    expect(result).to.eql(MOCK_FAMILIAR_DEFAULT)
+                    done()
+                })
+        })
+    })
+
+    //TESTE GET ID
+
+    describe('/GET/ID: ', () => {
+        it('Deve retornar um familiar dado o ID dele', (done) => {
+            chai.request(app)
+                .get(`/familiar/${MOCK_FAMILIAR_CODIGO}`)
+                .end((error, res) => {
+                    const result = res.body
+                    delete result.CODIGO
+                    expect(res.statusCode).to.eql(200)
+                    expect(result).to.eql(MOCK_FAMILIAR_DEFAULT)
+                    done()
+                })
+        })
+    })
+
+    //TESTE POST
+
 })
