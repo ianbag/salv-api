@@ -2,8 +2,8 @@
  * @author Ian Rotondo Bagliotti
  * @email ian.bagliotti@gmail.com
  * @create date 2019-02-17 11:30:44
- * @modify date 2019-02-17 18:34:34
- * @desc TDD Pessoas
+ * @modify date 2019-02-18 20:19:24
+ * @desc Arquivo de testes da API de Pessoas
  */
 
 const chai = require('chai')
@@ -12,7 +12,7 @@ const expect = chai.expect
 chai.use(chaiHttp)
 
 const app = require('./../app')
-const { PessoaModel } = require('./../app/models')
+const { PessoaModel, ResidenteModel } = require('./../app/models')
 
 const MOCK_PESSOA_DEFAULT = {
     NOME: 'Ian',
@@ -38,7 +38,7 @@ const MOCK_PESSOA_CADASTRAR = {
     ESCOLARIDADE: 'sc'
 }
 
-let MOCK_PESSOA_CADASTRAR_ERROR = {
+const MOCK_PESSOA_CADASTRAR_ERROR = {
     SOBRENOME: 'Simão Gluigo',
     RG: '338276804',
     CPF: '95650298173',
@@ -65,13 +65,14 @@ let MOCK_PESSOA_CODIGO
 
 describe('TDD Pessoa', function () {
     this.beforeAll(async () => {
+        await ResidenteModel.destroy({ where: {} })
         await PessoaModel.destroy({ where: {} })
         const result = await PessoaModel.create(MOCK_PESSOA_DEFAULT)
         MOCK_PESSOA_CODIGO = result.CODIGO
     })
 
     describe('/GET: ', () => {
-        it('Deve retornar as Pessoas adicionadas', (done) => {
+        it('Deve retornar as Pessoas existentes no banco de dados', (done) => {
             chai.request(app)
                 .get('/pessoa')
                 .end((error, res) => {
