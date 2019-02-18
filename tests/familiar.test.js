@@ -21,6 +21,12 @@ const MOCK_FAMILIAR_DEFAULT = {
     PARENTESCO: 'FILHO',
 }
 
+const MOCK_FAMILIAR_CADASTRAR = {
+    NOME: 'MARIA',
+    SOBRENOME: 'CONCEIÇÃO',
+    PARENTESCO: 'SOBRINHA'
+}
+
 let MOCK_FAMILIAR_ERROR = {
     NOME: 'YARA',
     SOBRENOME: 'MARTINS'
@@ -76,4 +82,30 @@ describe('Test Driven Development SALV-API Familiar', function () {
 
     //TESTE POST
 
+    describe('/POST: ', () => {
+        it('Deve adicionar um familiar na base de dados', (done) => {
+            chai.request(app)
+                .post('/familiar')
+                .send(MOCK_FAMILIAR_CADASTRAR)
+                .end((error, res) => {
+                    const result = res.body
+                    expect(res.statusCode).to.eql(200)
+                    expect(result).to.eql(MOCK_FAMILIAR_CADASTRAR)
+                    done()
+                })
+        })
+
+        it('Deve retornar erro ao tentar adicionar familiar que esteja com campo obrigatório em branco', (done) => {
+            chai.request(app)
+                .post('/pessoa')
+                .send(MOCK_FAMILIAR_ERROR)
+                .end((error, res) => {
+                    const [result] = res.body.errors
+                    expect(res.statusCode).to.eql(200)
+                    expect(result.path).to.eql('PARENTESCO')
+                    expect(result.type).to.eql('notNull Violation')
+                    done()
+                })
+        })
+    })
 })
