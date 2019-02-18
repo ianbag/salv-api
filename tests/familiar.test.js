@@ -32,3 +32,10 @@ const MOCK_FAMILIAR_ATUALIZAR = {
 
 let MOCK_FAMILIAR_CODIGO
 
+describe('Test Driven Development SALV-API Familiar', function () {
+    this.beforeAll(async()=>{
+        await //ADICIONAR MODEL// FamiliarModel.destroy({where: {}})
+        const result = await FamiliarModel.create(MOCK_FAMILIAR_DEFAULT)
+        MOCK_FAMILIAR_CODIGO = result.codigo
+    })
+})
