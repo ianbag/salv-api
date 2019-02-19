@@ -3,7 +3,9 @@ const app = express()
 const bodyParser = require('body-parser')
 
 const PessoaRoute = require('./app/routes/pessoa')
+const FamiliarRoute = require('./app/routes/familiar')
 const ResidenteRoute = require('./app/routes/residente')
+
 
 /*
 * CONFIG bodyParser
@@ -19,6 +21,7 @@ app.get('/', function(req, res){
 
 //API Pessoa
 app.use('/', PessoaRoute)
+app.use('/', FamiliarRoute)
 
 //API Residente
 app.use('/', ResidenteRoute)
