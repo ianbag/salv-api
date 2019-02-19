@@ -3,6 +3,7 @@ const app = express()
 const bodyParser = require('body-parser')
 
 const PessoaRoute = require('./app/routes/pessoa')
+const FamiliarRoute = require('./app/routes/familiar')
 
 /*
 * CONFIG bodyParser
@@ -18,6 +19,7 @@ app.get('/', function(req, res){
 
 //API Pessoa
 app.use('/', PessoaRoute)
+app.use('/', FamiliarRoute)
 
 app.listen(3000, function(){
     console.log("API rodando na porta 3000")

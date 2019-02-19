@@ -2,7 +2,6 @@
  * author: hppod
  * create: 18/02/2019 15h42
  * file: model/familiar.js
- * descrition: Arquivo model da API "familiar"
  */
 
 module.exports = (sequelize, DataTypes) => {
