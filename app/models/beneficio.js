@@ -32,7 +32,12 @@
              type: DataTypes.DATEONLY,
              allowNull: false
          }
-     })
+     },
+     {
+        tableName: 'BENEFICIO',
+        timestamps: false
+     }
+     )
      
      return BeneficioModel
  }
