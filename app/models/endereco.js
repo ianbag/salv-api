@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             required: false,
             max: 50,
-            allowNull: false
+            allowNull: true
         },
         CIDADE: {
             type: DataTypes.STRING,
@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             required: false,
             max: 100,
-            allowNull: false
+            allowNull: true
         }
     },
         {

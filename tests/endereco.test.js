@@ -111,7 +111,7 @@ describe('Test Driven Development SALV-API Endereço', function () {
                     const [result] = res.body.errors
                     expect(res.statusCode).to.eql(200)
                     expect(result.path).to.eql('BAIRRO')
-                    expect(result.type).to.eql('notNullViolation')
+                    expect(result.type).to.eql('notNull Violation')
                     done()
                 })
         })

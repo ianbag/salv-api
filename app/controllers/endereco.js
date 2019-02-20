@@ -8,24 +8,30 @@ const { EnderecoModel } = require('./../models')
 
 class Endereco {
 
-    get(req, res){
+    get(req, res) {
+        EnderecoModel.findAll({ raw: true })
+            .then(endereco => res.json(endereco))
+            .catch(error => res.json(error))
+    }
+
+    getById(req, res) {
+        EnderecoModel.findByPk(req.params.id)
+        .then(endereco => res.json(endereco))
+        .catch(error => res.json(error))
+    }
+
+    create(req, res) {
+        EnderecoModel.create(req.body)
+        .then(endereco => res.json(endereco))
+        .catch(error => res.json(error))
+    }
+
+    update(req, res) {
 
     }
 
-    getById(req, res){
+    delete(req, res) {
 
-    }
-
-    create(req, res){
-
-    }
-
-    update(req, res){
-
-    }
-
-    delete(req, res){
-        
     }
 }
 

@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const PessoaRoute = require('./app/routes/pessoa')
 const FamiliarRoute = require('./app/routes/familiar')
 const ResidenteRoute = require('./app/routes/residente')
+const EnderecoRoute = require('./app/routes/endereco')
 
 
 /*
@@ -27,6 +28,9 @@ app.use('/', FamiliarRoute)
 
 //API Residente
 app.use('/', ResidenteRoute)
+
+//API ENDEREÇO
+app.use('/', EnderecoRoute)
 
 app.listen(3000, function(){
     console.log("API rodando na porta 3000")
