@@ -8,26 +8,48 @@
 
 const { BeneficioModel } = require('./../models')
 
- class Beneficio{
-     get(req, res){
+class Beneficio {
+    get(req, res) {
+        BeneficioModel.findAll({ raw: true })
+            .then(beneficio => res.json(beneficio))
+            .catch(error => res.json(error))
+    }
 
-     }
+    getByName(req, res) {
+        BeneficioModel.findOne({ 
+            where: {
+             NOME_BENEFICIO: req.params.name 
+            } 
+        })
+            .then(beneficio => res.json(beneficio))
+            .catch(error => res.json(error))
+    }
 
-     getById(req, res){
+    create(req, res) {
+        BeneficioModel.create(req.body)
+            .then(beneficio => res.json(beneficio))
+            .catch(error => res.json(error))
+    }
 
-     }
+    update(req, res) {
+        BeneficioModel.update(req.body, { 
+            where: {
+                NOME_BENEFICIO: req.params.name
+            }
+        })
+            .then(beneficio => res.json(beneficio))
+            .catch(error => res.json(error))
+    }
 
-     create(req, res){
+    delete(req, res) {
+        BeneficioModel.destroy({
+            where: {
+                NOME_BENEFICIO: req.params.name
+            }
+        })
+            .then(beneficio => res.json(beneficio))
+            .catch(error => res.json(error))
+    }
+}
 
-     }
-
-     update(req, res){
-
-     }
-
-     delete(req, res){
-
-     }
- }
-
- module.exports = new Beneficio()
+module.exports = new Beneficio()
