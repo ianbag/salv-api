@@ -14,3 +14,5 @@ route.get('/telefone/:id', TelefoneController.getById)
 route.post('/telefone', TelefoneController.create)
 route.put('/telefone/:id', TelefoneController.update)
 route.delete('/telefone/:id', TelefoneController.delete)
+
+module.exports = route
