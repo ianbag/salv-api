@@ -9,7 +9,9 @@ const { TelefoneModel } = require('./../models')
 class Telefone {
 
     get(req, res) {
-
+        TelefoneModel.findAll({ raw: true })
+            .then(telefone => res.json(telefone))
+            .catch(error => res.json(error))
     }
 
     getById(req, res) {
