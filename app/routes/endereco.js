@@ -14,3 +14,5 @@ route.get('/endereco/:id', EnderecoController.getById)
 route.post('/endereco', EnderecoController.create)
 route.put('/endereco/:id', EnderecoController.update)
 route.delete('/endereco/:id', EnderecoController.delete)
+
+module.exports = route
