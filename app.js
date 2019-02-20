@@ -7,7 +7,7 @@ const FamiliarRoute = require('./app/routes/familiar')
 const ResidenteRoute = require('./app/routes/residente')
 const EnderecoRoute = require('./app/routes/endereco')
 const TelefoneRoute = require('./app/routes/telefone')
-const BeneficioRoute = require('./app/routes/beneficiogit')
+const BeneficioRoute = require('./app/routes/beneficio')
 
 
 /*

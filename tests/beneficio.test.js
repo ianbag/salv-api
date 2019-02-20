@@ -11,14 +11,14 @@ const chaiHttp = require('chai-http')
 chai.use(chaiHttp)
 const expect = chai.expect
 
-const { BeneficioModel, ResidenteModel, PessoaModel } = require('./../app/models')
+const { PessoaModel, BeneficioModel, ResidenteModel } = require('./../app/models')
 const app = require('./../app')
 
 let MOCK_BENEFICIO_NOME
 
-const MOCK_BENEFICIO_DEFAULT = {
+let MOCK_BENEFICIO_DEFAULT = {
     NOME_BENEFICIO: 'APOSENTADORIA',
-    CODIGO_RESIDENTE: 1,
+    CODIGO_RESIDENTE: null,
     BANCO_BENEFICIO: 'Banco do Brasil',
     AGENCIA_BENEFICIO: '0001',
     CONTA_BENEFICIO: '00248764 4',
@@ -28,7 +28,7 @@ const MOCK_BENEFICIO_DEFAULT = {
 
 const MOCK_BENEFICIO_CADASTRAR = {
     NOME_BENEFICIO: 'INVALIDEZ',
-    CODIGO_RESIDENTE: 1,
+    CODIGO_RESIDENTE: null,
     BANCO_BENEFICIO: 'Santander',
     AGENCIA_BENEFICIO: '0123',
     CONTA_BENEFICIO: '125214512 6',
@@ -36,9 +36,18 @@ const MOCK_BENEFICIO_CADASTRAR = {
     PROVA_VIDA_BENEFICIO: '2020-08-22'
 }
 
+const MOCK_BENEFICIO_ATUALIZAR = {
+    NOME_BENEFICIO: 'APOSENTADORIA',
+    CODIGO_RESIDENTE: null,
+    BANCO_BENEFICIO: 'Bradesco',
+    AGENCIA_BENEFICIO: '125421',
+    CONTA_BENEFICIO: '5152151 8',
+    VALOR_BENEFICIO: 965.50,
+    PROVA_VIDA_BENEFICIO: '2019-09-22'
+}
+
 // MOCK DOS RELACIONAMENTOS
 const MOCK_PESSOA_DEFAULT = {
-    CODIGO: 1,
     NOME: 'Ian',
     SOBRENOME: 'Rotondo Bagliotti',
     RG: '468915217',
@@ -50,7 +59,7 @@ const MOCK_PESSOA_DEFAULT = {
     ESCOLARIDADE: 'sc'
 }
 
-const MOCK_RESIDENTE_DEFAULT = {
+let MOCK_RESIDENTE_DEFAULT = {
     APELIDO: 'Lobo',
     PROFISSAO: 'Analista e Desenvolvedor de Sistemas',
     TITULO_ELEITOR: '1232131',
@@ -73,19 +82,26 @@ const MOCK_RESIDENTE_DEFAULT = {
     DATA_ACOLHIMENTO: '2018-05-07',
     DATA_DESACOLHIMENTO: null,
     MOTIVO_DESACOLHIMENTO: null,
-    PESSOA_CODIGO: 1
+    PESSOA_CODIGO: null
 }
 
 
-describe.only('TDD Beneficio', function () {
+describe('TDD Beneficio', function () {
     this.beforeAll(async () => {
-        await BeneficioModel.destroy({ where: {} })
-        await ResidenteModel.destroy({ where: {} })
-        await PessoaModel.destory({ where: {} })
-        await PessoaModel.create(MOCK_PESSOA_DEFAULT)
-        await ResidenteModel.create(MOCK_RESIDENTE_DEFAULT)
-        const result = await BeneficioModel.create(MOCK_BENEFICIO_DEFAULT)
-        MOCK_BENEFICIO_NOME = result.NOME_BENEFICIO
+        await BeneficioModel.destroy({where: {}})
+        await ResidenteModel.destroy({where: {}})
+        await PessoaModel.destroy({where: {}})
+    
+        const pessoaCadastrado = await PessoaModel.create(MOCK_PESSOA_DEFAULT)
+        MOCK_RESIDENTE_DEFAULT.PESSOA_CODIGO = pessoaCadastrado.CODIGO
+     
+        const residenteCadastrado = await ResidenteModel.create(MOCK_RESIDENTE_DEFAULT)
+        MOCK_BENEFICIO_DEFAULT.CODIGO_RESIDENTE = residenteCadastrado.CODIGO_RESIDENTE
+        MOCK_BENEFICIO_CADASTRAR.CODIGO_RESIDENTE = residenteCadastrado.CODIGO_RESIDENTE
+        MOCK_BENEFICIO_ATUALIZAR.CODIGO_RESIDENTE = residenteCadastrado.CODIGO_RESIDENTE
+
+       const beneficioCadastardo = await BeneficioModel.create(MOCK_BENEFICIO_DEFAULT)
+       MOCK_BENEFICIO_NOME = beneficioCadastardo.NOME_BENEFICIO
     })
 
     describe('/GET: ', () => {
@@ -93,6 +109,8 @@ describe.only('TDD Beneficio', function () {
             chai.request(app)
                 .get('/beneficio')
                 .end((error, res) => {
+                    const [result] = res.body
+                    expect(result).to.eql(MOCK_BENEFICIO_DEFAULT)
                     expect(res.statusCode).to.eql(200)
                     done()
                 })
@@ -104,8 +122,9 @@ describe.only('TDD Beneficio', function () {
             chai.request(app)
                 .get(`/beneficio/${MOCK_BENEFICIO_NOME}`)
                 .end((error, res) => {
-
+                    const result = res.body
                     expect(res.statusCode).to.eql(200)
+                    expect(result).to.eql(MOCK_BENEFICIO_DEFAULT)
                     done()
                 })
         })
@@ -117,7 +136,8 @@ describe.only('TDD Beneficio', function () {
                 .post('/beneficio')
                 .send(MOCK_BENEFICIO_CADASTRAR)
                 .end((error, res) => {
-
+                    const result = res.body
+                    expect(result).to.eql(MOCK_BENEFICIO_CADASTRAR)
                     expect(res.statusCode).to.eql(200)
                     done()
                 })
@@ -129,8 +149,10 @@ describe.only('TDD Beneficio', function () {
                 .post('/beneficio')
                 .send(MOCK_BENEFICIO_CADASTRAR)
                 .end((error, res) => {
-
+                    const [result] = res.body.errors
                     expect(res.statusCode).to.eql(200)
+                    expect(result.path).to.eql('NOME_BENEFICIO')
+                    expect(result.type).to.eql('notNull Violation')
                     done()
                 })
         })
@@ -140,10 +162,11 @@ describe.only('TDD Beneficio', function () {
         it('Deve atualizar uma pessoa pelo NOME: ', (done) => {
             chai.request(app)
                 .put(`/beneficio/${MOCK_BENEFICIO_NOME}`)
-                .send(MOCK_BENEFICIO_CADASTRAR)
+                .send(MOCK_BENEFICIO_ATUALIZAR)
                 .end((error, res) => {
-
                     expect(res.statusCode).to.eql(200)
+                    expect(res.body).to.eql([1])
+
                     done()
                 })
         })
@@ -153,10 +176,9 @@ describe.only('TDD Beneficio', function () {
         it('Deve atualizar uma pessoa pelo NOME: ', (done) => {
             chai.request(app)
                 .delete(`/beneficio/${MOCK_BENEFICIO_NOME}`)
-                .send(MOCK_BENEFICIO_CADASTRAR)
                 .end((error, res) => {
-
                     expect(res.statusCode).to.eql(200)
+                    expect(res.body).to.eql(1)
                     done()
                 })
         })
