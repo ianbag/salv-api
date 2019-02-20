@@ -16,22 +16,34 @@ class Endereco {
 
     getById(req, res) {
         EnderecoModel.findByPk(req.params.id)
-        .then(endereco => res.json(endereco))
-        .catch(error => res.json(error))
+            .then(endereco => res.json(endereco))
+            .catch(error => res.json(error))
     }
 
     create(req, res) {
         EnderecoModel.create(req.body)
-        .then(endereco => res.json(endereco))
-        .catch(error => res.json(error))
+            .then(endereco => res.json(endereco))
+            .catch(error => res.json(error))
     }
 
     update(req, res) {
-
+        EnderecoModel.update(req.body, {
+            where: {
+                CODIGO: req.params.id
+            }
+        })
+            .then(endereco => res.json(endereco))
+            .catch(error => res.json(error))
     }
 
     delete(req, res) {
-
+        EnderecoModel.destroy({
+            where: {
+                CODIGO: req.params.id
+            }
+        })
+            .then(endereco => res.json(endereco))
+            .catch(error => res.json(error))
     }
 }
 
