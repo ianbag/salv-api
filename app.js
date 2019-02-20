@@ -21,6 +21,8 @@ app.get('/', function(req, res){
 
 //API Pessoa
 app.use('/', PessoaRoute)
+
+//API FAMILIAR
 app.use('/', FamiliarRoute)
 
 //API Residente
