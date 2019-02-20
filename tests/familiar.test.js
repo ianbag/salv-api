@@ -13,7 +13,7 @@ chai.use(chaiHttp)
 const app = require('./../app')
 const { FamiliarModel } = require('./../app/models')
 
-//MOCANOD VALORES
+//MOCANDO VALORES
 
 const MOCK_FAMILIAR_DEFAULT = {
     NOME: 'VALDECIR',
@@ -27,7 +27,7 @@ const MOCK_FAMILIAR_CADASTRAR = {
     PARENTESCO: 'SOBRINHA'
 }
 
-let MOCK_FAMILIAR_ERROR = {
+const MOCK_FAMILIAR_ERROR = {
     NOME: 'YARA',
     SOBRENOME: 'MARTINS'
 }
@@ -46,7 +46,7 @@ describe('Test Driven Development SALV-API Familiar', function () {
     this.beforeAll(async () => {
         await FamiliarModel.destroy({ where: {} })
         const result = await FamiliarModel.create(MOCK_FAMILIAR_DEFAULT)
-        MOCK_FAMILIAR_CODIGO = result.codigo
+        MOCK_FAMILIAR_CODIGO = result.CODIGO
     })
 
     //TESTE GET ALL
@@ -89,6 +89,7 @@ describe('Test Driven Development SALV-API Familiar', function () {
                 .send(MOCK_FAMILIAR_CADASTRAR)
                 .end((error, res) => {
                     const result = res.body
+                    delete result.CODIGO
                     expect(res.statusCode).to.eql(200)
                     expect(result).to.eql(MOCK_FAMILIAR_CADASTRAR)
                     done()
