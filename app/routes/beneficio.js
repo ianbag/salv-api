@@ -2,24 +2,20 @@
  * @author Ian Rotondo Bagliotti
  * @email ian.bagliotti@gmail.com
  * @create date 2019-02-19 11:46:19
- * @modify date 2019-02-19 11:54:56
- * @desc Arquivo de testes da API de Beneficio
+ * @modify date 2019-02-20 11:31:36
+ * @desc Arquivo de Rotas da API Beneficio
  */
 
-const chai = require('chai')
-const chaiHttp = require('chai-http')
-const expect = chai.expect
-chai.use(chaiHttp)
+ 
+const express = require('express')
+const route = express.Router()
 
-const app = require('./../app')
-const { BeneficioModel } = require('./../app/models')
+const BeneficioController = require('./../controllers/beneficio')
 
-describe('TDD API Beneficio: ', function () {
-    this.beforeAll(async() => {
+route.get('/beneficio', BeneficioController.get)
+route.get('/beneficio/:name', BeneficioController.getByName)
+route.post('/beneficio', BeneficioController.create)
+route.put('/beneficio/:name', BeneficioController.update)
+route.delete('/beneficio/:name', BeneficioController.delete)
 
-    })
-
-    describe('/GET:', () => {
-
-    })
-})
+module.exports = route
