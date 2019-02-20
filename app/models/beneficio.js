@@ -25,6 +25,10 @@
              type: DataTypes.STRING,
              max: 50
          },
+         CONTA_BENEFICIO: {
+            type: DataTypes.STRING,
+            max: 50
+         },
          VALOR_BENEFICIO: {
              type: DataTypes.DOUBLE
          },
