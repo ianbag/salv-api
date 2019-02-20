@@ -15,7 +15,9 @@ class Telefone {
     }
 
     getById(req, res) {
-
+        TelefoneModel.findByPk(req.params.id)
+            .then(telefone => res.json(telefone))
+            .catch(error => res.json(error))
     }
 
     create(req, res) {
