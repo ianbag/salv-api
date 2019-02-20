@@ -27,7 +27,13 @@ class Telefone {
     }
 
     update(req, res) {
-
+        TelefoneModel.update(req.body, {
+            where: {
+                CODIGO: req.params.id
+            }
+        })
+            .then(telefone => res.json(telefone))
+            .catch(error => res.json(error))
     }
 
     delete(req, res) {
