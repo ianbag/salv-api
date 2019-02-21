@@ -21,7 +21,13 @@ class TelefoneFamiliar {
     }
 
     delete(req, res) {
-
+        TelefoneFamiliarModel.destroy({
+            where: {
+                FAMILIAR_CODIGO: req.params.id
+            }
+        })
+            .then(telefoneFamiliar => res.json(telefoneFamiliar))
+            .catch(error => res.json(error))
     }
 }
 
