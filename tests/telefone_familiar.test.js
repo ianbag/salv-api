@@ -34,7 +34,7 @@ const MOCK_TELEFONE_FAMILIAR_ERROR_EQUALS_POST = {
 }
 
 const MOCK_TELEFONE_FAMILIAR_ATUALIZAR = {
-    FAMILIAR_CODIGO: 2,
+    FAMILIAR_CODIGO: 1,
     TELEFONE_CODIGO: 3
 }
 
@@ -96,14 +96,14 @@ describe('Test Driven Development SALV-API Telefone Familiar', function () {
 
         it('Deve adicionar um telefone a um familiar na base de dados', (done) => {
             chai.request(app)
-            .post('/telefone_familiar')
-            .send(MOCK_TELEFONE_FAMILIAR_CADASTRAR)
-            .end((error, res) => {
-                const result = res.body
-                expect(res.statusCode).to.eql(200)
-                expect(result).to.eql(MOCK_TELEFONE_FAMILIAR_CADASTRAR)
-                done()
-            })
+                .post('/telefone_familiar')
+                .send(MOCK_TELEFONE_FAMILIAR_CADASTRAR)
+                .end((error, res) => {
+                    const result = res.body
+                    expect(res.statusCode).to.eql(200)
+                    expect(result).to.eql(MOCK_TELEFONE_FAMILIAR_CADASTRAR)
+                    done()
+                })
         })
 
         this.beforeAll(async () => {
@@ -115,15 +115,16 @@ describe('Test Driven Development SALV-API Telefone Familiar', function () {
 
         it('Deve retornar erro ao tentar adicionar um telefone familiar que esteja com um campo obrigatorio em branco', (done) => {
             chai.request(app)
-            .post('/telefone_familiar')
-            .send(MOCK_TELEFONE_FAMILIAR_ERROR)
-            .end((error, res) => {
-                const [result] = res.body.errors
-                expect(res.statusCode).to.eql(200)
-                expect(result.path).to.eql('TELEFONE_CODIGO')
-                expect(result.type).to.eql('notNull Violation')
-                done()
-            })
+                .post('/telefone_familiar')
+                .send(MOCK_TELEFONE_FAMILIAR_ERROR)
+                .end((error, res) => {
+                    const [result] = res.body.errors
+                    expect(res.statusCode).to.eql(200)
+                    expect(result.path).to.eql('TELEFONE_CODIGO')
+                    expect(result.type).to.eql('notNull Violation')
+                    done()
+                })
         })
     })
+
 })

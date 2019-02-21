@@ -20,10 +20,6 @@ class TelefoneFamiliar {
             .catch(error => res.json(error))
     }
 
-    update(req, res) {
-
-    }
-
     delete(req, res) {
 
     }
