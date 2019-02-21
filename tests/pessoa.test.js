@@ -12,7 +12,7 @@ const expect = chai.expect
 chai.use(chaiHttp)
 
 const app = require('./../app')
-const { PessoaModel, ResidenteModel } = require('./../app/models')
+const { PessoaModel, ResidenteModel, BeneficioModel } = require('./../app/models')
 
 const MOCK_PESSOA_DEFAULT = {
     NOME: 'Ian',
@@ -65,6 +65,7 @@ let MOCK_PESSOA_CODIGO
 
 describe('TDD Pessoa', function () {
     this.beforeAll(async () => {
+        await BeneficioModel.destroy({ where: {} })
         await ResidenteModel.destroy({ where: {} })
         await PessoaModel.destroy({ where: {} })
         const result = await PessoaModel.create(MOCK_PESSOA_DEFAULT)

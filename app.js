@@ -7,6 +7,7 @@ const FamiliarRoute = require('./app/routes/familiar')
 const ResidenteRoute = require('./app/routes/residente')
 const EnderecoRoute = require('./app/routes/endereco')
 const TelefoneRoute = require('./app/routes/telefone')
+const BeneficioRoute = require('./app/routes/beneficio')
 
 
 /*
@@ -35,6 +36,9 @@ app.use('/', EnderecoRoute)
 
 //API TELEFONE
 app.use('/', TelefoneRoute)
+
+//API BENEFICIO
+app.use('/', BeneficioRoute)
 
 app.listen(3000, function(){
     console.log("API rodando na porta 3000")
