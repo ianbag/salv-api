@@ -8,12 +8,10 @@ const { TelefoneFamiliarModel } = require('./../models')
 
 class TelefoneFamiliar {
 
-    get(req, res) {
-
-    }
-
     getById(req, res) {
-
+        TelefoneFamiliarModel.findByPk(req.params.id)
+            .then(telefoneFamiliar => res.json(telefoneFamiliar))
+            .catch(error => res.json(error))
     }
 
     create(req, res) {

@@ -9,8 +9,9 @@ const route = express.Router()
 
 const TelefoneFamiliarController = require('./../controllers/telefone_familiar')
 
-route.get('/telefone_familiar', TelefoneFamiliarController.get)
 route.get('/telefone_familiar/:id', TelefoneFamiliarController.getById)
 route.post('/telefone_familiar', TelefoneFamiliarController.create)
 route.put('/telefone_familiar/:id', TelefoneFamiliarController.update)
 route.delete('/telefone_familiar/:id', TelefoneFamiliarController.delete)
+
+module.exports = route

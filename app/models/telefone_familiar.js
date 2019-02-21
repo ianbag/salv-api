@@ -9,12 +9,18 @@ module.exports = (sequelize, DataTypes) => {
         FAMILIAR_CODIGO: {
             type: DataTypes.INTEGER,
             required: true,
-            allowNull: false
+            allowNull: false,
+            primaryKey: true,
+            references: 'FAMILIAR',
+            referencesKey: 'CODIGO'
         },
         TELEFONE_CODIGO: {
             type: DataTypes.INTEGER,
             required: true,
-            allowNull: false
+            allowNull: false,
+            primaryKey: true,
+            references: 'TELEFONE',
+            referencesKey: 'CODIGO'
         }
     },
         {
