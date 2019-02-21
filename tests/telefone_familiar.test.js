@@ -25,7 +25,7 @@ const MOCK_TELEFONE_FAMILIAR_CADASTRAR = {
 }
 
 const MOCK_TELEFONE_FAMILIAR_ERROR = {
-    FAMILIAR_CODIGO: 1
+    FAMILIAR_CODIGO: null
 }
 
 const MOCK_TELEFONE_FAMILIAR_ERROR_EQUALS_POST = {
@@ -100,9 +100,28 @@ describe('Test Driven Development SALV-API Telefone Familiar', function () {
             .send(MOCK_TELEFONE_FAMILIAR_CADASTRAR)
             .end((error, res) => {
                 const result = res.body
-                //delete
                 expect(res.statusCode).to.eql(200)
                 expect(result).to.eql(MOCK_TELEFONE_FAMILIAR_CADASTRAR)
+                done()
+            })
+        })
+
+        this.beforeAll(async () => {
+            const familiar = await FamiliarModel.create(MOCK_FAMILIAR_DEFAULT)
+
+            console.log('ADICIONANDO VALORES AO MOCK')
+            MOCK_TELEFONE_FAMILIAR_ERROR.FAMILIAR_CODIGO = familiar.CODIGO
+        })
+
+        it('Deve retornar erro ao tentar adicionar um telefone familiar que esteja com um campo obrigatorio em branco', (done) => {
+            chai.request(app)
+            .post('/telefone_familiar')
+            .send(MOCK_TELEFONE_FAMILIAR_ERROR)
+            .end((error, res) => {
+                const [result] = res.body.errors
+                expect(res.statusCode).to.eql(200)
+                expect(result.path).to.eql('TELEFONE_CODIGO')
+                expect(result.type).to.eql('notNull Violation')
                 done()
             })
         })
