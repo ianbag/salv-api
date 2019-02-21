@@ -15,7 +15,9 @@ class TelefoneFamiliar {
     }
 
     create(req, res) {
-
+        TelefoneFamiliarModel.create(req.body)
+            .then(telefoneFamiliar => res.json(telefoneFamiliar))
+            .catch(error => res.json(error))
     }
 
     update(req, res) {

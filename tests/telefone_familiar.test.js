@@ -20,15 +20,15 @@ const MOCK_TELEFONE_FAMILIAR_DEFAULT = {
 }
 
 const MOCK_TELEFONE_FAMILIAR_CADASTRAR = {
-    FAMILIAR_CODIGO: 1,
-    TELEFONE_CODIGO: 2
+    FAMILIAR_CODIGO: null,
+    TELEFONE_CODIGO: null
 }
 
 const MOCK_TELEFONE_FAMILIAR_ERROR = {
     FAMILIAR_CODIGO: 1
 }
 
-const MOCK_TELEFONE_FAMILIAR_ERROR_EQUAL_POST = {
+const MOCK_TELEFONE_FAMILIAR_ERROR_EQUALS_POST = {
     FAMILIAR_CODIGO: 1,
     TELEFONE_CODIGO: 1
 }
@@ -69,7 +69,7 @@ describe('Test Driven Development SALV-API Telefone Familiar', function () {
         console.log('FAMILIAR ' + MOCK_TELEFONE_FAMILIAR_FAMILIAR_CODIGO)
     })
 
-    
+    //GET ID
     describe('/GET/ID: ', () => {
         it('Deve retornar o telefone de um familiar dado o ID dele', (done) => {
             chai.request(app)
@@ -83,5 +83,28 @@ describe('Test Driven Development SALV-API Telefone Familiar', function () {
         })
     })
 
+    //POST
+    describe('/POST: ', () => {
+        this.beforeAll(async () => {
+            const telefone = await TelefoneModel.create(MOCK_TELEFONE_DEFAULT)
+            const familiar = await FamiliarModel.create(MOCK_FAMILIAR_DEFAULT)
 
+            console.log('ADICIONANDO VALORES AO MOCK')
+            MOCK_TELEFONE_FAMILIAR_CADASTRAR.FAMILIAR_CODIGO = familiar.CODIGO
+            MOCK_TELEFONE_FAMILIAR_CADASTRAR.TELEFONE_CODIGO = telefone.CODIGO
+        })
+
+        it('Deve adicionar um telefone a um familiar na base de dados', (done) => {
+            chai.request(app)
+            .post('/telefone_familiar')
+            .send(MOCK_TELEFONE_FAMILIAR_CADASTRAR)
+            .end((error, res) => {
+                const result = res.body
+                //delete
+                expect(res.statusCode).to.eql(200)
+                expect(result).to.eql(MOCK_TELEFONE_FAMILIAR_CADASTRAR)
+                done()
+            })
+        })
+    })
 })
