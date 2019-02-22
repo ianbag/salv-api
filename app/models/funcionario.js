@@ -5,54 +5,12 @@
 module.exports = (sequelize, DataTypes) => {
     const FuncionarioModel = sequelize.define('FuncionarioModel', {
         
-        CODIGO: {
+        CODIGO_FUNCIONARIO: {
             type: DataTypes.INTEGER,
             required: true,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
-        },
-        NOME: {
-            type: DataTypes.STRING,
-            required: true,
-            max: 50,
-            allowNull: false
-        },
-        SOBRENOME: {
-            type: DataTypes.STRING,
-            required: true,
-            max: 50,
-            allowNull: false
-        },
-        RG: {
-            type: DataTypes.STRING,
-            unique: true,
-            max: 9,
-        },
-        CPF: {
-            type: DataTypes.STRING,
-            unique: true,
-            max: 11
-        },
-        SEXO: {
-            type: DataTypes.STRING,
-            max: 1
-        },
-        ESTADO_CIVIL: {
-            type: DataTypes.STRING,
-            max: 1
-        },
-        DATA_NASCIMENTO: {
-            type: DataTypes.DATEONLY,
-            max: 8
-        },
-        RELIGIAO: {
-            type: DataTypes.STRING,
-            max: 3
-        },
-        ESCOLARIDADE: {
-            type: DataTypes.STRING,
-            max:2
         },
         FILHOS_MENOS_14: {
             type: DataTypes.STRING,
@@ -75,6 +33,13 @@ module.exports = (sequelize, DataTypes) => {
         DATA_DEMISSAO: {
             type: DataTypes.DATEONLY,
             max: 8
+        },
+        PESSOA_CODIGO: {
+            type: DataTypes.INTEGER,
+            required: true,
+            allowNull: false,
+            references: 'PESSOA',
+            referenceskey: 'CODIGO'
         }
     },
         {
