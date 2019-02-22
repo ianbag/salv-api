@@ -74,3 +74,96 @@ let MOCK_FUNCIONARIO_CODIGO
 
 //Início dos tests
 
+describe('TDD Funcionario', function () {
+    this.beforeAll(async () => {
+        const result = await FuncionarioModel.create(MOCK_FUNCIONARIO_DEFAULT)
+        MOCK_FUNCIONARIO_CODIGO = result.CODIGO
+    })
+
+    //GET
+    describe('/GET: ', () => {
+        it('Deve retornar todos os funcionarios presentes no banco de dados', (done) => {
+            chai.request(app)
+                .get('/funcionario')
+                .end((error, res) => {
+                    const [result] = res.body
+                    delete result.CODIGO
+                    expect(result).to.eql(MOCK_FUNCIONARIO_DEFAULT)
+                    done()
+                })
+        })
+    })
+
+    //GET ID
+    describe('/GET/ID: ', () => {
+        it('Deve retornar um funcionario com baso no ID dele', (done) => {
+            chai.request(app)
+                .get(`/funcionario/${MOCK_FUNCIONARIO_CODIGO}`)
+                .end((error, res) => {
+                    const result = res.body
+                    delete result.CODIGO
+                    expect(res.statusCode).to.eql(200)
+                    expect(result).to.eql(MOCK_FUNCIONARIO_DEFAULT)
+                    done()
+                })
+        })
+    })
+
+    //POST
+    describe('/POST: ', () => {
+        it('Deve adicionar um funcionario no banco de dados', (done) => {
+            chai.request(app)
+                .post('/funcionario')
+                .send(MOCK_FUNCIONARIO_CADASTRAR)
+                .end((error, res) => {
+                    const result = res.body
+                    delete result.CODIGO
+                    expect(res.statusCode).to.eql(200)
+                    expect(result).to.eql(MOCK_FUNCIONARIO_CADASTRAR)
+                    done()
+                })
+        })
+
+        it('Deve retornar erro ao tentar adicionar um funcionario que esteja com campo obrigatório em branco', (done) => {
+            chai.request(app)
+                .post('/funcionario')
+                .send(MOCK_FUNCIONARIO_ERROR)
+                .end((error, res) => {
+                    const [result] = res.body.errors
+                    expect(res.statusCode).to.eql(200)
+                    expect(result.path).to.eql('CARGO')
+                    expect(result.type).to.eql('notNull Violation')
+                    done()
+                })
+        })
+    })
+
+    //PUT
+    describe('/PUT/ID: ', () => {
+        it('Atualizar os dados do funcionario de acordo com o seu ID', (done) => {
+            chai.request(app)
+                .put(`/funcionario/${MOCK_FUNCIONARIO_CODIGO}`)
+                .send(MOCK_FUNCIONARIO_ATUALIZAR)
+                .end((error, res) => {
+                    expect(res.statusCode).to.eql(200)
+                    expect(res.body).to.eql([1])
+                    done()
+                })
+        })
+    })
+
+    //DELETE
+    describe('/DELETE/ID: ', () => {
+        it('Deve apagar um funcionario com base no seu ID', (done) => {
+            chai.request(app)
+                .delete(`/funcionario/${MOCK_FUNCIONARIO_CODIGO}`)
+                .end((error, res) => {
+                    expect(res.statusCode).to.eql(200)
+                    expect(res.body).to.eql(1)
+                    done()
+                })
+        })
+    })
+
+})
+
