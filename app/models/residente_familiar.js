@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             references: 'FAMILIAR',
             referencesKey: 'CODIGO'
         },
-        RESIDENTE_CODIGO: {
+        CODIGO_RESIDENTE: {
             type: DataTypes.INTEGER,
             required: true,
             allowNull: false,

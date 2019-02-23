@@ -12,7 +12,7 @@ chai.use(chaiHttp)
 const app = require('./../app')
 const { ResidenteFamiliarModel } = require('./../app/models')
 const { FamiliarModel } = require('./../app/models')
-const { ResidenteModel } = require('/../app/models')
+const { ResidenteModel } = require('./../app/models')
 
 //INICIANDO MOCKS
 
@@ -66,3 +66,93 @@ const MOCK_RESIDENTE_DEFAULT = {
 let MOCK_RESIDENTE_FAMILIAR_FAMILIAR_CODIGO
 
 //FINALIZANDO MOCKS
+
+//TESTS
+
+describe('Test Driven Development SALV-API Residente Familiar', function () {
+    this.beforeAll(async () => {
+        const familiar = await FamiliarModel.create(MOCK_FAMILIAR_DEFAULT)
+        const residente = await ResidenteModel.create(MOCK_RESIDENTE_DEFAULT)
+
+        console.log('ADICIONANDO VALORES AO MOCK')
+        MOCK_RESIDENTE_FAMILIAR_DEFAULT.FAMILIAR_CODIGO = familiar.CODIGO
+        MOCK_RESIDENTE_FAMILIAR_DEFAULT.CODIGO_RESIDENTE = residente.CODIGO_RESIDENTE
+
+        const result = await ResidenteFamiliarModel.create(MOCK_RESIDENTE_FAMILIAR_DEFAULT)
+
+        MOCK_RESIDENTE_FAMILIAR_FAMILIAR_CODIGO = result.FAMILIAR_CODIGO
+
+        console.log('FAMILIAR ' + MOCK_RESIDENTE_FAMILIAR_FAMILIAR_CODIGO)
+    })
+
+    //GET ID
+    describe('/GET/ID: ', () => {
+        it('Deve retornar o residente de um familiar dado o ID dele', (done) => {
+            chai.request(app)
+                .get(`/residente_familiar/${MOCK_RESIDENTE_FAMILIAR_FAMILIAR_CODIGO}`)
+                .end((error, res) => {
+                    const result = res.body
+                    expect(res.statusCode).to.eql(200)
+                    expect(result).to.eql(MOCK_RESIDENTE_FAMILIAR_DEFAULT)
+                    done()
+                })
+        })
+    })
+
+    //POST
+    describe('/POST: ', () => {
+        this.beforeAll(async () => {
+            const residente = await ResidenteModel.create(MOCK_RESIDENTE_DEFAULT)
+            const familiar = await FamiliarModel.create(MOCK_FAMILIAR_DEFAULT)
+
+            console.log('ADICIONANDO VALORES AO MOCK')
+            MOCK_RESIDENTE_FAMILIAR_CADASTRAR.FAMILIAR_CODIGO = familiar.CODIGO
+            MOCK_RESIDENTE_FAMILIAR_CADASTRAR.CODIGO_RESIDENTE = residente.CODIGO_RESIDENTE
+        })
+
+        it('Deve adicionar um residente a um familiar na base de dados', (done) => {
+            chai.request(app)
+                .post('/residente_familiar')
+                .send(MOCK_RESIDENTE_FAMILIAR_CADASTRAR)
+                .end((error, res) => {
+                    const result = res.body
+                    expect(res.statusCode).to.eql(200)
+                    expect(result).to.eql(MOCK_RESIDENTE_FAMILIAR_CADASTRAR)
+                    done()
+                })
+        })
+
+        this.beforeAll(async () => {
+            const familiar = await FamiliarModel.create(MOCK_FAMILIAR_DEFAULT)
+
+            console.log('ADICIONANDO VALORES AO MOCK')
+            MOCK_RESIDENTE_FAMILIAR_ERROR.FAMILIAR_CODIGO = familiar.CODIGO
+        })
+
+        it('Deve retornar erro ao tentat adicionar um residente familiar que steja com um campo obrigatório em branco', (done) => {
+            chai.request(app)
+                .post('/residente_familiar')
+                .send(MOCK_RESIDENTE_FAMILIAR_ERROR)
+                .end((error, res) => {
+                    const [result] = res.body.errors
+                    expect(res.statusCode).to.eql(200)
+                    expect(res.path).to.eql('CODIGO_RESIDENTE')
+                    expect(res.type).to.eql('notNull Violation')
+                    done()
+                })
+        })
+    })
+
+    //DELETE
+    describe('/DELETE/ID: ', () => {
+        it('Deve apagar um residente familiar dado seu ID', (done) => {
+            chai.request(app)
+                .delete(`/residente_familiar/${MOCK_RESIDENTE_FAMILIAR_FAMILIAR_CODIGO}`)
+                .end((error, res) => {
+                    expect(res.statusCode).to.eql(200)
+                    expect(res.body).to.eql(1)
+                    done()
+                })
+        })
+    })
+})
