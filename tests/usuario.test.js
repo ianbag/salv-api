@@ -121,7 +121,7 @@ describe('TDD Usuario', function () {
         it('Atualizar os dados do funcionario de acordo com o seu id', (done) => {
             chai.request(app)
                 .put(`/usuario/${MOCK_USUARIO_FUNCIONARIO_CODIGO}`)
-                .send(MOCK_FUNCIONARIO_ATUALIZAR)
+                .send(MOCK_USUARIO_ATUALIZAR)
                 .end((error, res) => {
                     expect(res.statusCode).to.eql(200)
                     expect(res.body).to.eql([1])
