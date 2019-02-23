@@ -121,12 +121,12 @@ describe('Test Driven Development SALV-API Telefone Familiar', function () {
     describe('/DELETE/ID: ', () => {
         it('Deve apagar um telefone familiar dado seu ID', (done) => {
             chai.request(app)
-            .delete(`/telefone_familiar/${MOCK_TELEFONE_FAMILIAR_FAMILIAR_CODIGO}`)
-            .end((error, res) => {
-                expect(res.statusCode).to.eql(200)
-                expect(res.body).to.eql(1)
-                done()
-            })
+                .delete(`/telefone_familiar/${MOCK_TELEFONE_FAMILIAR_FAMILIAR_CODIGO}`)
+                .end((error, res) => {
+                    expect(res.statusCode).to.eql(200)
+                    expect(res.body).to.eql(1)
+                    done()
+                })
         })
     })
 })

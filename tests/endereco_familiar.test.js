@@ -105,5 +105,25 @@ describe('Test Driven Development SALV-API Endereço Familiar', function () {
                     done()
                 })
         })
+
+        this.beforeAll(async () => {
+            const familiar = await FamiliarModel.create(MOCK_FAMILIAR_DEFAULT)
+
+            console.log('ADICIONANDO VALORES AO MOCK')
+            MOCK_ENDERECO_FAMILIAR_ERROR.FAMILIAR_CODIGO = familiar.CODIGO
+        })
+
+        it('Deve retornar erro ao tentar adicionar um endereço familiar que esteja com um campo obrigatório em branco', (done) => {
+            chai.request(app)
+                .post('/endereco_familiar')
+                .send(MOCK_ENDERECO_FAMILIAR_ERROR)
+                .end((error, res) => {
+                    const [result] = res.body.errors
+                    expect(res.statusCode).to.eql(200)
+                    expect(result.path).to.eql('ENDERECO_CODIGO')
+                    expect(result.type).to.eql('notNull Violation')
+                    done()
+                })
+        })
     })
 })
