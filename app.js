@@ -53,6 +53,9 @@ app.use('/', EnderecoFamiliarRoute)
 //API RESIDENTE_FAMILIAR
 app.use('/', ResidenteFamiliarRoute)
 
+//API CONVENIO
+app.use('/', ConvenioRoute)
+
 app.listen(3000, function () {
     console.log("API rodando na porta 3000")
 })
