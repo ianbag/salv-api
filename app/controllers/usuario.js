@@ -6,10 +6,6 @@
 
  class Usuario {
      
-    get(req, res){
-
-    }
-
     getById(req, res){
 
     }
