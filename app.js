@@ -12,6 +12,7 @@ const TelefoneFamiliarRoute = require('./app/routes/telefone_familiar')
 const EnderecoFamiliarRoute = require('./app/routes/endereco_familiar')
 const ResidenteFamiliarRoute = require('./app/routes/residente_familiar')
 const ConvenioRoute = require('./app/routes/convenio')
+const TelefoneConvenioRoute = require('./app/routes/telefone_convenio')
 
 
 /*
