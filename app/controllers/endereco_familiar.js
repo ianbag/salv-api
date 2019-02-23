@@ -15,7 +15,9 @@ class EnderecoFamiliar {
     }
 
     create(req, res) {
-
+        EnderecoFamiliarModel.create(req.body)
+            .then(enderecoFamiliar => res.json(enderecoFamiliar))
+            .catch(error => res.json(error))
     }
 
     delete(req, res) {
