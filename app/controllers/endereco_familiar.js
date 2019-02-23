@@ -21,7 +21,13 @@ class EnderecoFamiliar {
     }
 
     delete(req, res) {
-
+        EnderecoFamiliarModel.destroy({
+            where: {
+                FAMILIAR_CODIGO: req.params.id
+            }
+        })
+            .then(enderecoFamiliar => res.json(enderecoFamiliar))
+            .catch(error => res.json(error))
     }
 }
 

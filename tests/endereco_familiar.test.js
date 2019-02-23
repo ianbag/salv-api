@@ -126,4 +126,17 @@ describe('Test Driven Development SALV-API Endereço Familiar', function () {
                 })
         })
     })
+
+    //DELETE
+    describe('/DELETE/ID: ', () => {
+        it('Deve apagar um endereço familiar dado seu ID', (done)=> {
+            chai.request(app)
+            .delete(`/endereco_familiar/${MOCK_ENDERECO_FAMILIAR_FAMILIAR_CODIGO}`)
+            .end((error, res) => {
+                expect(res.statusCode).to.eql(200)
+                expect(res.body).to.eql(1)
+                done()
+            })
+        })
+    })
 })
