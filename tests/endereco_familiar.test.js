@@ -70,4 +70,18 @@ describe('Test Driven Development SALV-API Endereço Familiar', function () {
     })
 
     //GET ID
+    describe('/GET/ID: ', () => {
+        it('Deve retornar o endereço de um familiar dado o ID dele', (done) => {
+            chai.request(app)
+            .get(`/endereco_familiar/${MOCK_ENDERECO_FAMILIAR_FAMILIAR_CODIGO}`)
+            .end((error, res) => {
+                const result = res.body
+                expect(res.stautsCode).to.eql(200)
+                expect(result).to.eql(MOCK_ENDERECO_FAMILIAR_DEFAULT)
+                done()
+            })
+        })
+    })
+
+    
 })
