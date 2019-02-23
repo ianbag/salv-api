@@ -55,14 +55,13 @@ describe('TDD Usuario', function () {
 
     //GET ID
     describe('/GET/ID: ', () => {
-        it('Deve retornar um usuario com base no ID dele', (done) => {
+        it('Deve retornar um usuario com base no ID dele (funcionario)', (done) => {
             chai.request(app)
-                .get(`/funcionario/${MOCK_FUNCIONARIO_CODIGO}`)
+                .get(`/usuario/${MOCK_USUARIO_FUNCIONARIO_CODIGO}`)
                 .end((error, res) => {
                     const result = res.body
-                    delete result.CODIGO
                     expect(res.statusCode).to.eql(200)
-                    expect(result).to.eql(MOCK_FUNCIONARIO_DEFAULT)
+                    expect(result).to.eql(MOCK_USUARIO_DEFAULT)
                     done()
                 })
         })
@@ -70,27 +69,40 @@ describe('TDD Usuario', function () {
 
     //POST
     describe('/POST: ', () => {
-        it('Deve adicionar um funcionario no banco de dados', (done) => {
+        this.beforeAll(async () => {
+            const funcionario = await FuncionarioModel.create(MOCK_FUNCIONARIO_DEFAULT)
+
+            console.log('Add valores ao mock')
+            MOCK_USUARIO_CADASTRAR.FUNCIONARIO_CODIGO = funcionario.CODIGO
+        })
+
+        it('Deve adicionar um usuario a um funcionaio no banco de dados', (done) => {
             chai.request(app)
-                .post('/funcionario')
-                .send(MOCK_FUNCIONARIO_CADASTRAR)
+                .post('/usuario')
+                .send(MOCK_USUARIO_CADASTRAR)
                 .end((error, res) => {
                     const result = res.body
-                    delete result.CODIGO
                     expect(res.statusCode).to.eql(200)
-                    expect(result).to.eql(MOCK_FUNCIONARIO_CADASTRAR)
+                    expect(result).to.eql(MOCK_USUARIO_CADASTRAR)
                     done()
                 })
         })
 
-        it('Deve retornar erro ao tentar adicionar um funcionario que esteja com campo obrigatório em branco', (done) => {
+        this.beforeAll(async () => {
+            const funcionaio = await FuncionarioModel.create(MOCK_FUNCIONARIO_DEFAULT)
+
+            console.log('Add valores ao mock')
+            MOCK_USUARIO_ERROR.FUNCIONARIO_CODIGO = funcionaio.CODIGO
+        })
+
+        it('Deve retornar erro ao tentar adicionar um usuario que esteja com campo obrigatório em branco', (done) => {
             chai.request(app)
-                .post('/funcionario')
-                .send(MOCK_FUNCIONARIO_ERROR)
+                .post('/usuario')
+                .send(MOCK_USUARIO_ERROR)
                 .end((error, res) => {
                     const [result] = res.body.errors
                     expect(res.statusCode).to.eql(200)
-                    expect(result.path).to.eql('CARGO')
+                    expect(result.path).to.eql('EMAIL')
                     expect(result.type).to.eql('notNull Violation')
                     done()
                 })
@@ -99,9 +111,16 @@ describe('TDD Usuario', function () {
 
     //PUT
     describe('/PUT/ID: ', () => {
-        it('Atualizar os dados do funcionario de acordo com o seu ID', (done) => {
+        this.beforeAll(async () => {
+            const funcionario = await FuncionarioModel.create(MOCK_FUNCIONARIO_DEFAULT)
+
+            console.log('Add valores ao mock')
+            MOCK_USUARIO_CADASTRAR.FUNCIONARIO_CODIGO = funcionario.CODIGO
+        })
+
+        it('Atualizar os dados do funcionario de acordo com o seu id', (done) => {
             chai.request(app)
-                .put(`/funcionario/${MOCK_FUNCIONARIO_CODIGO}`)
+                .put(`/usuario/${MOCK_USUARIO_FUNCIONARIO_CODIGO}`)
                 .send(MOCK_FUNCIONARIO_ATUALIZAR)
                 .end((error, res) => {
                     expect(res.statusCode).to.eql(200)
@@ -113,9 +132,9 @@ describe('TDD Usuario', function () {
 
     //DELETE
     describe('/DELETE/ID: ', () => {
-        it('Deve apagar um funcionario com base no seu ID', (done) => {
+        it('Deve apagar um usuario com base no seu id', (done) => {
             chai.request(app)
-                .delete(`/funcionario/${MOCK_FUNCIONARIO_CODIGO}`)
+                .delete(`/usuario/${MOCK_USUARIO_FUNCIONARIO_CODIGO}`)
                 .end((error, res) => {
                     expect(res.statusCode).to.eql(200)
                     expect(res.body).to.eql(1)
