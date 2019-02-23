@@ -9,7 +9,9 @@ const { EnderecoFamiliarModel } = require('./../models')
 class EnderecoFamiliar {
 
     getById(req, res) {
-
+        EnderecoFamiliarModel.findByPk(req.params.id)
+            .then(enderecoFamiliar => res.json(enderecoFamiliar))
+            .catch(error => res.json(error))
     }
 
     create(req, res) {
