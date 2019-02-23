@@ -8,6 +8,9 @@ const ResidenteRoute = require('./app/routes/residente')
 const EnderecoRoute = require('./app/routes/endereco')
 const TelefoneRoute = require('./app/routes/telefone')
 const BeneficioRoute = require('./app/routes/beneficio')
+const TelefoneFamiliarRoute = require('./app/routes/telefone_familiar')
+const EnderecoFamiliarRoute = require('./app/routes/endereco_familiar')
+const ResidenteFamiliarRoute = require('./app/routes/residente_familiar')
 
 
 /*
@@ -18,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json' }));
 
-app.get('/', function(req, res){
+app.get('/', function (req, res) {
     res.send("API Funcionando")
 })
 
@@ -40,7 +43,16 @@ app.use('/', TelefoneRoute)
 //API BENEFICIO
 app.use('/', BeneficioRoute)
 
-app.listen(3000, function(){
+//API TELEFONE_FAMILIAR
+app.use('/', TelefoneFamiliarRoute)
+
+//API ENDERECO_FAMILIAR
+app.use('/', EnderecoFamiliarRoute)
+
+//API RESIDENTE_FAMILIAR
+app.use('/', ResidenteFamiliarRoute)
+
+app.listen(3000, function () {
     console.log("API rodando na porta 3000")
 })
 
