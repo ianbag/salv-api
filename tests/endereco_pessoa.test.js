@@ -2,7 +2,7 @@
  * @author Ian Rotondo Bagliotti
  * @email ian.bagliotti@gmail.com
  * @create date 2019-02-24 14:24:23
- * @modify date 2019-02-24 14:51:19
+ * @modify date 2019-02-24 16:45:15
  * @desc Arquivo de Testes da API de Endereco Pessoa
  */
 
@@ -106,6 +106,19 @@ describe.only('TDD Endereco Pessoa: ', function () {
                     expect(res.statusCode).to.eql(200)
                     expect(result.path).to.eql('ENDERECO_CODIGO')
                     expect(result.type).to.eql('notNull Violation')
+                    done()
+            })
+        })
+    })
+
+
+    describe('/DELETE/:ID', () => {
+        it('Deve deletar o Endereco Pessoa pelo ID', (done) => {
+            chai.request(app)
+                .delete(`/endereco_pessoa/${MOCK_ENDERECO_PESSOA_CODIGO}`)
+                .end((error, res) => {
+                    expect(res.statusCode).to.eql(200)
+                    expect(res.body).to.eql(1)
                     done()
             })
         })
