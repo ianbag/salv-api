@@ -37,17 +37,17 @@ let MOCK_PESSOA_DEFAULT = {
 
 let MOCK_ENDERECO_PESSOA_DEFAULT = {
     PESSOA_CODIGO: null,
-    TELEFONE_CODIGO: null
+    ENDERECO_CODIGO: null
 }
 
 let MOCK_ENDERECO_PESSOA_CADASTRAR = {
     PESSOA_CODIGO: null,
-    TELEFONE_CODIGO: null
+    ENDERECO_CODIGO: null
 }
 
 let MOCK_ENDERECO_PESSOA_CODIGO
 
-describe('TDD Endereco Pessoa: ', function () {
+describe.only('TDD Endereco Pessoa: ', function () {
     this.beforeAll(async () => {
         const enderecoCadastrado = await EnderecoModel.create(MOCK_ENDERECO_DEFAULT)
         MOCK_ENDERECO_PESSOA_DEFAULT.ENDERECO_CODIGO = enderecoCadastrado.CODIGO
@@ -60,8 +60,14 @@ describe('TDD Endereco Pessoa: ', function () {
     })
 
     describe('/GET/:ID ', () => {
-        it('Deve retornar o telefone da pessoa pelo ID', (done) => {
-            
+        it('Deve retornar o enderco da pessoa pelo ID', (done) => {
+            chai.request(app)
+                .get(`/endereco_pessoa/${MOCK_ENDERECO_PESSOA_CODIGO}`)
+                .end((error, res) => {
+                    expect(res.statusCode).to.eql(200)
+                    expect(res.body).to.eql(MOCK_ENDERECO_PESSOA_DEFAULT)
+                    done()
+                })
         })
     })
 })
