@@ -43,7 +43,7 @@ let MOCK_TELEFONE_PESSOA_CADASTRAR = {
 
 let MOCK_TELEFONE_PESSOA_CODIGO
 
-describe.only('TDD Telefone Pessoa: ', function () {
+describe('TDD Telefone Pessoa: ', function () {
     this.beforeAll(async () => {
         const telefoneCadastrado = await TelefoneModel.create(MOCK_TELEFONE_DEFAULT)
         MOCK_TELEFONE_PESSOA_DEFAULT.TELEFONE_CODIGO = telefoneCadastrado.CODIGO
@@ -102,6 +102,18 @@ describe.only('TDD Telefone Pessoa: ', function () {
                     expect(res.statusCode).to.eql(200)
                     expect(result.path).to.eql('PESSOA_CODIGO')
                     expect(result.type).to.eql('notNull Violation')
+                    done()
+            })
+        })
+    })
+
+    describe('/DELETE/:ID', () => {
+        it('Deve deletar o Telefone Pessoa pelo ID', (done) => {
+            chai.request(app)
+                .delete(`/telefone-pessoa/${MOCK_TELEFONE_PESSOA_CODIGO}`)
+                .end((error, res) => {
+                    expect(res.statusCode).to.eql(200)
+                    expect(res.body).to.eql(1)
                     done()
             })
         })
