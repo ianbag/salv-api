@@ -1,4 +1,4 @@
-const { EnderecoConvenioModel } = require('./../models')
+const { EnderecoConvenioModel } = require('../models')
 
 class EnderecoConvenio {
 

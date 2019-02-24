@@ -1,22 +1,22 @@
 /**
- * author: hppod
- * create: 21/02/2019 14h21
- * file: model/telefone_familiar.js
+ * @author Ian Rotondo Bagliotti
+ * @email ian.bagliotti@gmail.com
+ * @create date 2019-02-20 19:42:40
+ * @modify date 2019-02-20 19:42:40
+ * @desc Arquivo model da API de TELEFONE_PESSOA
  */
 
 module.exports = (sequelize, DataTypes) => {
-    const TelefoneFamiliarModel = sequelize.define('TelefoneFamiliarModel', {
-        FAMILIAR_CODIGO: {
+    const TelefonePessoaModel = sequelize.define('TelefonePessoaModel', {
+        PESSOA_CODIGO: {
             type: DataTypes.INTEGER,
-            required: true,
             allowNull: false,
             primaryKey: true,
-            references: 'FAMILIAR',
+            references: 'PESSOA',
             referencesKey: 'CODIGO'
         },
         TELEFONE_CODIGO: {
             type: DataTypes.INTEGER,
-            required: true,
             allowNull: false,
             primaryKey: true,
             references: 'TELEFONE',
@@ -24,9 +24,9 @@ module.exports = (sequelize, DataTypes) => {
         }
     },
         {
-            tableName: 'TELEFONE_FAMILIAR',
+            tableName: 'TELEFONE_PESSOA',
             timestamps: false
         }
     )
-    return TelefoneFamiliarModel
+    return TelefonePessoaModel
 }

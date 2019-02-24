@@ -1,4 +1,4 @@
-const { ResidenteConvenioModel } = require('./../models')
+const { ResidenteConvenioModel } = require('../models')
 
 class ResidenteConvenio {
 
