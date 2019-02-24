@@ -47,7 +47,7 @@ let MOCK_ENDERECO_PESSOA_CADASTRAR = {
 
 let MOCK_ENDERECO_PESSOA_CODIGO
 
-describe.only('TDD Endereco Pessoa: ', function () {
+describe('TDD Endereco Pessoa: ', function () {
     this.beforeAll(async () => {
         const enderecoCadastrado = await EnderecoModel.create(MOCK_ENDERECO_DEFAULT)
         MOCK_ENDERECO_PESSOA_DEFAULT.ENDERECO_CODIGO = enderecoCadastrado.CODIGO
@@ -67,12 +67,12 @@ describe.only('TDD Endereco Pessoa: ', function () {
                     expect(res.statusCode).to.eql(200)
                     expect(res.body).to.eql(MOCK_ENDERECO_PESSOA_DEFAULT)
                     done()
-            })
+                })
         })
     })
 
     describe('/POST ', () => {
-        
+
         this.beforeEach(async () => {
             const enderecoCadastrado = await EnderecoModel.create(MOCK_ENDERECO_DEFAULT)
             MOCK_ENDERECO_PESSOA_CADASTRAR.ENDERECO_CODIGO = enderecoCadastrado.CODIGO
@@ -107,7 +107,7 @@ describe.only('TDD Endereco Pessoa: ', function () {
                     expect(result.path).to.eql('ENDERECO_CODIGO')
                     expect(result.type).to.eql('notNull Violation')
                     done()
-            })
+                })
         })
     })
 
@@ -120,7 +120,7 @@ describe.only('TDD Endereco Pessoa: ', function () {
                     expect(res.statusCode).to.eql(200)
                     expect(res.body).to.eql(1)
                     done()
-            })
+                })
         })
     })
 })

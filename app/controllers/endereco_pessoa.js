@@ -8,22 +8,22 @@
 
 const { EnderecoPessoaModel } = require('./../models')
 
- class EnderecoPessoa {
-     getByID(req, res) {
+class EnderecoPessoa {
+    getByID(req, res) {
         EnderecoPessoaModel.findByPk(req.params.id)
-        .then(enderecoPessoa => res.json(enderecoPessoa))
-        .catch(error => res.json(error))
-     }
-     create(req, res) {
+            .then(enderecoPessoa => res.json(enderecoPessoa))
+            .catch(error => res.json(error))
+    }
+    create(req, res) {
         EnderecoPessoaModel.create(req.body)
-        .then(enderecoPessoa => res.json(enderecoPessoa))
-        .catch(error => res.json(error))
-     }
-     delete(req, res) {
+            .then(enderecoPessoa => res.json(enderecoPessoa))
+            .catch(error => res.json(error))
+    }
+    delete(req, res) {
         EnderecoPessoaModel.destroy({ where: { PESSOA_CODIGO: req.params.id } })
             .then(enderecoPessoa => res.json(enderecoPessoa))
             .catch(error => res.json(error))
-     }
- }
+    }
+}
 
- module.exports = new EnderecoPessoa()
+module.exports = new EnderecoPessoa()
