@@ -2,7 +2,7 @@
  * @author Ian Rotondo Bagliotti
  * @email ian.bagliotti@gmail.com
  * @create date 2019-02-24 14:24:23
- * @modify date 2019-02-24 14:42:36
+ * @modify date 2019-02-24 14:51:19
  * @desc Arquivo de Testes da API de Endereco Pessoa
  */
 
@@ -20,7 +20,7 @@ const MOCK_ENDERECO_DEFAULT = {
     BAIRRO: 'Centro',
     CIDADE: 'Taquaritinga',
     ESTADO: 'SP',
-    CEP: 15900-000
+    CEP: 15900 - 000
 }
 
 let MOCK_PESSOA_DEFAULT = {
@@ -66,6 +66,32 @@ describe.only('TDD Endereco Pessoa: ', function () {
                 .end((error, res) => {
                     expect(res.statusCode).to.eql(200)
                     expect(res.body).to.eql(MOCK_ENDERECO_PESSOA_DEFAULT)
+                    done()
+            })
+        })
+    })
+
+    describe('/POST ', () => {
+        
+        this.beforeEach(async () => {
+            const enderecoCadastrado = await EnderecoModel.create(MOCK_ENDERECO_DEFAULT)
+            MOCK_ENDERECO_PESSOA_CADASTRAR.ENDERECO_CODIGO = enderecoCadastrado.CODIGO
+
+            // alterando dados únicos de RG e CPF
+            MOCK_PESSOA_DEFAULT.RG = Math.floor(Math.random() * 999999999);
+            MOCK_PESSOA_DEFAULT.CPF = Math.floor(Math.random() * 999999999);
+
+            const pessoaCadastrado = await PessoaModel.create(MOCK_PESSOA_DEFAULT)
+            MOCK_ENDERECO_PESSOA_CADASTRAR.PESSOA_CODIGO = pessoaCadastrado.CODIGO
+        })
+
+        it('Deve adicionar um Endereco Pessoa no banco de dados', (done) => {
+            chai.request(app)
+                .post('/endereco_pessoa')
+                .send(MOCK_ENDERECO_PESSOA_CADASTRAR)
+                .end((error, res) => {
+                    expect(res.statusCode).to.eql(200)
+                    expect(res.body).to.eql(MOCK_ENDERECO_PESSOA_CADASTRAR)
                     done()
                 })
         })
