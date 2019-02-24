@@ -19,11 +19,11 @@ const MOCK_TELEFONE_DEFAULT = {
     NUMERO: '982706173'
 }
 
-const MOCK_PESSOA_DEFAULT = {
+let MOCK_PESSOA_DEFAULT = {
     NOME: 'Rodoaldo',
     SOBRENOME: 'Silva Cruz',
-    RG: '134521261',
-    CPF: '7665755647',
+    RG: Math.floor(Math.random() * 999999999),
+    CPF: Math.floor(Math.random() * 999999999),
     SEXO: 'm',
     ESTADO_CIVIL: 's',
     DATA_NASCIMENTO: '1991-04-17',
@@ -31,36 +31,79 @@ const MOCK_PESSOA_DEFAULT = {
     ESCOLARIDADE: 'sc'
 }
 
-let MOCK_TELEFONE_PESSOA_DEFAULT = {    
+let MOCK_TELEFONE_PESSOA_DEFAULT = {
+    PESSOA_CODIGO: null,
+    TELEFONE_CODIGO: null
+}
+
+let MOCK_TELEFONE_PESSOA_CADASTRAR = {
     PESSOA_CODIGO: null,
     TELEFONE_CODIGO: null
 }
 
 let MOCK_TELEFONE_PESSOA_CODIGO
 
-describe.only('TDD Telefone Pessoa: ', function() {
-    this.afterAll(async () => {
-        await TelefoneModel.destroy({where: {CODIGO: MOCK_TELEFONE_PESSOA_DEFAULT.TELEFONE_CODIGO}})
-        await PessoaModel.destroy({where: {CODIGO: MOCK_TELEFONE_PESSOA_DEFAULT.PESSOA_CODIGO}})
-        await TelefonePessoaModel.destroy({where: {PESSOA_CODIGO: MOCK_TELEFONE_PESSOA_DEFAULT.PESSOA_CODIGO}, 
-            where: { TELEFONE_CODIGO: MOCK_TELEFONE_PESSOA_DEFAULT.TELEFONE_CODIGO}})
-    })
+describe.only('TDD Telefone Pessoa: ', function () {
     this.beforeAll(async () => {
         const telefoneCadastrado = await TelefoneModel.create(MOCK_TELEFONE_DEFAULT)
         MOCK_TELEFONE_PESSOA_DEFAULT.TELEFONE_CODIGO = telefoneCadastrado.CODIGO
 
         const pessoaCadastrado = await PessoaModel.create(MOCK_PESSOA_DEFAULT)
         MOCK_TELEFONE_PESSOA_DEFAULT.PESSOA_CODIGO = pessoaCadastrado.CODIGO
-
-        console.log('MOCK_TELEFONE_PESSOA_DEFAULT', MOCK_TELEFONE_PESSOA_DEFAULT)
+        //console.log('MOCK_TELEFONE_PESSOA_DEFAULT', MOCK_TELEFONE_PESSOA_DEFAULT)
 
         const telefonePessoaCadastrado = await TelefonePessoaModel.create(MOCK_TELEFONE_PESSOA_DEFAULT)
-        console.log('telefonePessoaCadastrado', telefonePessoaCadastrado)
         MOCK_TELEFONE_PESSOA_CODIGO = telefonePessoaCadastrado.PESSOA_CODIGO
-        console.log('MOCK_TELEFONE_PESSOA_CODIGO', MOCK_TELEFONE_PESSOA_CODIGO)
+        //console.log('MOCK_TELEFONE_PESSOA_CODIGO', MOCK_TELEFONE_PESSOA_CODIGO)
     })
 
-    
+    describe('/GET/ID: ', () => {
+        it('Deve retornar o telefone da pessoa pelo ID', (done) => {
+            chai.request(app)
+                .get(`/telefone-pessoa/${MOCK_TELEFONE_PESSOA_CODIGO}`)
+                .end((error, res) => {
+                    expect(res.statusCode).to.eql(200)
+                    expect(res.body).to.eql(MOCK_TELEFONE_PESSOA_DEFAULT)
+                    done()
+            })
+        })
+    })
 
-    it('teste', (done) => done())
+    describe('/POST: ', () => {
+        this.beforeEach(async () => {
+        const telefoneCadastrado = await TelefoneModel.create(MOCK_TELEFONE_DEFAULT)
+        MOCK_TELEFONE_PESSOA_CADASTRAR.TELEFONE_CODIGO = telefoneCadastrado.CODIGO
+
+        // alterando dados únicos de RG e CPF
+        MOCK_PESSOA_DEFAULT.RG = Math.floor(Math.random() * 999999999);
+        MOCK_PESSOA_DEFAULT.CPF = Math.floor(Math.random() * 999999999);
+
+        const pessoaCadastrado = await PessoaModel.create(MOCK_PESSOA_DEFAULT)
+        MOCK_TELEFONE_PESSOA_CADASTRAR.PESSOA_CODIGO = pessoaCadastrado.CODIGO
+        })
+        it('Deve adicionar um Telefone Pessoa no banco de dados' , (done) => {
+            chai.request(app)
+                .post('/telefone-pessoa')
+                .send(MOCK_TELEFONE_PESSOA_CADASTRAR)
+                .end((error, res) => {
+                    expect(res.statusCode).to.eql(200)
+                    expect(res.body).to.eql(MOCK_TELEFONE_PESSOA_CADASTRAR)
+                    done()
+            })
+        })
+
+        it('Deve retornar erro ao tentar adicionar um Telefone Pessoa com campo obrigatório faltante', (done) => {
+            delete MOCK_TELEFONE_PESSOA_CADASTRAR.PESSOA_CODIGO
+            chai.request(app)
+                .post('/telefone-pessoa')
+                .send(MOCK_TELEFONE_PESSOA_CADASTRAR)
+                .end((error, res) => {
+                    const [result] = res.body.errors
+                    expect(res.statusCode).to.eql(200)
+                    expect(result.path).to.eql('PESSOA_CODIGO')
+                    expect(result.type).to.eql('notNull Violation')
+                    done()
+            })
+        })
+    })
 })
