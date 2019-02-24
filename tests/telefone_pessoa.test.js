@@ -11,8 +11,8 @@ const chaiHttp = require('chai-http')
 const expect = chai.expect
 chai.use(chaiHttp)
 
-const app = require('./../app')
-const { TelefonePessoaModel, PessoaModel, TelefoneModel } = require('./../app/models')
+const app = require('../app')
+const { TelefonePessoaModel, PessoaModel, TelefoneModel } = require('../app/models')
 
 const MOCK_TELEFONE_DEFAULT = {
     DDD: '16',
@@ -50,52 +50,50 @@ describe('TDD Telefone Pessoa: ', function () {
 
         const pessoaCadastrado = await PessoaModel.create(MOCK_PESSOA_DEFAULT)
         MOCK_TELEFONE_PESSOA_DEFAULT.PESSOA_CODIGO = pessoaCadastrado.CODIGO
-        //console.log('MOCK_TELEFONE_PESSOA_DEFAULT', MOCK_TELEFONE_PESSOA_DEFAULT)
 
         const telefonePessoaCadastrado = await TelefonePessoaModel.create(MOCK_TELEFONE_PESSOA_DEFAULT)
         MOCK_TELEFONE_PESSOA_CODIGO = telefonePessoaCadastrado.PESSOA_CODIGO
-        //console.log('MOCK_TELEFONE_PESSOA_CODIGO', MOCK_TELEFONE_PESSOA_CODIGO)
     })
 
     describe('/GET/ID: ', () => {
         it('Deve retornar o telefone da pessoa pelo ID', (done) => {
             chai.request(app)
-                .get(`/telefone-pessoa/${MOCK_TELEFONE_PESSOA_CODIGO}`)
+                .get(`/telefone_pessoa/${MOCK_TELEFONE_PESSOA_CODIGO}`)
                 .end((error, res) => {
                     expect(res.statusCode).to.eql(200)
                     expect(res.body).to.eql(MOCK_TELEFONE_PESSOA_DEFAULT)
                     done()
-            })
+                })
         })
     })
 
     describe('/POST: ', () => {
         this.beforeEach(async () => {
-        const telefoneCadastrado = await TelefoneModel.create(MOCK_TELEFONE_DEFAULT)
-        MOCK_TELEFONE_PESSOA_CADASTRAR.TELEFONE_CODIGO = telefoneCadastrado.CODIGO
+            const telefoneCadastrado = await TelefoneModel.create(MOCK_TELEFONE_DEFAULT)
+            MOCK_TELEFONE_PESSOA_CADASTRAR.TELEFONE_CODIGO = telefoneCadastrado.CODIGO
 
-        // alterando dados únicos de RG e CPF
-        MOCK_PESSOA_DEFAULT.RG = Math.floor(Math.random() * 999999999);
-        MOCK_PESSOA_DEFAULT.CPF = Math.floor(Math.random() * 999999999);
+            // alterando dados únicos de RG e CPF
+            MOCK_PESSOA_DEFAULT.RG = Math.floor(Math.random() * 999999999);
+            MOCK_PESSOA_DEFAULT.CPF = Math.floor(Math.random() * 999999999);
 
-        const pessoaCadastrado = await PessoaModel.create(MOCK_PESSOA_DEFAULT)
-        MOCK_TELEFONE_PESSOA_CADASTRAR.PESSOA_CODIGO = pessoaCadastrado.CODIGO
+            const pessoaCadastrado = await PessoaModel.create(MOCK_PESSOA_DEFAULT)
+            MOCK_TELEFONE_PESSOA_CADASTRAR.PESSOA_CODIGO = pessoaCadastrado.CODIGO
         })
-        it('Deve adicionar um Telefone Pessoa no banco de dados' , (done) => {
+        it('Deve adicionar um Telefone Pessoa no banco de dados', (done) => {
             chai.request(app)
-                .post('/telefone-pessoa')
+                .post('/telefone_pessoa')
                 .send(MOCK_TELEFONE_PESSOA_CADASTRAR)
                 .end((error, res) => {
                     expect(res.statusCode).to.eql(200)
                     expect(res.body).to.eql(MOCK_TELEFONE_PESSOA_CADASTRAR)
                     done()
-            })
+                })
         })
 
         it('Deve retornar erro ao tentar adicionar um Telefone Pessoa com campo obrigatório faltante', (done) => {
             delete MOCK_TELEFONE_PESSOA_CADASTRAR.PESSOA_CODIGO
             chai.request(app)
-                .post('/telefone-pessoa')
+                .post('/telefone_pessoa')
                 .send(MOCK_TELEFONE_PESSOA_CADASTRAR)
                 .end((error, res) => {
                     const [result] = res.body.errors
@@ -103,19 +101,19 @@ describe('TDD Telefone Pessoa: ', function () {
                     expect(result.path).to.eql('PESSOA_CODIGO')
                     expect(result.type).to.eql('notNull Violation')
                     done()
-            })
+                })
         })
     })
 
     describe('/DELETE/:ID', () => {
         it('Deve deletar o Telefone Pessoa pelo ID', (done) => {
             chai.request(app)
-                .delete(`/telefone-pessoa/${MOCK_TELEFONE_PESSOA_CODIGO}`)
+                .delete(`/telefone_pessoa/${MOCK_TELEFONE_PESSOA_CODIGO}`)
                 .end((error, res) => {
                     expect(res.statusCode).to.eql(200)
                     expect(res.body).to.eql(1)
                     done()
-            })
+                })
         })
     })
 })
