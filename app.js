@@ -65,6 +65,9 @@ app.use('/', TelefoneConvenioRoute)
 //API ENDERECO_CONVENIO
 app.use('/', EnderecoConvenioRoute)
 
+//API RESIDENTE_CONVENIO
+app.use('/', ResidenteConvenioRoute)
+
 app.listen(3000, function () {
     console.log("API rodando na porta 3000")
 })
