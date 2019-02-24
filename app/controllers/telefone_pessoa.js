@@ -8,24 +8,22 @@
 const { TelefonePessoaModel } = require('./../models')
 
 class TelefonePessoa {
-    get(req, res) {
-
-    }
-
     getById(req, res) {
-
+        TelefonePessoaModel.findByPk(req.params.id)
+            .then(TelefonePessoa => res.json(TelefonePessoa))
+            .catch(error => res.json(error))
     }
 
     create(req, res) {
-
-    }
-
-    update(req, res) {
-
+        TelefonePessoaModel.create(req.body)
+            .then(TelefonePessoa => res.json(TelefonePessoa))
+            .catch(error => res.json(error))
     }
 
     delete(req, res) {
-
+        TelefonePessoaModel.destroy({ where: { PESSOA_CODIGO: req.params.id } })
+            .then(TelefonePessoa => res.json(TelefonePessoa))
+            .catch(error => res.json(error))
     }
 }
 
