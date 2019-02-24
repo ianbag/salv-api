@@ -11,6 +11,10 @@ const BeneficioRoute = require('./app/routes/beneficio')
 const TelefoneFamiliarRoute = require('./app/routes/telefone_familiar')
 const EnderecoFamiliarRoute = require('./app/routes/endereco_familiar')
 const ResidenteFamiliarRoute = require('./app/routes/residente_familiar')
+const ConvenioRoute = require('./app/routes/convenio')
+const TelefoneConvenioRoute = require('./app/routes/telefone_convenio')
+const EnderecoConvenioRoute = require('./app/routes/endereco_convenio')
+const ResidenteConvenioRoute = require('./app/routes/residente_convenio')
 
 
 /*
@@ -51,6 +55,18 @@ app.use('/', EnderecoFamiliarRoute)
 
 //API RESIDENTE_FAMILIAR
 app.use('/', ResidenteFamiliarRoute)
+
+//API CONVENIO
+app.use('/', ConvenioRoute)
+
+//API TELEFONE_CONVENIO
+app.use('/', TelefoneConvenioRoute)
+
+//API ENDERECO_CONVENIO
+app.use('/', EnderecoConvenioRoute)
+
+//API RESIDENTE_CONVENIO
+app.use('/', ResidenteConvenioRoute)
 
 app.listen(3000, function () {
     console.log("API rodando na porta 3000")
