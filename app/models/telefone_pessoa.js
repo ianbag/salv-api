@@ -8,7 +8,7 @@
 
 module.exports = (sequelize, DataTypes) => {
     const TelefonePessoaModel = sequelize.define('TelefonePessoaModel', {
-        CODIGO_PESSOA: {
+        PESSOA_CODIGO: {
             type: DataTypes.INTEGER,
             allowNull: false
         },

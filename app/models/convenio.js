@@ -1,11 +1,5 @@
-/**
- * author: hppod
- * create: 20/02/2019 01h03
- * file: model/telefone.js
- */
-
 module.exports = (sequelize, DataTypes) => {
-    const TelefoneModel = sequelize.define('TelefoneModel', {
+    const ConvenioModel = sequelize.define('ConvenioModel', {
         CODIGO: {
             type: DataTypes.INTEGER,
             required: true,
@@ -13,23 +7,23 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             allowNull: false
         },
-        DDD: {
+        NOME_CONVENIO: {
             type: DataTypes.STRING,
             required: true,
-            max: 3,
+            max: 100,
             allowNull: false
         },
-        NUMERO: {
+        TIPO_CONVENIO: {
             type: DataTypes.STRING,
             required: true,
-            max: 9,
+            max: 100,
             allowNull: false
         }
-    },
-        {
-            tableName: 'TELEFONE',
-            timestamps: false
-        }
-    )
-    return TelefoneModel
+    }, 
+    {
+        tableName: 'CONVENIO',
+        timestamps: false
+    }
+)
+return ConvenioModel
 }
