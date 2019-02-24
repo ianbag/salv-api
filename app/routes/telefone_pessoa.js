@@ -11,10 +11,8 @@ const route = express.Router()
 
 const TelefonePessoaController = require('./../controllers/telefone_pessoa')
 
-route.get('/telefone-pessoa', TelefonePessoaController.get)
 route.get('/telefone-pessoa/:id', TelefonePessoaController.getById)
 route.post('/telefone-pessoa', TelefonePessoaController.create)
-route.put('/telefone-pessoa/:id', TelefonePessoaController.update)
 route.delete('/telefone-pessoa/:id', TelefonePessoaController.delete)
 
 module.exports = route
