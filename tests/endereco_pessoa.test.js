@@ -95,5 +95,19 @@ describe.only('TDD Endereco Pessoa: ', function () {
                     done()
                 })
         })
+
+        it('Deve retornar erro ao tentar adicionar um Endereco Pessoa com campo obrigatório faltante', (done) => {
+            delete MOCK_ENDERECO_PESSOA_CADASTRAR.ENDERECO_CODIGO
+            chai.request(app)
+                .post('/endereco_pessoa')
+                .send(MOCK_ENDERECO_PESSOA_CADASTRAR)
+                .end((error, res) => {
+                    const [result] = res.body.errors
+                    expect(res.statusCode).to.eql(200)
+                    expect(result.path).to.eql('ENDERECO_CODIGO')
+                    expect(result.type).to.eql('notNull Violation')
+                    done()
+            })
+        })
     })
 })
