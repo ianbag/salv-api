@@ -10,11 +10,17 @@ module.exports = (sequelize, DataTypes) => {
     const TelefonePessoaModel = sequelize.define('TelefonePessoaModel', {
         PESSOA_CODIGO: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            primaryKey: true,
+            references: 'PESSOA',
+            referencesKey: 'CODIGO'
         },
         TELEFONE_CODIGO: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            primaryKey: true,
+            references: 'TELEFONE',
+            referencesKey: 'CODIGO'
         }
     },
         {
