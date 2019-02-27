@@ -17,6 +17,9 @@ const EnderecoConvenioRoute = require('./app/routes/endereco_convenio')
 const ResidenteConvenioRoute = require('./app/routes/residente_convenio')
 const TelefonePessoaRoute = require('./app/routes/telefone_pessoa')
 const EnderecoPessoaRoute = require('./app/routes/endereco_pessoa')
+const FuncionarioRoute = require('./app/routes/funcionario')
+const UsuarioRoute = require('./app/routes/usuario')
+const DependenteRoute = require('./app/routes/dependente')
 
 
 /*
@@ -33,6 +36,15 @@ app.get('/', function (req, res) {
 
 //API Pessoa
 app.use('/', PessoaRoute)
+
+//API Funcionario
+app.use('/', FuncionarioRoute)
+
+//API Usuario
+app.use('/', UsuarioRoute)
+
+//API Dependente
+app.use('/', DependenteRoute)
 
 //API FAMILIAR
 app.use('/', FamiliarRoute)
