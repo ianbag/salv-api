@@ -1,22 +1,32 @@
 module.exports = (sequelize, DataTypes) => {
 
-const acompanhamentosModel = sequelize.define('AcompanhamentosModel', {
+    const acompanhamentosModel = sequelize.define('AcompanhamentosModel', {
 
-    codigo: {type: DataTypes.INTEGER, required: true, primaryKey: true, autoIncrement: true},    
-    data_acompanhamento:   {type: DataTypes.DATE, required: true},
-    atividade:             {type: DataTypes.STRING, required: true, max: 1000} 
+        CODIGO: {
+            type: DataTypes.INTEGER,
+            required: true,
+            primaryKey: true,
+            autoIncrement: true,
+            allowNull: false
+        },
+        DATA_ACOMPANHAMENTO: 
+        {
+            
+            type: DataTypes.DATEONLY,
+            required: true
+        },
+        ATIVIDADE: {
+            type: DataTypes.STRING,
+            required: true,
+            max: 1000
+        }
+    },
+        {
+            tableName: 'ACOMPANHAMENTO',
+            timestamps: false,
+        }
+    )
 
-
-
- },
-
- {
- tableName: 'ACOMPANHAMENTO'
- }
-
-
- ) 
-
- return acompanhamentosModel
+    return acompanhamentosModel
 
 }
