@@ -26,22 +26,23 @@ class Acompanhamento {
     }
     
     update (req, res) {
-        AcompanhamentosModel.update({_id: req.params.id}, {$set: req.body}, (error, acompanhamento) => {
-            if(error)
-                res.send(error)
-            else 
-                res.json({message: 'Acompanhamento atualizado', data: acompanhamento})
+        AcompanhamentosModel.update (req.body, {
+            where: {
+                CODIGO: req.params.id
+            }
         })
-      }
+        .then(acompanhamento => res.json(acompanhamento))
+        .catch(error => res.json(error))
         
-        
+    }
         delete (req, res) {
-            AcompanhamentosModel.del(req.params.id, (error, acompanhamento) => {
-                if(error)
-                    res.send(error)
-                else
-                    res.json({message: 'Acompanhamento deletado', data: acompanhamento})
+            AcompanhamentosModel.del.destroy({
+                where: {
+                    CODIGO: req.params.id
+                }
             })
+                .then(acompanhamento => res.json(acompanhamento))
+                .catch(error => res.json(error))
         }
     }
 

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
   "name": "salv-api",
   "version": "1.0.0",
@@ -12,34 +11,13 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "mocha": "^6.0.2",
     "mysql2": "^1.6.5",
-    "sequelize": "^4.42.0"
-  }
-}
-=======
-{
-  "name": "salv-api",
-  "version": "1.0.0",
-  "description": "API do sistema SALV",
-  "main": "app.js",
-  "scripts": {
-    "test": "mocha tests/*.test.js --timeout=10000",
-    "dev": "nodemon app.js"
-  },
-  "author": "hppod",
-  "license": "MIT",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "chai": "^4.2.0",
-    "chai-http": "^4.2.1",
-    "express": "^4.16.4",
-    "mocha": "^5.2.0",
-    "mysql2": "^1.6.5",
-    "nodemon": "^1.18.10",
     "sequelize": "^4.42.0"
   },
   "devDependencies": {
-    "sequelize-cli": "^5.4.0"
+    "@types/node": "^11.9.5",
+    "cha": "^0.2.1",
+    "chai": "^4.2.0"
   }
 }
->>>>>>> upstream/master
