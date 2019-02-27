@@ -4,7 +4,6 @@ const acompanhamento_residenteModel = sequelize.define('Acompanhamento_residente
 
     RESIDENTE_CODIGO:      {type: DataTypes.INTEGER},
     ACOMPANHAMENTO_CODIGO: {type: DataTypes.INTEGER}
-
 },
 
 {

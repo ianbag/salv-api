@@ -1,6 +1,5 @@
 const { AcompanhamentosModel } = require('./../models')
 
-
 class Acompanhamento {
 
     getAll (req, res) {
@@ -43,4 +42,3 @@ class Acompanhamento {
     }
 
 module.exports = new Acompanhamento()
-
