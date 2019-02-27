@@ -20,6 +20,7 @@ const EnderecoPessoaRoute = require('./app/routes/endereco_pessoa')
 const FuncionarioRoute = require('./app/routes/funcionario')
 const UsuarioRoute = require('./app/routes/usuario')
 const DependenteRoute = require('./app/routes/dependente')
+const AcompanhamentoRoute = require('./app/routes/acompanhamentos')
 
 /*
 * CONFIG bodyParser
@@ -86,6 +87,9 @@ app.use('/', TelefonePessoaRoute)
 
 // API ENDERECO_PESSOA
 app.use('/', EnderecoPessoaRoute)
+
+//API ACOMPANHAMENTO
+app.use('/', AcompanhamentoRoute)
 
 app.listen(3000, function () {
     console.log("API rodando na porta 3000")
