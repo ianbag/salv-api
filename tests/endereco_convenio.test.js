@@ -25,9 +25,8 @@ const MOCK_ENDERECO_CONVENIO_ERROR = {
 }
 
 const MOCK_CONVENIO_DEFAULT = {
-    NOME: 'JOSÈ',
-    SOBRENOME: 'DA SILVA',
-    PARENTESCO: 'PAI'
+    NOME_CONVENIO: 'Saude mais',
+    TIPO_CONVENIO: 'Nutricionista'
 }
 
 const MOCK_ENDERECO_DEFAULT = {
