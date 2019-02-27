@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 
-const AcompanhamentosRoute = require('./app/routes/acompanhamentos')
 const PessoaRoute = require('./app/routes/pessoa')
 const FamiliarRoute = require('./app/routes/familiar')
 const ResidenteRoute = require('./app/routes/residente')
@@ -34,9 +33,6 @@ app.use(bodyParser.json({ type: 'application/json' }));
 app.get('/', function (req, res) {
     res.send("API Funcionando")
 })
-
-//API Acompanhamentos
-app.use('/', AcompanhamentosRoute)
 
 //API Pessoa
 app.use('/', PessoaRoute)
