@@ -2,9 +2,8 @@ module.exports = (sequelize, DataTypes) => {
 
 const acompanhamento_residenteModel = sequelize.define('Acompanhamento_residenteModel', {
 
-    residente_codigo:      {type: DataTypes.INTEGER},
-    acompanhamento_codigo: {type: DataTypes.INTEGER}
-
+    RESIDENTE_CODIGO:      {type: DataTypes.INTEGER},
+    ACOMPANHAMENTO_CODIGO: {type: DataTypes.INTEGER}
 },
 
 {

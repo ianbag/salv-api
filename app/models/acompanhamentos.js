@@ -6,10 +6,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             required: true,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
+            allowNull: false
         },
-        DATA_ACOMPANHAMENTO: {
-            type: DataTypes.DATE,
+        DATA_ACOMPANHAMENTO: 
+        {
+            
+            type: DataTypes.DATEONLY,
             required: true
         },
         ATIVIDADE: {
@@ -19,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
         }
     },
         {
-            tableName: 'ACOMPANHAMENTO'
+            tableName: 'ACOMPANHAMENTO',
+            timestamps: false,
         }
     )
 

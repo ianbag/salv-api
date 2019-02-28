@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 
+const AcompanhamentosRoute = require('./app/routes/acompanhamentos')
 const PessoaRoute = require('./app/routes/pessoa')
 const FamiliarRoute = require('./app/routes/familiar')
 const ResidenteRoute = require('./app/routes/residente')
@@ -17,7 +18,10 @@ const EnderecoConvenioRoute = require('./app/routes/endereco_convenio')
 const ResidenteConvenioRoute = require('./app/routes/residente_convenio')
 const TelefonePessoaRoute = require('./app/routes/telefone_pessoa')
 const EnderecoPessoaRoute = require('./app/routes/endereco_pessoa')
-
+const FuncionarioRoute = require('./app/routes/funcionario')
+const UsuarioRoute = require('./app/routes/usuario')
+const DependenteRoute = require('./app/routes/dependente')
+const AcompanhamentoRoute = require('./app/routes/acompanhamentos')
 
 /*
 * CONFIG bodyParser
@@ -31,8 +35,20 @@ app.get('/', function (req, res) {
     res.send("API Funcionando")
 })
 
+//API Acompanhamentos
+app.use('/', AcompanhamentosRoute)
+
 //API Pessoa
 app.use('/', PessoaRoute)
+
+//API Funcionario
+app.use('/', FuncionarioRoute)
+
+//API Usuario
+app.use('/', UsuarioRoute)
+
+//API Dependente
+app.use('/', DependenteRoute)
 
 //API FAMILIAR
 app.use('/', FamiliarRoute)
@@ -75,6 +91,9 @@ app.use('/', TelefonePessoaRoute)
 
 // API ENDERECO_PESSOA
 app.use('/', EnderecoPessoaRoute)
+
+//API ACOMPANHAMENTO
+app.use('/', AcompanhamentoRoute)
 
 app.listen(3000, function () {
     console.log("API rodando na porta 3000")

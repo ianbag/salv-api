@@ -1,7 +1,7 @@
 const express = require('express')
 const route = express.Router()
 
-const AcompanhamentoController = require('../../../salv-api/controllers/acompanhamentos')
+const AcompanhamentoController = require('../../../salv-api/app/controllers/acompanhamentos')
 
 route.get('/acompanhamento', AcompanhamentoController.getAll)
 route.get('/acompanhamento/:id', AcompanhamentoController.getById)
@@ -11,14 +11,14 @@ route.delete('/acompanhamento/:id', AcompanhamentoController.delete)
 
 
 
-const AcompanhamentoFuncionarioController = require('../../../salv-api/controllers/acompanhamentos')
+const AcompanhamentoFuncionarioController = require('../../../salv-api/app/controllers/acompanhamentos')
 
 route.get('/acompanhamento_funcionario', AcompanhamentoFuncionarioController.getAll)
 route.get('/acompanhamento_funcionario/:id', AcompanhamentoFuncionarioController.getById)
 
 
 
-const AcompanhamentoResidenteController = require('../../../salv-api/controllers/acompanhamentos')
+const AcompanhamentoResidenteController = require('../../../salv-api/app/controllers/acompanhamentos')
 
 route.get('/acompanhamento_residente', AcompanhamentoResidenteController.getAll)
 route.get('/acompanhamento_residente/:id', AcompanhamentoResidenteController.getById)
