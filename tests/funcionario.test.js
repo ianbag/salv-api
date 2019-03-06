@@ -8,86 +8,65 @@ const expect = chai.expect
 chai.use(chaiHttp)
 
 const app = require('./../app')
-const { FuncionarioModel } = require('./../app/models')
+const { FuncionarioModel, PessoaModel } = require('./../app/models')
 
-const MOCK_FUNCIONARIO_DEFAULT = {
-    NOME: 'Ronan',
-    SOBRENOME: 'Perotti',
-    RG: '963147852',
-    CPF: '35714896205',
-    SEXO: 'm',
-    ESTADO_CIVIL: 'c',
-    DATA_NASCIMENTO: '1990-11-30',
-    RELIGIAO: 'cat',
-    ESCOLARIDADE: 'sc',
+let MOCK_FUNCIONARIO_DEFAULT = {
     FILHOS_MENOR_14: 's',
     CARGO: 'Fisioterapeuta',
     DATA_ADMISSAO: '2010-01-29',
-    DATA_DEMISSAO: '2015-12-20'
+    DATA_DEMISSAO: '2015-12-20',
+    PESSOA_CODIGO: null,
 }
 
-const MOCK_FUNCIONARIO_CADASTRAR = {
-    NOME: 'Joana',
-    SOBRENOME: 'Portora',
-    RG: '163985231',
-    CPF: '30497096268',
-    SEXO: 'f',
-    ESTADO_CIVIL: 's',
-    DATA_NASCIMENTO: '1996-12-20',
-    RELIGIAO: 'eps',
-    ESCOLARIDADE: 'sc',
+let MOCK_FUNCIONARIO_CADASTRAR = {
     FILHOS_MENOR_14: 'n',
     CARGO: 'Terapeuta ocupacional',
-    DATA_ADMISSAO: '2016-03-14'
+    DATA_ADMISSAO: '2016-03-14',
+    PESSOA_CODIGO: null
 }
 
-const MOCK_FUNCIONARIO_ERROR = {
-    NOME: 'João',
-    SOBRENOME: 'Merchan',
-    RG: '745896321',
-    CPF: '45712036890',
-    SEXO: 'm',
-    ESTADO_CIVIL: 's',
-    DATA_NASCIMENTO: '1993-02-18',
-    RELIGIAO: 'cat',
-    ESCOLARIDADE: 'sc',
-    FILHOS_MENOR_14: 's',
-    DATA_ADMISSAO: '2016-07-08'
-}
-
-const MOCK_FUNCIONARIO_ATUALIZAR = {
-    NOME: 'Paula',
-    SOBRENOME: 'Brosvky',
-    RG: '678412506',
-    CPF: '86123749518',
-    SEXO: 'f',
-    ESTADO_CIVIL: 'c',
-    DATA_NASCIMENTO: '1993-07-15',
-    RELIGIAO: 'cat',
-    ESCOLARIDADE: 'sc',
+let MOCK_FUNCIONARIO_ATUALIZAR = {
     FILHOS_MENOR_14: 's',
     CARGO: 'Dentista',
-    DATA_ADMISSAO: '2017-06-30'
+    DATA_ADMISSAO: '2017-06-30',
+    PESSOA_CODIGO: null
 }
 
 let MOCK_FUNCIONARIO_CODIGO
 
+// MOCK DEFAULT PESSOA
+const MOCK_PESSOA_DEFAULT = {
+    NOME: 'Ian',
+    SOBRENOME: 'Rotondo Bagliotti',
+    RG: Math.floor(Math.random() * 999999999),
+    CPF: Math.floor(Math.random() * 999999999),
+    SEXO: 'm',
+    ESTADO_CIVIL: 's',
+    DATA_NASCIMENTO: '2000-01-30',
+    RELIGIAO: 'cat',
+    ESCOLARIDADE: 'sc'
+}
+
 //Início dos tests
 
-describe('TDD Funcionario', function () {
+describe.only('TDD Funcionario', function () {
     this.beforeAll(async () => {
-        const result = await FuncionarioModel.create(MOCK_FUNCIONARIO_DEFAULT)
-        MOCK_FUNCIONARIO_CODIGO = result.CODIGO
-    })
+        const pessoa = await PessoaModel.create(MOCK_PESSOA_DEFAULT)
+        MOCK_FUNCIONARIO_DEFAULT.PESSOA_CODIGO = pessoa.CODIGO
+        MOCK_FUNCIONARIO_CADASTRAR.PESSOA_CODIGO = pessoa.CODIGO
+        MOCK_FUNCIONARIO_ATUALIZAR.PESSOA_CODIGO = pessoa.CODIGO
 
+        const result = await FuncionarioModel.create(MOCK_FUNCIONARIO_DEFAULT)
+        MOCK_FUNCIONARIO_CODIGO = result.CODIGO_FUNCIONARIO
+    })
     //GET
     describe('/GET: ', () => {
         it('Deve retornar todos os funcionarios presentes no banco de dados', (done) => {
             chai.request(app)
                 .get('/funcionario')
                 .end((error, res) => {
-                    const [result] = res.body
-                    delete result.CODIGO
+                    const result = res.body[res.body.length-1]
+                    delete result.CODIGO_FUNCIONARIO
                     expect(result).to.eql(MOCK_FUNCIONARIO_DEFAULT)
                     done()
                 })
@@ -101,7 +80,7 @@ describe('TDD Funcionario', function () {
                 .get(`/funcionario/${MOCK_FUNCIONARIO_CODIGO}`)
                 .end((error, res) => {
                     const result = res.body
-                    delete result.CODIGO
+                    delete result.CODIGO_FUNCIONARIO
                     expect(res.statusCode).to.eql(200)
                     expect(result).to.eql(MOCK_FUNCIONARIO_DEFAULT)
                     done()
@@ -110,14 +89,14 @@ describe('TDD Funcionario', function () {
     })
 
     //POST
-    describe('/POST: ', () => {
+    describe('/POST: ', function () {
         it('Deve adicionar um funcionario no banco de dados', (done) => {
             chai.request(app)
                 .post('/funcionario')
                 .send(MOCK_FUNCIONARIO_CADASTRAR)
                 .end((error, res) => {
                     const result = res.body
-                    delete result.CODIGO
+                    delete result.CODIGO_FUNCIONARIO
                     expect(res.statusCode).to.eql(200)
                     expect(result).to.eql(MOCK_FUNCIONARIO_CADASTRAR)
                     done()
@@ -125,9 +104,10 @@ describe('TDD Funcionario', function () {
         })
 
         it('Deve retornar erro ao tentar adicionar um funcionario que esteja com campo obrigatório em branco', (done) => {
+            delete MOCK_FUNCIONARIO_CADASTRAR.CARGO
             chai.request(app)
                 .post('/funcionario')
-                .send(MOCK_FUNCIONARIO_ERROR)
+                .send(MOCK_FUNCIONARIO_CADASTRAR)
                 .end((error, res) => {
                     const [result] = res.body.errors
                     expect(res.statusCode).to.eql(200)
