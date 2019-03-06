@@ -5,6 +5,8 @@ chai.use(chaiHttp)
 
 const app = require('./../app')
 const { ConvenioModel } = require('./../app/models')
+const { EnderecoConvenioModel } = require('./../app/models')
+const { TelefoneConvenioModel } = require('./../app/models')
 
 const MOCK_CONVENIO_DEFAULT = {
     NOME_CONVENIO: 'Vida boa',
@@ -31,6 +33,9 @@ let MOCK_CONVENIO_CODIGO
 
 describe('Test Driven Development SALV-API Convenio', function () {
     this.beforeAll(async () => {
+        await EnderecoConvenioModel.destroy({ where: {} })
+        await TelefoneConvenioModel.destroy({ where: {} })
+        await ConvenioModel.destroy({ where: {} })
         const result = await ConvenioModel.create(MOCK_CONVENIO_DEFAULT)
         MOCK_CONVENIO_CODIGO = result.CODIGO
     })
