@@ -27,7 +27,7 @@
     update(req, res){
         FuncionarioModel.update(req.body, {
             where: {
-                CODIGO: req.params.id
+                CODIGO_FUNCIONARIO: req.params.id
             }
         })
             .then(funcionario => res.json(funcionario))
@@ -37,7 +37,7 @@
     delete(req, res){
         FuncionarioModel.destroy({
             where: {
-                CODIGO: req.params.id
+                CODIGO_FUNCIONARIO: req.params.id
             }
         })
             .then(funcionario => res.json(funcionario))

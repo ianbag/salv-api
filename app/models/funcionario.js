@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             allowNull: false
         },
-        FILHOS_MENOS_14: {
+        FILHOS_MENOR_14: {
             type: DataTypes.STRING,
             required: true,
             max: 1,
