@@ -49,7 +49,7 @@ const MOCK_PESSOA_DEFAULT = {
 
 //Início dos tests
 
-describe.only('TDD Funcionario', function () {
+describe('TDD Funcionario', function () {
     this.beforeAll(async () => {
         const pessoa = await PessoaModel.create(MOCK_PESSOA_DEFAULT)
         MOCK_FUNCIONARIO_DEFAULT.PESSOA_CODIGO = pessoa.CODIGO
@@ -67,6 +67,7 @@ describe.only('TDD Funcionario', function () {
                 .end((error, res) => {
                     const result = res.body[res.body.length-1]
                     delete result.CODIGO_FUNCIONARIO
+                    delete result.STATUS
                     expect(result).to.eql(MOCK_FUNCIONARIO_DEFAULT)
                     done()
                 })
@@ -81,6 +82,7 @@ describe.only('TDD Funcionario', function () {
                 .end((error, res) => {
                     const result = res.body
                     delete result.CODIGO_FUNCIONARIO
+                    delete result.STATUS
                     expect(res.statusCode).to.eql(200)
                     expect(result).to.eql(MOCK_FUNCIONARIO_DEFAULT)
                     done()
@@ -97,6 +99,7 @@ describe.only('TDD Funcionario', function () {
                 .end((error, res) => {
                     const result = res.body
                     delete result.CODIGO_FUNCIONARIO
+                    delete result.STATUS
                     expect(res.statusCode).to.eql(200)
                     expect(result).to.eql(MOCK_FUNCIONARIO_CADASTRAR)
                     done()
@@ -139,7 +142,7 @@ describe.only('TDD Funcionario', function () {
                 .delete(`/funcionario/${MOCK_FUNCIONARIO_CODIGO}`)
                 .end((error, res) => {
                     expect(res.statusCode).to.eql(200)
-                    expect(res.body).to.eql(1)
+                    expect(res.body).to.eql([1])
                     done()
                 })
         })

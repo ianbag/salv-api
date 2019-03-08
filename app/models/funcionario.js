@@ -40,6 +40,12 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             references: 'PESSOA',
             referenceskey: 'CODIGO'
+        },
+        STATUS: {
+            type: DataTypes.TINYINT,
+            max: 1,
+            allowNull: false,
+            defaultValue: 0,
         }
     },
         {
