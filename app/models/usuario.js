@@ -5,13 +5,11 @@
  module.exports = (sequelize, DataTypes) => {
      const UsuarioModel = sequelize.define('UsuarioModel',
      {
-
-        FUNCIONARIO_CODIGO: {
+        CODIGO_FUNCIONARIO: {
             type: DataTypes.INTEGER,
-            required: true,
-            allowNull: false,
+            primaryKey: true,
             references: 'FUNCIONARIO',
-            referenceskey: 'CODIGO'
+            referenceskey: 'CODIGO_FUNCIONARIO'
         },
         EMAIL: {
             type: DataTypes.STRING,
@@ -30,6 +28,12 @@
             required: true,
             max: 25,
             allowNull: false
+        },
+        STATUS: {
+            type: DataTypes.TINYINT,
+            max: 1,
+            allowNull: false,
+            defaultValue: 0,
         }
      },
         {

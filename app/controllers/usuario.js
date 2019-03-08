@@ -7,7 +7,12 @@
  class Usuario {
      
     getById(req, res){
-        UsuarioModel.findByPk(req.params.id)
+        UsuarioModel.findOne({
+            where: {
+                CODIGO_FUNCIONARIO: req.params.id,
+                STATUS: 0
+            }
+        })
             .then(usuario => res.json(usuario))
             .catch(error => res.json(error))
     }
@@ -19,9 +24,10 @@
     }
 
     update(req, res){
-        UsuarioModel.destroy({
+        UsuarioModel.update(req.body, {
             where: {
-                USUARIO: req.params.id
+                CODIGO_FUNCIONARIO: req.params.id,
+                STATUS: 0
             }
         })
             .then(usuario => res.json(usuario))
@@ -29,9 +35,10 @@
     }
 
     delete(req, res){
-        UsuarioModel.destroy({
+        UsuarioModel.update({STATUS: 1}, {
             where: {
-                USUARIO: req.params.id
+                CODIGO_FUNCIONARIO: req.params.id,
+                STATUS: 0
             }
         })
             .then(usuario => res.json(usuario))
