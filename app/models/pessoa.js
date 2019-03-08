@@ -56,6 +56,12 @@ module.exports = (sequelize, DataTypes) => {
         ESCOLARIDADE: {
             type: DataTypes.STRING,
             max:2
+        },
+        STATUS: {
+            type: DataTypes.TINYINT,
+            max: 1,
+            allowNull: false,
+            defaultValue: 0,
         }
     },
         {

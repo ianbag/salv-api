@@ -17,8 +17,8 @@ const { PessoaModel, ResidenteModel, BeneficioModel } = require('./../app/models
 const MOCK_PESSOA_DEFAULT = {
     NOME: 'Ian',
     SOBRENOME: 'Rotondo Bagliotti',
-    RG: '468915217',
-    CPF: '84404069405',
+    RG: String(Math.floor(Math.random() * 999999999)),
+    CPF: String(Math.floor(Math.random() * 999999999)),
     SEXO: 'm',
     ESTADO_CIVIL: 's',
     DATA_NASCIMENTO: '2000-01-30',
@@ -29,8 +29,8 @@ const MOCK_PESSOA_DEFAULT = {
 const MOCK_PESSOA_CADASTRAR = {
     NOME: 'João',
     SOBRENOME: 'Dos Santos',
-    RG: '375394953',
-    CPF: '06477076322',
+    RG: Math.floor(Math.random() * 999999999),
+    CPF: Math.floor(Math.random() * 999999999),
     SEXO: 'm',
     ESTADO_CIVIL: 'c',
     DATA_NASCIMENTO: '1990-08-14',
@@ -40,8 +40,8 @@ const MOCK_PESSOA_CADASTRAR = {
 
 const MOCK_PESSOA_CADASTRAR_ERROR = {
     SOBRENOME: 'Simão Gluigo',
-    RG: '338276804',
-    CPF: '95650298173',
+    RG: Math.floor(Math.random() * 999999999),
+    CPF: Math.floor(Math.random() * 999999999),
     SEXO: 'f',
     ESTADO_CIVIL: 's',
     DATA_NASCIMENTO: '1992-04-19',
@@ -52,8 +52,8 @@ const MOCK_PESSOA_CADASTRAR_ERROR = {
 const MOCK_PESSOA_ATUALIZAR = {
     NOME: 'Maria',
     SOBRENOME: 'Pereira da Silva',
-    RG: '237237866',
-    CPF: '26835532939',
+    RG: Math.floor(Math.random() * 999999999),
+    CPF: Math.floor(Math.random() * 999999999),
     SEXO: 'f',
     ESTADO_CIVIL: 'v',
     DATA_NASCIMENTO: '1972-05-07',
@@ -65,9 +65,6 @@ let MOCK_PESSOA_CODIGO
 
 describe('TDD Pessoa', function () {
     this.beforeAll(async () => {
-        await BeneficioModel.destroy({ where: {} })
-        await ResidenteModel.destroy({ where: {} })
-        await PessoaModel.destroy({ where: {} })
         const result = await PessoaModel.create(MOCK_PESSOA_DEFAULT)
         MOCK_PESSOA_CODIGO = result.CODIGO
     })
@@ -77,8 +74,9 @@ describe('TDD Pessoa', function () {
             chai.request(app)
                 .get('/pessoa')
                 .end((error, res) => {
-                    const [result] = res.body
+                    const result = res.body[res.body.length-1]
                     delete result.CODIGO
+                    delete result.STATUS
                     expect(result).to.eql(MOCK_PESSOA_DEFAULT)
                     done()
             })
@@ -92,6 +90,7 @@ describe('TDD Pessoa', function () {
                 .end((error, res) => {
                     const result = res.body
                     delete result.CODIGO
+                    delete result.STATUS
                     expect(res.statusCode).to.eql(200)
                     expect(result).to.eql(MOCK_PESSOA_DEFAULT)
                     done()
@@ -107,6 +106,7 @@ describe('TDD Pessoa', function () {
                 .end((error, res) => {
                     const result = res.body
                     delete result.CODIGO
+                    delete result.STATUS
                     expect(res.statusCode).to.eql(200)
                     expect(result).to.eql(MOCK_PESSOA_CADASTRAR)
                     done()
@@ -118,6 +118,7 @@ describe('TDD Pessoa', function () {
                 .send(MOCK_PESSOA_CADASTRAR_ERROR)
                 .end((error, res) => {
                     const [result] = res.body.errors
+                    delete result.STATUS
                     expect(res.statusCode).to.eql(200)
                     expect(result.path).to.eql('NOME')
                     expect(result.type).to.eql('notNull Violation')
@@ -145,7 +146,7 @@ describe('TDD Pessoa', function () {
                 .delete(`/pessoa/${MOCK_PESSOA_CODIGO}`)
                 .end((error, res) => {
                     expect(res.statusCode).to.eql(200)
-                    expect(res.body).to.eql(1)
+                    expect(res.body).to.eql([1])
                     done()
             })
         })

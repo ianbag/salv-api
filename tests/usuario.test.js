@@ -58,7 +58,7 @@ const MOCK_PESSOA_DEFAULT = {
  //Início dos tests
 
  
-describe.only('TDD Usuario', function () {
+describe('TDD Usuario', function () {
     this.beforeAll(async () => {
         // const getAll = await UsuarioModel.findAll({ raw: true })
         // .then(usuario => console.log('USUARIO LOG GET ALL: ', usuario))
