@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const jwt = require('jsonwebtoken')
+
+require('dotenv-safe').load()
 
 const PessoaRoute = require('./app/routes/pessoa')
 const FamiliarRoute = require('./app/routes/familiar')
