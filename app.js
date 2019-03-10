@@ -1,9 +1,6 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const jwt = require('jsonwebtoken')
-
-require('dotenv-safe').load()
 
 const PessoaRoute = require('./app/routes/pessoa')
 const FamiliarRoute = require('./app/routes/familiar')
@@ -24,7 +21,7 @@ const FuncionarioRoute = require('./app/routes/funcionario')
 const UsuarioRoute = require('./app/routes/usuario')
 const DependenteRoute = require('./app/routes/dependente')
 const AcompanhamentoRoute = require('./app/routes/acompanhamentos')
-const AuthRoute = require('./app/auth/authRoute')
+
 
 /*
 * CONFIG bodyParser
@@ -38,9 +35,7 @@ app.get('/', function (req, res) {
     res.send("API Funcionando")
 })
 
-app.use('/', AuthRoute)
 
-//API PESSOA
 app.use('/', PessoaRoute)
 
 //API Funcionario
