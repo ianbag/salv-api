@@ -24,7 +24,6 @@ const FuncionarioRoute = require('./app/routes/funcionario')
 const UsuarioRoute = require('./app/routes/usuario')
 const DependenteRoute = require('./app/routes/dependente')
 const AcompanhamentoRoute = require('./app/routes/acompanhamentos')
-const AuthRoute = require('./app/routes/auth')
 
 /*
 * CONFIG bodyParser
@@ -38,10 +37,7 @@ app.get('/', function (req, res) {
     res.send("API Funcionando")
 })
 
-//API LOGIN
-app.use('/', AuthRoute)
-
-//API Pessoa
+//API PESSOA
 app.use('/', PessoaRoute)
 
 //API Funcionario
