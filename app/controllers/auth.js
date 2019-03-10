@@ -8,9 +8,19 @@ const { UsuarioModel } = require('./../models')
 
 class Auth {
 
-    post(req, res) {
-        res.json({message: "Rota funcionando"})
+    login(req, res) {
+        const user = req.body
+
+        if (isValid(user)) {
+            
+        } else {
+            res.status(403).json({ message: 'Dados Inválidos' })
+        }
     }
+}
+
+function isValid(user) {
+    return false
 }
 
 module.exports = new Auth()
