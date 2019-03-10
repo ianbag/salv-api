@@ -2,7 +2,7 @@
  * @author Ian Rotondo Bagliotti
  * @email ian.bagliotti@gmail.com
  * @create date 2019-02-17 19:25:46
- * @modify date 2019-02-17 19:51:13
+ * @modify date 2019-03-10 19:31:00
  * @desc Arquivo de model da API de Residente
  */
 const { PessoaModel } = require('./../models')
@@ -106,6 +106,12 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             required: true,
             allowNull: false
+        },
+        STATUS: {
+            type: DataTypes.TINYINT,
+            max: 1,
+            allowNull: false,
+            defaultValue: 0,
         }
     },
         {
