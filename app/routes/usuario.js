@@ -7,9 +7,9 @@ const route = express.Router()
 
 const UsuarioController = require('./../controllers/usuario')
 
-route.get('/usuario/:id', UsuarioController.getById)
-route.get('/usuario', UsuarioController.create)
-route.get('/usuario', UsuarioController.update)
-route.get('/usuario', UsuarioController.delete)
+route.get('/usuario/:email', UsuarioController.getByMail)
+route.post('/usuario', UsuarioController.create)
+route.put('/usuario', UsuarioController.update)
+route.delete('/usuario', UsuarioController.delete)
 
 module.exports = route

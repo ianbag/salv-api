@@ -7,8 +7,8 @@
 const express = require('express')
 const route = express.Router()
 
-const AuthController = require('./../controllers/auth')
+const handleAuthentication = require('./../controllers/auth')
 
-route.post('/login', AuthController.login)
+route.post('/login', handleAuthentication)
 
 module.exports = route

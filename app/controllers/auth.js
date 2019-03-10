@@ -4,23 +4,24 @@
  * file: controllers/auth.js
  */
 
-const { UsuarioModel } = require('./../models')
+const UsuarioController = require('./../controllers/usuario')
 
-class Auth {
+const handleAuthentication = (req, res) => {
+    const user = req.body
 
-    login(req, res) {
-        const user = req.body
+    if (isValid(user)) {
 
-        if (isValid(user)) {
-            
-        } else {
-            res.status(403).json({ message: 'Dados Inválidos' })
-        }
+    } else {
+        res.status(403).json({ message: 'Dados Inválidos' })
     }
 }
 
 function isValid(user) {
-    return false
+    if (!user) {
+        return false
+    }
+
+    const dbUser = UsuarioController.getByMail(user.email)
 }
 
-module.exports = new Auth()
+module.exports = handleAuthentication
