@@ -31,7 +31,7 @@ let MOCK_CONVENIO_CODIGO
 
 //TESTS
 
-describe('Test Driven Development SALV-API Convenio', function () {
+describe.only('Test Driven Development SALV-API Convenio', function () {
     this.beforeAll(async () => {
         await EnderecoConvenioModel.destroy({ where: {} })
         await TelefoneConvenioModel.destroy({ where: {} })
@@ -48,6 +48,7 @@ describe('Test Driven Development SALV-API Convenio', function () {
                 .end((error, res) => {
                     const [result] = res.body
                     delete result.CODIGO
+                    delete result.STATUS
                     expect(result).to.eql(MOCK_CONVENIO_DEFAULT)
                     done()
                 })
@@ -62,6 +63,7 @@ describe('Test Driven Development SALV-API Convenio', function () {
                 .end((error, res) => {
                     const result = res.body
                     delete result.CODIGO
+                    delete result.STATUS
                     expect(res.statusCode).to.eql(200)
                     expect(result).to.eql(MOCK_CONVENIO_DEFAULT)
                     done()
@@ -78,6 +80,7 @@ describe('Test Driven Development SALV-API Convenio', function () {
                 .end((error, res) => {
                     const result = res.body
                     delete result.CODIGO
+                    delete result.STATUS
                     expect(res.statusCode).to.eql(200)
                     expect(result).to.eql(MOCK_CONVENIO_CADASTRAR)
                     done()
@@ -119,7 +122,7 @@ describe('Test Driven Development SALV-API Convenio', function () {
                 .delete(`/convenio/${MOCK_CONVENIO_CODIGO}`)
                 .end((error, res) => {
                     expect(res.statusCode).to.eql(200)
-                    expect(res.body).to.eql(1)
+                    expect(res.body).to.eql([1])
                     done()
                 })
         })

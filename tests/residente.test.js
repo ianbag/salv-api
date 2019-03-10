@@ -109,7 +109,7 @@ const MOCK_RESIDENTE_ATUALIZAR = {
 
 let MOCK_RESIDENTE_CODIGO
 
-describe.only('TDD Residente:', function (){
+describe('TDD Residente:', function (){
     this.beforeAll(async () => {
         const pessoa = await PessoaModel.create(MOCK_PESSOA_DEFAULT)
         MOCK_RESIDENTE_DEFAULT.PESSOA_CODIGO = pessoa.CODIGO

@@ -3,13 +3,21 @@ const { ConvenioModel } = require('./../models')
 class Convenio {
 
     get(req, res) {
-        ConvenioModel.findAll({ raw: true })
+        ConvenioModel.findAll({
+            raw: true,
+            where: {STATUS: 0}    
+        })
             .then(convenio => res.json(convenio))
             .catch(error => res.json(error))
     }
 
     getById(req, res) {
-        ConvenioModel.findByPk(req.params.id)
+        ConvenioModel.findOne({
+            where: {
+                CODIGO: req.params.id,
+                STATUS: 0
+            }
+        })
             .then(convenio => res.json(convenio))
             .catch(error => res.json(error))
     }
@@ -23,7 +31,8 @@ class Convenio {
     update(req, res) {
         ConvenioModel.update(req.body, {
             where: {
-                CODIGO: req.params.id
+                CODIGO: req.params.id,
+                STATUS: 0
             }
         })
             .then(convenio => res.json(convenio))
@@ -31,9 +40,10 @@ class Convenio {
     }
 
     delete(req, res) {
-        ConvenioModel.destroy({
+        ConvenioModel.update({STATUS: 1},{
             where: {
-                CODIGO: req.params.id
+                CODIGO: req.params.id,
+                STATUS: 0
             }
         })
             .then(convenio => res.json(convenio))
