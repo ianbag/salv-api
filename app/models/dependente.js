@@ -3,15 +3,15 @@
  */
 
  module.exports = (sequelize, DataTypes) => {
-     const DependenteModel = sequelize.define('DependeteModel',
+     const DependenteModel = sequelize.define('DependenteModel',
      {
-
-        FUNCIONARIO_CODIGO: {
+        CODIGO_FUNCIONARIO: {
             type: DataTypes.INTEGER,
             required: true,
             allownull: false,
+            primaryKey: true,
             references: 'FUNCIONARIO',
-            referenceskey: 'CODIGO'
+            referenceskey: 'CODIGO_FUNCIONARIO'
         },
         NOME: {
             type: DataTypes.STRING,
@@ -60,6 +60,12 @@
         ESTADO_CERTIDAO_NASCIMENTO: { 
             type: DataTypes.STRING,
             max: 2
+        },
+        STATUS: {
+            type: DataTypes.TINYINT,
+            max: 1,
+            allowNull: false,
+            defaultValue: 0,
         }
      },
         {
