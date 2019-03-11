@@ -110,7 +110,7 @@ describe('TDD Beneficio', function () {
             chai.request(app)
                 .get('/beneficio')
                 .end((error, res) => {
-                    const result = res.body[res.body.length-1]
+                    const [result] = res.body
                     delete result.STATUS
                     expect(result).to.eql(MOCK_BENEFICIO_DEFAULT)
                     expect(res.statusCode).to.eql(200)
