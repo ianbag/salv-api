@@ -10,7 +10,10 @@ const { BeneficioModel } = require('./../models')
 
 class Beneficio {
     get(req, res) {
-        BeneficioModel.findAll({ raw: true })
+        BeneficioModel.findAll({
+             raw: true,
+             where: {STATUS: 0}
+            })
             .then(beneficio => res.json(beneficio))
             .catch(error => res.json(error))
     }
@@ -18,7 +21,8 @@ class Beneficio {
     getByName(req, res) {
         BeneficioModel.findOne({ 
             where: {
-             NOME_BENEFICIO: req.params.name 
+             NOME_BENEFICIO: req.params.name ,
+             STATUS: 0
             } 
         })
             .then(beneficio => res.json(beneficio))
@@ -34,7 +38,8 @@ class Beneficio {
     update(req, res) {
         BeneficioModel.update(req.body, { 
             where: {
-                NOME_BENEFICIO: req.params.name
+                NOME_BENEFICIO: req.params.name,
+                STATUS: 0
             }
         })
             .then(beneficio => res.json(beneficio))
@@ -42,9 +47,10 @@ class Beneficio {
     }
 
     delete(req, res) {
-        BeneficioModel.destroy({
+        BeneficioModel.update({STATUS: 1}, {
             where: {
-                NOME_BENEFICIO: req.params.name
+                NOME_BENEFICIO: req.params.name,
+                STATUS: 0
             }
         })
             .then(beneficio => res.json(beneficio))
