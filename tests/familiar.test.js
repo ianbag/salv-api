@@ -44,7 +44,6 @@ let MOCK_FAMILIAR_CODIGO
 
 describe('Test Driven Development SALV-API Familiar', function () {
     this.beforeAll(async () => {
-        await FamiliarModel.destroy({ where: {} })
         const result = await FamiliarModel.create(MOCK_FAMILIAR_DEFAULT)
         MOCK_FAMILIAR_CODIGO = result.CODIGO
     })
@@ -56,8 +55,9 @@ describe('Test Driven Development SALV-API Familiar', function () {
             chai.request(app)
                 .get('/familiar')
                 .end((error, res) => {
-                    const [result] = res.body
+                    const result = res.body[res.body.length-1]
                     delete result.CODIGO
+                    delete result.STATUS
                     expect(result).to.eql(MOCK_FAMILIAR_DEFAULT)
                     done()
                 })
@@ -73,6 +73,7 @@ describe('Test Driven Development SALV-API Familiar', function () {
                 .end((error, res) => {
                     const result = res.body
                     delete result.CODIGO
+                    delete result.STATUS
                     expect(res.statusCode).to.eql(200)
                     expect(result).to.eql(MOCK_FAMILIAR_DEFAULT)
                     done()
@@ -90,6 +91,7 @@ describe('Test Driven Development SALV-API Familiar', function () {
                 .end((error, res) => {
                     const result = res.body
                     delete result.CODIGO
+                    delete result.STATUS
                     expect(res.statusCode).to.eql(200)
                     expect(result).to.eql(MOCK_FAMILIAR_CADASTRAR)
                     done()
@@ -133,7 +135,7 @@ describe('Test Driven Development SALV-API Familiar', function () {
                 .delete(`/familiar/${MOCK_FAMILIAR_CODIGO}`)
                 .end((error, res) => {
                     expect(res.statusCode).to.eql(200)
-                    expect(res.body).to.eql(1)
+                    expect(res.body).to.eql([1])
                     done()
                 })
         })

@@ -9,13 +9,21 @@ const { FamiliarModel } = require('./../models')
 class Familiar {
 
     get(req, res) {
-        FamiliarModel.findAll({ raw: true })
+        FamiliarModel.findAll({ 
+            raw: true,
+            where: { STATUS: 0}
+        })
             .then(familiar => res.json(familiar))
             .catch(error => res.json(error))
     }
 
     getById(req, res) {
-        FamiliarModel.findByPk(req.params.id)
+        FamiliarModel.findOne({
+            where: {
+                CODIGO: req.params.id,
+                STATUS: 0
+            }
+        })
             .then(familiar => res.json(familiar))
             .catch(error => res.json(error))
     }
@@ -29,7 +37,8 @@ class Familiar {
     update(req, res) {
         FamiliarModel.update(req.body, {
             where: {
-                CODIGO: req.params.id
+                CODIGO: req.params.id,
+                STATUS: 0
             }
         })
             .then(familiar => res.json(familiar))
@@ -37,9 +46,10 @@ class Familiar {
     }
 
     delete(req, res) {
-        FamiliarModel.destroy({
+        FamiliarModel.update({STATUS: 1}, {
             where: {
-                CODIGO: req.params.id
+                CODIGO: req.params.id,
+                STATUS: 0
             }
         })
             .then(familiar => res.json(familiar))
