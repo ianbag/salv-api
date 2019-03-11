@@ -29,7 +29,7 @@ const MOCK_PESSOA_DEFAULT = {
     ESCOLARIDADE: 'sc'
 }
 
-const MOCK_RESIDENTE_DEFAULT = {
+let MOCK_RESIDENTE_DEFAULT = {
     APELIDO: 'Lobo',
     PROFISSAO: 'Analista e Desenvolvedor de Sistemas',
     TITULO_ELEITOR: generateNumber9(),
@@ -55,7 +55,7 @@ const MOCK_RESIDENTE_DEFAULT = {
     PESSOA_CODIGO: null
 }
 
-const MOCK_RESIDENTE_CADASTRAR = {
+let MOCK_RESIDENTE_CADASTRAR = {
     APELIDO: 'Rodoaldo',
     PROFISSAO: 'Ferreiro',
     TITULO_ELEITOR: generateNumber9(),
@@ -81,7 +81,7 @@ const MOCK_RESIDENTE_CADASTRAR = {
     PESSOA_CODIGO: null
 }
 
-const MOCK_RESIDENTE_ATUALIZAR = {
+let MOCK_RESIDENTE_ATUALIZAR = {
     APELIDO: 'MA',
     PROFISSAO: 'Advogada',
     TITULO_ELEITOR: generateNumber9(),

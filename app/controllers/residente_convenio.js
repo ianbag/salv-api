@@ -3,7 +3,12 @@ const { ResidenteConvenioModel } = require('../models')
 class ResidenteConvenio {
 
     getById(req, res) {
-        ResidenteConvenioModel.findByPk(req.params.id)
+        ResidenteConvenioModel.findOne({
+            where: {
+                CONVENIO_CODIGO: req.params.id,
+                STATUS: 0
+            }
+        })
             .then(residenteConvenio => res.json(residenteConvenio))
             .catch(error => res.json(error))
     }
@@ -15,9 +20,10 @@ class ResidenteConvenio {
     }
 
     delete(req, res) {
-        ResidenteConvenioModel.destroy({
+        ResidenteConvenioModel.update({STATUS: 1}, {
             where: {
-                CONVENIO_CODIGO: req.params.id
+                CONVENIO_CODIGO: req.params.id,
+                STATUS: 0
             }
         })
             .then(residenteConvenio => res.json(residenteConvenio))

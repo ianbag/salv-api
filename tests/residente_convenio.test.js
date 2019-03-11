@@ -4,25 +4,28 @@ const expect = chai.expect
 chai.use(chaiHttp)
 
 const app = require('./../app')
-const { ResidenteConvenioModel } = require('./../app/models')
-const { ConvenioModel } = require('./../app/models')
-const { ResidenteModel } = require('./../app/models')
+const { ResidenteConvenioModel, ConvenioModel, ResidenteModel, PessoaModel } = require('./../app/models')
+
+const generateNumber9 = () => String(Math.floor(Math.random() * 999999999))
+const generateNumber5 = () => String(Math.floor(Math.random() * 99999))
+const generateNumber11 = () => Math.floor(Math.random() * 999999999)
 
 //INICIANDO MOCKS
 
-const MOCK_RESIDENTE_CONVENIO_DEFAULT = {
-    CONVENIO_CODIGO: null,
-    CODIGO_RESIDENTE: null
+let MOCK_RESIDENTE_CONVENIO_DEFAULT = {
+    NUMERO_CONVENIO: generateNumber11(),
+    RESIDENTE_CODIGO: null,
+    TITULAR_CONVENIO: 'Ian',
+    PARENTESCO_TITULAR: null,
+    CONVENIO_CODIGO: null
 }
 
-const MOCK_RESIDENTE_CONVENIO_CADASTRAR = {
-    CONVENIO_CODIGO: null,
-    CODIGO_RESIDENTE: null
-}
-
-const MOCK_RESIDENTE_CONVENIO_ERROR = {
-    CONVENIO_CODIGO: null,
-    CODIGO_RESIDENTE: null
+let MOCK_RESIDENTE_CONVENIO_CADASTRAR = {
+    NUMERO_CONVENIO: generateNumber11(),
+    RESIDENTE_CODIGO: null,
+    TITULAR_CONVENIO: 'Ian',
+    PARENTESCO_TITULAR: null,
+    CONVENIO_CODIGO: null
 }
 
 const MOCK_CONVENIO_DEFAULT = {
@@ -30,77 +33,86 @@ const MOCK_CONVENIO_DEFAULT = {
     TIPO_CONVENIO: 'Ortopedista'
 }
 
-const MOCK_RESIDENTE_DEFAULT = {
+const MOCK_PESSOA_DEFAULT = {
+    NOME: 'Ian',
+    SOBRENOME: 'Rotondo Bagliotti',
+    RG: generateNumber9(),
+    CPF: generateNumber9(),
+    SEXO: 'm',
+    ESTADO_CIVIL: 's',
+    DATA_NASCIMENTO: '2000-01-30',
+    RELIGIAO: 'cat',
+    ESCOLARIDADE: 'sc'
+}
+
+let MOCK_RESIDENTE_DEFAULT = {
     APELIDO: 'Lobo',
     PROFISSAO: 'Analista e Desenvolvedor de Sistemas',
-    TITULO_ELEITOR: '1232131',
+    TITULO_ELEITOR: generateNumber9(),
     ZONA_ELEITORAL: '3AB',
     SECAO_ELEITORAL: '11',
-    NUMERO_CERTIDAO_NASCIMENTO: '1234',
+    NUMERO_CERTIDAO_NASCIMENTO: generateNumber5(),
     FOLHA_CERTIDAO_NASCIMENTO: '22',
     LIVRO_CERTIDAO_NASCIMENTO: '5',
     CIDADE_CERTIDAO_NASCIMENTO: 'Taquaritinga',
     ESTADO_CERTIDAO_NASCIMENTO: 'SP',
-    CARTAO_SAMS: '153445131',
-    CARTAO_SUS: '5189756891713',
-    NUMERO_INSS: '123',
+    CARTAO_SAMS: generateNumber9(),
+    CARTAO_SUS: generateNumber9(),
+    NUMERO_INSS: generateNumber9(),
     BANCO_INSS: 'Banco do Brasil',
     AGENCIA_INSS: '0001',
-    CONTA_INSS: '145165125 5',
+    CONTA_INSS: generateNumber9(),
     VALOR_INSS: 1000.50,
     SITUACAO_INSS: 'BCP',
     PROVA_VIDA_INSS: '2019-02-27',
     DATA_ACOLHIMENTO: '2018-05-07',
     DATA_DESACOLHIMENTO: null,
     MOTIVO_DESACOLHIMENTO: null,
-    PESSOA_CODIGO: 1
+    PESSOA_CODIGO: null
 }
 
-let MOCK_RESIDENTE_CONVENIO_CONVENIO_CODIGO
+let MOCK_RESIDENTE_CONVENIO_CODIGO
 
 //FINALIZANDO MOCKS
 
 //TESTS
 
-describe('Test Driven Development SALV-API Residente Familiar', function () {
+describe('Test Driven Development SALV-API Residente Convenio', function () {
     this.beforeAll(async () => {
-        const convenio = await ConvenioModel.create(MOCK_CONVENIO_DEFAULT)
-        const residente = await ResidenteModel.create(MOCK_RESIDENTE_DEFAULT)
+        const pessoa = await PessoaModel.create(MOCK_PESSOA_DEFAULT)
+        MOCK_RESIDENTE_DEFAULT.PESSOA_CODIGO = pessoa.CODIGO
 
-        console.log('ADICIONANDO VALORES AO MOCK')
+        const convenio = await ConvenioModel.create(MOCK_CONVENIO_DEFAULT)
         MOCK_RESIDENTE_CONVENIO_DEFAULT.CONVENIO_CODIGO = convenio.CODIGO
-        MOCK_RESIDENTE_CONVENIO_DEFAULT.CODIGO_RESIDENTE = residente.CODIGO_RESIDENTE
+        MOCK_RESIDENTE_CONVENIO_CADASTRAR.CONVENIO_CODIGO = convenio.CODIGO
+
+        const residente = await ResidenteModel.create(MOCK_RESIDENTE_DEFAULT)
+        MOCK_RESIDENTE_CONVENIO_DEFAULT.RESIDENTE_CODIGO = residente.CODIGO_RESIDENTE
+        MOCK_RESIDENTE_CONVENIO_CADASTRAR.RESIDENTE_CODIGO = residente.CODIGO_RESIDENTE
 
         const result = await ResidenteConvenioModel.create(MOCK_RESIDENTE_CONVENIO_DEFAULT)
-
-        MOCK_RESIDENTE_CONVENIO_CONVENIO_CODIGO = result.CONVENIO_CODIGO
-
-        console.log('CONVENIO ' + MOCK_RESIDENTE_CONVENIO_CONVENIO_CODIGO)
+        MOCK_RESIDENTE_CONVENIO_CODIGO = result.CONVENIO_CODIGO
     })
-
-    //GET ID
-    describe('/GET/ID: ', () => {
-        it('Deve retornar o residente de um convenio dado o ID dele', (done) => {
+    
+    describe('/GET/ID :', () => {
+        it('Deve retornar um Residente Convenio dado o ID do CODIGO_RESIDENTE', (done) => {
             chai.request(app)
-                .get(`/residente_convenio/${MOCK_RESIDENTE_CONVENIO_CONVENIO_CODIGO}`)
-                .end((error, res) => {
-                    const result = res.body
-                    expect(res.statusCode).to.eql(200)
-                    expect(result).to.eql(MOCK_RESIDENTE_CONVENIO_DEFAULT)
-                    done()
-                })
+            .get(`/residente_convenio/${MOCK_RESIDENTE_CONVENIO_CODIGO}`)
+            .end((error, res) => {
+                const result = res.body
+                delete result.STATUS
+                expect(res.statusCode).to.eql(200)
+                expect(result).to.eql(MOCK_RESIDENTE_CONVENIO_DEFAULT)
+                done()
+            })
         })
     })
 
     //POST
-    describe('/POST: ', () => {
+    describe('/POST: ', function () {
         this.beforeAll(async () => {
-            const residente = await ResidenteModel.create(MOCK_RESIDENTE_DEFAULT)
             const convenio = await ConvenioModel.create(MOCK_CONVENIO_DEFAULT)
-
-            console.log('ADICIONANDO VALORES AO MOCK')
             MOCK_RESIDENTE_CONVENIO_CADASTRAR.CONVENIO_CODIGO = convenio.CODIGO
-            MOCK_RESIDENTE_CONVENIO_CADASTRAR.CODIGO_RESIDENTE = residente.CODIGO_RESIDENTE
         })
 
         it('Deve adicionar um residente a um convenio na base de dados', (done) => {
@@ -109,28 +121,23 @@ describe('Test Driven Development SALV-API Residente Familiar', function () {
                 .send(MOCK_RESIDENTE_CONVENIO_CADASTRAR)
                 .end((error, res) => {
                     const result = res.body
+                    delete result.STATUS
                     expect(res.statusCode).to.eql(200)
                     expect(result).to.eql(MOCK_RESIDENTE_CONVENIO_CADASTRAR)
                     done()
                 })
         })
 
-        this.beforeAll(async () => {
-            const convenio = await ConvenioModel.create(MOCK_CONVENIO_DEFAULT)
-
-            console.log('ADICIONANDO VALORES AO MOCK')
-            MOCK_RESIDENTE_CONVENIO_ERROR.CONVENIO_CODIGO = convenio.CODIGO
-        })
-
-        it('Deve retornar erro ao tentat adicionar um residente convenio que steja com um campo obrigatório em branco', (done) => {
+        it('Deve retornar erro ao tentar adicionar um residente convenio que esteja com um campo obrigatório em branco', (done) => {
+            delete MOCK_RESIDENTE_CONVENIO_CADASTRAR.TITULAR_CONVENIO
             chai.request(app)
                 .post('/residente_convenio')
-                .send(MOCK_RESIDENTE_CONVENIO_ERROR)
+                .send(MOCK_RESIDENTE_CONVENIO_CADASTRAR)
                 .end((error, res) => {
                     const [result] = res.body.errors
                     expect(res.statusCode).to.eql(200)
-                    expect(res.path).to.eql('CODIGO_RESIDENTE')
-                    expect(res.type).to.eql('notNull Violation')
+                    expect(result.path).to.eql('TITULAR_CONVENIO')
+                    expect(result.type).to.eql('notNull Violation')
                     done()
                 })
         })
@@ -140,10 +147,10 @@ describe('Test Driven Development SALV-API Residente Familiar', function () {
     describe('/DELETE/ID: ', () => {
         it('Deve apagar um residente convenio dado seu ID', (done) => {
             chai.request(app)
-                .delete(`/residente_convenio/${MOCK_RESIDENTE_CONVENIO_CONVENIO_CODIGO}`)
+                .delete(`/residente_convenio/${MOCK_RESIDENTE_CONVENIO_CODIGO}`)
                 .end((error, res) => {
                     expect(res.statusCode).to.eql(200)
-                    expect(res.body).to.eql(1)
+                    expect(res.body).to.eql([1])
                     done()
                 })
         })

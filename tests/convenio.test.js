@@ -31,7 +31,7 @@ let MOCK_CONVENIO_CODIGO
 
 //TESTS
 
-describe.only('Test Driven Development SALV-API Convenio', function () {
+describe('Test Driven Development SALV-API Convenio', function () {
     this.beforeAll(async () => {
         await EnderecoConvenioModel.destroy({ where: {} })
         await TelefoneConvenioModel.destroy({ where: {} })
