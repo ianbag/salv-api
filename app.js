@@ -22,6 +22,7 @@ const UsuarioRoute = require('./app/routes/usuario')
 const DependenteRoute = require('./app/routes/dependente')
 const AcompanhamentoRoute = require('./app/routes/acompanhamentos')
 
+
 /*
 * CONFIG bodyParser
 */
@@ -34,7 +35,7 @@ app.get('/', function (req, res) {
     res.send("API Funcionando")
 })
 
-//API Pessoa
+
 app.use('/', PessoaRoute)
 
 //API Funcionario

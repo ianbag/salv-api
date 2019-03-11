@@ -8,6 +8,7 @@
         CODIGO_FUNCIONARIO: {
             type: DataTypes.INTEGER,
             primaryKey: true,
+            allowNull: false,
             references: 'FUNCIONARIO',
             referenceskey: 'CODIGO_FUNCIONARIO'
         },
@@ -40,7 +41,8 @@
             tableName: 'USUARIO',
             timestamps: false
         }
-     )
-     return UsuarioModel
- }
+    )
+
+    return UsuarioModel
+}
 
