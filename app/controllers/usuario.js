@@ -12,7 +12,7 @@ class Usuario {
             .catch(error => res.json(error))
     }
 
-    update(req, res){
+    update(req, res) {
         UsuarioModel.update(req.body, {
             where: {
                 EMAIL: req.params.email,
@@ -24,8 +24,8 @@ class Usuario {
     }
 
 
-    delete(req, res){
-        UsuarioModel.update({STATUS: 1}, {
+    delete(req, res) {
+        UsuarioModel.update({ STATUS: 1 }, {
             where: {
                 EMAIL: req.params.email,
                 STATUS: 0

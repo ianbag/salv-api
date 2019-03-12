@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
- 
+
 module.exports = (sequelize, DataTypes) => {
     const UsuarioModel = sequelize.define('UsuarioModel',
         {
@@ -30,12 +30,12 @@ module.exports = (sequelize, DataTypes) => {
                 max: 25,
                 allowNull: false
             },
-       STATUS: {
-            type: Sequelize.TINYINT,
-            max: 1,
-            allowNull: false,
-            defaultValue: 0,
-        }
+            STATUS: {
+                type: Sequelize.TINYINT,
+                max: 1,
+                allowNull: false,
+                defaultValue: 0,
+            }
         },
         {
             tableName: 'USUARIO',
