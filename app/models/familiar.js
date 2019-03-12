@@ -30,6 +30,12 @@ module.exports = (sequelize, DataTypes) => {
             required: true,
             max: 50,
             allowNull: false
+        },
+        STATUS: {
+            type: DataTypes.TINYINT,
+            max: 1,
+            allowNull: false,
+            defaultValue: 0,
         }
     },
         {

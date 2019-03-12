@@ -18,6 +18,12 @@ module.exports = (sequelize, DataTypes) => {
             required: true,
             max: 100,
             allowNull: false
+        },
+        STATUS: {
+            type: DataTypes.TINYINT,
+            max: 1,
+            allowNull: false,
+            defaultValue: 0,
         }
     }, 
     {

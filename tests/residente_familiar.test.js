@@ -10,25 +10,24 @@ const expect = chai.expect
 chai.use(chaiHttp)
 
 const app = require('./../app')
-const { ResidenteFamiliarModel } = require('./../app/models')
-const { FamiliarModel } = require('./../app/models')
-const { ResidenteModel } = require('./../app/models')
+const { ResidenteFamiliarModel,
+        FamiliarModel,
+        ResidenteModel,
+        PessoaModel } = require('./../app/models')
+
+const generateNumber9 = () => String(Math.floor(Math.random() * 999999999))
+const generateNumber5 = () => String(Math.floor(Math.random() * 99999))
 
 //INICIANDO MOCKS
 
-const MOCK_RESIDENTE_FAMILIAR_DEFAULT = {
+let MOCK_RESIDENTE_FAMILIAR_DEFAULT = {
     FAMILIAR_CODIGO: null,
-    CODIGO_RESIDENTE: null
+    RESIDENTE_CODIGO: null
 }
 
-const MOCK_RESIDENTE_FAMILIAR_CADASTRAR = {
+let MOCK_RESIDENTE_FAMILIAR_CADASTRAR = {
     FAMILIAR_CODIGO: null,
-    CODIGO_RESIDENTE: null
-}
-
-const MOCK_RESIDENTE_FAMILIAR_ERROR = {
-    FAMILIAR_CODIGO: null,
-    CODIGO_RESIDENTE: null
+    RESIDENTE_CODIGO: null
 }
 
 const MOCK_FAMILIAR_DEFAULT = {
@@ -37,30 +36,42 @@ const MOCK_FAMILIAR_DEFAULT = {
     PARENTESCO: 'SOBRINHA'
 }
 
-const MOCK_RESIDENTE_DEFAULT = {
+const MOCK_PESSOA_DEFAULT = {
+    NOME: 'Ian',
+    SOBRENOME: 'Rotondo Bagliotti',
+    RG: generateNumber9(),
+    CPF: generateNumber9(),
+    SEXO: 'm',
+    ESTADO_CIVIL: 's',
+    DATA_NASCIMENTO: '2000-01-30',
+    RELIGIAO: 'cat',
+    ESCOLARIDADE: 'sc'
+}
+
+let MOCK_RESIDENTE_DEFAULT = {
     APELIDO: 'Lobo',
     PROFISSAO: 'Analista e Desenvolvedor de Sistemas',
-    TITULO_ELEITOR: '1232131',
+    TITULO_ELEITOR: generateNumber9(),
     ZONA_ELEITORAL: '3AB',
     SECAO_ELEITORAL: '11',
-    NUMERO_CERTIDAO_NASCIMENTO: '1234',
+    NUMERO_CERTIDAO_NASCIMENTO: generateNumber5(),
     FOLHA_CERTIDAO_NASCIMENTO: '22',
     LIVRO_CERTIDAO_NASCIMENTO: '5',
     CIDADE_CERTIDAO_NASCIMENTO: 'Taquaritinga',
     ESTADO_CERTIDAO_NASCIMENTO: 'SP',
-    CARTAO_SAMS: '153445131',
-    CARTAO_SUS: '5189756891713',
-    NUMERO_INSS: '123',
+    CARTAO_SAMS: generateNumber9(),
+    CARTAO_SUS: generateNumber9(),
+    NUMERO_INSS: generateNumber9(),
     BANCO_INSS: 'Banco do Brasil',
     AGENCIA_INSS: '0001',
-    CONTA_INSS: '145165125 5',
+    CONTA_INSS: generateNumber9(),
     VALOR_INSS: 1000.50,
     SITUACAO_INSS: 'BCP',
     PROVA_VIDA_INSS: '2019-02-27',
     DATA_ACOLHIMENTO: '2018-05-07',
     DATA_DESACOLHIMENTO: null,
     MOTIVO_DESACOLHIMENTO: null,
-    PESSOA_CODIGO: 1
+    PESSOA_CODIGO: null
 }
 
 let MOCK_RESIDENTE_FAMILIAR_FAMILIAR_CODIGO
@@ -71,16 +82,18 @@ let MOCK_RESIDENTE_FAMILIAR_FAMILIAR_CODIGO
 
 describe('Test Driven Development SALV-API Residente Familiar', function () {
     this.beforeAll(async () => {
+        const pessoa = await PessoaModel.create(MOCK_PESSOA_DEFAULT)
+        MOCK_RESIDENTE_DEFAULT.PESSOA_CODIGO = pessoa.CODIGO
+
         const familiar = await FamiliarModel.create(MOCK_FAMILIAR_DEFAULT)
-        const residente = await ResidenteModel.create(MOCK_RESIDENTE_DEFAULT)
-
-        console.log('ADICIONANDO VALORES AO MOCK')
         MOCK_RESIDENTE_FAMILIAR_DEFAULT.FAMILIAR_CODIGO = familiar.CODIGO
-        MOCK_RESIDENTE_FAMILIAR_DEFAULT.CODIGO_RESIDENTE = residente.CODIGO_RESIDENTE
 
-        const result = await ResidenteFamiliarModel.create(MOCK_RESIDENTE_FAMILIAR_DEFAULT)
+        const residente = await ResidenteModel.create(MOCK_RESIDENTE_DEFAULT)
+        MOCK_RESIDENTE_FAMILIAR_DEFAULT.RESIDENTE_CODIGO = residente.CODIGO_RESIDENTE
+        MOCK_RESIDENTE_FAMILIAR_CADASTRAR.RESIDENTE_CODIGO = residente.CODIGO_RESIDENTE
 
-        MOCK_RESIDENTE_FAMILIAR_FAMILIAR_CODIGO = result.FAMILIAR_CODIGO
+        const residenteFamiliar = await ResidenteFamiliarModel.create(MOCK_RESIDENTE_FAMILIAR_DEFAULT)
+        MOCK_RESIDENTE_FAMILIAR_FAMILIAR_CODIGO = residenteFamiliar.FAMILIAR_CODIGO
 
         console.log('FAMILIAR ' + MOCK_RESIDENTE_FAMILIAR_FAMILIAR_CODIGO)
     })
@@ -100,14 +113,10 @@ describe('Test Driven Development SALV-API Residente Familiar', function () {
     })
 
     //POST
-    describe('/POST: ', () => {
+    describe('/POST: ', function () {
         this.beforeAll(async () => {
-            const residente = await ResidenteModel.create(MOCK_RESIDENTE_DEFAULT)
             const familiar = await FamiliarModel.create(MOCK_FAMILIAR_DEFAULT)
-
-            console.log('ADICIONANDO VALORES AO MOCK')
             MOCK_RESIDENTE_FAMILIAR_CADASTRAR.FAMILIAR_CODIGO = familiar.CODIGO
-            MOCK_RESIDENTE_FAMILIAR_CADASTRAR.CODIGO_RESIDENTE = residente.CODIGO_RESIDENTE
         })
 
         it('Deve adicionar um residente a um familiar na base de dados', (done) => {
@@ -122,22 +131,16 @@ describe('Test Driven Development SALV-API Residente Familiar', function () {
                 })
         })
 
-        this.beforeAll(async () => {
-            const familiar = await FamiliarModel.create(MOCK_FAMILIAR_DEFAULT)
-
-            console.log('ADICIONANDO VALORES AO MOCK')
-            MOCK_RESIDENTE_FAMILIAR_ERROR.FAMILIAR_CODIGO = familiar.CODIGO
-        })
-
-        it('Deve retornar erro ao tentat adicionar um residente familiar que steja com um campo obrigatório em branco', (done) => {
+         it('Deve retornar erro ao tentar adicionar um residente familiar que esteja com um campo obrigatório em branco', (done) => {
+            delete MOCK_RESIDENTE_FAMILIAR_CADASTRAR.RESIDENTE_CODIGO
             chai.request(app)
                 .post('/residente_familiar')
-                .send(MOCK_RESIDENTE_FAMILIAR_ERROR)
+                .send(MOCK_RESIDENTE_FAMILIAR_CADASTRAR)
                 .end((error, res) => {
                     const [result] = res.body.errors
                     expect(res.statusCode).to.eql(200)
-                    expect(res.path).to.eql('CODIGO_RESIDENTE')
-                    expect(res.type).to.eql('notNull Violation')
+                    expect(result.path).to.eql('RESIDENTE_CODIGO')
+                    expect(result.type).to.eql('notNull Violation')
                     done()
                 })
         })

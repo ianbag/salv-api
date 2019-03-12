@@ -4,16 +4,12 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             required: true,
             primaryKey: true,
-            autoIncrement: true,
             allowNull: false,
         },
-        CODIGO_RESIDENTE: {
+        RESIDENTE_CODIGO: {
             type: DataTypes.INTEGER,
             required: true,
             allowNull: false,
-            primaryKey: true,
-            references: 'RESIDENTE',
-            referencesKey: 'CODIGO_RESIDENTE'
         },
         TITULAR_CONVENIO: {
             type: DataTypes.STRING,
@@ -21,14 +17,22 @@ module.exports = (sequelize, DataTypes) => {
             max: 100,
             allowNull: false
         },
-        PARENTESCO_CONVENIO: {
+        PARENTESCO_TITULAR: {
             type: DataTypes.STRING,
             max: 100
         },
         CONVENIO_CODIGO: {
             type: DataTypes.INTEGER,
             required: true,
-            allowNull: false
+            allowNull: false,
+            references: 'CONVENIO',
+            referencesKey: 'CODIGO'
+        },
+        STATUS: {
+            type: DataTypes.TINYINT,
+            max: 1,
+            allowNull: false,
+            defaultValue: 0,
         }
     },
         {

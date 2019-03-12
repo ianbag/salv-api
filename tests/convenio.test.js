@@ -33,9 +33,6 @@ let MOCK_CONVENIO_CODIGO
 
 describe('Test Driven Development SALV-API Convenio', function () {
     this.beforeAll(async () => {
-        await EnderecoConvenioModel.destroy({ where: {} })
-        await TelefoneConvenioModel.destroy({ where: {} })
-        await ConvenioModel.destroy({ where: {} })
         const result = await ConvenioModel.create(MOCK_CONVENIO_DEFAULT)
         MOCK_CONVENIO_CODIGO = result.CODIGO
     })
@@ -46,8 +43,9 @@ describe('Test Driven Development SALV-API Convenio', function () {
             chai.request(app)
                 .get('/convenio')
                 .end((error, res) => {
-                    const [result] = res.body
+                    const result = res.body[res.body.length-1]
                     delete result.CODIGO
+                    delete result.STATUS
                     expect(result).to.eql(MOCK_CONVENIO_DEFAULT)
                     done()
                 })
@@ -62,6 +60,7 @@ describe('Test Driven Development SALV-API Convenio', function () {
                 .end((error, res) => {
                     const result = res.body
                     delete result.CODIGO
+                    delete result.STATUS
                     expect(res.statusCode).to.eql(200)
                     expect(result).to.eql(MOCK_CONVENIO_DEFAULT)
                     done()
@@ -78,6 +77,7 @@ describe('Test Driven Development SALV-API Convenio', function () {
                 .end((error, res) => {
                     const result = res.body
                     delete result.CODIGO
+                    delete result.STATUS
                     expect(res.statusCode).to.eql(200)
                     expect(result).to.eql(MOCK_CONVENIO_CADASTRAR)
                     done()
@@ -119,7 +119,7 @@ describe('Test Driven Development SALV-API Convenio', function () {
                 .delete(`/convenio/${MOCK_CONVENIO_CODIGO}`)
                 .end((error, res) => {
                     expect(res.statusCode).to.eql(200)
-                    expect(res.body).to.eql(1)
+                    expect(res.body).to.eql([1])
                     done()
                 })
         })

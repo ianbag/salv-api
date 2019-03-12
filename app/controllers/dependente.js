@@ -2,42 +2,49 @@
  * author: NathanBarsoti8
  */
 
- const { DependenteModel } = require('./../models')
+const { DependenteModel } = require('./../models')
 
- class Dependente {
-     
-    getById(req, res){
-        DependenteModel.findByPk(req.params.id)
+class Dependente {
+
+    getById(req, res) {
+        DependenteModel.findOne({
+            where: {
+                CODIGO_FUNCIONARIO: req.params.id,
+                STATUS: 0
+            }
+        })
             .then(dependente => res.json(dependente))
-            .catch(error => res.json(error4))
+            .catch(error => res.json(error))
     }
 
-    create(req, res){
+    create(req, res) {
         DependenteModel.create(req.body)
             .then(dependente => res.json(dependente))
             .catch(error => res.json(error))
     }
 
-    update(req, res){
-        DependenteModel.destroy({
+    update(req, res) {
+        DependenteModel.update(req.body, {
             where: {
-                DEPENDENTE: req.params.id
-            }
-        })
-            .then(dependente => res.json(dependente))
-            .catch(dependente => res.json(error))
-    }
-
-    delete(req, res){
-        DependenteModel.destroy({
-            where: {
-                DEPENDENTE: req.params.id
+                CODIGO_FUNCIONARIO: req.params.id,
+                STATUS: 0
             }
         })
             .then(dependente => res.json(dependente))
             .catch(error => res.json(error))
     }
 
- }
+    delete(req, res) {
+        DependenteModel.update({ STATUS: 1 }, {
+            where: {
+                CODIGO_FUNCIONARIO: req.params.id,
+                STATUS: 0
+            }
+        })
+            .then(dependente => res.json(dependente))
+            .catch(error => res.json(error))
+    }
 
- module.exports = new Dependente()
+}
+
+module.exports = new Dependente()

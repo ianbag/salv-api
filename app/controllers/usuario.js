@@ -12,20 +12,23 @@ class Usuario {
             .catch(error => res.json(error))
     }
 
-    update(req, res) {
-        UsuarioModel.destroy({
+    update(req, res){
+        UsuarioModel.update(req.body, {
             where: {
-                USUARIO: req.params.id
+                EMAIL: req.params.email,
+                STATUS: 0
             }
         })
             .then(usuario => res.json(usuario))
             .catch(error => res.json(error))
     }
 
-    delete(req, res) {
-        UsuarioModel.destroy({
+
+    delete(req, res){
+        UsuarioModel.update({STATUS: 1}, {
             where: {
-                USUARIO: req.params.id
+                EMAIL: req.params.email,
+                STATUS: 0
             }
         })
             .then(usuario => res.json(usuario))

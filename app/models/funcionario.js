@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             allowNull: false
         },
-        FILHOS_MENOS_14: {
+        FILHOS_MENOR_14: {
             type: DataTypes.STRING,
             required: true,
             max: 1,
@@ -40,6 +40,12 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             references: 'PESSOA',
             referenceskey: 'CODIGO'
+        },
+        STATUS: {
+            type: DataTypes.TINYINT,
+            max: 1,
+            allowNull: false,
+            defaultValue: 0,
         }
     },
         {

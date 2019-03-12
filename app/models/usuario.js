@@ -1,6 +1,3 @@
-/**
- * author: NathanBarsoti8
- */
 const Sequelize = require('sequelize')
  
 module.exports = (sequelize, DataTypes) => {
@@ -32,7 +29,13 @@ module.exports = (sequelize, DataTypes) => {
                 required: true,
                 max: 25,
                 allowNull: false
-            }
+            },
+       STATUS: {
+            type: Sequelize.TINYINT,
+            max: 1,
+            allowNull: false,
+            defaultValue: 0,
+        }
         },
         {
             tableName: 'USUARIO',
@@ -42,4 +45,3 @@ module.exports = (sequelize, DataTypes) => {
 
     return UsuarioModel
 }
-

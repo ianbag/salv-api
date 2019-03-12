@@ -8,8 +8,8 @@
  const DependenteController = require('./../controllers/dependente')
 
  route.get('/dependente/:id', DependenteController.getById)
- route.get('/dependente', DependenteController.create)
- route.get('/dependente', DependenteController.update)
- route.get('/dependente', DependenteController.delete)
+ route.post('/dependente', DependenteController.create)
+ route.put('/dependente/:id', DependenteController.update)
+ route.delete('/dependente/:id', DependenteController.delete)
 
  module.exports = route

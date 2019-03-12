@@ -35,7 +35,13 @@
          PROVA_VIDA_BENEFICIO: {
              type: DataTypes.DATEONLY,
              allowNull: false
-         }
+         },
+         STATUS: {
+            type: DataTypes.TINYINT,
+            max: 1,
+            allowNull: false,
+            defaultValue: 0,
+        }
      },
      {
         tableName: 'BENEFICIO',
