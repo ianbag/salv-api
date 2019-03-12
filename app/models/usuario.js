@@ -1,13 +1,14 @@
 /**
  * author: NathanBarsoti8
  */
-
+const Sequelize = require('sequelize')
+ 
 module.exports = (sequelize, DataTypes) => {
     const UsuarioModel = sequelize.define('UsuarioModel',
         {
 
             CODIGO_FUNCIONARIO: {
-                type: DataTypes.INTEGER,
+                type: Sequelize.INTEGER,
                 required: true,
                 primaryKey: true,
                 allowNull: false,
@@ -15,19 +16,19 @@ module.exports = (sequelize, DataTypes) => {
                 referenceskey: 'CODIGO'
             },
             EMAIL: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 required: true,
                 max: 100,
                 allowNull: false
             },
             LOGIN: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 required: true,
                 max: 100,
                 allowNull: false
             },
             SENHA: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 required: true,
                 max: 25,
                 allowNull: false

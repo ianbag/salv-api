@@ -22,7 +22,7 @@ const UsuarioRoute = require('./app/routes/usuario')
 const DependenteRoute = require('./app/routes/dependente')
 const AcompanhamentoRoute = require('./app/routes/acompanhamentos')
 
-
+const handleAuthentication = require('./app/controllers/auth')
 /*
 * CONFIG bodyParser
 */
@@ -34,6 +34,8 @@ app.use(bodyParser.json({ type: 'application/json' }));
 app.get('/', function (req, res) {
     res.send("API Funcionando")
 })
+
+app.post('/login', handleAuthentication)
 
 //API Pessoa
 app.use('/', PessoaRoute)
