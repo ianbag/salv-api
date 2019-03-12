@@ -6,17 +6,6 @@ const { UsuarioModel } = require('./../models')
 
 class Usuario {
 
-    getByMail(req, res) {
-        UsuarioModel.findOne({
-            where: {
-                EMAIL: req.params.email,
-                STATUS: 0
-            }
-        })
-            .then(usuario => res.json(usuario))
-            .catch(error => res.json(error))
-    }
-
     create(req, res) {
         UsuarioModel.create(req.body)
             .then(usuario => res.json(usuario))

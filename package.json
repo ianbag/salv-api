@@ -10,6 +10,7 @@
   "author": "hppod",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "chai-http": "^4.2.1",
     "express": "^4.16.4",
@@ -17,7 +18,7 @@
     "mocha": "^5.2.0",
     "mysql2": "^1.6.5",
     "nodemon": "^1.18.10",
-    "sequelize": "^4.42.0"
+    "sequelize": "^4.38.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
