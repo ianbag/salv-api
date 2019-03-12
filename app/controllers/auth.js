@@ -9,15 +9,29 @@ const UsuarioModel = require('./../models/usuario')(sequelize, DataTypes)
 
 const handleAuthentication = (req, res) => {
     const mailUser = req.body.email
-    console.log(mailUser)
 
-    const dbMail = UsuarioModel.findOne({
+    UsuarioModel.findOne({
         where: {
             EMAIL: mailUser
         }
     })
-    .then(mailDb => res.json(mailDb))
-    .catch(error => res.json(error))
+        .then((login) => {
+            if (!login) {
+                res.status(403).json({ err: 'Dados Inválidos' })
+            }
+            const senha = req.body.senha
+            
+            if (senha != login.SENHA) {
+                res.status(400).json({ err: 'Senha Incorreta' })
+            } else {
+                res.status(200).json({ message: 'Dados Corretos, AUTORIZADO' })
+            }
+        })
+        .catch((error) => {
+            console.log(error)
+            res.status(500).json({ err: err })
+        })
+
 }
 
 module.exports = handleAuthentication
