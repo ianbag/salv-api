@@ -6,16 +6,6 @@ const { UsuarioModel } = require('./../models')
 
 class Usuario {
 
-    get(req, res) {
-        UsuarioModel.findAll({
-            where: {
-                STATUS: 0
-            }
-        })
-            .then(usuario => res.json(usuario))
-            .catch(error => res.json(error))
-    }
-    
     create(req, res) {
         UsuarioModel.create(req.body)
             .then(usuario => res.json(usuario))
