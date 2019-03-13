@@ -7,7 +7,6 @@ let sequelize = new Sequelize('salv-bd', 'admin-dev', 'salv2018gpes10', {
 const DataTypes = sequelize.DataTypes
 const UsuarioModel = require('./../models/usuario')(sequelize, DataTypes)
 const bcrypt = require('bcrypt')
-const salt = bcrypt.genSaltSync()
 
 const handleAuthentication = (req, res) => {
     const mailUser = req.body.email
@@ -23,19 +22,10 @@ const handleAuthentication = (req, res) => {
             }
             const senha = req.body.senha
 
-            bcrypt.hash(senha, salt, function (err, hash) {
-                if (err) {
-                    throw (err)
-                }
-
-                bcrypt.compare(senha, hash, function (err, result) {
-                    if (err) {
-                        throw (err)
-                    } else {
-                        console.log(result)
-                    }
-                })
+            bcrypt.compare(senha, login.SENHA, function (err, result) {
+                console.log(`SENHA DIGITADA: ${senha} ||| SENHA VINDA DO BANCO: ${login.SENHA} ||| RESULTADO DA COMPARAÇÃO: ${result}`)
             })
+
         })
         .catch((error) => {
             console.log(error)

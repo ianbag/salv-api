@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
             SENHA: {
                 type: Sequelize.STRING,
                 required: true,
-                max: 25,
+                max: 100,
                 allowNull: false
             },
             STATUS: {
@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
             timestamps: false,
             hooks: {
                 beforeCreate: async function (UsuarioModel) {
-                    const salt = await bcrypt.genSalt(10)
+                    const salt = await bcrypt.genSaltSync(10)
                     UsuarioModel.SENHA = await bcrypt.hash(UsuarioModel.SENHA, salt)
                 }
             }
