@@ -16,6 +16,10 @@
          },
          CODIGO_RESIDENTE: {
              type: DataTypes.INTEGER,
+             primaryKey: true,
+             references: 'RESIDENTE',
+             referencesKey: 'CODIGO_RESIDENTE'
+             
          },
          BANCO_BENEFICIO: {
              type: DataTypes.STRING,
