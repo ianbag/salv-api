@@ -4,12 +4,20 @@
  * file: controllers/residente_familiar.js
  */
 
-const { ResidenteFamiliarModel } = require('./../models')
+const { ResidenteFamiliarModel, ResidenteModel, FamiliarModel } = require('./../models')
+
+ResidenteFamiliarModel.belongsTo(ResidenteModel, {as: 'RESIDENTE', foreignKey: 'RESIDENTE_CODIGO'})
+ResidenteFamiliarModel.belongsTo(FamiliarModel, {as: 'FAMILIAR', foreignKey: 'FAMILIAR_CODIGO'})
 
 class ResidenteFamiliar {
 
     getById(req, res) {
-        ResidenteFamiliarModel.findByPk(req.params.id)
+        ResidenteFamiliarModel.findByPk(req.params.id, {
+            include: [
+                {model: ResidenteModel, as: 'RESIDENTE'},
+                {model: FamiliarModel, as: 'FAMILIAR'}
+            ]
+        })
             .then(residenteFamiliar => res.json(residenteFamiliar))
             .catch(error => res.json(error))
     }
