@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize')
+const bcrypt = require('bcrypt')
 
 module.exports = (sequelize, DataTypes) => {
     const UsuarioModel = sequelize.define('UsuarioModel',
@@ -27,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
             SENHA: {
                 type: Sequelize.STRING,
                 required: true,
-                max: 25,
+                max: 100,
                 allowNull: false
             },
             STATUS: {
@@ -39,7 +40,13 @@ module.exports = (sequelize, DataTypes) => {
         },
         {
             tableName: 'USUARIO',
-            timestamps: false
+            timestamps: false,
+            hooks: {
+                beforeCreate: async function (UsuarioModel) {
+                    const salt = await bcrypt.genSaltSync(10)
+                    UsuarioModel.SENHA = await bcrypt.hash(UsuarioModel.SENHA, salt)
+                }
+            }
         }
     )
 
