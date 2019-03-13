@@ -4,3 +4,8 @@
 ALTERAÇÃO DO BANCO DE DADOS
 24 - NOVA ORIGINAL:         $2b$07$MSJ1fFmrN/N66QxlbJa2y./QHpcI3v/T7fUiKounSOfnr/XeawJgG
 24 - NOVO BANCO DE DADOS:   $2b$07$MSJ1fFmrN/N66QxlbJa2y./QHpcI3v/T7fUiKounSOfnr/XeawJgG
+
+
+
+23 - ORIGINAL:          $2b$10$hSpPBxXsqK7dN9cmPUPIp.XvGrrQkJi6dvDeOBhtiOudv9nZNeLj2
+23 - BANCO DE DADOS:    $2b$10$hSpPBxXsqK7dN9cmPUPIp.XvGrrQkJi6dvDeOBhtiOudv9nZNeLj2
