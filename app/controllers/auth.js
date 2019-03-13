@@ -6,6 +6,7 @@ let sequelize = new Sequelize('salv-bd', 'admin-dev', 'salv2018gpes10', {
 })
 const DataTypes = sequelize.DataTypes
 const UsuarioModel = require('./../models/usuario')(sequelize, DataTypes)
+const bcrypt = require('bcrypt')
 
 const handleAuthentication = (req, res) => {
     const mailUser = req.body.email
@@ -20,12 +21,17 @@ const handleAuthentication = (req, res) => {
                 res.status(403).json({ err: 'Dados Inválidos' })
             }
             const senha = req.body.senha
-            
-            if (senha != login.SENHA) {
-                res.status(400).json({ err: 'Senha Incorreta' })
-            } else {
-                res.status(200).json({ message: 'Dados Corretos, AUTORIZADO' })
-            }
+            const senhaEncriptada = login.SENHA
+
+            console.log(`SENHA DIGITADA: ${senha} || SENHA DO BANCO: ${senhaEncriptada}`)
+
+            bcrypt.compare(senhaEncriptada, senha, function(err, res){
+                if(err){
+                    console.log(err)
+                }else{
+                    console.log(res)
+                }
+            })
         })
         .catch((error) => {
             console.log(error)
@@ -35,3 +41,7 @@ const handleAuthentication = (req, res) => {
 }
 
 module.exports = handleAuthentication
+
+
+
+
