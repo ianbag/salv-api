@@ -4,22 +4,41 @@
  * file: controllers/residente_familiar.js
  */
 
-const { ResidenteFamiliarModel, ResidenteModel, FamiliarModel } = require('./../models')
+const Sequelize = require('sequelize')
+let sequelize = new Sequelize('salv-bd', 'admin-dev', 'salv2018gpes10', {
+    host: "mysql995.umbler.com",
+    port: "41890",
+    dialect: "mysql"
+})
 
-ResidenteFamiliarModel.belongsTo(ResidenteModel, {as: 'RESIDENTE', foreignKey: 'RESIDENTE_CODIGO'})
-ResidenteFamiliarModel.belongsTo(FamiliarModel, {as: 'FAMILIAR', foreignKey: 'FAMILIAR_CODIGO'})
+const { ResidenteFamiliarModel, ResidenteModel } = require('./../models')
+
+
+ResidenteFamiliarModel.belongsTo(ResidenteModel, { as: 'RESIDENTE', foreignKey: 'RESIDENTE_CODIGO' })
 
 class ResidenteFamiliar {
-
     getById(req, res) {
-        ResidenteFamiliarModel.findByPk(req.params.id, {
-            include: [
-                {model: ResidenteModel, as: 'RESIDENTE'},
-                {model: FamiliarModel, as: 'FAMILIAR'}
-            ]
-        })
-            .then(residenteFamiliar => res.json(residenteFamiliar))
-            .catch(error => res.json(error))
+        sequelize.query(`SELECT 
+                            F.CODIGO, F.NOME, F.SOBRENOME, F.PARENTESCO,
+                            E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO, E.CEP, E.REFERENCIA,
+                            T.DDD, T.NUMERO TELEFONE
+                        FROM 
+                            RESIDENTE_FAMILIAR R
+                            INNER JOIN FAMILIAR F 
+                            ON R.FAMILIAR_CODIGO = F.CODIGO
+                            LEFT JOIN ENDERECO_FAMILIAR EF
+                            ON EF.FAMILIAR_CODIGO = F.CODIGO
+                            LEFT JOIN ENDERECO E
+                            ON E.CODIGO = EF.ENDERECO_CODIGO
+                            LEFT JOIN TELEFONE_FAMILIAR TF
+                            ON TF.FAMILIAR_CODIGO = F.CODIGO
+                            LEFT JOIN TELEFONE T
+                            ON T.CODIGO = TF.TELEFONE_CODIGO
+                            WHERE RESIDENTE_CODIGO = :RESIDENTE_CODIGO`,
+            { replacements: { RESIDENTE_CODIGO: req.params.id } })
+            .then(result => {
+                res.json(result[0])
+            })
     }
 
     create(req, res) {
@@ -31,7 +50,7 @@ class ResidenteFamiliar {
     delete(req, res) {
         ResidenteFamiliarModel.destroy({
             where: {
-                FAMILIAR_CODIGO: req.params.id
+                RESIDENTE_CODIGO: req.params.id
             }
         })
             .then(residenteFamiliar => res.json(residenteFamiliar))
