@@ -1,25 +1,51 @@
+const Sequelize = require('sequelize')
+let sequelize = new Sequelize('salv-bd', 'admin-dev', 'salv2018gpes10', {
+    host: "mysql995.umbler.com",
+    port: "41890",
+    dialect: "mysql"
+})
+
 const { ConvenioModel } = require('./../models')
 
 class Convenio {
 
     get(req, res) {
-        ConvenioModel.findAll({
-            raw: true,
-            where: {STATUS: 0}    
-        })
-            .then(convenio => res.json(convenio))
-            .catch(error => res.json(error))
+        sequelize.query(`SELECT 
+                            C.CODIGO, C.NOME_CONVENIO, C.TIPO_CONVENIO,
+                            T.DDD, T.NUMERO TELEFONE
+                        FROM
+                            CONVENIO C
+                            LEFT JOIN TELEFONE_CONVENIO TC
+                            ON TC.CONVENIO_CODIGO = C.CODIGO
+                            LEFT JOIN TELEFONE T
+                            ON T.CODIGO = TC.TELEFONE_CODIGO
+                            WHERE STATUS = 0`,
+        )
+            .then(result => {
+                res.json(result[0])
+            })
     }
 
     getById(req, res) {
-        ConvenioModel.findOne({
-            where: {
-                CODIGO: req.params.id,
-                STATUS: 0
-            }
-        })
-            .then(convenio => res.json(convenio))
-            .catch(error => res.json(error))
+        sequelize.query(`SELECT 
+                            C.CODIGO, C.NOME_CONVENIO, C.TIPO_CONVENIO,
+                            T.DDD, T.NUMERO TELEFONE,
+                            E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO, E.CEP, E.REFERENCIA
+                        FROM
+                            CONVENIO C
+                            LEFT JOIN TELEFONE_CONVENIO TC
+                            ON TC.CONVENIO_CODIGO = C.CODIGO
+                            LEFT JOIN TELEFONE T
+                            ON T.CODIGO = TC.TELEFONE_CODIGO
+                            LEFT JOIN ENDERECO_CONVENIO EC
+                            ON EC.CONVENIO_CODIGO = C.CODIGO
+                            LEFT JOIN ENDERECO E
+                            ON E.CODIGO = EC.ENDERECO_CODIGO
+                            WHERE C.CODIGO = :CONVENIO_CODIGO AND STATUS = 0`,
+            { replacements: { CONVENIO_CODIGO: req.params.id } })
+            .then(result => {
+                res.json(result[0])
+            })
     }
 
     create(req, res) {
@@ -40,7 +66,7 @@ class Convenio {
     }
 
     delete(req, res) {
-        ConvenioModel.update({STATUS: 1},{
+        ConvenioModel.update({ STATUS: 1 }, {
             where: {
                 CODIGO: req.params.id,
                 STATUS: 0
