@@ -26,8 +26,8 @@ const AcompanhamentoRoute = require('./app/routes/acompanhamentos')
 const AcompanhamentoFuncionario = require('./app/routes/acompanhamento_funcionario')
 const AcompanhamentoResidente = require('./app/routes/acompanhamento_residente')
 
-const handleAuthentication = require('./app/controllers/auth')
-const handleAuthorization = require('./app/controllers/authz')
+const handleAuthentication = require('./auth/auth')
+const handleAuthorization = require('./auth/authz')
 /*
 * CONFIG bodyParser
 */

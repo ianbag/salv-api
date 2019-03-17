@@ -5,10 +5,10 @@ let sequelize = new Sequelize('salv-bd', 'admin-dev', 'salv2018gpes10', {
     dialect: "mysql"
 })
 const DataTypes = sequelize.DataTypes
-const UsuarioModel = require('./../models/usuario')(sequelize, DataTypes)
+const UsuarioModel = require('./../app/models/usuario')(sequelize, DataTypes)
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const apiConfig = require('./../../config/api-config')
+const apiConfig = require('./../config/api-config')
 
 const handleAuthentication = (req, res) => {
     const mailUser = req.body.email
