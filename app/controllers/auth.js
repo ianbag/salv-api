@@ -22,9 +22,7 @@ const handleAuthentication = (req, res) => {
             if (!login) {
                 res.status(403).json({ message: "Dados Inválidos" })
             }
-
             const senha = req.body.senha
-
             bcrypt.compare(senha, login.SENHA, function (err, result) {
                 if (result) {
                     const token = jwt.sign({

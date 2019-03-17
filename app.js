@@ -43,67 +43,67 @@ app.get('/', function (req, res) {
 app.post('/login', handleAuthentication)
 
 //API Pessoa
-app.use('/', PessoaRoute)
+app.use('/', handleAuthorization, PessoaRoute)
 
 //API Funcionario
-app.use('/', FuncionarioRoute)
+app.use('/', handleAuthorization, FuncionarioRoute)
 
 //API Usuario
-app.use('/', UsuarioRoute)
+app.use('/', handleAuthorization, UsuarioRoute)
 
 //API Dependente
-app.use('/', DependenteRoute)
+app.use('/', handleAuthorization, DependenteRoute)
 
 //API FAMILIAR
-app.use('/', FamiliarRoute)
+app.use('/', handleAuthorization, FamiliarRoute)
 
 //API Residente
-app.use('/', ResidenteRoute)
+app.use('/', handleAuthorization, ResidenteRoute)
 
 //API ENDEREÇO
-app.use('/', EnderecoRoute)
+app.use('/', handleAuthorization, EnderecoRoute)
 
 //API TELEFONE
 app.use('/', handleAuthorization, TelefoneRoute)
 
 //API BENEFICIO
-app.use('/', BeneficioRoute)
+app.use('/', handleAuthorization, BeneficioRoute)
 
 //API TELEFONE_FAMILIAR
-app.use('/', TelefoneFamiliarRoute)
+app.use('/', handleAuthorization, TelefoneFamiliarRoute)
 
 //API ENDERECO_FAMILIAR
-app.use('/', EnderecoFamiliarRoute)
+app.use('/', handleAuthorization, EnderecoFamiliarRoute)
 
 //API RESIDENTE_FAMILIAR
-app.use('/', ResidenteFamiliarRoute)
+app.use('/', handleAuthorization, ResidenteFamiliarRoute)
 
 //API CONVENIO
-app.use('/', ConvenioRoute)
+app.use('/', handleAuthorization, ConvenioRoute)
 
 // //API TELEFONE_CONVENIO
-app.use('/', TelefoneConvenioRoute)
+app.use('/', handleAuthorization, TelefoneConvenioRoute)
 
 // //API ENDERECO_CONVENIO
-app.use('/', EnderecoConvenioRoute)
+app.use('/', handleAuthorization, EnderecoConvenioRoute)
 
 // //API RESIDENTE_CONVENIO
-app.use('/', ResidenteConvenioRoute)
+app.use('/', handleAuthorization, ResidenteConvenioRoute)
 
 //API TELEFONE_PESSOA
-app.use('/', TelefonePessoaRoute)
+app.use('/', handleAuthorization, TelefonePessoaRoute)
 
 // API ENDERECO_PESSOA
-app.use('/', EnderecoPessoaRoute)
+app.use('/', handleAuthorization, EnderecoPessoaRoute)
 
 //API ACOMPANHAMENTO
-app.use('/', AcompanhamentoRoute)
+app.use('/', handleAuthorization, AcompanhamentoRoute)
 
 //API ACOMPANHAMENTO FUNCIONARIO
-app.use('/', AcompanhamentoFuncionario)
+app.use('/', handleAuthorization, AcompanhamentoFuncionario)
 
 //API ACOMPANHAMENTO RESIDENTE
-app.use('/', AcompanhamentoResidente)
+app.use('/', handleAuthorization, AcompanhamentoResidente)
 
 app.listen(3000, function () {
     console.log("API rodando na porta 3000")
