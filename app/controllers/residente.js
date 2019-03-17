@@ -7,11 +7,14 @@
  */
 const { ResidenteModel, PessoaModel } = require('./../models')
 
+ResidenteModel.belongsTo(PessoaModel, {as: 'PESSOA', foreignKey: 'PESSOA_CODIGO'})
+
 class Residente {
     get(req, res) {
         ResidenteModel.findAll({
-            raw: true,
-            where: { STATUS: 0 }
+            where: { STATUS: 0 },
+            include: [{model: PessoaModel, as: 'PESSOA'}],
+
         })
             .then(residente => res.json(residente))
             .catch(error => res.json(error))
@@ -20,8 +23,9 @@ class Residente {
         ResidenteModel.findOne({
             where: {
                 CODIGO_RESIDENTE: req.params.id,
-                STATUS: 0
-            }
+                STATUS: 0,
+            },
+            include: [{model: PessoaModel, as: 'PESSOA'}],
         })
             .then(residente => res.json(residente))
             .catch(error => res.json(erro))

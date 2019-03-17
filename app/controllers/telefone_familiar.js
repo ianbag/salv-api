@@ -4,12 +4,20 @@
  * file: controllers/telefone_familiar.js
  */
 
-const { TelefoneFamiliarModel } = require('./../models')
+const { TelefoneFamiliarModel, TelefoneModel, FamiliarModel } = require('./../models')
+
+TelefoneFamiliarModel.belongsTo(TelefoneModel, {as: 'TELEFONE', foreignKey: 'TELEFONE_CODIGO'})
+TelefoneFamiliarModel.belongsTo(FamiliarModel, {as: 'FAMILIAR', foreignKey: 'FAMILIAR_CODIGO'})
 
 class TelefoneFamiliar {
 
     getById(req, res) {
-        TelefoneFamiliarModel.findByPk(req.params.id)
+        TelefoneFamiliarModel.findByPk(req.params.id, {
+            include: [
+                {model: TelefoneModel, as: 'TELEFONE'},
+                {model: FamiliarModel, as: 'FAMILIAR'}
+            ]
+        })
             .then(telefoneFamiliar => res.json(telefoneFamiliar))
             .catch(error => res.json(error))
     }

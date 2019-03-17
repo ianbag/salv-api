@@ -6,11 +6,19 @@
  * @desc Arquivo Controller da API de Endereco Pessoa
  */
 
-const { EnderecoPessoaModel } = require('./../models')
+const { EnderecoPessoaModel, PessoaModel, EnderecoModel } = require('./../models')
+
+EnderecoPessoaModel.belongsTo(PessoaModel, {as: 'PESSOA', foreignKey: 'PESSOA_CODIGO'})
+EnderecoPessoaModel.belongsTo(EnderecoModel, {as: 'ENDERECO', foreignKey: 'ENDERECO_CODIGO'})
 
 class EnderecoPessoa {
     getByID(req, res) {
-        EnderecoPessoaModel.findByPk(req.params.id)
+        EnderecoPessoaModel.findByPk(req.params.id, {
+            include: [
+                {model: PessoaModel, as: 'PESSOA'},
+                {model: EnderecoModel, as: 'ENDERECO'}
+            ]
+        })
             .then(enderecoPessoa => res.json(enderecoPessoa))
             .catch(error => res.json(error))
     }

@@ -23,6 +23,8 @@ const FuncionarioRoute = require('./app/routes/funcionario')
 const UsuarioRoute = require('./app/routes/usuario')
 const DependenteRoute = require('./app/routes/dependente')
 const AcompanhamentoRoute = require('./app/routes/acompanhamentos')
+const AcompanhamentoFuncionario = require('./app/routes/acompanhamento_funcionario')
+const AcompanhamentoResidente = require('./app/routes/acompanhamento_residente')
 
 const handleAuthentication = require('./app/controllers/auth')
 /*
@@ -95,6 +97,12 @@ app.use('/', EnderecoPessoaRoute)
 
 //API ACOMPANHAMENTO
 app.use('/', AcompanhamentoRoute)
+
+//API ACOMPANHAMENTO FUNCIONARIO
+app.use('/', AcompanhamentoFuncionario)
+
+//API ACOMPANHAMENTO RESIDENTE
+app.use('/', AcompanhamentoResidente)
 
 app.listen(3000, function () {
     console.log("API rodando na porta 3000")

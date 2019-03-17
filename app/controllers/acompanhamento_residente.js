@@ -1,17 +1,27 @@
+const { AcompanhamentoResidenteModel, AcompanhamentosModel, ResidenteModel } = require('./../models')
 
-
-const { AcompanhamentosResidenteModel } = require('./../models/acompanhamento_residente')
+AcompanhamentoResidenteModel.belongsTo(AcompanhamentosModel, {as: 'ACOMPANHAMENTO', foreignKey:'ACOMPANHAMENTO_CODIGO'})
+AcompanhamentoResidenteModel.belongsTo(ResidenteModel, {as: 'RESIDENTE', foreignKey:'RESIDENTE_CODIGO'})
 
 class AcompanhamentoResidente{
 
-    getAll (req, res) {
-        AcompanhamentosResidenteModel.findAll({ raw: true })
+    getById (req, res) {
+        AcompanhamentoResidenteModel.findById(req.params.id, {
+            include: [
+                {model: AcompanhamentosModel, as: 'ACOMPANHAMENTO'},
+                {model: ResidenteModel, as: 'RESIDENTE'}
+            ]
+        })
             .then(acompanhamento_residente => res.json(acompanhamento_residente))
             .catch(error => res.json(error))
     }
-
-    getById (req, res) {
-        AcompanhamentosResidenteModel.findById(req.params.id)
+    create(req, res) {
+        AcompanhamentoResidenteModel.create(req.body)
+            .then(acompanhamento_residente => res.json(acompanhamento_residente))
+            .catch(error => res.json(error))
+    }
+    delete(req, res) {
+        AcompanhamentoResidenteModel.destroy({ where: { RESIDENTE_CODIGO: req.params.id } })
             .then(acompanhamento_residente => res.json(acompanhamento_residente))
             .catch(error => res.json(error))
     }
