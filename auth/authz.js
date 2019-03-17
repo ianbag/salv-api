@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const apiConfig = require('./../config/api-config')
+const apiConfig = require('./api-config')
 
 const handleAuthorization = (req, res, next) => {
     const token = extractToken(req)
