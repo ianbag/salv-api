@@ -7,6 +7,7 @@ let sequelize = new Sequelize('salv-bd', 'admin-dev', 'salv2018gpes10', {
 const DataTypes = sequelize.DataTypes
 const UsuarioModel = require('./../models/usuario')(sequelize, DataTypes)
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 const handleAuthentication = (req, res) => {
     const mailUser = req.body.email
@@ -18,13 +19,18 @@ const handleAuthentication = (req, res) => {
     })
         .then((login) => {
             if (!login) {
-                res.status(403).json({ err: 'Dados Inválidos' })
+                res.status(403).json({ message: "Dados Inválidos" })
             }
+
             const senha = req.body.senha
 
             bcrypt.compare(senha, login.SENHA, function (err, result) {
                 if (result) {
-                    res.status(200).json({ message: "Autenticado com sucesso" })
+                    const token = jwt.sign({
+                        sub: mailUser,
+                        iss: "salv-api"
+                    }, "salv-api-password")
+                    res.status(200).json({ message: "Autenticado com sucesso", accessToken: token })
                 } else {
                     res.status(403).json({ message: "Não autenticado. Verifique seus dados" })
                 }
