@@ -27,6 +27,7 @@ const AcompanhamentoFuncionario = require('./app/routes/acompanhamento_funcionar
 const AcompanhamentoResidente = require('./app/routes/acompanhamento_residente')
 
 const handleAuthentication = require('./app/controllers/auth')
+const handleAuthorization = require('./app/controllers/authz')
 /*
 * CONFIG bodyParser
 */
@@ -63,7 +64,7 @@ app.use('/', ResidenteRoute)
 app.use('/', EnderecoRoute)
 
 //API TELEFONE
-app.use('/', TelefoneRoute)
+app.use('/', handleAuthorization, TelefoneRoute)
 
 //API BENEFICIO
 app.use('/', BeneficioRoute)
