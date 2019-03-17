@@ -23,7 +23,11 @@ const handleAuthentication = (req, res) => {
             const senha = req.body.senha
 
             bcrypt.compare(senha, login.SENHA, function (err, result) {
-                console.log(`SENHA DIGITADA: ${senha} ||| SENHA VINDA DO BANCO: ${login.SENHA} ||| RESULTADO DA COMPARAÇÃO: ${result}`)
+                if (result) {
+                    res.status(200).json({ message: "Autenticado com sucesso" })
+                } else {
+                    res.status(403).json({ message: "Não autenticado. Verifique seus dados" })
+                }
             })
 
         })
