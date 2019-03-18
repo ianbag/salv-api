@@ -1,17 +1,30 @@
 module.exports = (sequelize, DataTypes) => {
 
-const acompanhamento_residenteModel = sequelize.define('Acompanhamento_residenteModel', {
+const AcompanhamentoResidenteModel = sequelize.define('AcompanhamentoResidenteModel', {
 
-    RESIDENTE_CODIGO:      {type: DataTypes.INTEGER},
-    ACOMPANHAMENTO_CODIGO: {type: DataTypes.INTEGER}
+    RESIDENTE_CODIGO: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        references: 'RESIDENTE',
+        referencesKey: 'CODIGO_RESIDENTE'
+    },
+    ACOMPANHAMENTO_CODIGO: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        references: 'ACOMPANHAMENTO',
+        referencesKey: 'CODIGO'
+    }
 },
 
 {
-    tableName:'ACOMPANHAMENTO_RESIDENTE'
+    tableName:'ACOMPANHAMENTO_RESIDENTE',
+    timestamps: false
 }
 
 )
 
-return acompanhamento_residenteModel
+return AcompanhamentoResidenteModel
 
 }

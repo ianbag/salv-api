@@ -121,5 +121,6 @@ module.exports = (sequelize, DataTypes) => {
     )
     //@TODO - Criar as associations de Residente x Pessoa (1:M)
     
+
     return ResidenteModel
 }
