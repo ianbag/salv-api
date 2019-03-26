@@ -76,6 +76,20 @@ class Funcionario {
             .catch(error => res.json(error))
     }
 
+    getName(req, res){
+
+        sequelize.query(`SELECT NOME 
+                FROM
+                PESSOA AS P
+                INNER JOIN FUNCIONARIO AS F
+                ON P.CODIGO=F.CODIGO_FUNCIONARIO`
+                
+        )
+    .then(result => {
+    res.json(result[0])
+        })
+    }
+
 }
 
 module.exports = new Funcionario()
