@@ -1,9 +1,4 @@
-const Sequelize = require('sequelize')
-let sequelize = new Sequelize('salv-bd', 'admin-dev', 'salv2018gpes10', {
-    host: "mysql995.umbler.com",
-    port: "41890",
-    dialect: "mysql"
-})
+const sequelize = require('../../database/sequelize_local')
 
 const { ResidenteConvenioModel, ResidenteModel, ConvenioModel } = require('../models')
 
