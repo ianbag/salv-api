@@ -64,7 +64,7 @@ class Residente {
 
     getName(req, res){
 
-        sequelize.query(`SELECT NOME 
+        sequelize.query(`SELECT P.NOME, R.CODIGO_RESIDENTE
                 FROM
                 PESSOA AS P
                 INNER JOIN RESIDENTE AS R

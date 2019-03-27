@@ -78,7 +78,7 @@ class Funcionario {
 
     getName(req, res){
 
-        sequelize.query(`SELECT NOME 
+        sequelize.query(`SELECT P.NOME, F.CODIGO_FUNCIONARIO
                 FROM
                 PESSOA AS P
                 INNER JOIN FUNCIONARIO AS F
