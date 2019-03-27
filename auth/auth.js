@@ -1,4 +1,4 @@
-const sequelize = require('../database/sequelize_local')
+const sequelize = require('../database/sequelize_remote')
 const DataTypes = sequelize.DataTypes
 const UsuarioModel = require('./../app/models/usuario')(sequelize, DataTypes)
 const bcrypt = require('bcrypt')
