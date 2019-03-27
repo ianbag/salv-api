@@ -8,12 +8,7 @@
  * author: NathanBarsoti8
  */
 
-const Sequelize = require('sequelize')
-let sequelize = new Sequelize('salv-bd', 'admin-dev', 'salv2018gpes10', {
-    host: "mysql995.umbler.com",
-    port: "41890",
-    dialect: "mysql"
-})
+const sequelize = require('../../database/sequelize_remote')
 
 const { FuncionarioModel } = require('./../models')
 
@@ -76,18 +71,18 @@ class Funcionario {
             .catch(error => res.json(error))
     }
 
-    getName(req, res){
+    getName(req, res) {
 
         sequelize.query(`SELECT P.NOME, F.CODIGO_FUNCIONARIO
                 FROM
                 PESSOA AS P
                 INNER JOIN FUNCIONARIO AS F
                 ON P.CODIGO=F.CODIGO_FUNCIONARIO`
-                
+
         )
-    .then(result => {
-    res.json(result[0])
-        })
+            .then(result => {
+                res.json(result[0])
+            })
     }
 
 }
