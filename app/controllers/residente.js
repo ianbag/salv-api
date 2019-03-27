@@ -5,6 +5,14 @@
  * @modify date 2019-03-10 19:31:02
  * @desc Residente Controller
  */
+
+const Sequelize = require('sequelize')
+let sequelize = new Sequelize('salv-bd', 'admin-dev', 'salv2018gpes10', {
+    host: "mysql995.umbler.com",
+    port: "41890",
+    dialect: "mysql"
+})
+
 const { ResidenteModel, PessoaModel } = require('./../models')
 
 ResidenteModel.belongsTo(PessoaModel, {as: 'PESSOA', foreignKey: 'PESSOA_CODIGO'})
@@ -54,6 +62,19 @@ class Residente {
         })
             .then(residente => res.json(residente))
             .catch(error => res.json(error))
+    }
+    aniversariante(req, res){
+        sequelize.query(`SELECT
+                            P.NOME, P.SOBRENOME, P.DATA_NASCIMENTO
+                        FROM
+                            RESIDENTE R
+                            LEFT JOIN PESSOA P
+                            ON P.CODIGO = R.PESSOA_CODIGO
+                            WHERE MONTH(P.DATA_NASCIMENTO) = :mes`,
+        { replacements: { mes: (new Date().getMonth()+1)} })
+        .then(result => {
+        res.json(result[0])
+        })
     }
 }
 

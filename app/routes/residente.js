@@ -17,4 +17,6 @@ route.post('/residente', ResidenteController.create)
 route.put('/residente/:id', ResidenteController.update)
 route.delete('/residente/:id', ResidenteController.delete)
 
+route.get('/aniversariante', ResidenteController.aniversariante)
+
 module.exports = route
