@@ -8,6 +8,12 @@
 const { ResidenteModel, PessoaModel } = require('./../models')
 
 ResidenteModel.belongsTo(PessoaModel, {as: 'PESSOA', foreignKey: 'PESSOA_CODIGO'})
+const Sequelize = require('sequelize')
+let sequelize = new Sequelize('salv-bd', 'admin-dev', 'salv2018gpes10', {
+    host: "mysql995.umbler.com",
+    port: "41890",
+    dialect: "mysql"
+})
 
 class Residente {
     get(req, res) {
@@ -55,6 +61,22 @@ class Residente {
             .then(residente => res.json(residente))
             .catch(error => res.json(error))
     }
+
+    getName(req, res){
+
+        sequelize.query(`SELECT NOME 
+                FROM
+                PESSOA AS P
+                INNER JOIN RESIDENTE AS R
+                ON P.CODIGO=R.CODIGO_RESIDENTE`
+                
+        )
+    .then(result => {
+    res.json(result[0])
+        })
+    }
+
+   
 }
 
 module.exports = new Residente()
