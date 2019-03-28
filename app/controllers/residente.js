@@ -5,9 +5,12 @@
  * @modify date 2019-03-10 19:31:02
  * @desc Residente Controller
  */
+
+const sequelize = require('../../database/sequelize_local')
+
 const { ResidenteModel, PessoaModel } = require('./../models')
 
-ResidenteModel.belongsTo(PessoaModel, {as: 'PESSOA', foreignKey: 'PESSOA_CODIGO'})
+ResidenteModel.belongsTo(PessoaModel, { as: 'PESSOA', foreignKey: 'PESSOA_CODIGO' })
 const Sequelize = require('sequelize')
 let sequelize = new Sequelize('salv-bd', 'admin-dev', 'salv2018gpes10', {
     host: "mysql995.umbler.com",
@@ -19,7 +22,7 @@ class Residente {
     get(req, res) {
         ResidenteModel.findAll({
             where: { STATUS: 0 },
-            include: [{model: PessoaModel, as: 'PESSOA'}],
+            include: [{ model: PessoaModel, as: 'PESSOA' }],
 
         })
             .then(residente => res.json(residente))
@@ -31,7 +34,7 @@ class Residente {
                 CODIGO_RESIDENTE: req.params.id,
                 STATUS: 0,
             },
-            include: [{model: PessoaModel, as: 'PESSOA'}],
+            include: [{ model: PessoaModel, as: 'PESSOA' }],
         })
             .then(residente => res.json(residente))
             .catch(error => res.json(erro))
@@ -43,40 +46,53 @@ class Residente {
     }
     update(req, res) {
         ResidenteModel.update(req.body, {
-             where: {
-                  CODIGO_RESIDENTE: req.params.id,
-                  STATUS: 0
-            } 
+            where: {
+                CODIGO_RESIDENTE: req.params.id,
+                STATUS: 0
+            }
         })
             .then(residente => res.json(residente))
             .catch(error => res.json(error))
     }
     delete(req, res) {
-        ResidenteModel.update({STATUS: 1}, {
-             where: {
-                  CODIGO_RESIDENTE: req.params.id,
-                  STATUS: 0
-            } 
+        ResidenteModel.update({ STATUS: 1 }, {
+            where: {
+                CODIGO_RESIDENTE: req.params.id,
+                STATUS: 0
+            }
         })
             .then(residente => res.json(residente))
             .catch(error => res.json(error))
     }
 
-    getName(req, res){
-
+    aniversariante(req, res) {
+        sequelize.query(`SELECT
+                            P.NOME, P.SOBRENOME, P.DATA_NASCIMENTO
+                        FROM
+                            RESIDENTE R
+                            LEFT JOIN PESSOA P
+                            ON P.CODIGO = R.PESSOA_CODIGO
+                            WHERE MONTH(P.DATA_NASCIMENTO) = :mes`,
+            { replacements: { mes: (new Date().getMonth() + 1) } })
+            .then(result => {
+                res.json(result[0])
+            })
+    }
+    getName(req, res) {
         sequelize.query(`SELECT NOME 
                 FROM
                 PESSOA AS P
                 INNER JOIN RESIDENTE AS R
                 ON P.CODIGO=R.CODIGO_RESIDENTE`
-                
+
         )
-    .then(result => {
-    res.json(result[0])
-        })
+            .then(result => {
+                res.json(result[0])
+            })
     }
 
-   
+
+
 }
 
 module.exports = new Residente()
