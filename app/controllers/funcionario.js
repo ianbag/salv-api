@@ -19,14 +19,11 @@ class Funcionario {
     get(req, res) {
         sequelize.query(`SELECT
                             F.CODIGO_FUNCIONARIO CODIGO,
-                            P.NOME FUNCIONARIO_NOME, P.SOBRENOME FUNCIONARIO_SOBRENOME, P.CPF, P.RG,
-                            D.NOME DEPENDENTE_NOME, D.SOBRENOME DEPENDENTE_SOBRENOME
+                            P.NOME FUNCIONARIO_NOME, P.SOBRENOME FUNCIONARIO_SOBRENOME, P.CPF, P.RG
                         FROM
                             FUNCIONARIO F
                             LEFT JOIN PESSOA P
                             ON P.CODIGO = F.PESSOA_CODIGO
-                            LEFT JOIN DEPENDENTE D
-                            ON D.CODIGO_FUNCIONARIO = F.CODIGO_FUNCIONARIO
                             WHERE F.STATUS = 0`,
         )
             .then(result => {
