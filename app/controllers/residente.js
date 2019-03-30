@@ -11,12 +11,6 @@ const sequelize = require('../../database/sequelize_local')
 const { ResidenteModel, PessoaModel } = require('./../models')
 
 ResidenteModel.belongsTo(PessoaModel, { as: 'PESSOA', foreignKey: 'PESSOA_CODIGO' })
-const Sequelize = require('sequelize')
-let sequelize = new Sequelize('salv-bd', 'admin-dev', 'salv2018gpes10', {
-    host: "mysql995.umbler.com",
-    port: "41890",
-    dialect: "mysql"
-})
 
 class Residente {
     get(req, res) {
@@ -65,27 +59,9 @@ class Residente {
             .catch(error => res.json(error))
     }
 
-<<<<<<< HEAD
     getName(req, res){
 
         sequelize.query(`SELECT P.NOME, R.CODIGO_RESIDENTE
-=======
-    aniversariante(req, res) {
-        sequelize.query(`SELECT
-                            P.NOME, P.SOBRENOME, P.DATA_NASCIMENTO
-                        FROM
-                            RESIDENTE R
-                            LEFT JOIN PESSOA P
-                            ON P.CODIGO = R.PESSOA_CODIGO
-                            WHERE MONTH(P.DATA_NASCIMENTO) = :mes`,
-            { replacements: { mes: (new Date().getMonth() + 1) } })
-            .then(result => {
-                res.json(result[0])
-            })
-    }
-    getName(req, res) {
-        sequelize.query(`SELECT NOME 
->>>>>>> upstream/master
                 FROM
                 PESSOA AS P
                 INNER JOIN RESIDENTE AS R
