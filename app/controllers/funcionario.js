@@ -10,7 +10,9 @@
 
 const sequelize = require('../../database/sequelize_remote')
 
-const { FuncionarioModel } = require('./../models')
+const { FuncionarioModel, PessoaModel } = require('./../models')
+
+FuncionarioModel.belongsTo(PessoaModel, {as: 'PESSOA', foreignKey: 'PESSOA_CODIGO'})
 
 class Funcionario {
 
@@ -37,7 +39,8 @@ class Funcionario {
             where: {
                 CODIGO_FUNCIONARIO: req.params.id,
                 STATUS: 0
-            }
+            },
+            include: [{ model: PessoaModel, as: 'PESSOA' }]
         })
             .then(funcionario => res.json(funcionario))
             .catch(error => res.json(error))
