@@ -1,4 +1,4 @@
-const sequelize = require('../../database/sequelize_remote')
+const sequelize = require('../../database/sequelize_local')
 const { ConvenioModel } = require('./../models')
 
 class Convenio {

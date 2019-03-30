@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const bodyParser = require('body-parser')
+const port = 3100
 app.use(cors())
 
 const PessoaRoute = require('./app/routes/pessoa')
@@ -106,8 +107,8 @@ app.use('/', /*handleAuthorization,*/ AcompanhamentoFuncionario)
 //API ACOMPANHAMENTO RESIDENTE
 app.use('/', /*handleAuthorization,*/ AcompanhamentoResidente)
 
-app.listen(3000, function () {
-    console.log("API rodando na porta 3000")
+app.listen(port, function () {
+    console.log(`API rodando na porta ${port}`)
 })
 
 module.exports = app

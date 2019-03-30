@@ -8,7 +8,7 @@
  * author: NathanBarsoti8
  */
 
-const sequelize = require('../../database/sequelize_remote')
+const sequelize = require('../../database/sequelize_local')
 
 const { FuncionarioModel } = require('./../models')
 
