@@ -18,4 +18,6 @@ route.post('/beneficio', BeneficioController.create)
 route.put('/beneficio/:name', BeneficioController.update)
 route.delete('/beneficio/:name', BeneficioController.delete)
 
+route.get('/prova-de-vida', BeneficioController.provaDeVida)
+
 module.exports = route

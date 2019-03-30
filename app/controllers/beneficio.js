@@ -1,3 +1,10 @@
+const Sequelize = require('sequelize')
+let sequelize = new Sequelize('salv-bd', 'admin-dev', 'salv2018gpes10', {
+    host: "mysql995.umbler.com",
+    port: "41890",
+    dialect: "mysql"
+})
+
 /**
  * @author Ian Rotondo Bagliotti
  * @email ian.bagliotti@gmail.com
@@ -55,6 +62,25 @@ class Beneficio {
         })
             .then(beneficio => res.json(beneficio))
             .catch(error => res.json(error))
+    }
+
+    provaDeVida(req, res){
+        let data = new Date()
+        sequelize.query(`SELECT
+                            B.NOME_BENEFICIO, B.PROVA_VIDA_BENEFICIO,
+                            P.NOME, P.SOBRENOME
+                        FROM 
+                            BENEFICIO B
+                            LEFT JOIN RESIDENTE R
+                            ON R.CODIGO_RESIDENTE = B.CODIGO_RESIDENTE
+                            LEFT JOIN PESSOA P
+                            ON P.CODIGO = R.PESSOA_CODIGO
+                            WHERE MONTH(B.PROVA_VIDA_BENEFICIO) = :mes
+                            AND YEAR(B.PROVA_VIDA_BENEFICIO) = :ano`,
+            { replacements: { mes: (data.getMonth()+1), ano: data.getFullYear() } })
+            .then(result => {
+                res.json(result[0])
+            })
     }
 }
 
