@@ -4,7 +4,7 @@
  * file: controllers/residente_familiar.js
  */
 
-const sequelize = require('../../database/sequelize_local')
+const sequelize = require('../../database/sequelize_remote')
 
 const { ResidenteFamiliarModel, ResidenteModel } = require('./../models')
 
