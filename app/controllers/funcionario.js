@@ -32,6 +32,10 @@ class Funcionario {
             })
     }
 
+    getFuncionarioFull(req, res) {
+        sequelize.query(`SELECT P.CODIGO, P.NOME, P.SOBRENOME, P.RG, P.CPF, P.SEXO, P.ESTADO_CIVIL, P.DATA_NASCIMENTO, P.RELIGIAO, P.ESCOLARIDADE, F.CODIGO_FUNCIONARIO, F.CARGO, F.DATA_ADMISSAO, T.DDD, T.NUMERO AS NUM_TEL, E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO, E.CEP, E.REFERENCIA FROM PESSOA AS P INNER JOIN FUNCIONARIO AS F ON P.CODIGO = F.PESSOA_CODIGO INNER JOIN TELEFONE_PESSOA AS TP ON P.CODIGO = TP.PESSOA_CODIGO INNER JOIN TELEFONE AS T ON T.CODIGO = TP.TELEFONE_CODIGO INNER JOIN ENDERECO_PESSOA AS EP ON P.CODIGO = EP.PESSOA_CODIGO INNER JOIN ENDERECO AS E ON E.CODIGO = EP.ENDERECO_CODIGO WHERE F.CODIGO_FUNCIONARIO = ${req.params.id} `).then(result => res.json(result[0]))
+    }
+
     getById(req, res) {
         FuncionarioModel.findOne({
             where: {
@@ -39,7 +43,7 @@ class Funcionario {
                 STATUS: 0
             },
             include: [
-                { model: PessoaModel, as: 'PESSOA' }, 
+                { model: PessoaModel, as: 'PESSOA' },
                 { model: UsuarioModel, as: 'USUARIO' }
             ]
         })
