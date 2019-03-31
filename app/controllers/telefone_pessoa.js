@@ -7,15 +7,18 @@
  */
 const { TelefonePessoaModel, TelefoneModel, PessoaModel } = require('./../models')
 
-TelefonePessoaModel.belongsTo(TelefoneModel, {as: 'TELEFONE', foreignKey: 'TELEFONE_CODIGO'})
-TelefonePessoaModel.belongsTo(PessoaModel, {as: 'PESSOA', foreignKey: 'PESSOA_CODIGO'})
+TelefonePessoaModel.belongsTo(TelefoneModel, { as: 'TELEFONE', foreignKey: 'TELEFONE_CODIGO' })
+TelefonePessoaModel.belongsTo(PessoaModel, { as: 'PESSOA', foreignKey: 'PESSOA_CODIGO' })
 
 class TelefonePessoa {
     getById(req, res) {
-        TelefonePessoaModel.findByPk(req.params.id, {
+        TelefonePessoaModel.findAll({
+            where: {
+                PESSOA_CODIGO: req.params.id
+            },
             include: [
-                {model: TelefoneModel, as: 'TELEFONE'},
-                {model: PessoaModel, as: 'PESSOA'}
+                { model: TelefoneModel, as: 'TELEFONE' },
+                { model: PessoaModel, as: 'PESSOA' }
             ]
         })
             .then(TelefonePessoa => res.json(TelefonePessoa))

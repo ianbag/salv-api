@@ -12,12 +12,6 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             allowNull: false
         },
-        FILHOS_MENOR_14: {
-            type: DataTypes.STRING,
-            required: true,
-            max: 1,
-            allowNull: false
-        },
         CARGO: {
             type: DataTypes.STRING,
             required: true,
