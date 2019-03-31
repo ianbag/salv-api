@@ -6,7 +6,7 @@
  * @desc Residente Controller
  */
 
-const sequelize = require('../../database/sequelize_local')
+const sequelize = require('../../database/sequelize_remote')
 
 const { ResidenteModel, PessoaModel } = require('./../models')
 
@@ -59,6 +59,20 @@ class Residente {
             .catch(error => res.json(error))
     }
 
+    aniversariante(req, res) {
+        sequelize.query(`SELECT
+                            P.NOME, P.SOBRENOME, P.DATA_NASCIMENTO
+                        FROM
+                            RESIDENTE R
+                            LEFT JOIN PESSOA P
+                            ON P.CODIGO = R.PESSOA_CODIGO
+                            WHERE MONTH(P.DATA_NASCIMENTO) = :mes`,
+            { replacements: { mes: (new Date().getMonth() + 1) } })
+            .then(result => {
+                res.json(result[0])
+            })
+    }
+
     getName(req, res){
 
         sequelize.query(`SELECT P.NOME, R.CODIGO_RESIDENTE
@@ -72,6 +86,8 @@ class Residente {
                 res.json(result[0])
             })
     }
+
+   
 
 
 
