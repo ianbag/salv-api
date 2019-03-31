@@ -8,11 +8,11 @@
 
 const { EnderecoPessoaModel, PessoaModel, EnderecoModel } = require('./../models')
 
-EnderecoPessoaModel.belongsTo(PessoaModel, { as: 'PESSOA', foreignKey: 'PESSOA_CODIGO' })
 EnderecoPessoaModel.belongsTo(EnderecoModel, { as: 'ENDERECO', foreignKey: 'ENDERECO_CODIGO' })
+EnderecoPessoaModel.belongsTo(PessoaModel, { as: 'PESSOA', foreignKey: 'PESSOA_CODIGO' })
 
 class EnderecoPessoa {
-    getByID(req, res) {
+    getById(req, res) {
         EnderecoPessoaModel.findAll({
             where: {
                 PESSOA_CODIGO: req.params.id
@@ -22,6 +22,8 @@ class EnderecoPessoa {
                 { model: PessoaModel, as: 'PESSOA' }
             ]
         })
+        .then(EnderecoPessoa => res.json(EnderecoPessoa))
+        .catch(error => res.json(error))
     }
 
     create(req, res) {

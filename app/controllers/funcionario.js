@@ -38,7 +38,10 @@ class Funcionario {
                 CODIGO_FUNCIONARIO: req.params.id,
                 STATUS: 0
             },
-            include: [{ model: PessoaModel, as: 'PESSOA' }, { model: UsuarioModel, as: 'USUARIO' }]
+            include: [
+                { model: PessoaModel, as: 'PESSOA' }, 
+                { model: UsuarioModel, as: 'USUARIO' }
+            ]
         })
             .then(funcionario => res.json(funcionario))
             .catch(error => res.json(error))
