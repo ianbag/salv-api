@@ -1,4 +1,5 @@
 const sequelize = require('../../database/sequelize_remote')
+
 const { ConvenioModel } = require('./../models')
 
 class Convenio {
@@ -18,6 +19,24 @@ class Convenio {
             .then(result => {
                 res.json(result[0])
             })
+    }
+
+    getConvenioFull(req, res) {
+        sequelize.query(`SELECT 
+                            C.CODIGO_CONVENIO AS COD_CONV, C.NOME_CONVENIO, C.TIPO_CONVENIO,
+                            T.CODIGO AS COD_TEL, T.DDD, T.NUMERO AS NUM_TEL
+                            E.CODIGO AS COD_END, E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO,
+                            E.CEP, E.REFERENCIA
+                            FROM CONVENIO AS C
+                            INNER JOIN TELEFONE_CONVENIO AS TC 
+                            ON C.CODIGO = TC.CONVENIO_CODIGO
+                            INNER JOIN TELEFONE AS T
+                            ON T.CODIGO = TC.TELEFONE_CODIGO
+                            INNER JOIN ENDERECO_CONVENIO
+                            ON C.CODIGO = EC.CONVENIO_CODIGO
+                            INNER JOIN ENDERECO AS E
+                            ON E.CODIGO = EC.ENDERECO_CODIGO
+                            WHERE C.CODIGO_CONVENIO = ${req.params.id}`).then(result => res.json(result[0]))
     }
 
     getById(req, res) {
@@ -51,7 +70,7 @@ class Convenio {
     update(req, res) {
         ConvenioModel.update(req.body, {
             where: {
-                CODIGO: req.params.id,
+                CODIGO_CONVENIO: req.params.id,
                 STATUS: 0
             }
         })
@@ -62,13 +81,23 @@ class Convenio {
     delete(req, res) {
         ConvenioModel.update({ STATUS: 1 }, {
             where: {
-                CODIGO: req.params.id,
+                CODIGO_CONVENIO: req.params.id,
                 STATUS: 0
             }
         })
             .then(convenio => res.json(convenio))
             .catch(error => res.json(error))
     }
+
+    getName(req, res){
+
+        sequelize.query(`SELECT NOME_CONVENIO FROM CONVENIO`)
+
+        .then(result => {
+            res.json(result[0])
+        })
+    }
+
 }
 
 module.exports = new Convenio()
