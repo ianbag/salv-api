@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     const ConvenioModel = sequelize.define('ConvenioModel', {
-        CODIGO: {
+        CODIGO_CONVENIO: {
             type: DataTypes.INTEGER,
             required: true,
             primaryKey: true,
