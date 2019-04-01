@@ -82,7 +82,7 @@ class Convenio {
             where: {
                 CODIGO_CONVENIO: req.params.id,
                 STATUS: 0
-            }
+            } 
         })
             .then(convenio => res.json(convenio))
             .catch(error => res.json(error))
