@@ -8,25 +8,30 @@
 
 const { EnderecoPessoaModel, PessoaModel, EnderecoModel } = require('./../models')
 
-EnderecoPessoaModel.belongsTo(PessoaModel, {as: 'PESSOA', foreignKey: 'PESSOA_CODIGO'})
-EnderecoPessoaModel.belongsTo(EnderecoModel, {as: 'ENDERECO', foreignKey: 'ENDERECO_CODIGO'})
+EnderecoPessoaModel.belongsTo(EnderecoModel, { as: 'ENDERECO', foreignKey: 'ENDERECO_CODIGO' })
+EnderecoPessoaModel.belongsTo(PessoaModel, { as: 'PESSOA', foreignKey: 'PESSOA_CODIGO' })
 
 class EnderecoPessoa {
-    getByID(req, res) {
-        EnderecoPessoaModel.findByPk(req.params.id, {
+    getById(req, res) {
+        EnderecoPessoaModel.findAll({
+            where: {
+                PESSOA_CODIGO: req.params.id
+            },
             include: [
-                {model: PessoaModel, as: 'PESSOA'},
-                {model: EnderecoModel, as: 'ENDERECO'}
+                { model: EnderecoModel, as: 'ENDERECO' },
+                { model: PessoaModel, as: 'PESSOA' }
             ]
         })
-            .then(enderecoPessoa => res.json(enderecoPessoa))
-            .catch(error => res.json(error))
+        .then(EnderecoPessoa => res.json(EnderecoPessoa))
+        .catch(error => res.json(error))
     }
+
     create(req, res) {
         EnderecoPessoaModel.create(req.body)
             .then(enderecoPessoa => res.json(enderecoPessoa))
             .catch(error => res.json(error))
     }
+
     delete(req, res) {
         EnderecoPessoaModel.destroy({ where: { PESSOA_CODIGO: req.params.id } })
             .then(enderecoPessoa => res.json(enderecoPessoa))

@@ -10,21 +10,21 @@
 
 const sequelize = require('../../database/sequelize_remote')
 
-const { FuncionarioModel } = require('./../models')
+const { FuncionarioModel, PessoaModel, UsuarioModel } = require('./../models')
+
+FuncionarioModel.belongsTo(PessoaModel, { as: 'PESSOA', foreignKey: 'PESSOA_CODIGO' })
+FuncionarioModel.belongsTo(UsuarioModel, { as: 'USUARIO', foreignKey: 'CODIGO_FUNCIONARIO' })
 
 class Funcionario {
 
     get(req, res) {
         sequelize.query(`SELECT
                             F.CODIGO_FUNCIONARIO CODIGO,
-                            P.NOME FUNCIONARIO_NOME, P.SOBRENOME FUNCIONARIO_SOBRENOME, P.CPF, P.RG,
-                            D.NOME DEPENDENTE_NOME, D.SOBRENOME DEPENDENTE_SOBRENOME
+                            P.NOME FUNCIONARIO_NOME, P.SOBRENOME FUNCIONARIO_SOBRENOME, P.CPF, P.RG
                         FROM
                             FUNCIONARIO F
                             LEFT JOIN PESSOA P
                             ON P.CODIGO = F.PESSOA_CODIGO
-                            LEFT JOIN DEPENDENTE D
-                            ON D.CODIGO_FUNCIONARIO = F.CODIGO_FUNCIONARIO
                             WHERE F.STATUS = 0`,
         )
             .then(result => {
@@ -32,12 +32,20 @@ class Funcionario {
             })
     }
 
+    getFuncionarioFull(req, res) {
+        sequelize.query(`SELECT P.CODIGO AS COD_PES, P.NOME, P.SOBRENOME, P.RG, P.CPF, P.SEXO, P.ESTADO_CIVIL, P.DATA_NASCIMENTO, P.RELIGIAO, P.ESCOLARIDADE, F.CODIGO_FUNCIONARIO AS COD_FUN, F.CARGO, F.DATA_ADMISSAO, T.CODIGO AS COD_TEL, T.DDD, T.NUMERO AS NUM_TEL, E.CODIGO AS COD_END, E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO, E.CEP, E.REFERENCIA FROM PESSOA AS P INNER JOIN FUNCIONARIO AS F ON P.CODIGO = F.PESSOA_CODIGO INNER JOIN TELEFONE_PESSOA AS TP ON P.CODIGO = TP.PESSOA_CODIGO INNER JOIN TELEFONE AS T ON T.CODIGO = TP.TELEFONE_CODIGO INNER JOIN ENDERECO_PESSOA AS EP ON P.CODIGO = EP.PESSOA_CODIGO INNER JOIN ENDERECO AS E ON E.CODIGO = EP.ENDERECO_CODIGO WHERE F.CODIGO_FUNCIONARIO = ${req.params.id} `).then(result => res.json(result[0]))
+    }
+
     getById(req, res) {
         FuncionarioModel.findOne({
             where: {
                 CODIGO_FUNCIONARIO: req.params.id,
                 STATUS: 0
-            }
+            },
+            include: [
+                { model: PessoaModel, as: 'PESSOA' },
+                { model: UsuarioModel, as: 'USUARIO' }
+            ]
         })
             .then(funcionario => res.json(funcionario))
             .catch(error => res.json(error))
