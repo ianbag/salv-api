@@ -11,12 +11,6 @@ const sequelize = require('../../database/sequelize_local')
 const { ResidenteModel, PessoaModel } = require('./../models')
 
 ResidenteModel.belongsTo(PessoaModel, { as: 'PESSOA', foreignKey: 'PESSOA_CODIGO' })
-const Sequelize = require('sequelize')
-let sequelize = new Sequelize('salv-bd', 'admin-dev', 'salv2018gpes10', {
-    host: "mysql995.umbler.com",
-    port: "41890",
-    dialect: "mysql"
-})
 
 class Residente {
     get(req, res) {
