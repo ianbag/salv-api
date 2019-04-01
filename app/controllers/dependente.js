@@ -7,7 +7,7 @@ const { DependenteModel } = require('./../models')
 class Dependente {
 
     getById(req, res) {
-        DependenteModel.findOne({
+        DependenteModel.findAll({
             where: {
                 CODIGO_FUNCIONARIO: req.params.id,
                 STATUS: 0

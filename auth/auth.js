@@ -1,4 +1,4 @@
-const sequelize = require('./sequelize')
+const sequelize = require('../database/sequelize_remote')
 const DataTypes = sequelize.DataTypes
 const UsuarioModel = require('./../app/models/usuario')(sequelize, DataTypes)
 const bcrypt = require('bcrypt')
@@ -17,14 +17,16 @@ const handleAuthentication = (req, res) => {
         .then((login) => {
             if (!login) {
                 res.status(403).json({ message: "Dados Inválidos" })
-            }            
+            }
+
+            console.log(`EMAIL: ${mailUser}, SENHA: ${senha}, LOG: ${login.LOGIN}`)
             bcrypt.compare(senha, login.SENHA, function (err, result) {
                 if (result) {
                     const token = jwt.sign({
                         sub: mailUser,
                         iss: "salv-api"
                     }, apiConfig.secret)
-                    res.status(200).json({ message: "Autenticado com sucesso", accessToken: token })
+                    res.status(200).json({ login: login.LOGIN, accessToken: token })
                 } else {
                     res.status(403).json({ message: "Não autenticado. Verifique seus dados" })
                 }

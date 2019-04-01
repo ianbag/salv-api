@@ -13,8 +13,10 @@ const ResidenteController = require('./../controllers/residente')
 
 route.get('/residente', ResidenteController.get)
 route.get('/residente/:id', ResidenteController.getById)
-route.post('/residente', ResidenteController.create)
+route.get('/residenteNome', ResidenteController.getName)
 route.put('/residente/:id', ResidenteController.update)
 route.delete('/residente/:id', ResidenteController.delete)
+
+route.get('/aniversariante', ResidenteController.aniversariante)
 
 module.exports = route
