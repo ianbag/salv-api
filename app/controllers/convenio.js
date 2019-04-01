@@ -25,8 +25,7 @@ class Convenio {
         sequelize.query(`SELECT 
                             C.CODIGO_CONVENIO AS COD_CONV, C.NOME_CONVENIO, C.TIPO_CONVENIO,
                             T.CODIGO AS COD_TEL, T.DDD, T.NUMERO AS NUM_TEL
-                            E.CODIGO AS COD_END, E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO,
-                            E.CEP, E.REFERENCIA
+                            E.CODIGO AS COD_END, E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO, E.CEP, E.REFERENCIA
                             FROM CONVENIO AS C
                             INNER JOIN TELEFONE_CONVENIO AS TC 
                             ON C.CODIGO = TC.CONVENIO_CODIGO
