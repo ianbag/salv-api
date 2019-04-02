@@ -73,6 +73,16 @@ class Acompanhamento {
             .then(acompanhamento => res.json(acompanhamento))
             .catch(error => res.json(error))
     }
+
+    getCod(req, res){ sequelize.query(`SELECT MAX(CODIGO+1)as ACOMPANHAMENTO_CODIGO FROM ACOMPANHAMENTO`,
+
+
+    )
+      .then(result => {
+        res.json(result[0])
+    })
+
+    }
 }
 
 module.exports = new Acompanhamento()
