@@ -26,14 +26,17 @@ class AcompanhamentoFuncionario {
 
     create(req, res) {
         let count = 0;
-        req.body.forEach(element => {
+        req.body.forEach((element, index, array) => {
             AcompanhamentoFuncionarioModel.create(element)
-                .then()
+                .then(() => {
+                    count++
+                    if(count == array.length)
+                        res.json({ message: `Foram adicionados ${count} Acompanhamentos Funcionarios` })
+                })
                 .catch(error => res.json(error))
-            count++
         })
-        res.json({ message: `Foram adicionados ${count} Acompanhamentos Funcionarios` })
     }
+
     delete(req, res) {
         AcompanhamentoFuncionarioModel.destroy({ where: { FUNCIONARIO_CODIGO: req.params.id } })
             .then(acompanhamento_funcionario => res.json(acompanhamento_funcionario))
