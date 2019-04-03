@@ -1,32 +1,45 @@
-const { AcompanhamentoFuncionarioModel, AcompanhamentosModel, FuncionarioModel } = require('./../models/')
+const sequelize = require('../../database/sequelize_remote')
 
-AcompanhamentoFuncionarioModel.belongsTo(AcompanhamentosModel, {as: 'ACOMPANHAMENTO', foreignKey: 'ACOMPANHAMENTO_CODIGO'})
-AcompanhamentoFuncionarioModel.belongsTo(FuncionarioModel, {as: 'FUNCIONARIO', foreignKey: 'FUNCIONARIO_CODIGO'})
+const { AcompanhamentoFuncionarioModel } = require('./../models/')
 
-class AcompanhamentoFuncionario{
+class AcompanhamentoFuncionario {
 
-    getById (req, res) {
-        AcompanhamentoFuncionarioModel.findById(req.params.id, {
-            include: [
-                {model: AcompanhamentosModel, as: 'ACOMPANHAMENTO'},
-                {model: FuncionarioModel, as: 'FUNCIONARIO'}
-            ]
-        })
-            .then(acompanhamento_funcionario => res.json(acompanhamento_funcionario))
-            .catch(error => res.json(error))
+    getById(req, res) {
+        sequelize.query(`SELECT
+                            A.CODIGO,
+                            P.NOME, P.SOBRENOME,
+                            F.CARGO
+                        FROM
+                            ACOMPANHAMENTO A
+                            LEFT JOIN ACOMPANHAMENTO_FUNCIONARIO AF
+                            ON AF.ACOMPANHAMENTO_CODIGO = A.CODIGO
+                            LEFT JOIN FUNCIONARIO F
+                            ON F.CODIGO_FUNCIONARIO = AF.FUNCIONARIO_CODIGO
+                            LEFT JOIN PESSOA P
+                            ON P.CODIGO = F.PESSOA_CODIGO
+                            WHERE A.CODIGO = :ACOMPANHAMENTO_CODIGO`,
+            { replacements: { ACOMPANHAMENTO_CODIGO: req.params.id } })
+            .then(result => {
+                res.json(result[0])
+            })
     }
 
     create(req, res) {
-        AcompanhamentoFuncionarioModel.create(req.body)
-            .then(acompanhamento_funcionario => res.json(acompanhamento_funcionario))
-            .catch(error => res.json(error))
+        let count = 0;
+        req.body.forEach(element => {
+            AcompanhamentoFuncionarioModel.create(element)
+                .then()
+                .catch(error => res.json(error))
+            count++
+        })
+        res.json({ message: `Foram adicionados ${count} Acompanhamentos Funcionarios` })
     }
     delete(req, res) {
         AcompanhamentoFuncionarioModel.destroy({ where: { FUNCIONARIO_CODIGO: req.params.id } })
             .then(acompanhamento_funcionario => res.json(acompanhamento_funcionario))
             .catch(error => res.json(error))
     }
-    
-    
+
+
 }
-module.exports = new  AcompanhamentoFuncionario()
+module.exports = new AcompanhamentoFuncionario()
