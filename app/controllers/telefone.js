@@ -59,7 +59,7 @@ class Telefone {
                         .then(() => {
                             count++
                             if (count == array.length)
-                                res.json({ message: `Foram adicionados ${count} Acompanhamentos Residentes` })
+                                res.json({ message: `Foram adicionados ${count} Telefones Familiares` })
                         })
                         .catch(error => res.json(error))
                 })
