@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
 
 const AcompanhamentoResidenteModel = sequelize.define('AcompanhamentoResidenteModel', {
 
-    RESIDENTE_CODIGO: {
+    CODIGO_RESIDENTE: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,

@@ -13,7 +13,7 @@ class Acompanhamento {
                             LEFT JOIN ACOMPANHAMENTO_FUNCIONARIO AF
                             ON AF.ACOMPANHAMENTO_CODIGO = A.CODIGO
                             LEFT JOIN FUNCIONARIO F
-                            ON F.CODIGO_FUNCIONARIO = AF.FUNCIONARIO_CODIGO
+                            ON F.CODIGO_FUNCIONARIO = AF.CODIGO_FUNCIONARIO
                             LEFT JOIN PESSOA PF
                             ON PF.CODIGO = F.PESSOA_CODIGO`,
         )
@@ -32,13 +32,13 @@ class Acompanhamento {
                             LEFT JOIN ACOMPANHAMENTO_FUNCIONARIO AF
                             ON AF.ACOMPANHAMENTO_CODIGO = A.CODIGO
                             LEFT JOIN FUNCIONARIO F
-                            ON F.CODIGO_FUNCIONARIO = AF.FUNCIONARIO_CODIGO
+                            ON F.CODIGO_FUNCIONARIO = AF.CODIGO_FUNCIONARIO
                             LEFT JOIN PESSOA PF
                             ON PF.CODIGO = F.PESSOA_CODIGO
                             LEFT JOIN ACOMPANHAMENTO_RESIDENTE AR
                             ON AR.ACOMPANHAMENTO_CODIGO = A.CODIGO
                             LEFT JOIN RESIDENTE R
-                            ON R.CODIGO_RESIDENTE = AR.RESIDENTE_CODIGO
+                            ON R.CODIGO_RESIDENTE = AR.CODIGO_RESIDENTE
                             LEFT JOIN PESSOA PR
                             ON PR.CODIGO = R.CODIGO_RESIDENTE
                             WHERE A.CODIGO = :ACOMPANHAMENTO_CODIGO`,
