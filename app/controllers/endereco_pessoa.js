@@ -22,8 +22,8 @@ class EnderecoPessoa {
                 { model: PessoaModel, as: 'PESSOA' }
             ]
         })
-        .then(EnderecoPessoa => res.json(EnderecoPessoa))
-        .catch(error => res.json(error))
+            .then(EnderecoPessoa => res.json(EnderecoPessoa))
+            .catch(error => res.json(error))
     }
 
     create(req, res) {
@@ -33,7 +33,12 @@ class EnderecoPessoa {
     }
 
     delete(req, res) {
-        EnderecoPessoaModel.destroy({ where: { PESSOA_CODIGO: req.params.id } })
+        EnderecoPessoaModel.destroy({
+            where: {
+                PESSOA_CODIGO: req.params.pessoaId,
+                ENDERECO_CODIGO: req.params.enderecoId
+            }
+        })
             .then(enderecoPessoa => res.json(enderecoPessoa))
             .catch(error => res.json(error))
     }

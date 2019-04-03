@@ -13,6 +13,6 @@ const EnderecoPessoaController = require('./../controllers/endereco_pessoa')
 
 route.get('/endereco_pessoa/:id', EnderecoPessoaController.getById)
 route.post('/endereco_pessoa', EnderecoPessoaController.create)
-route.delete('/endereco_pessoa/:id', EnderecoPessoaController.delete)
+route.delete('/endereco_pessoa/:pessoaId/:enderecoId', EnderecoPessoaController.delete)
 
 module.exports = route
