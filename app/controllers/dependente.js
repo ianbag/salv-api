@@ -37,7 +37,8 @@ class Dependente {
     delete(req, res) {
         DependenteModel.update({ STATUS: 1 }, {
             where: {
-                CODIGO_FUNCIONARIO: req.params.id,
+                NOME: req.params.dependenteNome,
+                SOBRENOME: req.params.dependenteSobrenome,
                 STATUS: 0
             }
         })
