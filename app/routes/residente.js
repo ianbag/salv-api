@@ -14,6 +14,7 @@ const ResidenteController = require('./../controllers/residente')
 route.get('/residente', ResidenteController.get)
 route.get('/residente/:id', ResidenteController.getById)
 route.get('/residenteNome', ResidenteController.getName)
+route.post('/residente', ResidenteController.create)
 route.put('/residente/:id', ResidenteController.update)
 route.delete('/residente/:id', ResidenteController.delete)
 
