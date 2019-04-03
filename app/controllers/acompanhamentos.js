@@ -24,9 +24,11 @@ class Acompanhamento {
 
     getById(req, res) {
         sequelize.query(`SELECT 
-                            A.*,
+                            A.*,    
+                                        
                             PF.NOME FUNCIONARIO_NOME, PF.SOBRENOME FUNCIONARIO_SOBRENOME,
-                            PR.NOME RESIDENTE_NOME, PR.SOBRENOME RESIDENTE_SOBRENOME
+                            PR.NOME RESIDENTE_NOME, PR.SOBRENOME RESIDENTE_SOBRENOME,
+                            AR.CODIGO_RESIDENTE, AF.CODIGO_FUNCIONARIO
                         FROM
                             ACOMPANHAMENTO A
                             LEFT JOIN ACOMPANHAMENTO_FUNCIONARIO AF
