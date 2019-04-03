@@ -85,7 +85,7 @@ class Funcionario {
                 FROM
                 PESSOA AS P
                 INNER JOIN FUNCIONARIO AS F
-                ON P.CODIGO=F.CODIGO_FUNCIONARIO`
+                ON P.CODIGO=F.PESSOA_CODIGO`
 
         )
             .then(result => {

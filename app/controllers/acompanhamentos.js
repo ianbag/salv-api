@@ -41,8 +41,8 @@ class Acompanhamento {
                             ON AR.ACOMPANHAMENTO_CODIGO = A.CODIGO
                             LEFT JOIN RESIDENTE R
                             ON R.CODIGO_RESIDENTE = AR.CODIGO_RESIDENTE
-                            LEFT JOIN PESSOA PR
-                            ON PR.CODIGO = R.CODIGO_RESIDENTE
+                            INNER JOIN PESSOA PR
+                            ON PR.CODIGO = R.PESSOA_CODIGO
                             WHERE A.CODIGO = :ACOMPANHAMENTO_CODIGO`,
             { replacements: { ACOMPANHAMENTO_CODIGO: req.params.id } })
             .then(result => {

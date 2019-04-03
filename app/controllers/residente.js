@@ -79,7 +79,7 @@ class Residente {
                 FROM
                 PESSOA AS P
                 INNER JOIN RESIDENTE AS R
-                ON P.CODIGO=R.CODIGO_RESIDENTE`
+                ON P.CODIGO=R.PESSOA_CODIGO`
 
         )
             .then(result => {
