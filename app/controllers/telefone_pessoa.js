@@ -32,7 +32,12 @@ class TelefonePessoa {
     }
 
     delete(req, res) {
-        TelefonePessoaModel.destroy({ where: { PESSOA_CODIGO: req.params.id } })
+        TelefonePessoaModel.destroy({
+            where: {
+                PESSOA_CODIGO: req.params.pessoaId,
+                TELEFONE_CODIGO: req.params.telefoneId
+            }
+        })
             .then(TelefonePessoa => res.json(TelefonePessoa))
             .catch(error => res.json(error))
     }
