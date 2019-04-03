@@ -15,9 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         DDD: {
             type: DataTypes.STRING,
-            required: true,
             max: 3,
-            allowNull: false
         },
         NUMERO: {
             type: DataTypes.STRING,

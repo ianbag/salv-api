@@ -12,6 +12,7 @@ const TelefoneController = require('./../controllers/telefone')
 route.get('/telefone', TelefoneController.get)
 route.get('/telefone/:id', TelefoneController.getById)
 route.post('/telefone', TelefoneController.create)
+route.post('/telefones', TelefoneController.createTelefoneFamiliar)
 route.put('/telefone/:id', TelefoneController.update)
 route.delete('/telefone/:id', TelefoneController.delete)
 
