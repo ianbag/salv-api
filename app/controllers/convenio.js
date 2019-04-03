@@ -81,7 +81,7 @@ class Convenio {
     delete(req, res) {
         ConvenioModel.update({ STATUS: 1 }, {
             where: {
-                CODIGO_CONVENIO: req.params.id,
+                CODIGO: req.params.id,
                 STATUS: 0
             } 
         })
