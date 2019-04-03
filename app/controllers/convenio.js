@@ -70,7 +70,7 @@ class Convenio {
     update(req, res) {
         ConvenioModel.update(req.body, {
             where: {
-                CODIGO_CONVENIO: req.params.id,
+                CODIGO: req.params.id,
                 STATUS: 0
             }
         })
