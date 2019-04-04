@@ -4,7 +4,7 @@
  * file: controllers/telefone.js
  */
 
-const { TelefoneModel } = require('./../models')
+const { TelefoneModel, TelefoneFamiliarModel } = require('./../models')
 
 class Telefone {
 
@@ -44,6 +44,27 @@ class Telefone {
         })
             .then(telefone => res.json(telefone))
             .catch(error => res.json(error))
+    }
+
+    createTelefoneFamiliar(req, res) {
+        let count = 0;
+        req.body.telefones.forEach((element, index, array) => {
+            TelefoneModel.create({NUMERO: element})
+                .then(telefone => {
+                    let TELEFONE_FAMILIAR = {
+                        FAMILIAR_CODIGO: req.body.familiar,
+                        TELEFONE_CODIGO: telefone.dataValues.CODIGO
+                    }
+                    TelefoneFamiliarModel.create(TELEFONE_FAMILIAR)
+                        .then(() => {
+                            count++
+                            if (count == array.length)
+                                res.json({ message: `Foram adicionados ${count} Telefones Familiares` })
+                        })
+                        .catch(error => res.json(error))
+                })
+                .catch(error => res.json(error))
+        })
     }
 }
 
