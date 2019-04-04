@@ -25,14 +25,17 @@ class AcompanhamentoResidente {
     }
     create(req, res) {
         let count = 0;
-        req.body.forEach(element => {
+        req.body.forEach((element, index, array) => {
             AcompanhamentoResidenteModel.create(element)
-                .then()
+                .then(() => {
+                    count++
+                    if(count == array.length)
+                        res.json({ message: `Foram adicionados ${count} Acompanhamentos Residentes` })
+                })
                 .catch(error => res.json(error))
-            count++
         })
-        res.json({ message: `Foram adicionados ${count} Acompanhamentos Residentes` })
     }
+    
     delete(req, res) {
         AcompanhamentoResidenteModel.destroy({ where: { RESIDENTE_CODIGO: req.params.id } })
             .then(acompanhamento_residente => res.json(acompanhamento_residente))
