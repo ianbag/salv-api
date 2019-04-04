@@ -1,5 +1,5 @@
 const sequelize = require('./../../database/sequelize_remote')
-ConvenioModel } = require('./../models')
+const { ConvenioModel } = require('./../models')
 
 class Convenio {
 
@@ -9,14 +9,14 @@ class Convenio {
                             T.DDD, T.NUMERO TELEFONE
                         FROM
                             CONVENIO C
-                    LEFT JOIN TELEFONE_CONVENIO TC
-                    ON TC.CONVENIO_CODIGO = C.CODIGO
-                    LEFT JOIN TELEFONE T
-                    ON T.CODIGO = TC.TELEFONE_CODIGO
+                            LEFT JOIN TELEFONE_CONVENIO TC
+                            ON TC.CONVENIO_CODIGO = C.CODIGO
+                            LEFT JOIN TELEFONE T
+                            ON T.CODIGO = TC.TELEFONE_CODIGO
                             WHERE STATUS = 0`,
         )
-        .then(result => {
-            res.json(result[0])
+            .then(result => {
+                res.json(result[0])
             })
     }
 
@@ -31,10 +31,10 @@ class Convenio {
                             ON TC.CONVENIO_CODIGO = C.CODIGO
                             LEFT JOIN TELEFONE T
                             ON T.CODIGO = TC.TELEFONE_CODIGO
-                        LEFT JOIN ENDERECO_CONVENIO EC
+                            LEFT JOIN ENDERECO_CONVENIO EC
                             ON EC.CONVENIO_CODIGO = C.CODIGO
-                        LEFT JOIN ENDERECO E
-                        ON E.CODIGO = EC.ENDERECO_CODIGO
+                            LEFT JOIN ENDERECO E
+                            ON E.CODIGO = EC.ENDERECO_CODIGO
                             WHERE C.CODIGO = ${req.params.id}`).then(result => res.json(result[0]))
     }
 
@@ -49,48 +49,48 @@ class Convenio {
                             ON TC.CONVENIO_CODIGO = C.CODIGO
                             LEFT JOIN TELEFONE T
                             ON T.CODIGO = TC.TELEFONE_CODIGO
-                        LEFT JOIN ENDERECO_CONVENIO EC
-                        ON EC.CONVENIO_CODIGO = C.CODIGO
-                        LEFT JOIN ENDERECO E
-                        ON E.CODIGO = EC.ENDERECO_CODIGO
-                        WHERE C.CODIGO = :CONVENIO_CODIGO AND STATUS = 0`,
+                            LEFT JOIN ENDERECO_CONVENIO EC
+                            ON EC.CONVENIO_CODIGO = C.CODIGO
+                            LEFT JOIN ENDERECO E
+                            ON E.CODIGO = EC.ENDERECO_CODIGO
+                            WHERE C.CODIGO = :CONVENIO_CODIGO AND STATUS = 0`,
             { replacements: { CONVENIO_CODIGO: req.params.id } })
-        .then(result => {
-            res.json(result[0])
-        })
-        
+            .then(result => {
+                res.json(result[0])
+            })
+    }
 
     create(req, res) {
-    ConvenioModel.create(req.body)
-        .then(convenio => res.json(convenio))
-        .catch(error => res.json(error))
-            
-            
-        eq, res) {
-    ConvenioModel.update(req.body, {
-        where: {
-            CODIGO: req.params.id,
-            STATUS: 0
-            }
-    }) 
-        .then(convenio => res.json(convenio))
-        .catch(error => res.json(error))
-            
-            
-        e, res) {
-    ConvenioModel.update({ STATUS: 1 }, {
-        where: {
-            CODIGO: req.params.id,
-            STATUS: 0
-            } 
-    })
+        ConvenioModel.create(req.body)
             .then(convenio => res.json(convenio))
-        .catch(error => res.json(error))
+            .catch(error => res.json(error))
+    }
+
+    update(req, res) {
+        ConvenioModel.update(req.body, {
+            where: {
+                CODIGO: req.params.id,
+                STATUS: 0
+            }
+        })
+            .then(convenio => res.json(convenio))
+            .catch(error => res.json(error))
+    }
+
+    delete(req, res) {
+        ConvenioModel.update({ STATUS: 1 }, {
+            where: {
+                CODIGO: req.params.id,
+                STATUS: 0
+            } 
+        })
+            .then(convenio => res.json(convenio))
+            .catch(error => res.json(error))
     }
 
     getName(req, res){
 
-    sequelize.query(`SELECT NOME_CONVENIO FROM CONVENIO`)
+        sequelize.query(`SELECT NOME_CONVENIO FROM CONVENIO`)
 
         .then(result => {
             res.json(result[0])
