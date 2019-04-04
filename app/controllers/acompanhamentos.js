@@ -1,5 +1,4 @@
-const sequelize = require('../../database/sequelize_remote')
-
+const sequelize = require('./../../database/sequelize_remote')
 const { AcompanhamentosModel } = require('./../models')
 
 class Acompanhamento {

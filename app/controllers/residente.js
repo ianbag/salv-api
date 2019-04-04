@@ -6,7 +6,7 @@
  * @desc Residente Controller
  */
 
-const sequelize = require('../../database/sequelize_local')
+const sequelize = require('./../../database/sequelize_remote')
 
 const { ResidenteModel, PessoaModel } = require('./../models')
 

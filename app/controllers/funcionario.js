@@ -7,8 +7,7 @@
 /**
  * author: NathanBarsoti8
  */
-
-const sequelize = require('../../database/sequelize_remote')
+const sequelize = require('./../../database/sequelize_remote')
 
 const { FuncionarioModel, PessoaModel, UsuarioModel } = require('./../models')
 

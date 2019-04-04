@@ -1,4 +1,4 @@
-const sequelize = require('../../database/sequelize_remote')
+const sequelize = require('./../../database/sequelize_remote')
 
 const { AcompanhamentoFuncionarioModel } = require('./../models/')
 

@@ -10,5 +10,6 @@ convenio.js
 funcionario.js
 residente_convenio.js
 residente_familiar.js
+residente.js
 
 Se precisar usar instância do Sequelize, utilizar instâncias da pasta DATABASE
