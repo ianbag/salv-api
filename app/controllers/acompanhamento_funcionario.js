@@ -14,7 +14,7 @@ class AcompanhamentoFuncionario {
                             LEFT JOIN ACOMPANHAMENTO_FUNCIONARIO AF
                             ON AF.ACOMPANHAMENTO_CODIGO = A.CODIGO
                             LEFT JOIN FUNCIONARIO F
-                            ON F.CODIGO_FUNCIONARIO = AF.FUNCIONARIO_CODIGO
+                            ON F.CODIGO_FUNCIONARIO = AF.CODIGO_FUNCIONARIO
                             LEFT JOIN PESSOA P
                             ON P.CODIGO = F.PESSOA_CODIGO
                             WHERE A.CODIGO = :ACOMPANHAMENTO_CODIGO`,
@@ -38,7 +38,7 @@ class AcompanhamentoFuncionario {
     }
 
     delete(req, res) {
-        AcompanhamentoFuncionarioModel.destroy({ where: { FUNCIONARIO_CODIGO: req.params.id } })
+        AcompanhamentoFuncionarioModel.destroy({ where: { CODIGO_FUNCIONARIO: req.params.id } })
             .then(acompanhamento_funcionario => res.json(acompanhamento_funcionario))
             .catch(error => res.json(error))
     }
