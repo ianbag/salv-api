@@ -1,21 +1,21 @@
 {
     "development": {
       "username": "root",
-      "database": "salv-bd-26-03",
+      "database": "testesalvbd",
       "host": "localhost",
       "port": "3306",
       "dialect": "mysql"
     },
     "test": {
       "username": "root",
-      "database": "salv-bd-26-03",
+      "database": "testesalvbd",
       "host": "localhost",
       "port": "3306",
       "dialect": "mysql"
     },
     "production": {
       "username": "root",
-      "database": "salv-bd-26-03",
+      "database": "testesalvbd",
       "host": "localhost",
       "port": "3306",
       "dialect": "mysql"

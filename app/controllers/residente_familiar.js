@@ -3,8 +3,7 @@
  * create: 23/02/2019 00h46
  * file: controllers/residente_familiar.js
  */
-
-const sequelize = require('../../database/sequelize_remote')
+const sequelize = require('./../../database/sequelize_remote')
 
 const { ResidenteFamiliarModel, ResidenteModel } = require('./../models')
 

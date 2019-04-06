@@ -7,8 +7,7 @@
 /**
  * author: NathanBarsoti8
  */
-
-const sequelize = require('../../database/sequelize_remote')
+const sequelize = require('./../../database/sequelize_remote')
 
 const { FuncionarioModel, PessoaModel, UsuarioModel } = require('./../models')
 
@@ -81,11 +80,11 @@ class Funcionario {
 
     getName(req, res) {
 
-        sequelize.query(`SELECT NOME 
+        sequelize.query(`SELECT P.NOME, F.CODIGO_FUNCIONARIO
                 FROM
                 PESSOA AS P
                 INNER JOIN FUNCIONARIO AS F
-                ON P.CODIGO=F.CODIGO_FUNCIONARIO`
+                ON P.CODIGO=F.PESSOA_CODIGO`
 
         )
             .then(result => {
