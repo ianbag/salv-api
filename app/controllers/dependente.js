@@ -17,6 +17,19 @@ class Dependente {
             .catch(error => res.json(error))
     }
 
+    getByName(req, res) {
+        DependenteModel.findAll({
+            where: {
+                CODIGO_FUNCIONARIO: req.params.id,
+                NOME: req.params.dependenteNome,
+                SOBRENOME: req.params.dependenteSobrenome,
+                STATUS: 0
+            }
+        })
+            .then(dependente => res.json(dependente))
+            .catch(error => res.json(error))
+    }
+
     create(req, res) {
         DependenteModel.create(req.body)
             .then(dependente => res.json(dependente))
@@ -26,7 +39,8 @@ class Dependente {
     update(req, res) {
         DependenteModel.update(req.body, {
             where: {
-                CODIGO_FUNCIONARIO: req.params.id,
+                NOME: req.params.dependenteNome,
+                SOBRENOME: req.params.dependenteSobrenome,
                 STATUS: 0
             }
         })
