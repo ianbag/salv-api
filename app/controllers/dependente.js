@@ -39,6 +39,7 @@ class Dependente {
     update(req, res) {
         DependenteModel.update(req.body, {
             where: {
+                CODIGO_FUNCIONARIO: req.params.id,
                 NOME: req.params.dependenteNome,
                 SOBRENOME: req.params.dependenteSobrenome,
                 STATUS: 0
