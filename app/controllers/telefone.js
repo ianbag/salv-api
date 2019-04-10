@@ -49,7 +49,7 @@ class Telefone {
     createTelefoneFamiliar(req, res) {
         let count = 0;
         req.body.telefones.forEach((element, index, array) => {
-            TelefoneModel.create({NUMERO: element})
+            TelefoneModel.create(element)
                 .then(telefone => {
                     let TELEFONE_FAMILIAR = {
                         FAMILIAR_CODIGO: req.body.familiar,
