@@ -10,6 +10,6 @@
  route.get('/dependente/:id', DependenteController.getById)
  route.post('/dependente', DependenteController.create)
  route.put('/dependente/:id', DependenteController.update)
- route.delete('/dependente/:id', DependenteController.delete)
+ route.delete('/dependente/:dependenteNome/:dependenteSobrenome', DependenteController.delete)
 
  module.exports = route

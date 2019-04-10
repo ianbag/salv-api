@@ -6,7 +6,7 @@
  * @desc Residente Controller
  */
 
-const sequelize = require('../../database/sequelize_local')
+const sequelize = require('./../../database/sequelize_remote')
 
 const { ResidenteModel, PessoaModel } = require('./../models')
 
@@ -72,18 +72,22 @@ class Residente {
                 res.json(result[0])
             })
     }
-    getName(req, res) {
-        sequelize.query(`SELECT NOME 
+
+    getName(req, res){
+
+        sequelize.query(`SELECT P.NOME, R.CODIGO_RESIDENTE
                 FROM
                 PESSOA AS P
                 INNER JOIN RESIDENTE AS R
-                ON P.CODIGO=R.CODIGO_RESIDENTE`
+                ON P.CODIGO=R.PESSOA_CODIGO`
 
         )
             .then(result => {
                 res.json(result[0])
             })
     }
+
+   
 
 
 

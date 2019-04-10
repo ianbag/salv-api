@@ -1,5 +1,4 @@
-const sequelize = require('../../database/sequelize_remote')
-
+const sequelize = require('./../../database/sequelize_remote')
 const { AcompanhamentoResidenteModel } = require('./../models')
 
 class AcompanhamentoResidente {
@@ -14,7 +13,7 @@ class AcompanhamentoResidente {
                             LEFT JOIN ACOMPANHAMENTO_RESIDENTE AR
                             ON AR.ACOMPANHAMENTO_CODIGO = A.CODIGO
                             LEFT JOIN RESIDENTE R
-                            ON R.CODIGO_RESIDENTE = AR.RESIDENTE_CODIGO
+                            ON R.CODIGO_RESIDENTE = AR.CODIGO_RESIDENTE
                             LEFT JOIN PESSOA P
                             ON P.CODIGO = R.PESSOA_CODIGO
                             WHERE A.CODIGO = ACOMPANHAMENTO_CODIGO`,
@@ -37,7 +36,7 @@ class AcompanhamentoResidente {
     }
     
     delete(req, res) {
-        AcompanhamentoResidenteModel.destroy({ where: { RESIDENTE_CODIGO: req.params.id } })
+        AcompanhamentoResidenteModel.destroy({ where: { CODIGO_RESIDENTE: req.params.id } })
             .then(acompanhamento_residente => res.json(acompanhamento_residente))
             .catch(error => res.json(error))
     }
