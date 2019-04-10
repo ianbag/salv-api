@@ -36,7 +36,7 @@ class AcompanhamentoResidente {
     }
     
     delete(req, res) {
-        AcompanhamentoResidenteModel.destroy({ where: { CODIGO_RESIDENTE: req.params.id } })
+        AcompanhamentoResidenteModel.destroy({ where: { CODIGO_RESIDENTE: req.params.id, ACOMPANHAMENTO_CODIGO: req.params.id } })
             .then(acompanhamento_residente => res.json(acompanhamento_residente))
             .catch(error => res.json(error))
     }
