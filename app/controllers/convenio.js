@@ -13,7 +13,7 @@ class Convenio {
                             ON TC.CONVENIO_CODIGO = C.CODIGO
                             LEFT JOIN TELEFONE T
                             ON T.CODIGO = TC.TELEFONE_CODIGO
-                            WHERE STATUS = 0`,
+                            WHERE STATUS = 1`,
         )
             .then(result => {
                 res.json(result[0])
@@ -53,7 +53,7 @@ class Convenio {
                             ON EC.CONVENIO_CODIGO = C.CODIGO
                             LEFT JOIN ENDERECO E
                             ON E.CODIGO = EC.ENDERECO_CODIGO
-                            WHERE C.CODIGO = :CONVENIO_CODIGO AND STATUS = 0`,
+                            WHERE C.CODIGO = :CONVENIO_CODIGO AND STATUS = 1`,
             { replacements: { CONVENIO_CODIGO: req.params.id } })
             .then(result => {
                 res.json(result[0])
@@ -70,7 +70,7 @@ class Convenio {
         ConvenioModel.update(req.body, {
             where: {
                 CODIGO: req.params.id,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(convenio => res.json(convenio))
@@ -78,10 +78,10 @@ class Convenio {
     }
 
     delete(req, res) {
-        ConvenioModel.update({ STATUS: 1 }, {
+        ConvenioModel.update({ STATUS: 0 }, {
             where: {
                 CODIGO: req.params.id,
-                STATUS: 0
+                STATUS: 1
             } 
         })
             .then(convenio => res.json(convenio))

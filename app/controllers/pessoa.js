@@ -12,7 +12,7 @@ class Pessoa {
     get(req, res) {
         PessoaModel.findAll({
             raw: true,
-            where: { STATUS: 0 }
+            where: { STATUS: 1 }
         })
             .then(pessoa => res.json(pessoa))
             .catch(error => res.json(error))
