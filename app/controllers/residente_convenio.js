@@ -38,10 +38,10 @@ class ResidenteConvenio {
     }
 
     delete(req, res) {
-        ResidenteConvenioModel.update({ STATUS: 1 }, {
+        ResidenteConvenioModel.update({ STATUS: 0 }, {
             where: {
                 RESIDENTE_CODIGO: req.params.id,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(residenteConvenio => res.json(residenteConvenio))

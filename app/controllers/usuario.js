@@ -46,10 +46,10 @@ class Usuario {
 
 
     delete(req, res) {
-        UsuarioModel.update({ STATUS: 1 }, {
+        UsuarioModel.update({ STATUS: 0 }, {
             where: {
                 EMAIL: req.params.email,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(usuario => res.json(usuario))

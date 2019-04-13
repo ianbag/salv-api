@@ -84,7 +84,8 @@ class Acompanhamento {
     update(req, res) {
         AcompanhamentosModel.update(req.body, {
             where: {
-                CODIGO: req.params.id
+                CODIGO: req.params.id,
+                STATUS: 1
             }
         })
             .then(acompanhamento => res.json(acompanhamento))

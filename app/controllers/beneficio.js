@@ -14,7 +14,7 @@ class Beneficio {
     get(req, res) {
         BeneficioModel.findAll({
             raw: true,
-            where: { STATUS: 0 }
+            where: { STATUS: 1 }
         })
             .then(beneficio => res.json(beneficio))
             .catch(error => res.json(error))
@@ -24,7 +24,7 @@ class Beneficio {
         BeneficioModel.findOne({
             where: {
                 NOME_BENEFICIO: req.params.name,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(beneficio => res.json(beneficio))
@@ -41,7 +41,7 @@ class Beneficio {
         BeneficioModel.update(req.body, {
             where: {
                 NOME_BENEFICIO: req.params.name,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(beneficio => res.json(beneficio))
@@ -49,10 +49,10 @@ class Beneficio {
     }
 
     delete(req, res) {
-        BeneficioModel.update({ STATUS: 1 }, {
+        BeneficioModel.update({ STATUS: 0 }, {
             where: {
                 NOME_BENEFICIO: req.params.name,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(beneficio => res.json(beneficio))

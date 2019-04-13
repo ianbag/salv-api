@@ -10,7 +10,7 @@ class Dependente {
         DependenteModel.findAll({
             where: {
                 CODIGO_FUNCIONARIO: req.params.id,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(dependente => res.json(dependente))
@@ -23,7 +23,7 @@ class Dependente {
                 CODIGO_FUNCIONARIO: req.params.id,
                 NOME: req.params.dependenteNome,
                 SOBRENOME: req.params.dependenteSobrenome,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(dependente => res.json(dependente))
@@ -42,7 +42,7 @@ class Dependente {
                 CODIGO_FUNCIONARIO: req.params.id,
                 NOME: req.params.dependenteNome,
                 SOBRENOME: req.params.dependenteSobrenome,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(dependente => res.json(dependente))
@@ -50,11 +50,11 @@ class Dependente {
     }
 
     delete(req, res) {
-        DependenteModel.update({ STATUS: 1 }, {
+        DependenteModel.update({ STATUS: 0 }, {
             where: {
                 NOME: req.params.dependenteNome,
                 SOBRENOME: req.params.dependenteSobrenome,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(dependente => res.json(dependente))

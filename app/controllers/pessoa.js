@@ -21,7 +21,7 @@ class Pessoa {
         PessoaModel.findOne({
             where: { 
                 CODIGO: req.params.id,
-                STATUS: 0
+                STATUS: 1
             } 
         })
             .then(pessoa => res.json(pessoa))
@@ -36,17 +36,17 @@ class Pessoa {
         PessoaModel.update(req.body, {
             where: {
                 CODIGO: req.params.id,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(pessoa => res.json(pessoa))
             .catch(error => res.json(error))
     }
     delete(req, res) {
-        PessoaModel.update({ STATUS: 1 }, {
+        PessoaModel.update({ STATUS: 0 }, {
             where: {
                 CODIGO: req.params.id,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(pessoa => res.json(pessoa))
