@@ -7,8 +7,8 @@ const crypto = require('crypto')
 const async = require('async')
 const hbs = require('nodemailer-express-handlebars')
 const path = require('path')
-const email = process.env.MAILER_EMAIL_ID || 'auth_email_address@gmail.com'
-const pass = process.env.MAILER_PASSWORD || 'auth_email_pass'
+const email = process.env.MAILER_EMAIL_ID || 'drvida.redefinicao@gmail.com'
+const pass = process.env.MAILER_PASSWORD || 'drvida_redefinicao_2019'
 const nodemailer = require('nodemailer')
 
 const smtpTransport = nodemailer.createTransport({
@@ -32,7 +32,7 @@ exports.forgot_password = function (req, res) {
         function (done) {
             UsuarioModel.findOne({
                 email: req.body.email
-            }).exec(function (err, user) {
+            }).then(function (err, user) {
                 if (user) {
                     done(err, user)
                 } else {

@@ -5,7 +5,6 @@ const bodyParser = require('body-parser')
 const port = 3000
 
 app.use(cors())
-app.use(flash())
 
 const PessoaRoute = require('./app/routes/pessoa')
 const FamiliarRoute = require('./app/routes/familiar')
@@ -47,8 +46,7 @@ app.get('/', function (req, res) {
 
 app.post('/login', handleAuthentication)
 
-app.post('/esqueci-a-senha')
-    .get(forgot.render_forgot_password_template)
+app.route('/esqueci-a-senha')
     .post(forgot.forgot_password)
 
 //API Pessoa
