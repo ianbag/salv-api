@@ -49,6 +49,9 @@ app.post('/login', handleAuthentication)
 app.route('/esqueci-a-senha')
     .post(forgot.forgot_password)
 
+app.route('/redefinir-senha/:token')
+    .post(forgot.reset_password)
+
 //API Pessoa
 app.use('/', /*handleAuthorization,*/ PessoaRoute)
 

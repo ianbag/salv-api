@@ -2,6 +2,7 @@ const sequelize = require('./../database/sequelize_remote')
 const DataTypes = sequelize.DataTypes
 const UsuarioModel = require('./../app/models/usuario')(sequelize, DataTypes)
 const crypto = require('crypto')
+const bcrypt = require('bcrypt')
 const fs = require('fs')
 const handlebars = require('handlebars')
 const nodemailer = require('nodemailer')
@@ -79,6 +80,63 @@ exports.forgot_password = function (req, res) {
             })
           }
         })
+    }
+  })
+}
+
+exports.reset_password = function (req, res, next) {
+  UsuarioModel.findOne({
+    where: {
+      RESET_PASSWORD_TOKEN: req.params.token,
+      RESET_PASSWORD_EXPIRES: {
+        $gt: Date.now()
+      }
+    }
+  }).then(async (user) => {
+    if (!user) {
+      res.status(422).json({ message: 'Ocorreu um erro' })
+    } else {
+      if (req.body.newPassword === req.body.verifyPassword) {
+        JSON.stringify(req.body.newPassword)
+        const salt = await bcrypt.genSaltSync(10)
+        hashPass = await bcrypt.hash(req.body.newPassword, salt)
+        user.RESET_PASSWORD_TOKEN = undefined
+        user.RESET_PASSWORD_EXPIRES = undefined
+        UsuarioModel.update({
+          SENHA: hashPass,
+          RESET_PASSWORD_TOKEN: user.RESET_PASSWORD_TOKEN,
+          RESET_PASSWORD_EXPIRES: user.RESET_PASSWORD_EXPIRES
+        },
+          {
+            where: {
+              EMAIL: user.EMAIL,
+              STATUS: 1
+            }
+          }).then((updated) => {
+            readtHTMLFile(__dirname + './../templates/reset-password-email.html', function (err, html) {
+              var template = handlebars.compile(html)
+              var replacements = {
+                name: user.LOGIN
+              }
+              var htmlToSend = template(replacements)
+              var mailOptions = {
+                to: user.EMAIL,
+                from: email,
+                html: htmlToSend,
+                subject: 'Doutor Vida | Senha redefinida'
+              }
+              smtpTransport.sendMail(mailOptions, function (err, info) {
+                if (err) {
+                  res.status(442).json({ message: 'Serviço Indisponível' })
+                } else {
+                  res.status(200).json({ message: 'Senha redefinida com sucesso.' })
+                }
+              })
+            })
+          }).catch((err) => {
+            res.status(422).json({ message: 'Serviço Indisponível' + err })
+          })
+      }
     }
   })
 }
