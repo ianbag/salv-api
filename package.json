@@ -15,10 +15,13 @@
     "chai-http": "^4.2.1",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "express-flash": "0.0.2",
     "jsonwebtoken": "^8.5.0",
     "mocha": "^5.2.0",
     "monk": "^6.0.6",
     "mysql2": "^1.6.5",
+    "nodemailer": "^6.1.0",
+    "nodemailer-express-handlebars": "^3.0.0",
     "nodemon": "^1.18.10",
     "sequelize": "^4.38.0"
   },
