@@ -4,6 +4,7 @@ const UsuarioModel = require('./../app/models/usuario')(sequelize, DataTypes)
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const crypto = require('crypto')
+const async = require('async')
 const hbs = require('nodemailer-express-handlebars')
 const path = require('path')
 const email = process.env.MAILER_EMAIL_ID || 'auth_email_address@gmail.com'
