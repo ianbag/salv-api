@@ -100,12 +100,10 @@ exports.reset_password = function (req, res, next) {
         JSON.stringify(req.body.newPassword)
         const salt = await bcrypt.genSaltSync(10)
         hashPass = await bcrypt.hash(req.body.newPassword, salt)
-        user.RESET_PASSWORD_TOKEN = undefined
-        user.RESET_PASSWORD_EXPIRES = undefined
         UsuarioModel.update({
           SENHA: hashPass,
-          RESET_PASSWORD_TOKEN: user.RESET_PASSWORD_TOKEN,
-          RESET_PASSWORD_EXPIRES: user.RESET_PASSWORD_EXPIRES
+          RESET_PASSWORD_TOKEN: null,
+          RESET_PASSWORD_EXPIRES: null
         },
           {
             where: {
