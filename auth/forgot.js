@@ -46,7 +46,7 @@ exports.forgot_password = function (req, res) {
       var token = crypto.randomBytes(20).toString('hex')
       UsuarioModel.update({
         RESET_PASSWORD_TOKEN: token,
-        RESET_PASSWORD_EXPIRES: Date.now() + 86400000
+        RESET_PASSWORD_EXPIRES: Date.now() + 3600
       },
         {
           where: {
