@@ -19,3 +19,4 @@ var handlebarsOptions= {
 }
 
 smtpTransport.use('compile', hbs(handlebarsOptions))
+
