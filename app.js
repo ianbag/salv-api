@@ -49,7 +49,7 @@ app.post('/login', handleAuthentication)
 app.route('/esqueci-a-senha')
     .post(forgot.forgot_password)
 
-app.route('/redefinir-senha/:token')
+app.route('/esqueci-a-senha/:token')
     .post(forgot.reset_password)
 
 //API Pessoa

@@ -9,7 +9,7 @@ const nodemailer = require('nodemailer')
 
 const email = 'drvidaredefinicao@gmail.com'
 const senha = 'drvida2019'
-const url = "http://localhost:3000/esqueci-a-senha?token="
+const url = "http://localhost:4200/esqueci-a-senha/"
 
 const readtHTMLFile = function (path, callback) {
   fs.readFile(path, { encoding: 'utf-8' }, function (err, html) {
@@ -37,7 +37,7 @@ const smtpTransport = nodemailer.createTransport({
 exports.forgot_password = function (req, res) {
   UsuarioModel.findOne({
     where: {
-      EMAIL: req.body.email
+      EMAIL: req.body.EMAIL
     }
   }).then((user) => {
     if (!user) {
