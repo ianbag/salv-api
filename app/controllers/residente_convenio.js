@@ -26,7 +26,7 @@ class ResidenteConvenio {
                             LEFT JOIN TELEFONE T
                             ON T.CODIGO = TC.TELEFONE_CODIGO
                             WHERE RESIDENTE_CODIGO = :RESIDENTE_CODIGO AND
-                            RC.STATUS = 0`,
+                            RC.STATUS = 1`,
             { replacements: { RESIDENTE_CODIGO: req.params.id } })
             .then(result => {
                 res.json(result[0])
@@ -52,7 +52,7 @@ class ResidenteConvenio {
                             LEFT JOIN TELEFONE T
                             ON T.CODIGO = TC.TELEFONE_CODIGO
                             WHERE RC.NUMERO_CONVENIO = :NUMERO_CONVENIO AND
-                            RC.STATUS = 0`,
+                            RC.STATUS = 1`,
             { replacements: { NUMERO_CONVENIO: req.params.id } })
             .then(result => {
                 res.json(result[0])
@@ -76,11 +76,10 @@ class ResidenteConvenio {
     }
 
     delete(req, res) {
-        ResidenteConvenioModel.update({ STATUS: 1 }, {
+        ResidenteConvenioModel.update({ STATUS: 0 }, {
             where: {
                 NUMERO_CONVENIO: req.params.id,
-
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(residenteConvenio => res.json(residenteConvenio))

@@ -24,7 +24,7 @@ class Funcionario {
                             FUNCIONARIO F
                             LEFT JOIN PESSOA P
                             ON P.CODIGO = F.PESSOA_CODIGO
-                            WHERE F.STATUS = 0`,
+                            WHERE F.STATUS = 1`,
         )
             .then(result => {
                 res.json(result[0])
@@ -39,7 +39,7 @@ class Funcionario {
         FuncionarioModel.findOne({
             where: {
                 CODIGO_FUNCIONARIO: req.params.id,
-                STATUS: 0
+                STATUS: 1
             },
             include: [
                 { model: PessoaModel, as: 'PESSOA' },
@@ -60,7 +60,7 @@ class Funcionario {
         FuncionarioModel.update(req.body, {
             where: {
                 CODIGO_FUNCIONARIO: req.params.id,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(funcionario => res.json(funcionario))
@@ -68,10 +68,10 @@ class Funcionario {
     }
 
     delete(req, res) {
-        FuncionarioModel.update({ STATUS: 1 }, {
+        FuncionarioModel.update({ STATUS: 0 }, {
             where: {
                 CODIGO_FUNCIONARIO: req.params.id,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(funcionario => res.json(funcionario))
@@ -80,7 +80,7 @@ class Funcionario {
 
     getName(req, res) {
 
-        sequelize.query(`SELECT P.NOME, F.CODIGO_FUNCIONARIO
+        sequelize.query(`SELECT P.NOME AS FNOME, F.CODIGO_FUNCIONARIO
                 FROM
                 PESSOA AS P
                 INNER JOIN FUNCIONARIO AS F

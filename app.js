@@ -3,6 +3,7 @@ const cors = require('cors')
 const app = express()
 const bodyParser = require('body-parser')
 const port = 3000
+
 app.use(cors())
 
 const PessoaRoute = require('./app/routes/pessoa')
@@ -29,6 +30,7 @@ const AcompanhamentoResidente = require('./app/routes/acompanhamento_residente')
 
 const handleAuthentication = require('./auth/auth')
 const handleAuthorization = require('./auth/authz')
+const forgot = require('./auth/forgot')
 
 /*
 * CONFIG bodyParser
@@ -43,6 +45,12 @@ app.get('/', function (req, res) {
 })
 
 app.post('/login', handleAuthentication)
+
+app.route('/esqueci-a-senha')
+    .post(forgot.forgot_password)
+
+app.route('/esqueci-a-senha/:token')
+    .post(forgot.reset_password)
 
 //API Pessoa
 app.use('/', /*handleAuthorization,*/ PessoaRoute)

@@ -5,16 +5,12 @@ class Acompanhamento {
 
     getAll(req, res) {
         sequelize.query(`SELECT 
-                            A.*,
-                            PF.NOME FUNCIONARIO_NOME, PF.SOBRENOME FUNCIONARIO_SOBRENOME
+                            A.*
+                            
                         FROM
                             ACOMPANHAMENTO A
-                            LEFT JOIN ACOMPANHAMENTO_FUNCIONARIO AF
-                            ON AF.ACOMPANHAMENTO_CODIGO = A.CODIGO
-                            LEFT JOIN FUNCIONARIO F
-                            ON F.CODIGO_FUNCIONARIO = AF.CODIGO_FUNCIONARIO
-                            LEFT JOIN PESSOA PF
-                            ON PF.CODIGO = F.PESSOA_CODIGO`,
+                            
+                            `,
         )
             .then(result => {
                 res.json(result[0])
@@ -23,22 +19,21 @@ class Acompanhamento {
 
     getById(req, res) {
         sequelize.query(`SELECT 
-                            A.*,    
-                                        
-                            PF.NOME FUNCIONARIO_NOME, PF.SOBRENOME FUNCIONARIO_SOBRENOME,
-                            PR.NOME RESIDENTE_NOME, PR.SOBRENOME RESIDENTE_SOBRENOME,
+                            A.*,                                            
+                            PF.NOME FUNCIONARIO_NOME , 
+                            PR.NOME RESIDENTE_NOME ,
                             AR.CODIGO_RESIDENTE, AF.CODIGO_FUNCIONARIO
                         FROM
                             ACOMPANHAMENTO A
-                            LEFT JOIN ACOMPANHAMENTO_FUNCIONARIO AF
+                            INNER JOIN ACOMPANHAMENTO_FUNCIONARIO AF
                             ON AF.ACOMPANHAMENTO_CODIGO = A.CODIGO
-                            LEFT JOIN FUNCIONARIO F
+                            INNER JOIN FUNCIONARIO F
                             ON F.CODIGO_FUNCIONARIO = AF.CODIGO_FUNCIONARIO
-                            LEFT JOIN PESSOA PF
+                            INNER JOIN PESSOA PF
                             ON PF.CODIGO = F.PESSOA_CODIGO
-                            LEFT JOIN ACOMPANHAMENTO_RESIDENTE AR
+                            INNER JOIN ACOMPANHAMENTO_RESIDENTE AR
                             ON AR.ACOMPANHAMENTO_CODIGO = A.CODIGO
-                            LEFT JOIN RESIDENTE R
+                            INNER JOIN RESIDENTE R
                             ON R.CODIGO_RESIDENTE = AR.CODIGO_RESIDENTE
                             INNER JOIN PESSOA PR
                             ON PR.CODIGO = R.PESSOA_CODIGO
@@ -49,6 +44,37 @@ class Acompanhamento {
             })
     }
 
+    getResidenteByIdAc(req, res) {
+        sequelize.query(`SELECT R.CODIGO_RESIDENTE, P.NOME, P.SOBRENOME FROM PESSOA AS P
+        INNER JOIN RESIDENTE AS R
+        ON P.CODIGO = R.PESSOA_CODIGO
+        INNER JOIN ACOMPANHAMENTO_RESIDENTE AS AR
+        ON R.CODIGO_RESIDENTE = AR.CODIGO_RESIDENTE
+        INNER JOIN ACOMPANHAMENTO AS A
+        ON AR.ACOMPANHAMENTO_CODIGO = A.CODIGO
+        WHERE A.CODIGO = :ACOMPANHAMENTO_CODIGO`,
+            { replacements: { ACOMPANHAMENTO_CODIGO: req.params.id } })
+            .then(result => {
+                res.json(result[0])
+            })
+    }
+
+    getFuncionarioByIdAc(req, res) {
+        sequelize.query(`SELECT F.CODIGO_FUNCIONARIO, P.NOME as FNOME, P.SOBRENOME FROM PESSOA AS P
+        INNER JOIN FUNCIONARIO AS F
+        ON P.CODIGO = F.PESSOA_CODIGO
+        INNER JOIN ACOMPANHAMENTO_FUNCIONARIO AS AF
+        ON F.CODIGO_FUNCIONARIO = AF.CODIGO_FUNCIONARIO
+        INNER JOIN ACOMPANHAMENTO AS A
+        ON AF.ACOMPANHAMENTO_CODIGO = A.CODIGO
+        WHERE A.CODIGO = :ACOMPANHAMENTO_CODIGO`,
+            { replacements: { ACOMPANHAMENTO_CODIGO: req.params.id } })
+            .then(result => {
+                res.json(result[0])
+            })
+    }
+
+
     create(req, res) {
         AcompanhamentosModel.create(req.body)
             .then(acompanhamento => res.json(acompanhamento))
@@ -58,7 +84,8 @@ class Acompanhamento {
     update(req, res) {
         AcompanhamentosModel.update(req.body, {
             where: {
-                CODIGO: req.params.id
+                CODIGO: req.params.id,
+                STATUS: 1
             }
         })
             .then(acompanhamento => res.json(acompanhamento))

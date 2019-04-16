@@ -21,6 +21,16 @@ class Usuario {
         UsuarioModel.create(req.body)
             .then(usuario => res.json(usuario))
             .catch(error => res.json(error))
+        // let count = 0;
+        // req.body.forEach((element, index, array) => {
+        //     UsuarioModel.create(element)
+        //         .then(() => {
+        //             count++
+        //             if (count == array.length)
+        //                 res.json({ message: `Foram adicionados ${count} usuarios` })
+        //         })
+        //         .catch(error => res.json(error))
+        // })
     }
 
     update(req, res) {
@@ -36,10 +46,10 @@ class Usuario {
 
 
     delete(req, res) {
-        UsuarioModel.update({ STATUS: 1 }, {
+        UsuarioModel.update({ STATUS: 0 }, {
             where: {
                 EMAIL: req.params.email,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(usuario => res.json(usuario))

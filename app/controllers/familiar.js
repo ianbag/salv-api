@@ -11,7 +11,7 @@ class Familiar {
     get(req, res) {
         FamiliarModel.findAll({ 
             raw: true,
-            where: { STATUS: 0}
+            where: { STATUS: 1}
         })
             .then(familiar => res.json(familiar))
             .catch(error => res.json(error))
@@ -21,7 +21,7 @@ class Familiar {
         FamiliarModel.findOne({
             where: {
                 CODIGO: req.params.id,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(familiar => res.json(familiar))
@@ -38,7 +38,7 @@ class Familiar {
         FamiliarModel.update(req.body, {
             where: {
                 CODIGO: req.params.id,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(familiar => res.json(familiar))
@@ -46,10 +46,10 @@ class Familiar {
     }
 
     delete(req, res) {
-        FamiliarModel.update({STATUS: 1}, {
+        FamiliarModel.update({STATUS: 0}, {
             where: {
                 CODIGO: req.params.id,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(familiar => res.json(familiar))

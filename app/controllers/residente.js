@@ -15,7 +15,7 @@ ResidenteModel.belongsTo(PessoaModel, { as: 'PESSOA', foreignKey: 'PESSOA_CODIGO
 class Residente {
     get(req, res) {
         ResidenteModel.findAll({
-            where: { STATUS: 0 },
+            where: { STATUS: 1 },
             include: [{ model: PessoaModel, as: 'PESSOA' }],
 
         })
@@ -26,7 +26,7 @@ class Residente {
         ResidenteModel.findOne({
             where: {
                 CODIGO_RESIDENTE: req.params.id,
-                STATUS: 0,
+                STATUS: 1,
             },
             include: [{ model: PessoaModel, as: 'PESSOA' }],
         })
@@ -42,17 +42,17 @@ class Residente {
         ResidenteModel.update(req.body, {
             where: {
                 CODIGO_RESIDENTE: req.params.id,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(residente => res.json(residente))
             .catch(error => res.json(error))
     }
     delete(req, res) {
-        ResidenteModel.update({ STATUS: 1 }, {
+        ResidenteModel.update({ STATUS: 0 }, {
             where: {
                 CODIGO_RESIDENTE: req.params.id,
-                STATUS: 0
+                STATUS: 1
             }
         })
             .then(residente => res.json(residente))
