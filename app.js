@@ -115,8 +115,20 @@ app.use('/', /*handleAuthorization,*/ AcompanhamentoFuncionario)
 //API ACOMPANHAMENTO RESIDENTE
 app.use('/', /*handleAuthorization,*/ AcompanhamentoResidente)
 
-app.listen(port, function () {
-    console.log(`API rodando na porta ${port}`)
+//API CONVENIO
+app.use('/', ConvenioRoute)
+
+//API TELEFONE_CONVENIO
+app.use('/', TelefoneConvenioRoute)
+
+//API ENDERECO_CONVENIO
+app.use('/', EnderecoConvenioRoute)
+
+//API RESIDENTE_CONVENIO
+app.use('/', ResidenteConvenioRoute)
+
+app.listen(3000, function () {
+    console.log("API rodando na porta 3000")
 })
 
 module.exports = app
