@@ -11,6 +11,6 @@ const ResidenteFamiliarController = require('./../controllers/residente_familiar
 
 route.get('/residente_familiar/:id', ResidenteFamiliarController.getById)
 route.post('/residente_familiar', ResidenteFamiliarController.create)
-route.delete('/residente_familiar/:id', ResidenteFamiliarController.delete)
+route.delete('/residente_familiar/:idResidente/:idFamiliar', ResidenteFamiliarController.delete)
 
 module.exports = route
