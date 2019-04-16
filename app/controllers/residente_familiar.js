@@ -12,11 +12,9 @@ ResidenteFamiliarModel.belongsTo(ResidenteModel, { as: 'RESIDENTE', foreignKey: 
 
 class ResidenteFamiliar {
     getById(req, res) {
-        let residenteFamiliarRes;
-        let responseTotal = []
         sequelize.query(`SELECT 
                             F.CODIGO, F.NOME, F.SOBRENOME, F.PARENTESCO,
-                            E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO, E.CEP, E.REFERENCIA
+                            E.CODIGO as ENDERECO_CODIGO, E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO, E.CEP, E.REFERENCIA
                         FROM 
                             RESIDENTE_FAMILIAR R
                             INNER JOIN FAMILIAR F 
@@ -28,27 +26,6 @@ class ResidenteFamiliar {
                             WHERE RESIDENTE_CODIGO = :RESIDENTE_CODIGO`,
             { replacements: { RESIDENTE_CODIGO: req.params.id } })
             .then(result => {
-               /* result[0].forEach(element => {
-                    sequelize.query(`SELECT
-                                        T.*
-                                    FROM
-                                        TELEFONE_FAMILIAR TF
-                                        INNER JOIN TELEFONE T
-                                        ON T.CODIGO = TF.TELEFONE_CODIGO
-                                        WHERE FAMILIAR_CODIGO = :FAMILIAR_CODIGO`,
-                        { replacements: { FAMILIAR_CODIGO: element.CODIGO } })
-                        .then(resultTelefone => {
-                            residenteFamiliarRes = {
-                                ...result[0],
-                                "TELEFONES": resultTelefone[0]
-                            }
-                            responseTotal.push(residenteFamiliarRes)
-                            //console.log(residenteFamiliarRes)
-                        })
-                })
-                console.log("REPSONSE TOTAL", responseTotal)
-                //res.json(residenteFamiliarRes)
-                */
                 res.json(result[0])
             })
     }
@@ -62,7 +39,8 @@ class ResidenteFamiliar {
     delete(req, res) {
         ResidenteFamiliarModel.destroy({
             where: {
-                RESIDENTE_CODIGO: req.params.id
+                RESIDENTE_CODIGO: req.params.idResidente,
+                FAMILIAR_CODIGO: req.params.idFamiliar
             }
         })
             .then(residenteFamiliar => res.json(residenteFamiliar))

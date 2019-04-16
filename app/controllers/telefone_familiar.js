@@ -30,7 +30,8 @@ class TelefoneFamiliar {
     delete(req, res) {
         TelefoneFamiliarModel.destroy({
             where: {
-                FAMILIAR_CODIGO: req.params.id
+                TELEFONE_CODIGO: req.params.idTelefone,
+                FAMILIAR_CODIGO: req.params.idFamiliar
             }
         })
             .then(telefoneFamiliar => res.json(telefoneFamiliar))

@@ -66,7 +66,8 @@ class Residente {
                             RESIDENTE R
                             LEFT JOIN PESSOA P
                             ON P.CODIGO = R.PESSOA_CODIGO
-                            WHERE MONTH(P.DATA_NASCIMENTO) = :mes`,
+                            WHERE MONTH(P.DATA_NASCIMENTO) = :mes AND
+                            R.STATUS = 1`,
             { replacements: { mes: (new Date().getMonth() + 1) } })
             .then(result => {
                 res.json(result[0])

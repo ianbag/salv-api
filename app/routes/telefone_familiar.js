@@ -11,6 +11,6 @@ const TelefoneFamiliarController = require('./../controllers/telefone_familiar')
 
 route.get('/telefone_familiar/:id', TelefoneFamiliarController.getById)
 route.post('/telefone_familiar', TelefoneFamiliarController.create)
-route.delete('/telefone_familiar/:id', TelefoneFamiliarController.delete)
+route.delete('/telefone_familiar/:idTelefone/:idFamiliar', TelefoneFamiliarController.delete)
 
 module.exports = route
