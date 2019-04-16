@@ -53,67 +53,67 @@ app.route('/esqueci-a-senha/:token')
     .post(forgot.reset_password)
 
 //API Pessoa
-app.use('/', /*handleAuthorization,*/ PessoaRoute)
+app.use('/', handleAuthorization, PessoaRoute)
 
 //API Funcionario
-app.use('/', /*handleAuthorization,*/ FuncionarioRoute)
+app.use('/', handleAuthorization, FuncionarioRoute)
 
 //API Usuario
-app.use('/', /*handleAuthorization,*/ UsuarioRoute)
+app.use('/', handleAuthorization, UsuarioRoute)
 
 //API Dependente
-app.use('/', /*handleAuthorization,*/ DependenteRoute)
+app.use('/', handleAuthorization, DependenteRoute)
 
 //API FAMILIAR
-app.use('/', /*handleAuthorization,*/ FamiliarRoute)
+app.use('/', handleAuthorization, FamiliarRoute)
 
 //API Residente
-app.use('/', /*handleAuthorization,*/ ResidenteRoute)
+app.use('/', handleAuthorization, ResidenteRoute)
 
 //API ENDEREÇO
-app.use('/', /*handleAuthorization,*/ EnderecoRoute)
+app.use('/', handleAuthorization, EnderecoRoute)
 
 //API TELEFONE
-app.use('/', /*handleAuthorization,*/ TelefoneRoute)
+app.use('/', handleAuthorization, TelefoneRoute)
 
 //API BENEFICIO
-app.use('/', /*handleAuthorization,*/ BeneficioRoute)
+app.use('/', handleAuthorization, BeneficioRoute)
 
 //API TELEFONE_FAMILIAR
-app.use('/', /*handleAuthorization,*/ TelefoneFamiliarRoute)
+app.use('/', handleAuthorization, TelefoneFamiliarRoute)
 
 //API ENDERECO_FAMILIAR
-app.use('/', /*handleAuthorization,*/ EnderecoFamiliarRoute)
+app.use('/', handleAuthorization, EnderecoFamiliarRoute)
 
 //API RESIDENTE_FAMILIAR
-app.use('/', /*handleAuthorization,*/ ResidenteFamiliarRoute)
+app.use('/', handleAuthorization, ResidenteFamiliarRoute)
 
 //API CONVENIO
-app.use('/', /*handleAuthorization,*/ ConvenioRoute)
+app.use('/', handleAuthorization, ConvenioRoute)
 
 // //API TELEFONE_CONVENIO
-app.use('/', /*handleAuthorization,*/ TelefoneConvenioRoute)
+app.use('/', handleAuthorization, TelefoneConvenioRoute)
 
 // //API ENDERECO_CONVENIO
-app.use('/', /*handleAuthorization,*/ EnderecoConvenioRoute)
+app.use('/', handleAuthorization, EnderecoConvenioRoute)
 
 // //API RESIDENTE_CONVENIO
-app.use('/', /*handleAuthorization,*/ ResidenteConvenioRoute)
+app.use('/', handleAuthorization, ResidenteConvenioRoute)
 
 //API TELEFONE_PESSOA
-app.use('/', /*handleAuthorization,*/ TelefonePessoaRoute)
+app.use('/', handleAuthorization, TelefonePessoaRoute)
 
 // API ENDERECO_PESSOA
-app.use('/', /*handleAuthorization,*/ EnderecoPessoaRoute)
+app.use('/', handleAuthorization, EnderecoPessoaRoute)
 
 //API ACOMPANHAMENTO
-app.use('/', /*handleAuthorization,*/ AcompanhamentoRoute)
+app.use('/', handleAuthorization, AcompanhamentoRoute)
 
 //API ACOMPANHAMENTO FUNCIONARIO
-app.use('/', /*handleAuthorization,*/ AcompanhamentoFuncionario)
+app.use('/', handleAuthorization, AcompanhamentoFuncionario)
 
 //API ACOMPANHAMENTO RESIDENTE
-app.use('/', /*handleAuthorization,*/ AcompanhamentoResidente)
+app.use('/', handleAuthorization, AcompanhamentoResidente)
 
 app.listen(port, function () {
     console.log(`API rodando na porta ${port}`)

@@ -46,7 +46,7 @@ exports.forgot_password = function (req, res) {
       var token = crypto.randomBytes(20).toString('hex')
       UsuarioModel.update({
         RESET_PASSWORD_TOKEN: token,
-        RESET_PASSWORD_EXPIRES: Date.now() + 3600
+        RESET_PASSWORD_EXPIRES: Date.now() + 8640000
       },
         {
           where: {
@@ -88,9 +88,9 @@ exports.reset_password = function (req, res, next) {
   UsuarioModel.findOne({
     where: {
       RESET_PASSWORD_TOKEN: req.params.token,
-      RESET_PASSWORD_EXPIRES: {
-        $gt: Date.now()
-      }
+      // RESET_PASSWORD_EXPIRES: {
+      //   $gt: Date.now()
+      // }
     }
   }).then(async (user) => {
     if (!user) {
