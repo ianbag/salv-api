@@ -11,7 +11,8 @@ class ResidenteConvenio {
         sequelize.query(`SELECT
                             C.NOME_CONVENIO, C.TIPO_CONVENIO,
                             E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO, E.CEP, E.REFERENCIA,
-                            T.DDD, T.NUMERO TELEFONE
+                            T.DDD, T.NUMERO TELEFONE,
+                            RC.NUMERO_CONVENIO, RC.TITULAR_CONVENIO, RC.PARENTESCO_TITULAR
                         FROM 
                             RESIDENTE_CONVENIO RC
                             INNER JOIN CONVENIO C
@@ -24,8 +25,35 @@ class ResidenteConvenio {
                             ON TC.CONVENIO_CODIGO = RC.CONVENIO_CODIGO
                             LEFT JOIN TELEFONE T
                             ON T.CODIGO = TC.TELEFONE_CODIGO
-                            WHERE RESIDENTE_CODIGO = :RESIDENTE_CODIGO`,
+                            WHERE RESIDENTE_CODIGO = :RESIDENTE_CODIGO AND
+                            RC.STATUS = 0`,
             { replacements: { RESIDENTE_CODIGO: req.params.id } })
+            .then(result => {
+                res.json(result[0])
+            })
+    }
+
+    getOneById(req, res) {
+        sequelize.query(`SELECT
+                            C.NOME_CONVENIO, C.TIPO_CONVENIO,
+                            E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO, E.CEP, E.REFERENCIA,
+                            T.DDD, T.NUMERO TELEFONE,
+                            RC.NUMERO_CONVENIO, RC.TITULAR_CONVENIO, RC.PARENTESCO_TITULAR
+                        FROM 
+                            RESIDENTE_CONVENIO RC
+                            INNER JOIN CONVENIO C
+                            ON C.CODIGO = RC.CONVENIO_CODIGO
+                            LEFT JOIN ENDERECO_CONVENIO EC
+                            ON EC.CONVENIO_CODIGO = RC.CONVENIO_CODIGO
+                            LEFT JOIN ENDERECO E
+                            ON E.CODIGO = EC.ENDERECO_CODIGO
+                            LEFT JOIN TELEFONE_CONVENIO TC
+                            ON TC.CONVENIO_CODIGO = RC.CONVENIO_CODIGO
+                            LEFT JOIN TELEFONE T
+                            ON T.CODIGO = TC.TELEFONE_CODIGO
+                            WHERE RC.NUMERO_CONVENIO = :NUMERO_CONVENIO AND
+                            RC.STATUS = 0`,
+            { replacements: { NUMERO_CONVENIO: req.params.id } })
             .then(result => {
                 res.json(result[0])
             })
@@ -37,10 +65,21 @@ class ResidenteConvenio {
             .catch(error => res.json(error))
     }
 
+    update(req, res) {
+        ResidenteConvenioModel.update(req.body, {
+            where: {
+                NUMERO_CONVENIO: req.params.id
+            }
+        })
+            .then(residenteConvenio => res.json(residenteConvenio))
+            .catch(error => res.json(error))
+    }
+
     delete(req, res) {
         ResidenteConvenioModel.update({ STATUS: 1 }, {
             where: {
-                RESIDENTE_CODIGO: req.params.id,
+                NUMERO_CONVENIO: req.params.id,
+
                 STATUS: 0
             }
         })
