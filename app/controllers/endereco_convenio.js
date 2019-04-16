@@ -5,7 +5,10 @@ EnderecoConvenioModel.belongsTo(ConvenioModel, {as: 'CONVENIO', foreignKey: 'CON
 
 class EnderecoConvenio {
     getById(req, res) {
-        EnderecoConvenioModel.findByPk(req.params.id, {
+        EnderecoConvenioModel.findAll({
+            where: {
+                CONVENIO_CODIGO: req.params.id
+            },
             include: [
                 {model: EnderecoModel, as: 'ENDERECO'},
                 {model: ConvenioModel, as: 'CONVENIO'}
@@ -24,7 +27,8 @@ class EnderecoConvenio {
     delete(req, res) {
         EnderecoConvenioModel.destroy({
             where: {
-                CONVENIO_CODIGO: req.params.id
+                CONVENIO_CODIGO: req.params.convenioId,
+                ENDERECO_CODIGO: req.params.enderecoId
             }
         })
             .then(enderecoConvenio => res.json(enderecoConvenio))
