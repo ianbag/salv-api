@@ -37,11 +37,17 @@ class AcompanhamentoFuncionario {
         })
     }
 
-    delete(req, res) {
-        AcompanhamentoFuncionarioModel.destroy({ where: { CODIGO_FUNCIONARIO: req.params.id } })
-            .then(acompanhamento_funcionario => res.json(acompanhamento_funcionario))
-            .catch(error => res.json(error))
-    }
+    delete(req, res){ 
+        let idFu = req.params.idFuncionario
+        let idAc = req.params.idAcompanhamento
+        let deleteAc = 'DELETE FROM ACOMPANHAMENTO_FUNCIONARIO WHERE CODIGO_FUNCIONARIO = "' + idFu + '"  AND ACOMPANHAMENTO_CODIGO = "' + idAc + '" '
+
+      sequelize.query(deleteAc)
+       .then(result => {
+           res.json(result[0])
+           })
+        }      
+        
 
 
 }
