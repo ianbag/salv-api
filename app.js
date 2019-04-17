@@ -98,7 +98,7 @@ app.use('/', /*handleAuthorization,*/ TelefoneConvenioRoute)
 app.use('/', /*handleAuthorization,*/ EnderecoConvenioRoute)
 
 // //API RESIDENTE_CONVENIO
-app.use('/', handleAuthorization, ResidenteConvenioRoute)
+app.use('/', /*handleAuthorization,*/ ResidenteConvenioRoute)
 
 //API TELEFONE_PESSOA
 app.use('/', /*handleAuthorization,*/ TelefonePessoaRoute)
