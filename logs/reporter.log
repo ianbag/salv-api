@@ -1,0 +1,51 @@
+2019-04-21T20:47:13.990Z - info: Initializing jsreport@2.4.0 in development mode using configuration file: jsreport.config.json
+2019-04-21T20:47:13.992Z - info: Searching for available extensions in P:\arquivos\fatec\gpes\salv-api\
+2019-04-21T20:47:14.009Z - info: Extensions location cache doesn't contain entry yet, crawling
+2019-04-21T20:47:16.265Z - info: Found 31 extensions
+2019-04-21T20:47:16.657Z - info: Using extension cli
+2019-04-21T20:47:16.664Z - info: Using extension debug
+2019-04-21T20:47:16.669Z - info: Using extension express
+2019-04-21T20:47:16.795Z - info: Using extension freeze
+2019-04-21T20:47:16.800Z - info: Using extension handlebars
+2019-04-21T20:47:16.803Z - info: Using extension import-export
+2019-04-21T20:47:17.023Z - info: Using extension jsrender
+2019-04-21T20:47:17.029Z - info: Using extension tags
+2019-04-21T20:47:17.036Z - info: Using extension templates
+2019-04-21T20:47:17.048Z - info: Using extension authorization
+2019-04-21T20:47:17.058Z - info: Using extension base
+2019-04-21T20:47:17.066Z - info: Using extension browser-client
+2019-04-21T20:47:17.073Z - info: Using extension child-templates
+2019-04-21T20:47:17.085Z - info: Using extension chrome-pdf
+2019-04-21T20:47:17.182Z - info: Using extension data
+2019-04-21T20:47:17.184Z - info: Using extension fs-store
+2019-04-21T20:47:18.297Z - info: Using extension licensing
+2019-04-21T20:47:18.303Z - info: Using extension pdf-utils
+2019-04-21T20:47:18.381Z - info: Using extension reports
+2019-04-21T20:47:18.388Z - info: Using extension studio
+2019-04-21T20:47:18.415Z - info: Using extension text
+2019-04-21T20:47:18.418Z - info: Using extension version-control
+2019-04-21T20:47:19.247Z - info: Using extension assets
+2019-04-21T20:47:19.261Z - info: Using extension html-to-xlsx
+2019-04-21T20:47:19.375Z - info: html-to-xlsx detected chrome as available html engine
+2019-04-21T20:47:19.378Z - info: Using extension scheduling
+2019-04-21T20:47:19.450Z - info: Using extension scripts
+2019-04-21T20:47:19.457Z - info: Using extension xlsx
+2019-04-21T20:47:19.579Z - info: Using extension public-templates
+2019-04-21T20:47:19.585Z - info: Using extension resources
+2019-04-21T20:47:19.589Z - info: Using extension sample-template
+2019-04-21T20:47:19.602Z - info: fs store is persisting using fs
+2019-04-21T20:47:19.607Z - info: fs store is synchronizing using fs
+2019-04-21T20:47:19.636Z - info: fs store is loading data
+2019-04-21T20:47:19.759Z - info: fs store is initialized successfully
+2019-04-21T20:47:19.788Z - info: Creating default express app.
+2019-04-21T20:47:19.923Z - info: jsreport server successfully started on http port: 3660
+2019-04-21T20:47:19.926Z - info: fs store emits sockets to synchronize underlying changes with studio
+2019-04-21T20:47:19.951Z - info: Verifying license key free
+2019-04-21T20:47:19.955Z - info: Using free license
+2019-04-21T20:47:19.963Z - info: reporter initialized
+2019-04-21T20:51:52.562Z - info: Starting rendering request 1 (user: null)
+2019-04-21T20:51:52.568Z - info: Rendering template { name: funcionarios-template, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-21T20:51:54.352Z - info: Rendering request 1 finished in 1791 ms
+2019-04-21T20:53:19.153Z - info: Starting rendering request 2 (user: null)
+2019-04-21T20:53:19.157Z - info: Rendering template { name: funcionarios-template, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-21T20:53:21.299Z - info: Rendering request 2 finished in 2151 ms
