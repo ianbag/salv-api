@@ -27,6 +27,7 @@ const DependenteRoute = require('./app/routes/dependente')
 const AcompanhamentoRoute = require('./app/routes/acompanhamentos')
 const AcompanhamentoFuncionario = require('./app/routes/acompanhamento_funcionario')
 const AcompanhamentoResidente = require('./app/routes/acompanhamento_residente')
+const RelatorioRoutes = require('./reports/routes/relatorios.routes')
 
 const handleAuthentication = require('./auth/auth')
 const handleAuthorization = require('./auth/authz')
@@ -126,6 +127,9 @@ app.use('/', EnderecoConvenioRoute)
 
 //API RESIDENTE_CONVENIO
 app.use('/', ResidenteConvenioRoute)
+
+//API RELATÓRIOS
+app.use('/', RelatorioRoutes)
 
 app.listen(3000, function () {
     console.log("API rodando na porta 3000")
