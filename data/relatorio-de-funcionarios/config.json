@@ -1,17 +1,15 @@
 {
     "folder": null,
     "shortid": "rJgzvv855E",
-    "name": "funcionarios-template",
+    "name": "relatorio-de-funcionarios",
     "recipe": "chrome-pdf",
     "engine": "handlebars",
     "chrome": {
         "printBackground": true
     },
-    "creationDate": {
-        "$$date": 1555879866222
-    },
+    "creationDate": "2019-04-21T20:51:06.222Z",
     "modificationDate": {
-        "$$date": 1555879866222
+        "$$date": 1555880526348
     },
     "_id": "F3vU0JC3njuwVhCS",
     "$entitySet": "templates"

@@ -1,6 +1,5 @@
 const sequelize = require('./../../database/sequelize_remote')
 const request = require('request')
-
 class Relatorios {
 
     funcionarios(req, res){
@@ -14,7 +13,7 @@ class Relatorios {
         ).then(result => {
             
             var data = {
-                "template": {"name": "funcionarios-template"},
+                "template": {"name": "relatorio-de-funcionarios"},
                 "data": {
                     "funcionarios": result[0]
                 },
