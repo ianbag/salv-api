@@ -1,16 +1,18 @@
 {
     "folder": null,
-    "shortid": "rJgzvv855E",
-    "name": "relatorio-de-funcionarios",
+    "shortid": "S1eSkmwc54",
+    "name": "relatorio-de-acompanhamentos",
     "recipe": "chrome-pdf",
     "engine": "handlebars",
     "chrome": {
         "printBackground": true
     },
-    "creationDate": "2019-04-21T20:51:06.222Z",
-    "modificationDate": {
-        "$$date": 1555882720397
+    "creationDate": {
+        "$$date": 1555882720396
     },
-    "_id": "F3vU0JC3njuwVhCS",
+    "modificationDate": {
+        "$$date": 1555882720396
+    },
+    "_id": "cBcAG9VV2baABocl",
     "$entitySet": "templates"
 }

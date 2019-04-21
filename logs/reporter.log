@@ -88,3 +88,12 @@
 2019-04-21T21:08:04.724Z - info: Starting rendering request 15 (user: null)
 2019-04-21T21:08:04.725Z - info: Rendering template { name: relatorio-de-funcionarios, recipe: chrome-pdf, engine: handlebars, preview: true }
 2019-04-21T21:08:06.680Z - info: Rendering request 15 finished in 1959 ms
+2019-04-21T21:44:31.425Z - info: Starting rendering request 16 (user: null)
+2019-04-21T21:44:31.427Z - info: Rendering template { name: relatorio-de-acompanhamentos, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-21T21:44:34.217Z - info: Rendering request 16 finished in 2793 ms
+2019-04-21T21:44:49.758Z - info: Starting rendering request 17 (user: null)
+2019-04-21T21:44:49.762Z - info: Rendering template { name: relatorio-de-acompanhamentos, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-21T21:44:51.560Z - info: Rendering request 17 finished in 1803 ms
+2019-04-21T21:44:51.740Z - info: Starting rendering request 18 (user: null)
+2019-04-21T21:44:51.742Z - info: Rendering template { name: relatorio-de-acompanhamentos, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-21T21:44:53.780Z - info: Rendering request 18 finished in 2041 ms
