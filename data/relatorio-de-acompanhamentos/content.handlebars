@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Relatório de acompanhamentos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1 class="display-4" style="margin-top: 10px; margin-bottom: 6px; font-size: 46; text-align: center">Relatório de
+        acompanhamentos</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr class="table-success">
+                <th scope="col">Data do acompanhamento</th>
+                <th scope="col">Atividade realizada</th>
+                <th scope="col">Nº de residentes participantes</th>
+                <th scope="col">Nº de funcionários participantes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each acompanhamentos}}
+            <tr>
+                <td>{{DATA_ACOMPANHAMENTO}}</td>
+                <td>{{ATIVIDADE}}</td>
+                <td>{{NUMERO_RESIDENTES_PARTICIPANTES}}</td>
+                <td>{{NUMERO_FUNCIONARIOS_PARTICIPANTES}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+
+</html>
