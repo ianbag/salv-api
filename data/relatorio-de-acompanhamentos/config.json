@@ -7,11 +7,9 @@
     "chrome": {
         "printBackground": true
     },
-    "creationDate": {
-        "$$date": 1555882720396
-    },
+    "creationDate": "2019-04-21T21:38:40.396Z",
     "modificationDate": {
-        "$$date": 1555882720396
+        "$$date": 1555894294977
     },
     "_id": "cBcAG9VV2baABocl",
     "$entitySet": "templates"

@@ -3,19 +3,18 @@
 
 <head>
     <title>Relatório de convênios</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-    <h1 class="display-4" style="margin-top: 10px; margin-bottom: 6px; font-size: 46; text-align:center">Relatório de
-        convênios</h1>
+    <h1 class="display-4" style="margin-top: 10px; margin-bottom: 6px; font-size: 46; text-align:center">Relatório de convênios
+    </h1>
     <table class="table table-striped">
         <thead>
             <tr class="table-success">
                 <th scope="col">Nome do convênio</th>
                 <th scope="col">Tipo do convênio</th>
-                <th scope="col">Telefone</th>th>
+                <th scope="col">Telefone</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +24,7 @@
                 <td>{{TIPO_CONVENIO}}</td>
                 <td>{{DDD}} {{NUMERO}}</td>
             </tr>
+            {{/each}}
         </tbody>
     </table>
 </body>

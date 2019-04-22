@@ -133,6 +133,46 @@ class Relatorios {
         }).catch(error => res.json(error))
     }
 
+    residentes(req, res) {
+        sequelize.query(
+            `SELECT 
+            P.NOME,
+            P.SOBRENOME,
+            DATE_FORMAT(P.DATA_NASCIMENTO, "%d/%m/%Y") AS DATA_NASCIMENTO,
+            R.APELIDO,
+            DATE_FORMAT(R.DATA_ACOLHIMENTO, "%d/%m/%Y") AS DATA_ACOLHIMENTO
+        FROM
+            PESSOA AS P
+                INNER JOIN
+            RESIDENTE AS R ON P.CODIGO = R.PESSOA_CODIGO
+        WHERE
+            P.STATUS = 1 AND R.STATUS = 1
+        ORDER BY P.NOME;`
+        ).then(result => {
+
+            var data = {
+                "template": { "name": "relatorio-de-residentes" },
+                "data": {
+                    "residentes": result[0]
+                },
+                options: {
+                    preview: true
+                }
+            }
+
+            var options = {
+                uri: REPORT_API,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                json: data
+            }
+
+            request(options).pipe(res)
+        }).catch(error => res.json(error))
+    }
+
 }
 
 module.exports = new Relatorios()

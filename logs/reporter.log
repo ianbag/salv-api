@@ -191,3 +191,6 @@ Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
 2019-04-22T00:18:41.188Z - info: Starting rendering request 5 (user: null)
 2019-04-22T00:18:41.192Z - info: Rendering template { name: relatorio-de-convenios, recipe: chrome-pdf, engine: handlebars, preview: true }
 2019-04-22T00:18:42.771Z - info: Rendering request 5 finished in 1585 ms
+2019-04-22T00:52:05.918Z - info: Starting rendering request 6 (user: null)
+2019-04-22T00:52:05.922Z - info: Rendering template { name: relatorio-de-residentes, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-22T00:52:08.290Z - info: Rendering request 6 finished in 2376 ms
