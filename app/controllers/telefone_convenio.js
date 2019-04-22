@@ -3,15 +3,20 @@ const { TelefoneConvenioModel, TelefoneModel, ConvenioModel } = require('../mode
 
 TelefoneConvenioModel.belongsTo(TelefoneModel, {as: 'TELEFONE', foreignKey: 'TELEFONE_CODIGO'})
 TelefoneConvenioModel.belongsTo(ConvenioModel, {as: 'CONVENIO', foreignKey: 'CONVENIO_CODIGO'})
+
 class TelefoneConvenio {
 
     getById(req, res) {
-        TelefoneConvenioModel.findByPk(req.params.id, {
+        TelefoneConvenioModel.findAll({
+            where: {
+                CONVENIO_CODIGO: req.params.id
+            },
             include: [
-                {model: TelefoneModel, as: 'TELEFONE'},
-                {model: ConvenioModel, as: 'CONVENIO'}
+                { model: TelefoneModel, as: 'TELEFONE' },
+                { model: ConvenioModel, as: 'CONVENIO' }
             ]
         })
+
             .then(telefoneConvenio => res.json(telefoneConvenio))
             .catch(error => res.json(error))
     }
