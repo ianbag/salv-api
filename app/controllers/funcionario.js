@@ -18,13 +18,28 @@ class Funcionario {
 
     get(req, res) {
         sequelize.query(`SELECT
-                            F.CODIGO_FUNCIONARIO CODIGO,
+                            F.CODIGO_FUNCIONARIO CODIGO, F.DATA_ADMISSAO,
                             P.NOME FUNCIONARIO_NOME, P.SOBRENOME FUNCIONARIO_SOBRENOME, P.CPF, P.RG
                         FROM
                             FUNCIONARIO F
                             LEFT JOIN PESSOA P
                             ON P.CODIGO = F.PESSOA_CODIGO
                             WHERE F.STATUS = 1`,
+        )
+            .then(result => {
+                res.json(result[0])
+            })
+    }
+
+    getInativos(req, res) {
+        sequelize.query(`SELECT
+                            F.CODIGO_FUNCIONARIO CODIGO,
+                            P.NOME FUNCIONARIO_NOME, P.SOBRENOME FUNCIONARIO_SOBRENOME, P.CPF, P.RG
+                        FROM
+                            FUNCIONARIO F
+                            LEFT JOIN PESSOA P
+                            ON P.CODIGO = F.PESSOA_CODIGO
+                            WHERE F.STATUS = 0`,
         )
             .then(result => {
                 res.json(result[0])

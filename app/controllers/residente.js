@@ -22,6 +22,17 @@ class Residente {
             .then(residente => res.json(residente))
             .catch(error => res.json(error))
     }
+
+    getInativos(req, res) {
+        ResidenteModel.findAll({
+            where: { STATUS: 0 },
+            include: [{ model: PessoaModel, as: 'PESSOA' }],
+
+        })
+            .then(residente => res.json(residente))
+            .catch(error => res.json(error))
+    }
+
     getById(req, res) {
         ResidenteModel.findOne({
             where: {
