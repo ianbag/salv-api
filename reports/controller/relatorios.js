@@ -138,7 +138,7 @@ class Relatorios {
             `SELECT 
             P.NOME,
             P.SOBRENOME,
-            DATE_FORMAT(P.DATA_NASCIMENTO, "%d/%m/%Y") AS DATA_NASCIMENTO,
+            IF(P.DATA_NASCIMENTO, DATE_FORMAT(P.DATA_NASCIMENTO, "%d/%m/%Y"), "Não especificado") AS DATA_NASCIMENTO,
             R.APELIDO,
             DATE_FORMAT(R.DATA_ACOLHIMENTO, "%d/%m/%Y") AS DATA_ACOLHIMENTO
         FROM
