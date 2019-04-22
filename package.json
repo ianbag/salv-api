@@ -20,6 +20,7 @@
     "express-flash": "0.0.2",
     "handlebars": "^4.1.2",
     "jsonwebtoken": "^8.5.0",
+    "jsreport": "^2.4.0",
     "mocha": "^5.2.0",
     "monk": "^6.0.6",
     "mysql2": "^1.6.5",

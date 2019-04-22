@@ -28,7 +28,7 @@ const handleAuthentication = (req, res) => {
                     }, apiConfig.secret)
                     res.status(200).json({ login: login.LOGIN, accessToken: token })
                 } else {
-                    res.status(403).json({ message: "Não autenticado. Verifique seus dados" })
+                    res.status(401).json({ message: "Não autenticado. Verifique seus dados" })
                 }
             })
         })
