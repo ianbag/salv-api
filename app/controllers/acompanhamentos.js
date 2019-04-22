@@ -102,7 +102,7 @@ class Acompanhamento {
             .catch(error => res.json(error))
     }
 
-    getCod(req, res){ sequelize.query(`SELECT MAX(CODIGO+1)as ACOMPANHAMENTO_CODIGO FROM ACOMPANHAMENTO`,
+    getCod(req, res){ sequelize.query(`SELECT MAX(CODIGO+1) as ACOMPANHAMENTO_CODIGO FROM ACOMPANHAMENTO`,
 
 
     )

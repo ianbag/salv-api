@@ -8,6 +8,7 @@ const route = express.Router()
 const FuncionarioController = require('./../controllers/funcionario')
 
 route.get('/funcionario', FuncionarioController.get)
+route.get('/funcionarioInativo', FuncionarioController.getInativos)
 route.get('/funcionario/:id', FuncionarioController.getById)
 route.get('/funcionario-full/:id', FuncionarioController.getFuncionarioFull)
 route.get('/funcionarioNome', FuncionarioController.getName)
