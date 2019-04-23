@@ -206,3 +206,197 @@ Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
 2019-04-22T01:11:35.764Z - info: Starting rendering request 10 (user: null)
 2019-04-22T01:11:35.767Z - info: Rendering template { name: relatorio-de-residentes, recipe: chrome-pdf, engine: handlebars, preview: true }
 2019-04-22T01:11:38.185Z - info: Rendering request 10 finished in 2421 ms
+2019-04-23T01:06:49.454Z - info: Initializing jsreport@2.4.0 in development mode using configuration file: jsreport.config.json
+2019-04-23T01:06:49.456Z - info: Searching for available extensions in P:\arquivos\fatec\gpes\salv-api\
+2019-04-23T01:06:49.474Z - info: Extensions location cache C:\Users\mmpod\AppData\Local\Temp\jsreport\core\locations.json contains older information, crawling
+2019-04-23T01:06:52.490Z - info: Found 31 extensions
+2019-04-23T01:06:53.142Z - info: Using extension cli
+2019-04-23T01:06:53.151Z - info: Using extension debug
+2019-04-23T01:06:53.162Z - info: Using extension express
+2019-04-23T01:06:53.725Z - info: Using extension freeze
+2019-04-23T01:06:53.735Z - info: Using extension handlebars
+2019-04-23T01:06:53.746Z - info: Using extension import-export
+2019-04-23T01:06:55.017Z - info: Using extension jsrender
+2019-04-23T01:06:55.024Z - info: Using extension tags
+2019-04-23T01:06:55.043Z - info: Using extension templates
+2019-04-23T01:06:55.055Z - info: Using extension authorization
+2019-04-23T01:06:55.107Z - info: Using extension base
+2019-04-23T01:06:55.116Z - info: Using extension browser-client
+2019-04-23T01:06:55.133Z - info: Using extension child-templates
+2019-04-23T01:06:55.198Z - info: Using extension chrome-pdf
+2019-04-23T01:06:56.108Z - info: Using extension data
+2019-04-23T01:06:56.117Z - info: Using extension fs-store
+2019-04-23T01:06:57.836Z - info: Using extension licensing
+2019-04-23T01:06:57.860Z - info: Using extension pdf-utils
+2019-04-23T01:06:58.512Z - info: Using extension reports
+2019-04-23T01:06:58.542Z - info: Using extension studio
+2019-04-23T01:06:58.664Z - info: Using extension text
+2019-04-23T01:06:58.672Z - info: Using extension version-control
+2019-04-23T01:06:59.883Z - info: Using extension assets
+2019-04-23T01:06:59.960Z - info: Using extension html-to-xlsx
+2019-04-23T01:07:01.074Z - info: html-to-xlsx detected chrome as available html engine
+2019-04-23T01:07:01.074Z - info: Using extension scheduling
+2019-04-23T01:07:01.245Z - info: Using extension scripts
+2019-04-23T01:07:01.267Z - info: Using extension xlsx
+2019-04-23T01:07:02.697Z - info: Using extension public-templates
+2019-04-23T01:07:02.709Z - info: Using extension resources
+2019-04-23T01:07:02.721Z - info: Using extension sample-template
+2019-04-23T01:07:02.742Z - info: fs store is persisting using fs
+2019-04-23T01:07:02.743Z - info: fs store is synchronizing using fs
+2019-04-23T01:07:02.775Z - info: fs store is loading data
+2019-04-23T01:07:02.984Z - info: fs store is initialized successfully
+2019-04-23T01:07:03.051Z - info: Creating default express app.
+2019-04-23T01:07:03.614Z - info: jsreport server successfully started on http port: 3660
+2019-04-23T01:07:03.615Z - info: fs store emits sockets to synchronize underlying changes with studio
+2019-04-23T01:07:04.140Z - info: Verifying license key free
+2019-04-23T01:07:04.148Z - info: Using free license
+2019-04-23T01:07:04.166Z - info: reporter initialized
+2019-04-23T01:07:18.961Z - info: Starting rendering request 1 (user: null)
+2019-04-23T01:07:18.964Z - info: Rendering template { name: relatorio-de-funcionarios, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T01:07:19.838Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'NOME' of undefined. Error on line 25:19.
+
+  23 | 
+  24 | Handlebars.registerHelper('nomeCompleto', function(pessoa){
+> 25 |     return pessoa.NOME + " " + pessoa.SOBRENOME
+     |                   ^
+  26 | })
+
+ TypeError: Cannot read property 'NOME' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:25:19)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at eval (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:6:82)
+    at prog (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:221:12)
+    at execIteration (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\helpers\each.js:51:19)
+    at Object.<anonymous> (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\helpers\each.js:61:13)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:6:31)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+2019-04-23T01:07:19.842Z - warn: Error during processing request at http://localhost:3660/api/report
+2019-04-23T01:07:52.834Z - info: fs store is loading data
+2019-04-23T01:07:56.186Z - info: Starting rendering request 2 (user: null)
+2019-04-23T01:07:56.190Z - info: Rendering template { name: relatorio-de-funcionarios, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T01:07:59.827Z - info: Rendering request 2 finished in 3641 ms
+2019-04-23T01:08:19.749Z - info: fs store is loading data
+2019-04-23T01:08:20.695Z - info: Starting rendering request 3 (user: null)
+2019-04-23T01:08:20.697Z - info: Rendering template { name: relatorio-de-funcionarios, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T01:08:20.734Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'NOME' of undefined. Error on line 25:19.
+
+  23 | 
+  24 | Handlebars.registerHelper('nomeCompleto', function(pessoa){
+> 25 |     return pessoa.NOME + " " + pessoa.SOBRENOME
+     |                   ^
+  26 | })
+
+ TypeError: Cannot read property 'NOME' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:25:19)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at eval (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:6:82)
+    at prog (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:221:12)
+    at execIteration (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\helpers\each.js:51:19)
+    at Object.<anonymous> (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\helpers\each.js:61:13)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:6:31)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+2019-04-23T01:08:20.735Z - warn: Error during processing request at http://localhost:3660/api/report
+2019-04-23T01:08:28.222Z - info: fs store is loading data
+2019-04-23T01:08:53.535Z - info: fs store is loading data
+2019-04-23T01:09:07.775Z - info: Starting rendering request 4 (user: null)
+2019-04-23T01:09:07.777Z - info: Rendering template { name: relatorio-de-funcionarios, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T01:09:07.797Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'NOME' of undefined. Error on line 25:19.
+
+  23 | 
+  24 | Handlebars.registerHelper('nomeCompleto', function(pessoa){
+> 25 |     return pessoa.NOME + " " + pessoa.SOBRENOME
+     |                   ^
+  26 | })
+
+ TypeError: Cannot read property 'NOME' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:25:19)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at eval (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:6:82)
+    at prog (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:221:12)
+    at execIteration (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\helpers\each.js:51:19)
+    at Object.<anonymous> (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\helpers\each.js:61:13)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:6:31)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+2019-04-23T01:09:07.798Z - warn: Error during processing request at http://localhost:3660/api/report
+2019-04-23T01:09:17.867Z - info: fs store is loading data
+2019-04-23T01:09:19.947Z - info: Starting rendering request 5 (user: null)
+2019-04-23T01:09:19.950Z - info: Rendering template { name: relatorio-de-funcionarios, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T01:09:21.834Z - info: Rendering request 5 finished in 1888 ms
+2019-04-23T01:09:35.098Z - info: fs store is loading data
+2019-04-23T01:09:40.899Z - info: fs store is loading data
+2019-04-23T01:09:43.810Z - info: Starting rendering request 6 (user: null)
+2019-04-23T01:09:43.812Z - info: Rendering template { name: relatorio-de-funcionarios, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T01:09:45.882Z - info: Rendering request 6 finished in 2086 ms
+2019-04-23T01:11:45.395Z - info: Starting rendering request 7 (user: null)
+2019-04-23T01:11:45.397Z - info: Rendering template { name: relatorio-de-funcionarios, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T01:11:47.254Z - info: Rendering request 7 finished in 1860 ms
+2019-04-23T01:12:00.344Z - info: fs store is loading data
+2019-04-23T01:12:07.195Z - info: fs store is loading data
+2019-04-23T01:12:36.525Z - info: fs store is loading data
+2019-04-23T01:12:38.953Z - info: fs store is loading data
+2019-04-23T01:12:49.492Z - info: fs store is loading data
+2019-04-23T01:12:56.135Z - info: fs store is loading data
+2019-04-23T01:12:57.371Z - info: fs store is loading data
+2019-04-23T01:13:04.113Z - info: fs store is loading data
+2019-04-23T01:13:10.847Z - info: fs store is loading data
+2019-04-23T01:13:12.639Z - info: fs store is loading data
+2019-04-23T01:13:18.769Z - info: fs store is loading data
+2019-04-23T01:13:21.493Z - info: fs store is loading data
+2019-04-23T01:13:23.029Z - info: fs store is loading data
+2019-04-23T01:13:24.747Z - info: fs store is loading data
+2019-04-23T01:13:31.878Z - info: fs store is loading data
+2019-04-23T01:13:34.994Z - info: fs store is loading data
+2019-04-23T01:13:38.914Z - info: Starting rendering request 8 (user: null)
+2019-04-23T01:13:38.915Z - info: Rendering template { name: relatorio-de-funcionarios, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T01:13:40.830Z - info: Rendering request 8 finished in 1916 ms
+2019-04-23T01:13:54.198Z - info: fs store is loading data
+2019-04-23T01:13:57.734Z - info: fs store is loading data
+2019-04-23T01:14:00.012Z - info: Starting rendering request 9 (user: null)
+2019-04-23T01:14:00.014Z - info: Rendering template { name: relatorio-de-funcionarios, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T01:14:02.333Z - info: Rendering request 9 finished in 2323 ms
+2019-04-23T01:14:28.316Z - info: fs store is loading data
+2019-04-23T01:14:30.658Z - info: fs store is loading data
+2019-04-23T01:14:32.275Z - info: fs store is loading data
+2019-04-23T01:14:42.507Z - info: fs store is loading data
+2019-04-23T01:14:47.711Z - info: fs store is loading data
+2019-04-23T01:14:52.811Z - info: Starting rendering request 10 (user: null)
+2019-04-23T01:14:52.812Z - info: Rendering template { name: relatorio-de-funcionarios, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T01:14:55.400Z - info: Rendering request 10 finished in 2589 ms
+2019-04-23T01:15:07.463Z - info: fs store is loading data
+2019-04-23T01:15:09.282Z - info: fs store is loading data
+2019-04-23T01:15:11.241Z - info: fs store is loading data
+2019-04-23T01:15:13.480Z - info: fs store is loading data
+2019-04-23T01:15:17.079Z - info: fs store is loading data
+2019-04-23T01:15:19.901Z - info: fs store is loading data
+2019-04-23T01:15:23.035Z - info: fs store is loading data
+2019-04-23T01:15:25.769Z - info: fs store is loading data
+2019-04-23T01:15:26.977Z - info: fs store is loading data
+2019-04-23T01:15:28.578Z - info: fs store is loading data
+2019-04-23T01:15:31.677Z - info: fs store is loading data
+2019-04-23T01:15:33.368Z - info: fs store is loading data
+2019-04-23T01:15:35.379Z - info: fs store is loading data
+2019-04-23T01:15:38.207Z - info: fs store is loading data
+2019-04-23T01:15:40.218Z - info: fs store is loading data
+2019-04-23T01:15:42.734Z - info: fs store is loading data
+2019-04-23T01:15:44.001Z - info: fs store is loading data
+2019-04-23T01:15:45.478Z - info: fs store is loading data
+2019-04-23T01:15:47.395Z - info: fs store is loading data
+2019-04-23T01:15:50.820Z - info: fs store is loading data
+2019-04-23T01:15:52.649Z - info: fs store is loading data
+2019-04-23T01:15:58.998Z - info: fs store is loading data
+2019-04-23T01:16:00.145Z - info: fs store is loading data
+2019-04-23T01:16:02.818Z - info: Starting rendering request 11 (user: null)
+2019-04-23T01:16:02.820Z - info: Rendering template { name: relatorio-de-funcionarios, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T01:16:05.035Z - info: Rendering request 11 finished in 2217 ms
+2019-04-23T01:16:13.877Z - info: fs store is loading data
+2019-04-23T01:16:17.103Z - info: fs store is loading data
+2019-04-23T01:16:18.898Z - info: fs store is loading data
+2019-04-23T01:16:21.371Z - info: Starting rendering request 12 (user: null)
+2019-04-23T01:16:21.373Z - info: Rendering template { name: relatorio-de-funcionarios, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T01:16:23.429Z - info: Rendering request 12 finished in 2058 ms
