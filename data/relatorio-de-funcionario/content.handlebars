@@ -58,33 +58,39 @@
                 </div>
                 <br />
                 <br />
+                {{#each enderecos}}
                 <div class="row">
                     <div class="col">
-                        <strong>Endereço: </strong> Rua Nestor Fornacciari
+                        <strong>Endereço: </strong> {{ENDERECO.ENDERECO}}
                     </div>
                     <div class="col">
-                        <strong>Nº: </strong> 190
+                        <strong>Nº: </strong> {{ENDERECO.NUMERO}}
                     </div>
                     <div class="col">
-                        <strong>Bairro: </strong> Itauera II
+                        <strong>Bairro: </strong> {{ENDERECO.BAIRRO}}
                     </div>
                 </div>
                 <br />
                 <br />
                 <div class="row">
+                    {{#if ENDERECO.COMPLEMENTO}}
                     <div class="col">
-                        <strong>Complemento: </strong> 29B
+                        <strong>Complemento: </strong> {{ENDERECO.COMPLEMENTO}}
+                    </div>
+                    {{/if}}
+                    <div class="col">
+                        <strong>Cidade: </strong> {{ENDERECO.CIDADE}}
                     </div>
                     <div class="col">
-                        <strong>Cidade: </strong> Itápolis
+                        <strong>Estado: </strong> {{ENDERECO.ESTADO}}
                     </div>
+                    {{#if ENDERECO.REFERENCIA}}
                     <div class="col">
-                        <strong>Estado: </strong> SP
+                        <strong>Referência: </strong> {{ENDERECO.REFERENCIA}}
                     </div>
-                    <div class="col">
-                        <strong>Referência: </strong> Choperia Donus
-                    </div>
+                    {{/if}}
                 </div>
+                {{/each}}
                 <br />
                 <br />
                 <div class="row">

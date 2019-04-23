@@ -2120,3 +2120,375 @@ Expecting 'ID', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', got 
 2019-04-23T23:27:48.342Z - info: Starting rendering request 1 (user: null)
 2019-04-23T23:27:48.345Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: false }
 2019-04-23T23:27:54.294Z - info: Rendering request 1 finished in 5953 ms
+2019-04-23T23:30:38.062Z - info: Initializing jsreport@2.4.0 in development mode using configuration file: jsreport.config.json
+2019-04-23T23:30:38.064Z - info: Searching for available extensions in P:\arquivos\fatec\gpes\salv-api\
+2019-04-23T23:30:38.074Z - info: Extensions location cache contains up to date information, skipping crawling in P:\arquivos\fatec\gpes\salv-api\
+2019-04-23T23:30:38.340Z - info: Found 31 extensions
+2019-04-23T23:30:38.699Z - info: Using extension cli
+2019-04-23T23:30:38.703Z - info: Using extension debug
+2019-04-23T23:30:38.706Z - info: Using extension express
+2019-04-23T23:30:38.858Z - info: Using extension freeze
+2019-04-23T23:30:38.860Z - info: Using extension handlebars
+2019-04-23T23:30:38.863Z - info: Using extension import-export
+2019-04-23T23:30:39.010Z - info: Using extension jsrender
+2019-04-23T23:30:39.012Z - info: Using extension tags
+2019-04-23T23:30:39.014Z - info: Using extension templates
+2019-04-23T23:30:39.017Z - info: Using extension authorization
+2019-04-23T23:30:39.023Z - info: Using extension base
+2019-04-23T23:30:39.025Z - info: Using extension browser-client
+2019-04-23T23:30:39.029Z - info: Using extension child-templates
+2019-04-23T23:30:39.042Z - info: Using extension chrome-pdf
+2019-04-23T23:30:39.149Z - info: Using extension data
+2019-04-23T23:30:39.151Z - info: Using extension fs-store
+2019-04-23T23:30:39.396Z - info: Using extension licensing
+2019-04-23T23:30:39.401Z - info: Using extension pdf-utils
+2019-04-23T23:30:39.482Z - info: Using extension reports
+2019-04-23T23:30:39.487Z - info: Using extension studio
+2019-04-23T23:30:39.505Z - info: Using extension text
+2019-04-23T23:30:39.508Z - info: Using extension version-control
+2019-04-23T23:30:39.594Z - info: Using extension assets
+2019-04-23T23:30:39.606Z - info: Using extension html-to-xlsx
+2019-04-23T23:30:39.730Z - info: html-to-xlsx detected chrome as available html engine
+2019-04-23T23:30:39.731Z - info: Using extension scheduling
+2019-04-23T23:30:39.838Z - info: Using extension scripts
+2019-04-23T23:30:39.843Z - info: Using extension xlsx
+2019-04-23T23:30:39.968Z - info: Using extension public-templates
+2019-04-23T23:30:39.971Z - info: Using extension resources
+2019-04-23T23:30:39.974Z - info: Using extension sample-template
+2019-04-23T23:30:39.984Z - info: fs store is persisting using fs
+2019-04-23T23:30:39.985Z - info: fs store is synchronizing using fs
+2019-04-23T23:30:39.991Z - info: fs store is loading data
+2019-04-23T23:30:40.084Z - info: fs store is initialized successfully
+2019-04-23T23:30:40.116Z - info: Creating default express app.
+2019-04-23T23:30:40.224Z - info: jsreport server successfully started on http port: 3660
+2019-04-23T23:30:40.227Z - info: fs store emits sockets to synchronize underlying changes with studio
+2019-04-23T23:30:40.245Z - info: Verifying license key free
+2019-04-23T23:30:40.247Z - info: Using free license
+2019-04-23T23:30:40.252Z - info: reporter initialized
+2019-04-23T23:30:47.642Z - info: Starting rendering request 1 (user: null)
+2019-04-23T23:30:47.644Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: false }
+2019-04-23T23:30:49.941Z - info: Rendering request 1 finished in 2299 ms
+2019-04-23T23:31:36.965Z - info: Initializing jsreport@2.4.0 in development mode using configuration file: jsreport.config.json
+2019-04-23T23:31:36.967Z - info: Searching for available extensions in P:\arquivos\fatec\gpes\salv-api\
+2019-04-23T23:31:36.977Z - info: Extensions location cache contains up to date information, skipping crawling in P:\arquivos\fatec\gpes\salv-api\
+2019-04-23T23:31:37.221Z - info: Found 31 extensions
+2019-04-23T23:31:37.581Z - info: Using extension cli
+2019-04-23T23:31:37.585Z - info: Using extension debug
+2019-04-23T23:31:37.588Z - info: Using extension express
+2019-04-23T23:31:37.742Z - info: Using extension freeze
+2019-04-23T23:31:37.745Z - info: Using extension handlebars
+2019-04-23T23:31:37.748Z - info: Using extension import-export
+2019-04-23T23:31:37.891Z - info: Using extension jsrender
+2019-04-23T23:31:37.893Z - info: Using extension tags
+2019-04-23T23:31:37.895Z - info: Using extension templates
+2019-04-23T23:31:37.899Z - info: Using extension authorization
+2019-04-23T23:31:37.906Z - info: Using extension base
+2019-04-23T23:31:37.909Z - info: Using extension browser-client
+2019-04-23T23:31:37.914Z - info: Using extension child-templates
+2019-04-23T23:31:37.929Z - info: Using extension chrome-pdf
+2019-04-23T23:31:38.039Z - info: Using extension data
+2019-04-23T23:31:38.040Z - info: Using extension fs-store
+2019-04-23T23:31:38.331Z - info: Using extension licensing
+2019-04-23T23:31:38.335Z - info: Using extension pdf-utils
+2019-04-23T23:31:38.433Z - info: Using extension reports
+2019-04-23T23:31:38.438Z - info: Using extension studio
+2019-04-23T23:31:38.454Z - info: Using extension text
+2019-04-23T23:31:38.456Z - info: Using extension version-control
+2019-04-23T23:31:38.553Z - info: Using extension assets
+2019-04-23T23:31:38.569Z - info: Using extension html-to-xlsx
+2019-04-23T23:31:38.696Z - info: html-to-xlsx detected chrome as available html engine
+2019-04-23T23:31:38.697Z - info: Using extension scheduling
+2019-04-23T23:31:38.756Z - info: Using extension scripts
+2019-04-23T23:31:38.762Z - info: Using extension xlsx
+2019-04-23T23:31:38.880Z - info: Using extension public-templates
+2019-04-23T23:31:38.882Z - info: Using extension resources
+2019-04-23T23:31:38.884Z - info: Using extension sample-template
+2019-04-23T23:31:38.892Z - info: fs store is persisting using fs
+2019-04-23T23:31:38.893Z - info: fs store is synchronizing using fs
+2019-04-23T23:31:38.920Z - info: fs store is loading data
+2019-04-23T23:31:39.052Z - info: fs store is initialized successfully
+2019-04-23T23:31:39.104Z - info: Creating default express app.
+2019-04-23T23:31:39.247Z - info: jsreport server successfully started on http port: 3660
+2019-04-23T23:31:39.249Z - info: fs store emits sockets to synchronize underlying changes with studio
+2019-04-23T23:31:39.268Z - info: Verifying license key free
+2019-04-23T23:31:39.271Z - info: Using free license
+2019-04-23T23:31:39.278Z - info: reporter initialized
+2019-04-23T23:31:41.760Z - info: Starting rendering request 1 (user: null)
+2019-04-23T23:31:41.764Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: false }
+2019-04-23T23:31:44.103Z - info: Rendering request 1 finished in 2345 ms
+2019-04-23T23:31:46.748Z - info: Starting rendering request 2 (user: null)
+2019-04-23T23:31:46.750Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: false }
+2019-04-23T23:31:50.969Z - info: Rendering request 2 finished in 4221 ms
+2019-04-23T23:32:24.233Z - info: Initializing jsreport@2.4.0 in development mode using configuration file: jsreport.config.json
+2019-04-23T23:32:24.235Z - info: Searching for available extensions in P:\arquivos\fatec\gpes\salv-api\
+2019-04-23T23:32:24.246Z - info: Extensions location cache contains up to date information, skipping crawling in P:\arquivos\fatec\gpes\salv-api\
+2019-04-23T23:32:24.484Z - info: Found 31 extensions
+2019-04-23T23:32:24.849Z - info: Using extension cli
+2019-04-23T23:32:24.854Z - info: Using extension debug
+2019-04-23T23:32:24.856Z - info: Using extension express
+2019-04-23T23:32:24.983Z - info: Using extension freeze
+2019-04-23T23:32:24.986Z - info: Using extension handlebars
+2019-04-23T23:32:24.989Z - info: Using extension import-export
+2019-04-23T23:32:25.126Z - info: Using extension jsrender
+2019-04-23T23:32:25.127Z - info: Using extension tags
+2019-04-23T23:32:25.130Z - info: Using extension templates
+2019-04-23T23:32:25.133Z - info: Using extension authorization
+2019-04-23T23:32:25.139Z - info: Using extension base
+2019-04-23T23:32:25.141Z - info: Using extension browser-client
+2019-04-23T23:32:25.145Z - info: Using extension child-templates
+2019-04-23T23:32:25.155Z - info: Using extension chrome-pdf
+2019-04-23T23:32:25.282Z - info: Using extension data
+2019-04-23T23:32:25.284Z - info: Using extension fs-store
+2019-04-23T23:32:25.539Z - info: Using extension licensing
+2019-04-23T23:32:25.545Z - info: Using extension pdf-utils
+2019-04-23T23:32:25.629Z - info: Using extension reports
+2019-04-23T23:32:25.634Z - info: Using extension studio
+2019-04-23T23:32:25.649Z - info: Using extension text
+2019-04-23T23:32:25.651Z - info: Using extension version-control
+2019-04-23T23:32:25.733Z - info: Using extension assets
+2019-04-23T23:32:25.746Z - info: Using extension html-to-xlsx
+2019-04-23T23:32:25.890Z - info: html-to-xlsx detected chrome as available html engine
+2019-04-23T23:32:25.891Z - info: Using extension scheduling
+2019-04-23T23:32:25.974Z - info: Using extension scripts
+2019-04-23T23:32:25.981Z - info: Using extension xlsx
+2019-04-23T23:32:26.117Z - info: Using extension public-templates
+2019-04-23T23:32:26.120Z - info: Using extension resources
+2019-04-23T23:32:26.122Z - info: Using extension sample-template
+2019-04-23T23:32:26.129Z - info: fs store is persisting using fs
+2019-04-23T23:32:26.130Z - info: fs store is synchronizing using fs
+2019-04-23T23:32:26.132Z - info: fs store is loading data
+2019-04-23T23:32:26.234Z - info: fs store is initialized successfully
+2019-04-23T23:32:26.285Z - info: Creating default express app.
+2019-04-23T23:32:26.401Z - info: jsreport server successfully started on http port: 3660
+2019-04-23T23:32:26.403Z - info: fs store emits sockets to synchronize underlying changes with studio
+2019-04-23T23:32:26.420Z - info: Verifying license key free
+2019-04-23T23:32:26.422Z - info: Using free license
+2019-04-23T23:32:26.426Z - info: reporter initialized
+2019-04-23T23:32:31.660Z - info: Starting rendering request 1 (user: null)
+2019-04-23T23:32:31.667Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: false }
+2019-04-23T23:32:33.843Z - info: Rendering request 1 finished in 2184 ms
+2019-04-23T23:32:48.612Z - info: fs store is loading data
+2019-04-23T23:32:48.822Z - info: Starting rendering request 2 (user: null)
+2019-04-23T23:32:48.824Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:32:48.901Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'slice' of undefined. Error on line 33:19.
+
+  31 | //cpf
+  32 | Handlebars.registerHelper('cpf', function(cpf) {
+> 33 |     return `${cpf.slice(0, 3)}.${cpf.slice(3, 6)}.${cpf.slice(6, 9)}-${cpf.slice(9, 12)}`
+     |                   ^
+  34 | })
+  35 | 
+  36 | //sexo
+
+ TypeError: Cannot read property 'slice' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:33:19)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:10:64)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+2019-04-23T23:32:48.906Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-funcionario
+2019-04-23T23:32:53.197Z - info: fs store is loading data
+2019-04-23T23:32:53.460Z - info: Starting rendering request 3 (user: null)
+2019-04-23T23:32:53.462Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:32:53.478Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'slice' of undefined. Error on line 33:19.
+
+  31 | //cpf
+  32 | Handlebars.registerHelper('cpf', function(cpf) {
+> 33 |     return `${cpf.slice(0, 3)}.${cpf.slice(3, 6)}.${cpf.slice(6, 9)}-${cpf.slice(9, 12)}`
+     |                   ^
+  34 | })
+  35 | 
+  36 | //sexo
+
+ TypeError: Cannot read property 'slice' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:33:19)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:10:64)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+2019-04-23T23:32:53.479Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-funcionario
+2019-04-23T23:32:59.042Z - info: fs store is loading data
+2019-04-23T23:32:59.307Z - info: Starting rendering request 4 (user: null)
+2019-04-23T23:32:59.309Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:32:59.322Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'slice' of undefined. Error on line 35:19.
+
+  33 | //cpf
+  34 | Handlebars.registerHelper('cpf', function(cpf) {
+> 35 |     return `${cpf.slice(0, 3)}.${cpf.slice(3, 6)}.${cpf.slice(6, 9)}-${cpf.slice(9, 12)}`
+     |                   ^
+  36 | })
+  37 | 
+  38 | //sexo
+
+ TypeError: Cannot read property 'slice' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:35:19)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:10:64)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+2019-04-23T23:32:59.323Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-funcionario
+2019-04-23T23:33:00.230Z - info: fs store is loading data
+2019-04-23T23:33:00.588Z - info: Starting rendering request 5 (user: null)
+2019-04-23T23:33:00.590Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:33:00.609Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'slice' of undefined. Error on line 34:19.
+
+  32 | //cpf
+  33 | Handlebars.registerHelper('cpf', function(cpf) {
+> 34 |     return `${cpf.slice(0, 3)}.${cpf.slice(3, 6)}.${cpf.slice(6, 9)}-${cpf.slice(9, 12)}`
+     |                   ^
+  35 | })
+  36 | 
+  37 | //sexo
+
+ TypeError: Cannot read property 'slice' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:34:19)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:10:64)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+2019-04-23T23:33:00.610Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-funcionario
+2019-04-23T23:33:09.805Z - info: fs store is loading data
+2019-04-23T23:33:09.993Z - info: Starting rendering request 6 (user: null)
+2019-04-23T23:33:09.995Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:33:10.018Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'slice' of undefined. Error on line 36:19.
+
+  34 | //cpf
+  35 | Handlebars.registerHelper('cpf', function(cpf) {
+> 36 |     return `${cpf.slice(0, 3)}.${cpf.slice(3, 6)}.${cpf.slice(6, 9)}-${cpf.slice(9, 12)}`
+     |                   ^
+  37 | })
+  38 | 
+  39 | //sexo
+
+ TypeError: Cannot read property 'slice' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:36:19)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:10:64)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+2019-04-23T23:33:10.019Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-funcionario
+2019-04-23T23:33:12.919Z - info: fs store is loading data
+2019-04-23T23:33:13.094Z - info: Starting rendering request 7 (user: null)
+2019-04-23T23:33:13.096Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:33:13.115Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'slice' of undefined. Error on line 38:19.
+
+  36 |     
+  37 |     
+> 38 |     return `${cpf.slice(0, 3)}.${cpf.slice(3, 6)}.${cpf.slice(6, 9)}-${cpf.slice(9, 12)}`
+     |                   ^
+  39 | })
+  40 | 
+  41 | //sexo
+
+ TypeError: Cannot read property 'slice' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:38:19)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:10:64)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+2019-04-23T23:33:13.116Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-funcionario
+2019-04-23T23:33:18.132Z - info: fs store is loading data
+2019-04-23T23:33:18.363Z - info: Starting rendering request 8 (user: null)
+2019-04-23T23:33:18.367Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:33:18.391Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'slice' of undefined. Error on line 40:19.
+
+  38 |     }
+  39 |     
+> 40 |     return `${cpf.slice(0, 3)}.${cpf.slice(3, 6)}.${cpf.slice(6, 9)}-${cpf.slice(9, 12)}`
+     |                   ^
+  41 | })
+  42 | 
+  43 | //sexo
+
+ TypeError: Cannot read property 'slice' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:40:19)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:10:64)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+2019-04-23T23:33:18.392Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-funcionario
+2019-04-23T23:33:22.779Z - info: fs store is loading data
+2019-04-23T23:33:23.462Z - info: Starting rendering request 9 (user: null)
+2019-04-23T23:33:23.464Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:33:23.480Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'slice' of undefined. Error on line 66:20.
+
+  64 | //data de nascimento
+  65 | Handlebars.registerHelper('dataNascimento', function(dn) {
+> 66 |     const ano = dn.slice(0, 4)
+     |                    ^
+  67 |     const mes = dn.slice(5, 7)
+  68 |     const dia = dn.slice(8, 10)
+  69 |     return `${dia}/${mes}/${ano}`
+
+ TypeError: Cannot read property 'slice' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:66:20)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:14:86)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+2019-04-23T23:33:23.481Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-funcionario
+2019-04-23T23:33:32.818Z - info: fs store is loading data
+2019-04-23T23:33:33.221Z - info: Starting rendering request 10 (user: null)
+2019-04-23T23:33:33.224Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:33:33.250Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'slice' of undefined. Error on line 68:20.
+
+  66 | //data de nascimento
+  67 | Handlebars.registerHelper('dataNascimento', function (dn) {
+> 68 |     const ano = dn.slice(0, 4)
+     |                    ^
+  69 |     const mes = dn.slice(5, 7)
+  70 |     const dia = dn.slice(8, 10)
+  71 |     return `${dia}/${mes}/${ano}`
+
+ TypeError: Cannot read property 'slice' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:68:20)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:14:86)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+2019-04-23T23:33:33.253Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-funcionario
