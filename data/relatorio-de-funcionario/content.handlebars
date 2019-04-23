@@ -1,0 +1,75 @@
+<h1>Pessoa</h1>
+{{pessoa.NOME}}
+<br />
+{{pessoa.SOBRENOME}}
+<br />
+{{rg pessoa.RG}}
+<br />
+{{cpf pessoa.CPF}}
+<br />
+{{sexo pessoa.SEXO}}
+<br />
+{{estadoCivil pessoa.ESTADO_CIVIL}}
+<br />
+{{dataNascimento pessoa.DATA_NASCIMENTO}}
+<br />
+{{religiao pessoa.RELIGIAO}}
+<br />
+{{escolaridade pessoa.ESCOLARIDADE}}
+<h1>Endereços</h1>
+{{#each enderecos}}
+{{ENDERECO.ENDERECO}}
+<br />
+{{ENDERECO.NUMERO}}
+<br />
+{{ENDERECO.BAIRRO}}
+<br />
+{{ENDERECO.COMPLEMENTO}}
+<br />
+{{ENDERECO.CIDADE}}
+<br />
+{{ENDERECO.ESTADO}}
+<br />
+{{ENDERECO.CEP}}
+<br />
+{{ENDERECO.REFERENCIA}}
+<br />
+{{/each}}
+<h1>Telefones</h1>
+{{#each telefones}}
+{{TELEFONE.DDD}}
+<br />
+{{TELEFONE.NUMERO}}
+<br />
+{{/each}}
+<h1>Funcionário</h1>
+{{funcionario.CARGO}}
+<br />
+{{funcionario.DATA_ADMISSAO}}
+<br />
+{{funcionario.DATA_DEMISSAO}}
+<br />
+<h1>Dependentes</h1>
+{{#each dependentes}}
+{{NOME}}
+<br />
+{{SOBRENOME}}
+<br />
+{{DATA_NASCIMENTO}}
+<br />
+{{RG}}
+<br />
+{{CPF}}
+<br />
+{{NUMERO_CERTIDAO_NASCIMENTO}}
+<br />
+{{FOLHA_CERTIDAO_NASCIMENTO}}
+<br />
+{{LIVRO_CERTIDAO_NASCIMENTO}}
+<br />
+{{CIDADE_CERTIDAO_NASCIMENTO}}
+<br />
+{{ESTADO_CERTIDAO_NASCIMENTO}}
+<br />
+{{/each}}
+<h1>FIM</h1>
