@@ -67,14 +67,15 @@ class Residente {
                             LEFT JOIN PESSOA P
                             ON P.CODIGO = R.PESSOA_CODIGO
                             WHERE MONTH(P.DATA_NASCIMENTO) = :mes AND
-                            R.STATUS = 1`,
+                            R.STATUS = 1
+                            ORDER BY DAY(P.DATA_NASCIMENTO) ASC`,
             { replacements: { mes: (new Date().getMonth() + 1) } })
             .then(result => {
                 res.json(result[0])
             })
     }
 
-    getName(req, res){
+    getName(req, res) {
 
         sequelize.query(`SELECT P.NOME, R.CODIGO_RESIDENTE
                 FROM
@@ -88,7 +89,7 @@ class Residente {
             })
     }
 
-   
+
 
 
 
