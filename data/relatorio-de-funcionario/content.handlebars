@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Relatório de funcionário</title>
 </head>
 
@@ -23,40 +24,40 @@
             <div class="box-body" style="text-align: center">
                 <div class="row">
                     <div class="col">
-                        <strong>Nome: </strong> Hygor Podgornik
+                        <strong>Nome: </strong> {{pessoa.NOME}} {{pessoa.SOBRENOME}}
                     </div>
                     <div class="col">
-                        <strong>CPF: </strong> 317.262.438-26
+                        <strong>CPF: </strong> {{cpf pessoa.CPF}}
                     </div>
                     <div class="col">
-                        <strong>RG: </strong> 37.198.830-5
+                        <strong>RG: </strong> {{rg pessoa.RG}}
                     </div>
                 </div>
-                <br/>
-                <br/>
+                <br />
+                <br />
                 <div class="row">
                     <div class="col">
-                        <strong>Data de nascimento: </strong> 06/05/1998
+                        <strong>Data de nascimento: </strong> {{dataNascimento pessoa.DATA_NASCIMENTO}}
                     </div>
                     <div class="col">
-                        <strong>Escolaridade: </strong> Superior incompleto
+                        <strong>Escolaridade: </strong> {{escolaridade pessoa.ESCOLARIDADE}}
                     </div>
                 </div>
-                <br/>
-                <br/>
+                <br />
+                <br />
                 <div class="row">
                     <div class="col">
-                        <strong>Sexo: </strong> Masculino
+                        <strong>Sexo: </strong> {{sexo pessoa.SEXO}}
                     </div>
                     <div class="col">
-                        <strong>Estado civil: </strong> Solteiro
+                        <strong>Estado civil: </strong> {{estadoCivil pessoa.ESTADO_CIVIL}}
                     </div>
                     <div class="col">
-                        <strong>Religião: </strong> Não especificado
+                        <strong>Religião: </strong> {{religiao pessoa.RELIGIAO}}
                     </div>
                 </div>
-                <br/>
-                <br/>
+                <br />
+                <br />
                 <div class="row">
                     <div class="col">
                         <strong>Endereço: </strong> Rua Nestor Fornacciari
@@ -68,8 +69,8 @@
                         <strong>Bairro: </strong> Itauera II
                     </div>
                 </div>
-                <br/>
-                <br/>
+                <br />
+                <br />
                 <div class="row">
                     <div class="col">
                         <strong>Complemento: </strong> 29B
@@ -84,8 +85,8 @@
                         <strong>Referência: </strong> Choperia Donus
                     </div>
                 </div>
-                <br/>
-                <br/>
+                <br />
+                <br />
                 <div class="row">
                     <div class="col">
                         <strong>Telefone: </strong> (16) 32630701
@@ -94,8 +95,8 @@
                         <strong>Telefone: </strong> (16) 996095737
                     </div>
                 </div>
-                <br/>
-                <br/>
+                <br />
+                <br />
                 <div class="row">
                     <div class="col">
                         <strong>Cargo: </strong> Suporte
@@ -109,8 +110,8 @@
                 </div>
             </div>
         </div>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <div class="container" style="text-align: center; font-size: 25px">
             <div class="box box-default">
                 <div class="box-header">
@@ -118,48 +119,48 @@
                     <hr class="col-6">
                 </div>
                 <div class="box-body" style="text-align: center">
-                       <div class="row">
-                           <div class="col">
-                               <strong>Nome: </strong> Caba Cabalero
-                           </div>
-                           <div class="col">
-                               <strong>CPF: </strong> 256.652.365-52
-                           </div>
-                           <div class="col">
-                               <strong>RG: </strong> 32.544.652-5
-                           </div>
-                       </div>
-                       <br/>
-                       <br/>
-                       <div class="row">
-                           <div class="col">
-                               <strong>Data de nascimento: </strong> 05/05/2010
-                           </div>
-                       </div>
-                       <br/>
-                           <h4 style="text-align: center">Certidão de nascimento</h4>
-                        <hr class="col-1">
-                       <div class="row">
-                           <div class="col">
-                               <strong>Nº: </strong> 5616541
-                           </div>
-                           <div class="col">
-                               <strong>Folha: </strong> 12
-                           </div>
-                           <div class="col">
-                               <strong>Livro: </strong> 3AB
-                           </div>
-                       </div>
-                       <br/>
-                       <br/>
-                       <div class="row">
-                           <div class="col">
-                               <strong>Cidade: </strong> Araraquara
-                           </div>
-                           <div class="col">
-                               <strong>Estado: </strong> SP
-                           </div>
-                       </div>
+                    <div class="row">
+                        <div class="col">
+                            <strong>Nome: </strong> Caba Cabalero
+                        </div>
+                        <div class="col">
+                            <strong>CPF: </strong> 256.652.365-52
+                        </div>
+                        <div class="col">
+                            <strong>RG: </strong> 32.544.652-5
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="row">
+                        <div class="col">
+                            <strong>Data de nascimento: </strong> 05/05/2010
+                        </div>
+                    </div>
+                    <br />
+                    <h4 style="text-align: center">Certidão de nascimento</h4>
+                    <hr class="col-1">
+                    <div class="row">
+                        <div class="col">
+                            <strong>Nº: </strong> 5616541
+                        </div>
+                        <div class="col">
+                            <strong>Folha: </strong> 12
+                        </div>
+                        <div class="col">
+                            <strong>Livro: </strong> 3AB
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="row">
+                        <div class="col">
+                            <strong>Cidade: </strong> Araraquara
+                        </div>
+                        <div class="col">
+                            <strong>Estado: </strong> SP
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

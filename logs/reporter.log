@@ -1999,3 +1999,124 @@ Expecting 'ID', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', got 
 2019-04-23T23:20:36.781Z - info: Starting rendering request 168 (user: null)
 2019-04-23T23:20:36.783Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: false }
 2019-04-23T23:20:38.438Z - info: Rendering request 168 finished in 1659 ms
+2019-04-23T23:23:27.198Z - info: fs store is loading data
+2019-04-23T23:23:27.319Z - info: Starting rendering request 169 (user: null)
+2019-04-23T23:23:27.321Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:23:29.333Z - info: Rendering request 169 finished in 2014 ms
+2019-04-23T23:23:29.543Z - info: Starting rendering request 170 (user: null)
+2019-04-23T23:23:29.567Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:23:30.529Z - info: fs store is loading data
+2019-04-23T23:23:30.800Z - info: Starting rendering request 171 (user: null)
+2019-04-23T23:23:30.805Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:23:30.833Z - warn: Error when processing render request Error while executing templating engine. Parse error on line 26:
+...> {{pessoa.NOME}} {{}}                
+-----------------------^
+Expecting 'ID', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', got 'CLOSE' Error: Parse error on line 26:
+...> {{pessoa.NOME}} {{}}                
+-----------------------^
+Expecting 'ID', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', got 'CLOSE'
+    at Parser.parseError (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:267:19)
+    at Parser.parse (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:336:30)
+    at HandlebarsEnvironment.parse (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:46:43)
+    at compileInput (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:515:19)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:524:18)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+    at VM.run (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib\main.js:212:72)
+2019-04-23T23:23:30.836Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-funcionario
+2019-04-23T23:23:31.825Z - info: Rendering request 170 finished in 2300 ms
+2019-04-23T23:26:12.824Z - info: Initializing jsreport@2.4.0 in development mode using configuration file: jsreport.config.json
+2019-04-23T23:26:12.826Z - info: Searching for available extensions in P:\arquivos\fatec\gpes\salv-api\
+2019-04-23T23:26:12.842Z - info: Extensions location cache contains up to date information, skipping crawling in P:\arquivos\fatec\gpes\salv-api\
+2019-04-23T23:26:13.357Z - info: Found 31 extensions
+2019-04-23T23:26:13.900Z - info: Using extension cli
+2019-04-23T23:26:13.908Z - info: Using extension debug
+2019-04-23T23:26:13.917Z - info: Using extension express
+2019-04-23T23:26:14.430Z - info: Using extension freeze
+2019-04-23T23:26:14.438Z - info: Using extension handlebars
+2019-04-23T23:26:14.454Z - info: Using extension import-export
+2019-04-23T23:26:15.594Z - info: Using extension jsrender
+2019-04-23T23:26:15.600Z - info: Using extension tags
+2019-04-23T23:26:15.618Z - info: Using extension templates
+2019-04-23T23:26:15.629Z - info: Using extension authorization
+2019-04-23T23:26:15.678Z - info: Using extension base
+2019-04-23T23:26:15.688Z - info: Using extension browser-client
+2019-04-23T23:26:15.707Z - info: Using extension child-templates
+2019-04-23T23:26:15.790Z - info: Using extension chrome-pdf
+2019-04-23T23:26:16.673Z - info: Using extension data
+2019-04-23T23:26:16.681Z - info: Using extension fs-store
+2019-04-23T23:26:18.473Z - info: Using extension licensing
+2019-04-23T23:26:18.499Z - info: Using extension pdf-utils
+2019-04-23T23:26:19.137Z - info: Using extension reports
+2019-04-23T23:26:19.169Z - info: Using extension studio
+2019-04-23T23:26:19.259Z - info: Using extension text
+2019-04-23T23:26:19.267Z - info: Using extension version-control
+2019-04-23T23:26:20.173Z - info: Using extension assets
+2019-04-23T23:26:20.251Z - info: Using extension html-to-xlsx
+2019-04-23T23:26:21.255Z - info: html-to-xlsx detected chrome as available html engine
+2019-04-23T23:26:21.256Z - info: Using extension scheduling
+2019-04-23T23:26:21.459Z - info: Using extension scripts
+2019-04-23T23:26:21.479Z - info: Using extension xlsx
+2019-04-23T23:26:22.483Z - info: Using extension public-templates
+2019-04-23T23:26:22.491Z - info: Using extension resources
+2019-04-23T23:26:22.500Z - info: Using extension sample-template
+2019-04-23T23:26:22.516Z - info: fs store is persisting using fs
+2019-04-23T23:26:22.517Z - info: fs store is synchronizing using fs
+2019-04-23T23:26:22.520Z - info: fs store is loading data
+2019-04-23T23:26:22.630Z - info: fs store is initialized successfully
+2019-04-23T23:26:22.663Z - info: Creating default express app.
+2019-04-23T23:26:23.046Z - info: jsreport server successfully started on http port: 3660
+2019-04-23T23:26:23.049Z - info: fs store emits sockets to synchronize underlying changes with studio
+2019-04-23T23:26:23.265Z - info: Verifying license key free
+2019-04-23T23:26:23.268Z - info: Using free license
+2019-04-23T23:26:23.290Z - info: reporter initialized
+2019-04-23T23:27:22.807Z - info: Initializing jsreport@2.4.0 in development mode using configuration file: jsreport.config.json
+2019-04-23T23:27:22.810Z - info: Searching for available extensions in P:\arquivos\fatec\gpes\salv-api\
+2019-04-23T23:27:22.821Z - info: Extensions location cache contains up to date information, skipping crawling in P:\arquivos\fatec\gpes\salv-api\
+2019-04-23T23:27:23.062Z - info: Found 31 extensions
+2019-04-23T23:27:23.451Z - info: Using extension cli
+2019-04-23T23:27:23.455Z - info: Using extension debug
+2019-04-23T23:27:23.458Z - info: Using extension express
+2019-04-23T23:27:23.615Z - info: Using extension freeze
+2019-04-23T23:27:23.623Z - info: Using extension handlebars
+2019-04-23T23:27:23.628Z - info: Using extension import-export
+2019-04-23T23:27:23.784Z - info: Using extension jsrender
+2019-04-23T23:27:23.785Z - info: Using extension tags
+2019-04-23T23:27:23.788Z - info: Using extension templates
+2019-04-23T23:27:23.792Z - info: Using extension authorization
+2019-04-23T23:27:23.797Z - info: Using extension base
+2019-04-23T23:27:23.799Z - info: Using extension browser-client
+2019-04-23T23:27:23.806Z - info: Using extension child-templates
+2019-04-23T23:27:23.813Z - info: Using extension chrome-pdf
+2019-04-23T23:27:23.914Z - info: Using extension data
+2019-04-23T23:27:23.915Z - info: Using extension fs-store
+2019-04-23T23:27:24.192Z - info: Using extension licensing
+2019-04-23T23:27:24.196Z - info: Using extension pdf-utils
+2019-04-23T23:27:24.295Z - info: Using extension reports
+2019-04-23T23:27:24.300Z - info: Using extension studio
+2019-04-23T23:27:24.316Z - info: Using extension text
+2019-04-23T23:27:24.319Z - info: Using extension version-control
+2019-04-23T23:27:24.423Z - info: Using extension assets
+2019-04-23T23:27:24.436Z - info: Using extension html-to-xlsx
+2019-04-23T23:27:24.574Z - info: html-to-xlsx detected chrome as available html engine
+2019-04-23T23:27:24.575Z - info: Using extension scheduling
+2019-04-23T23:27:24.675Z - info: Using extension scripts
+2019-04-23T23:27:24.684Z - info: Using extension xlsx
+2019-04-23T23:27:24.816Z - info: Using extension public-templates
+2019-04-23T23:27:24.819Z - info: Using extension resources
+2019-04-23T23:27:24.821Z - info: Using extension sample-template
+2019-04-23T23:27:24.831Z - info: fs store is persisting using fs
+2019-04-23T23:27:24.832Z - info: fs store is synchronizing using fs
+2019-04-23T23:27:24.835Z - info: fs store is loading data
+2019-04-23T23:27:24.940Z - info: fs store is initialized successfully
+2019-04-23T23:27:24.973Z - info: Creating default express app.
+2019-04-23T23:27:25.083Z - info: jsreport server successfully started on http port: 3660
+2019-04-23T23:27:25.085Z - info: fs store emits sockets to synchronize underlying changes with studio
+2019-04-23T23:27:25.106Z - info: Verifying license key free
+2019-04-23T23:27:25.109Z - info: Using free license
+2019-04-23T23:27:25.115Z - info: reporter initialized
+2019-04-23T23:27:48.342Z - info: Starting rendering request 1 (user: null)
+2019-04-23T23:27:48.345Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: false }
+2019-04-23T23:27:54.294Z - info: Rendering request 1 finished in 5953 ms
