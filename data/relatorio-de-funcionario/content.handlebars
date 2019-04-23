@@ -1,75 +1,170 @@
-<h1>Pessoa</h1>
-{{pessoa.NOME}}
-<br />
-{{pessoa.SOBRENOME}}
-<br />
-{{rg pessoa.RG}}
-<br />
-{{cpf pessoa.CPF}}
-<br />
-{{sexo pessoa.SEXO}}
-<br />
-{{estadoCivil pessoa.ESTADO_CIVIL}}
-<br />
-{{dataNascimento pessoa.DATA_NASCIMENTO}}
-<br />
-{{religiao pessoa.RELIGIAO}}
-<br />
-{{escolaridade pessoa.ESCOLARIDADE}}
-<h1>Endereços</h1>
-{{#each enderecos}}
-{{ENDERECO.ENDERECO}}
-<br />
-{{ENDERECO.NUMERO}}
-<br />
-{{ENDERECO.BAIRRO}}
-<br />
-{{ENDERECO.COMPLEMENTO}}
-<br />
-{{ENDERECO.CIDADE}}
-<br />
-{{ENDERECO.ESTADO}}
-<br />
-{{ENDERECO.CEP}}
-<br />
-{{ENDERECO.REFERENCIA}}
-<br />
-{{/each}}
-<h1>Telefones</h1>
-{{#each telefones}}
-{{TELEFONE.DDD}}
-<br />
-{{TELEFONE.NUMERO}}
-<br />
-{{/each}}
-<h1>Funcionário</h1>
-{{funcionario.CARGO}}
-<br />
-{{funcionario.DATA_ADMISSAO}}
-<br />
-{{funcionario.DATA_DEMISSAO}}
-<br />
-<h1>Dependentes</h1>
-{{#each dependentes}}
-{{NOME}}
-<br />
-{{SOBRENOME}}
-<br />
-{{DATA_NASCIMENTO}}
-<br />
-{{RG}}
-<br />
-{{CPF}}
-<br />
-{{NUMERO_CERTIDAO_NASCIMENTO}}
-<br />
-{{FOLHA_CERTIDAO_NASCIMENTO}}
-<br />
-{{LIVRO_CERTIDAO_NASCIMENTO}}
-<br />
-{{CIDADE_CERTIDAO_NASCIMENTO}}
-<br />
-{{ESTADO_CERTIDAO_NASCIMENTO}}
-<br />
-{{/each}}
-<h1>FIM</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Relatório de funcionário</title>
+</head>
+
+<body>
+    <div class="col-sm-12 col-sm-12" style="margin-top: 25px">
+        <h1 style="text-align:center; font-size: 45px">Relatório de funcionário</h1>
+    </div>
+    <hr class="col-sm-12">
+    <div class="container" style="text-align: center; font-size: 25px">
+        <div class="box box-default">
+            <div class="box-header">
+                <h3 class="box-title" style="font-size: 35px">Informações Pessoais</h3>
+                <hr class="col-6">
+            </div>
+            <div class="box-body" style="text-align: center">
+                <div class="row">
+                    <div class="col">
+                        <strong>Nome: </strong> Hygor Podgornik
+                    </div>
+                    <div class="col">
+                        <strong>CPF: </strong> 317.262.438-26
+                    </div>
+                    <div class="col">
+                        <strong>RG: </strong> 37.198.830-5
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <div class="row">
+                    <div class="col">
+                        <strong>Data de nascimento: </strong> 06/05/1998
+                    </div>
+                    <div class="col">
+                        <strong>Escolaridade: </strong> Superior incompleto
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <div class="row">
+                    <div class="col">
+                        <strong>Sexo: </strong> Masculino
+                    </div>
+                    <div class="col">
+                        <strong>Estado civil: </strong> Solteiro
+                    </div>
+                    <div class="col">
+                        <strong>Religião: </strong> Não especificado
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <div class="row">
+                    <div class="col">
+                        <strong>Endereço: </strong> Rua Nestor Fornacciari
+                    </div>
+                    <div class="col">
+                        <strong>Nº: </strong> 190
+                    </div>
+                    <div class="col">
+                        <strong>Bairro: </strong> Itauera II
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <div class="row">
+                    <div class="col">
+                        <strong>Complemento: </strong> 29B
+                    </div>
+                    <div class="col">
+                        <strong>Cidade: </strong> Itápolis
+                    </div>
+                    <div class="col">
+                        <strong>Estado: </strong> SP
+                    </div>
+                    <div class="col">
+                        <strong>Referência: </strong> Choperia Donus
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <div class="row">
+                    <div class="col">
+                        <strong>Telefone: </strong> (16) 32630701
+                    </div>
+                    <div class="col">
+                        <strong>Telefone: </strong> (16) 996095737
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <div class="row">
+                    <div class="col">
+                        <strong>Cargo: </strong> Suporte
+                    </div>
+                    <div class="col">
+                        <strong>Data de admissão: </strong> 08/03/2019
+                    </div>
+                    <div class="col">
+                        <strong>Data de demissão: </strong> 23/04/2019
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="container" style="text-align: center; font-size: 25px">
+            <div class="box box-default">
+                <div class="box-header">
+                    <h3 class="box-title" style="font-size: 35px">Dependentes</h3>
+                    <hr class="col-6">
+                </div>
+                <div class="box-body" style="text-align: center">
+                       <div class="row">
+                           <div class="col">
+                               <strong>Nome: </strong> Caba Cabalero
+                           </div>
+                           <div class="col">
+                               <strong>CPF: </strong> 256.652.365-52
+                           </div>
+                           <div class="col">
+                               <strong>RG: </strong> 32.544.652-5
+                           </div>
+                       </div>
+                       <br/>
+                       <br/>
+                       <div class="row">
+                           <div class="col">
+                               <strong>Data de nascimento: </strong> 05/05/2010
+                           </div>
+                       </div>
+                       <br/>
+                           <h4 style="text-align: center">Certidão de nascimento</h4>
+                        <hr class="col-1">
+                       <div class="row">
+                           <div class="col">
+                               <strong>Nº: </strong> 5616541
+                           </div>
+                           <div class="col">
+                               <strong>Folha: </strong> 12
+                           </div>
+                           <div class="col">
+                               <strong>Livro: </strong> 3AB
+                           </div>
+                       </div>
+                       <br/>
+                       <br/>
+                       <div class="row">
+                           <div class="col">
+                               <strong>Cidade: </strong> Araraquara
+                           </div>
+                           <div class="col">
+                               <strong>Estado: </strong> SP
+                           </div>
+                       </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1306,3 +1306,696 @@ Expecting 'ID', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', got 
 2019-04-23T03:20:44.712Z - info: Starting rendering request 7 (user: null)
 2019-04-23T03:20:44.713Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: false }
 2019-04-23T03:20:46.047Z - info: Rendering request 7 finished in 1336 ms
+2019-04-23T17:13:47.080Z - info: Initializing jsreport@2.4.0 in development mode using configuration file: jsreport.config.json
+2019-04-23T17:13:47.082Z - info: Searching for available extensions in P:\arquivos\fatec\gpes\salv-api\
+2019-04-23T17:13:47.123Z - info: Extensions location cache contains up to date information, skipping crawling in P:\arquivos\fatec\gpes\salv-api\
+2019-04-23T17:13:47.534Z - info: Found 31 extensions
+2019-04-23T17:13:48.069Z - info: Using extension cli
+2019-04-23T17:13:48.081Z - info: Using extension debug
+2019-04-23T17:13:48.090Z - info: Using extension express
+2019-04-23T17:13:48.660Z - info: Using extension freeze
+2019-04-23T17:13:48.670Z - info: Using extension handlebars
+2019-04-23T17:13:48.686Z - info: Using extension import-export
+2019-04-23T17:13:50.115Z - info: Using extension jsrender
+2019-04-23T17:13:50.123Z - info: Using extension tags
+2019-04-23T17:13:50.137Z - info: Using extension templates
+2019-04-23T17:13:50.148Z - info: Using extension authorization
+2019-04-23T17:13:50.204Z - info: Using extension base
+2019-04-23T17:13:50.213Z - info: Using extension browser-client
+2019-04-23T17:13:50.233Z - info: Using extension child-templates
+2019-04-23T17:13:50.296Z - info: Using extension chrome-pdf
+2019-04-23T17:13:51.257Z - info: Using extension data
+2019-04-23T17:13:51.265Z - info: Using extension fs-store
+2019-04-23T17:13:53.579Z - info: Using extension licensing
+2019-04-23T17:13:53.600Z - info: Using extension pdf-utils
+2019-04-23T17:13:54.355Z - info: Using extension reports
+2019-04-23T17:13:54.393Z - info: Using extension studio
+2019-04-23T17:13:54.497Z - info: Using extension text
+2019-04-23T17:13:54.504Z - info: Using extension version-control
+2019-04-23T17:13:55.529Z - info: Using extension assets
+2019-04-23T17:13:55.612Z - info: Using extension html-to-xlsx
+2019-04-23T17:13:56.720Z - info: html-to-xlsx detected chrome as available html engine
+2019-04-23T17:13:56.721Z - info: Using extension scheduling
+2019-04-23T17:13:56.898Z - info: Using extension scripts
+2019-04-23T17:13:56.921Z - info: Using extension xlsx
+2019-04-23T17:13:58.027Z - info: Using extension public-templates
+2019-04-23T17:13:58.039Z - info: Using extension resources
+2019-04-23T17:13:58.051Z - info: Using extension sample-template
+2019-04-23T17:13:58.072Z - info: fs store is persisting using fs
+2019-04-23T17:13:58.078Z - info: fs store is synchronizing using fs
+2019-04-23T17:13:58.102Z - info: fs store is loading data
+2019-04-23T17:13:58.230Z - info: fs store is initialized successfully
+2019-04-23T17:13:58.262Z - info: Creating default express app.
+2019-04-23T17:13:58.687Z - info: jsreport server successfully started on http port: 3660
+2019-04-23T17:13:58.691Z - info: fs store emits sockets to synchronize underlying changes with studio
+2019-04-23T17:13:58.917Z - info: Verifying license key free
+2019-04-23T17:13:58.922Z - info: Using free license
+2019-04-23T17:13:58.932Z - info: reporter initialized
+2019-04-23T17:14:20.338Z - info: Starting rendering request 1 (user: null)
+2019-04-23T17:14:20.343Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:14:21.269Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'slice' of undefined. Error on line 26:18.
+
+  24 | //rg
+  25 | Handlebars.registerHelper('rg', function (rg) {
+> 26 |     return `${rg.slice(0, 2)}.${rg.slice(2, 5)}.${rg.slice(5, 8)}-${rg.slice(8, 10)}`
+     |                  ^
+  27 | })
+  28 | 
+  29 | //cpf
+
+ TypeError: Cannot read property 'slice' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:26:18)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:10:62)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+2019-04-23T17:14:21.273Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-funcionario
+2019-04-23T17:15:25.514Z - info: fs store is loading data
+2019-04-23T17:15:26.083Z - info: Starting rendering request 2 (user: null)
+2019-04-23T17:15:26.086Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:15:26.342Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'slice' of undefined. Error on line 26:18.
+
+  24 | // //rg
+  25 | // Handlebars.registerHelper('rg', function (rg) {
+> 26 | //     return `${rg.slice(0, 2)}.${rg.slice(2, 5)}.${rg.slice(5, 8)}-${rg.slice(8, 10)}`
+     |                  ^
+  27 | // })
+  28 | 
+  29 | // //cpf
+
+ TypeError: Cannot read property 'slice' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:26:18)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:10:62)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+2019-04-23T17:15:26.364Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-funcionario
+2019-04-23T17:15:36.480Z - info: Starting rendering request 3 (user: null)
+2019-04-23T17:15:36.484Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:15:36.513Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'slice' of undefined. Error on line 26:18.
+
+  24 | // //rg
+  25 | // Handlebars.registerHelper('rg', function (rg) {
+> 26 | //     return `${rg.slice(0, 2)}.${rg.slice(2, 5)}.${rg.slice(5, 8)}-${rg.slice(8, 10)}`
+     |                  ^
+  27 | // })
+  28 | 
+  29 | // //cpf
+
+ TypeError: Cannot read property 'slice' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:26:18)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:10:62)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+2019-04-23T17:15:36.519Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-funcionario
+2019-04-23T17:15:46.918Z - info: fs store is loading data
+2019-04-23T17:15:47.201Z - info: Starting rendering request 4 (user: null)
+2019-04-23T17:15:47.206Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:15:47.409Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'slice' of undefined. Error on line 26:18.
+
+  24 | //rg
+  25 | Handlebars.registerHelper('rg', function (rg) {
+> 26 |     return `${rg.slice(0, 2)}.${rg.slice(2, 5)}.${rg.slice(5, 8)}-${rg.slice(8, 10)}`
+     |                  ^
+  27 | })
+  28 | 
+  29 | //cpf
+
+ TypeError: Cannot read property 'slice' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:26:18)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:10:62)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+2019-04-23T17:15:47.411Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-funcionario
+2019-04-23T17:16:02.044Z - info: fs store is loading data
+2019-04-23T17:16:02.239Z - info: Starting rendering request 5 (user: null)
+2019-04-23T17:16:02.245Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:16:02.303Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'slice' of undefined. Error on line 31:19.
+
+  29 | //cpf
+  30 | Handlebars.registerHelper('cpf', function (cpf) {
+> 31 |     return `${cpf.slice(0, 3)}.${cpf.slice(3, 6)}.${cpf.slice(6, 9)}-${cpf.slice(9, 12)}`
+     |                   ^
+  32 | })
+  33 | 
+  34 | //sexo
+
+ TypeError: Cannot read property 'slice' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:31:19)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:12:64)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+2019-04-23T17:16:02.305Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-funcionario
+2019-04-23T17:16:04.170Z - info: fs store is loading data
+2019-04-23T17:16:04.379Z - info: Starting rendering request 6 (user: null)
+2019-04-23T17:16:04.383Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:16:04.452Z - warn: Error when processing render request Error while executing templating engine. Cannot read property 'slice' of undefined. Error on line 58:20.
+
+  56 | //data de nascimento
+  57 | Handlebars.registerHelper('dataNascimento', function (dn) {
+> 58 |     const ano = dn.slice(0, 4)
+     |                    ^
+  59 |     const mes = dn.slice(5, 7)
+  60 |     const dia = dn.slice(8, 10)
+  61 |     return `${dia}/${mes}/${ano}`
+
+ TypeError: Cannot read property 'slice' of undefined
+    at Proxy.<anonymous> (evaluate-template-engine-helpers.js:58:20)
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:87:36)
+    at Object.eval [as main] (eval at createFunctionContext (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:257:23), <anonymous>:18:86)
+    at main (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:175:32)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\runtime.js:178:12)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:526:21)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+2019-04-23T17:16:04.464Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-funcionario
+2019-04-23T17:16:13.004Z - info: fs store is loading data
+2019-04-23T17:16:13.188Z - info: Starting rendering request 7 (user: null)
+2019-04-23T17:16:13.192Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:16:16.415Z - info: Rendering request 7 finished in 3230 ms
+2019-04-23T17:16:16.568Z - info: Starting rendering request 8 (user: null)
+2019-04-23T17:16:16.573Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:16:17.752Z - info: Rendering request 8 finished in 1185 ms
+2019-04-23T17:16:21.306Z - info: Starting rendering request 9 (user: null)
+2019-04-23T17:16:21.310Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:16:22.498Z - info: Rendering request 9 finished in 1192 ms
+2019-04-23T17:16:22.626Z - info: Starting rendering request 10 (user: null)
+2019-04-23T17:16:22.630Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:16:24.372Z - info: Rendering request 10 finished in 1749 ms
+2019-04-23T17:16:27.221Z - info: Starting rendering request 11 (user: null)
+2019-04-23T17:16:27.225Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:16:28.320Z - info: Rendering request 11 finished in 1100 ms
+2019-04-23T17:16:28.447Z - info: Starting rendering request 12 (user: null)
+2019-04-23T17:16:28.451Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:16:29.797Z - info: Rendering request 12 finished in 1369 ms
+2019-04-23T17:16:31.903Z - info: Starting rendering request 13 (user: null)
+2019-04-23T17:16:31.908Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:16:33.217Z - info: Rendering request 13 finished in 1325 ms
+2019-04-23T17:16:33.332Z - info: Starting rendering request 14 (user: null)
+2019-04-23T17:16:33.336Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:16:34.477Z - info: Rendering request 14 finished in 1146 ms
+2019-04-23T17:16:37.964Z - info: Starting rendering request 15 (user: null)
+2019-04-23T17:16:37.966Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:16:39.135Z - info: Rendering request 15 finished in 1172 ms
+2019-04-23T17:16:39.255Z - info: Starting rendering request 16 (user: null)
+2019-04-23T17:16:39.259Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:16:40.500Z - info: Rendering request 16 finished in 1246 ms
+2019-04-23T17:16:45.114Z - info: Starting rendering request 17 (user: null)
+2019-04-23T17:16:45.120Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:16:46.289Z - info: Rendering request 17 finished in 1173 ms
+2019-04-23T17:17:05.230Z - info: Starting rendering request 18 (user: null)
+2019-04-23T17:17:05.233Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:17:06.790Z - info: Rendering request 18 finished in 1559 ms
+2019-04-23T17:17:06.919Z - info: Starting rendering request 19 (user: null)
+2019-04-23T17:17:06.923Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:17:10.120Z - info: Rendering request 19 finished in 3200 ms
+2019-04-23T17:17:11.350Z - info: Starting rendering request 20 (user: null)
+2019-04-23T17:17:11.355Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:17:13.090Z - info: Rendering request 20 finished in 1739 ms
+2019-04-23T17:17:35.347Z - info: Starting rendering request 21 (user: null)
+2019-04-23T17:17:35.353Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:17:37.874Z - info: Rendering request 21 finished in 2529 ms
+2019-04-23T17:17:51.435Z - info: Starting rendering request 22 (user: null)
+2019-04-23T17:17:51.439Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:17:53.335Z - info: Rendering request 22 finished in 1906 ms
+2019-04-23T17:18:19.856Z - info: Starting rendering request 23 (user: null)
+2019-04-23T17:18:19.861Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:18:21.319Z - info: Rendering request 23 finished in 1462 ms
+2019-04-23T17:18:30.023Z - info: Starting rendering request 24 (user: null)
+2019-04-23T17:18:30.027Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:18:32.479Z - info: Rendering request 24 finished in 2459 ms
+2019-04-23T17:19:15.330Z - info: Starting rendering request 25 (user: null)
+2019-04-23T17:19:15.335Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:19:16.873Z - info: Rendering request 25 finished in 1542 ms
+2019-04-23T17:19:43.783Z - info: Starting rendering request 26 (user: null)
+2019-04-23T17:19:43.785Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:19:46.139Z - info: Rendering request 26 finished in 2358 ms
+2019-04-23T17:20:04.487Z - info: Starting rendering request 27 (user: null)
+2019-04-23T17:20:04.490Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:20:06.078Z - info: Rendering request 27 finished in 1591 ms
+2019-04-23T17:20:21.560Z - info: Starting rendering request 28 (user: null)
+2019-04-23T17:20:21.565Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:20:23.042Z - info: Rendering request 28 finished in 1483 ms
+2019-04-23T17:20:42.377Z - info: Starting rendering request 29 (user: null)
+2019-04-23T17:20:42.381Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:20:44.128Z - info: Rendering request 29 finished in 1751 ms
+2019-04-23T17:20:54.793Z - info: Starting rendering request 30 (user: null)
+2019-04-23T17:20:54.799Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:20:56.071Z - info: Rendering request 30 finished in 1278 ms
+2019-04-23T17:21:12.663Z - info: Starting rendering request 31 (user: null)
+2019-04-23T17:21:12.668Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:21:14.056Z - info: Rendering request 31 finished in 1393 ms
+2019-04-23T17:21:20.983Z - info: Starting rendering request 32 (user: null)
+2019-04-23T17:21:20.989Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:21:22.240Z - info: Rendering request 32 finished in 1255 ms
+2019-04-23T17:22:10.315Z - info: Starting rendering request 33 (user: null)
+2019-04-23T17:22:10.321Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:22:11.803Z - info: Rendering request 33 finished in 1489 ms
+2019-04-23T17:22:26.286Z - info: Starting rendering request 34 (user: null)
+2019-04-23T17:22:26.291Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:22:30.586Z - info: Rendering request 34 finished in 4300 ms
+2019-04-23T17:23:09.275Z - info: Starting rendering request 35 (user: null)
+2019-04-23T17:23:09.277Z - info: Rendering template { name: relatorio-de-convenios, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:23:10.796Z - info: Rendering request 35 finished in 1523 ms
+2019-04-23T17:23:31.805Z - info: Starting rendering request 36 (user: null)
+2019-04-23T17:23:31.810Z - info: Rendering template { name: relatorio-de-convenios, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:23:34.330Z - info: Rendering request 36 finished in 2526 ms
+2019-04-23T17:23:37.887Z - info: Starting rendering request 37 (user: null)
+2019-04-23T17:23:37.891Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:23:40.322Z - info: Rendering request 37 finished in 2434 ms
+2019-04-23T17:24:02.085Z - info: fs store is loading data
+2019-04-23T17:24:02.284Z - info: Starting rendering request 38 (user: null)
+2019-04-23T17:24:02.289Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:24:04.140Z - info: Rendering request 38 finished in 1857 ms
+2019-04-23T17:24:11.489Z - info: Starting rendering request 39 (user: null)
+2019-04-23T17:24:11.493Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:24:13.048Z - info: Rendering request 39 finished in 1559 ms
+2019-04-23T17:24:13.516Z - info: Starting rendering request 40 (user: null)
+2019-04-23T17:24:13.523Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: false }
+2019-04-23T17:24:17.802Z - info: Rendering request 40 finished in 4290 ms
+2019-04-23T17:28:32.545Z - info: Starting rendering request 41 (user: null)
+2019-04-23T17:28:32.547Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:28:34.961Z - info: Rendering request 41 finished in 2416 ms
+2019-04-23T17:28:52.992Z - info: Starting rendering request 42 (user: null)
+2019-04-23T17:28:52.993Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:28:55.553Z - info: Rendering request 42 finished in 2561 ms
+2019-04-23T17:31:24.225Z - info: Starting rendering request 43 (user: null)
+2019-04-23T17:31:24.226Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:31:31.438Z - info: Rendering request 43 finished in 7213 ms
+2019-04-23T17:31:49.246Z - info: Starting rendering request 44 (user: null)
+2019-04-23T17:31:49.248Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:31:50.859Z - info: Rendering request 44 finished in 1613 ms
+2019-04-23T17:32:34.027Z - info: fs store is loading data
+2019-04-23T17:32:34.203Z - info: Starting rendering request 45 (user: null)
+2019-04-23T17:32:34.206Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:32:36.017Z - info: Rendering request 45 finished in 1813 ms
+2019-04-23T17:32:38.031Z - info: fs store is loading data
+2019-04-23T17:32:38.192Z - info: Starting rendering request 46 (user: null)
+2019-04-23T17:32:38.194Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:32:40.052Z - info: Rendering request 46 finished in 1859 ms
+2019-04-23T17:32:42.889Z - info: fs store is loading data
+2019-04-23T17:32:43.108Z - info: Starting rendering request 47 (user: null)
+2019-04-23T17:32:43.111Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:32:44.922Z - info: Rendering request 47 finished in 1814 ms
+2019-04-23T17:32:47.437Z - info: fs store is loading data
+2019-04-23T17:32:47.685Z - info: Starting rendering request 48 (user: null)
+2019-04-23T17:32:47.687Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:32:50.610Z - info: Rendering request 48 finished in 2933 ms
+2019-04-23T17:32:55.066Z - info: Starting rendering request 49 (user: null)
+2019-04-23T17:32:55.073Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:32:56.584Z - info: Rendering request 49 finished in 1520 ms
+2019-04-23T17:33:00.392Z - info: fs store is loading data
+2019-04-23T17:33:00.599Z - info: Starting rendering request 50 (user: null)
+2019-04-23T17:33:00.602Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:33:03.228Z - info: Rendering request 50 finished in 2629 ms
+2019-04-23T17:33:09.549Z - info: fs store is loading data
+2019-04-23T17:33:09.742Z - info: Starting rendering request 51 (user: null)
+2019-04-23T17:33:09.745Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:33:11.776Z - info: Rendering request 51 finished in 2039 ms
+2019-04-23T17:33:12.264Z - info: fs store is loading data
+2019-04-23T17:33:12.534Z - info: Starting rendering request 52 (user: null)
+2019-04-23T17:33:12.536Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:33:14.175Z - info: Rendering request 52 finished in 1641 ms
+2019-04-23T17:33:16.892Z - info: Starting rendering request 53 (user: null)
+2019-04-23T17:33:16.896Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:33:18.638Z - info: Rendering request 53 finished in 1746 ms
+2019-04-23T17:33:31.947Z - info: fs store is loading data
+2019-04-23T17:33:32.147Z - info: Starting rendering request 54 (user: null)
+2019-04-23T17:33:32.149Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:33:33.271Z - info: fs store is loading data
+2019-04-23T17:33:33.517Z - info: Starting rendering request 55 (user: null)
+2019-04-23T17:33:33.519Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:33:34.078Z - info: Rendering request 54 finished in 1932 ms
+2019-04-23T17:33:35.087Z - info: Rendering request 55 finished in 1573 ms
+2019-04-23T17:33:35.262Z - info: Starting rendering request 56 (user: null)
+2019-04-23T17:33:35.264Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:33:37.352Z - info: Rendering request 56 finished in 2094 ms
+2019-04-23T17:33:38.660Z - info: Starting rendering request 57 (user: null)
+2019-04-23T17:33:38.661Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:33:40.239Z - info: Rendering request 57 finished in 1580 ms
+2019-04-23T17:33:40.356Z - info: Starting rendering request 58 (user: null)
+2019-04-23T17:33:40.357Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:33:42.268Z - info: Rendering request 58 finished in 1912 ms
+2019-04-23T17:33:46.491Z - info: Starting rendering request 59 (user: null)
+2019-04-23T17:33:46.492Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:33:48.105Z - info: Rendering request 59 finished in 1615 ms
+2019-04-23T17:34:15.626Z - info: Starting rendering request 60 (user: null)
+2019-04-23T17:34:15.628Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:34:17.240Z - info: Rendering request 60 finished in 1613 ms
+2019-04-23T17:34:28.913Z - info: Starting rendering request 61 (user: null)
+2019-04-23T17:34:28.915Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:34:30.445Z - info: Rendering request 61 finished in 1532 ms
+2019-04-23T17:34:36.664Z - info: Starting rendering request 62 (user: null)
+2019-04-23T17:34:36.665Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:34:38.680Z - info: Rendering request 62 finished in 2016 ms
+2019-04-23T17:34:48.861Z - info: Starting rendering request 63 (user: null)
+2019-04-23T17:34:48.864Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:34:51.357Z - info: Rendering request 63 finished in 2496 ms
+2019-04-23T17:35:04.746Z - info: Starting rendering request 64 (user: null)
+2019-04-23T17:35:04.748Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:35:06.557Z - info: Rendering request 64 finished in 1810 ms
+2019-04-23T17:35:31.148Z - info: Starting rendering request 65 (user: null)
+2019-04-23T17:35:31.151Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:35:32.720Z - info: Rendering request 65 finished in 1573 ms
+2019-04-23T17:36:07.069Z - info: Starting rendering request 66 (user: null)
+2019-04-23T17:36:07.071Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:36:09.449Z - info: Rendering request 66 finished in 2381 ms
+2019-04-23T17:36:43.677Z - info: Starting rendering request 67 (user: null)
+2019-04-23T17:36:43.679Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:36:49.310Z - info: Rendering request 67 finished in 5633 ms
+2019-04-23T17:37:25.852Z - info: Starting rendering request 68 (user: null)
+2019-04-23T17:37:25.854Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:37:28.071Z - info: Rendering request 68 finished in 2218 ms
+2019-04-23T17:37:47.094Z - info: Starting rendering request 69 (user: null)
+2019-04-23T17:37:47.096Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:37:48.521Z - info: Rendering request 69 finished in 1429 ms
+2019-04-23T17:38:16.621Z - info: Starting rendering request 70 (user: null)
+2019-04-23T17:38:16.622Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:38:18.865Z - info: Rendering request 70 finished in 2244 ms
+2019-04-23T17:38:36.455Z - info: Starting rendering request 71 (user: null)
+2019-04-23T17:38:36.457Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:38:38.837Z - info: Rendering request 71 finished in 2382 ms
+2019-04-23T17:38:48.766Z - info: Starting rendering request 72 (user: null)
+2019-04-23T17:38:48.768Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:38:51.175Z - info: Rendering request 72 finished in 2409 ms
+2019-04-23T17:39:02.033Z - info: Starting rendering request 73 (user: null)
+2019-04-23T17:39:02.034Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:39:04.305Z - info: Rendering request 73 finished in 2272 ms
+2019-04-23T17:39:17.964Z - info: Starting rendering request 74 (user: null)
+2019-04-23T17:39:17.965Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:39:20.288Z - info: Rendering request 74 finished in 2323 ms
+2019-04-23T17:39:38.171Z - info: Starting rendering request 75 (user: null)
+2019-04-23T17:39:38.172Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:39:39.857Z - info: Rendering request 75 finished in 1688 ms
+2019-04-23T17:39:59.933Z - info: Starting rendering request 76 (user: null)
+2019-04-23T17:39:59.934Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:40:01.586Z - info: Rendering request 76 finished in 1653 ms
+2019-04-23T17:40:42.868Z - info: Starting rendering request 77 (user: null)
+2019-04-23T17:40:42.870Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:40:44.637Z - info: Rendering request 77 finished in 1770 ms
+2019-04-23T17:40:54.994Z - info: Starting rendering request 78 (user: null)
+2019-04-23T17:40:54.995Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:40:56.364Z - info: Rendering request 78 finished in 1371 ms
+2019-04-23T17:41:10.638Z - info: Starting rendering request 79 (user: null)
+2019-04-23T17:41:10.639Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:41:12.854Z - info: Rendering request 79 finished in 2217 ms
+2019-04-23T17:41:27.361Z - info: Starting rendering request 80 (user: null)
+2019-04-23T17:41:27.363Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:41:28.591Z - info: Rendering request 80 finished in 1230 ms
+2019-04-23T17:41:41.778Z - info: Starting rendering request 81 (user: null)
+2019-04-23T17:41:41.781Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:41:43.004Z - info: Rendering request 81 finished in 1228 ms
+2019-04-23T17:42:04.058Z - info: Starting rendering request 82 (user: null)
+2019-04-23T17:42:04.059Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:42:05.625Z - info: Rendering request 82 finished in 1569 ms
+2019-04-23T17:42:18.607Z - info: Starting rendering request 83 (user: null)
+2019-04-23T17:42:18.608Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:42:20.049Z - info: Rendering request 83 finished in 1442 ms
+2019-04-23T17:42:31.713Z - info: Starting rendering request 84 (user: null)
+2019-04-23T17:42:31.715Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:42:33.118Z - info: Rendering request 84 finished in 1405 ms
+2019-04-23T17:43:09.667Z - info: Starting rendering request 85 (user: null)
+2019-04-23T17:43:09.668Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:43:11.202Z - info: Rendering request 85 finished in 1537 ms
+2019-04-23T17:43:36.843Z - info: Starting rendering request 86 (user: null)
+2019-04-23T17:43:36.844Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:43:38.132Z - info: Rendering request 86 finished in 1290 ms
+2019-04-23T17:44:01.137Z - info: Starting rendering request 87 (user: null)
+2019-04-23T17:44:01.140Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:44:02.601Z - info: Rendering request 87 finished in 1466 ms
+2019-04-23T17:44:22.197Z - info: Starting rendering request 88 (user: null)
+2019-04-23T17:44:22.198Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:44:24.659Z - info: Rendering request 88 finished in 2462 ms
+2019-04-23T17:44:36.091Z - info: Starting rendering request 89 (user: null)
+2019-04-23T17:44:36.096Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:44:38.508Z - info: Rendering request 89 finished in 2417 ms
+2019-04-23T17:45:22.412Z - info: Starting rendering request 90 (user: null)
+2019-04-23T17:45:22.414Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T17:45:24.397Z - info: Rendering request 90 finished in 1986 ms
+2019-04-23T22:23:07.606Z - error: Failed to run reaper: Error: ENOENT: no such file or directory, scandir 'C:\Users\mmpod\AppData\Local\Temp\jsreport\autocleanup'
+2019-04-23T22:23:37.603Z - error: Failed to run reaper: Error: ENOENT: no such file or directory, scandir 'C:\Users\mmpod\AppData\Local\Temp\jsreport\autocleanup'
+2019-04-23T22:24:07.602Z - error: Failed to run reaper: Error: ENOENT: no such file or directory, scandir 'C:\Users\mmpod\AppData\Local\Temp\jsreport\autocleanup'
+2019-04-23T22:24:24.739Z - info: Starting rendering request 91 (user: null)
+2019-04-23T22:24:24.740Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:24:27.128Z - info: Rendering request 91 finished in 2389 ms
+2019-04-23T22:24:35.691Z - info: Starting rendering request 92 (user: null)
+2019-04-23T22:24:35.692Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:24:38.157Z - info: Rendering request 92 finished in 2466 ms
+2019-04-23T22:25:29.045Z - info: Starting rendering request 93 (user: null)
+2019-04-23T22:25:29.046Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:25:31.898Z - info: Rendering request 93 finished in 2853 ms
+2019-04-23T22:25:43.669Z - info: Starting rendering request 94 (user: null)
+2019-04-23T22:25:43.670Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:25:45.122Z - info: Rendering request 94 finished in 1454 ms
+2019-04-23T22:25:54.951Z - info: Starting rendering request 95 (user: null)
+2019-04-23T22:25:54.954Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:25:56.470Z - info: Rendering request 95 finished in 1520 ms
+2019-04-23T22:26:05.993Z - info: Starting rendering request 96 (user: null)
+2019-04-23T22:26:05.994Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:26:07.647Z - info: Rendering request 96 finished in 1654 ms
+2019-04-23T22:26:14.545Z - info: Starting rendering request 97 (user: null)
+2019-04-23T22:26:14.547Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:26:15.839Z - info: Rendering request 97 finished in 1294 ms
+2019-04-23T22:27:16.711Z - info: Starting rendering request 98 (user: null)
+2019-04-23T22:27:16.712Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:27:19.307Z - info: Rendering request 98 finished in 2596 ms
+2019-04-23T22:27:51.401Z - info: Starting rendering request 99 (user: null)
+2019-04-23T22:27:51.404Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:27:52.963Z - info: Rendering request 99 finished in 1562 ms
+2019-04-23T22:28:13.388Z - info: Starting rendering request 100 (user: null)
+2019-04-23T22:28:13.389Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:28:15.912Z - info: Rendering request 100 finished in 2524 ms
+2019-04-23T22:28:36.251Z - info: Starting rendering request 101 (user: null)
+2019-04-23T22:28:36.253Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:28:37.969Z - info: Rendering request 101 finished in 1737 ms
+2019-04-23T22:30:01.144Z - info: Starting rendering request 102 (user: null)
+2019-04-23T22:30:01.146Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:30:02.462Z - info: Rendering request 102 finished in 1336 ms
+2019-04-23T22:30:36.823Z - info: Starting rendering request 103 (user: null)
+2019-04-23T22:30:36.825Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:30:38.371Z - info: Rendering request 103 finished in 1548 ms
+2019-04-23T22:34:44.226Z - info: Starting rendering request 104 (user: null)
+2019-04-23T22:34:44.228Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:34:46.079Z - info: Rendering request 104 finished in 1853 ms
+2019-04-23T22:35:45.379Z - info: Starting rendering request 105 (user: null)
+2019-04-23T22:35:45.381Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:35:48.438Z - info: Rendering request 105 finished in 3059 ms
+2019-04-23T22:35:48.580Z - info: Starting rendering request 106 (user: null)
+2019-04-23T22:35:48.583Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:35:50.557Z - info: Rendering request 106 finished in 1978 ms
+2019-04-23T22:35:56.685Z - info: Starting rendering request 107 (user: null)
+2019-04-23T22:35:56.687Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:35:58.248Z - info: Rendering request 107 finished in 1564 ms
+2019-04-23T22:37:34.048Z - info: Starting rendering request 108 (user: null)
+2019-04-23T22:37:34.050Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:37:36.335Z - info: Rendering request 108 finished in 2303 ms
+2019-04-23T22:38:35.321Z - info: Starting rendering request 109 (user: null)
+2019-04-23T22:38:35.322Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:38:37.763Z - info: Rendering request 109 finished in 2443 ms
+2019-04-23T22:41:11.299Z - info: Starting rendering request 110 (user: null)
+2019-04-23T22:41:11.301Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:41:13.771Z - info: Rendering request 110 finished in 2473 ms
+2019-04-23T22:41:40.897Z - info: Starting rendering request 111 (user: null)
+2019-04-23T22:41:40.899Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:41:43.425Z - info: Rendering request 111 finished in 2529 ms
+2019-04-23T22:41:53.148Z - info: Starting rendering request 112 (user: null)
+2019-04-23T22:41:53.149Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:41:55.382Z - info: Rendering request 112 finished in 2234 ms
+2019-04-23T22:42:02.131Z - info: Starting rendering request 113 (user: null)
+2019-04-23T22:42:02.133Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:42:04.043Z - info: Rendering request 113 finished in 1913 ms
+2019-04-23T22:42:21.830Z - info: Starting rendering request 114 (user: null)
+2019-04-23T22:42:21.831Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:42:23.872Z - info: Rendering request 114 finished in 2043 ms
+2019-04-23T22:42:36.953Z - info: Starting rendering request 115 (user: null)
+2019-04-23T22:42:36.956Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:42:39.062Z - info: Rendering request 115 finished in 2109 ms
+2019-04-23T22:42:47.871Z - info: Starting rendering request 116 (user: null)
+2019-04-23T22:42:47.873Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:42:50.537Z - info: Rendering request 116 finished in 2665 ms
+2019-04-23T22:43:07.864Z - info: Starting rendering request 117 (user: null)
+2019-04-23T22:43:07.865Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:43:10.476Z - info: Rendering request 117 finished in 2612 ms
+2019-04-23T22:44:00.324Z - info: Starting rendering request 118 (user: null)
+2019-04-23T22:44:00.327Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:44:01.588Z - info: Rendering request 118 finished in 1286 ms
+2019-04-23T22:44:13.064Z - info: Starting rendering request 119 (user: null)
+2019-04-23T22:44:13.066Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:44:14.658Z - info: Rendering request 119 finished in 1595 ms
+2019-04-23T22:45:51.147Z - info: Starting rendering request 120 (user: null)
+2019-04-23T22:45:51.149Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:45:52.527Z - info: Rendering request 120 finished in 1380 ms
+2019-04-23T22:49:14.969Z - info: Starting rendering request 121 (user: null)
+2019-04-23T22:49:14.971Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:49:16.659Z - info: Rendering request 121 finished in 1689 ms
+2019-04-23T22:49:39.354Z - info: Starting rendering request 122 (user: null)
+2019-04-23T22:49:39.355Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:49:42.643Z - info: Rendering request 122 finished in 3290 ms
+2019-04-23T22:50:14.120Z - info: Starting rendering request 123 (user: null)
+2019-04-23T22:50:14.122Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:50:15.772Z - info: Rendering request 123 finished in 1652 ms
+2019-04-23T22:50:25.961Z - info: Starting rendering request 124 (user: null)
+2019-04-23T22:50:25.963Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:50:27.360Z - info: Rendering request 124 finished in 1399 ms
+2019-04-23T22:53:04.232Z - info: Starting rendering request 125 (user: null)
+2019-04-23T22:53:04.233Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:53:05.757Z - info: Rendering request 125 finished in 1525 ms
+2019-04-23T22:53:17.932Z - info: Starting rendering request 126 (user: null)
+2019-04-23T22:53:17.933Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:53:22.324Z - info: Rendering request 126 finished in 4393 ms
+2019-04-23T22:54:37.295Z - info: Starting rendering request 127 (user: null)
+2019-04-23T22:54:37.296Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:54:38.922Z - info: Rendering request 127 finished in 1628 ms
+2019-04-23T22:55:19.161Z - info: Starting rendering request 128 (user: null)
+2019-04-23T22:55:19.163Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:55:20.614Z - info: Rendering request 128 finished in 1452 ms
+2019-04-23T22:55:42.725Z - info: Starting rendering request 129 (user: null)
+2019-04-23T22:55:42.727Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:55:45.356Z - info: Rendering request 129 finished in 2631 ms
+2019-04-23T22:56:05.446Z - info: Starting rendering request 130 (user: null)
+2019-04-23T22:56:05.449Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:56:07.185Z - info: Rendering request 130 finished in 1740 ms
+2019-04-23T22:56:30.426Z - info: Starting rendering request 131 (user: null)
+2019-04-23T22:56:30.427Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:56:33.712Z - info: Rendering request 131 finished in 3286 ms
+2019-04-23T22:57:00.937Z - info: Starting rendering request 132 (user: null)
+2019-04-23T22:57:00.938Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:57:02.679Z - info: Rendering request 132 finished in 1742 ms
+2019-04-23T22:57:12.318Z - info: Starting rendering request 133 (user: null)
+2019-04-23T22:57:12.319Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:57:14.015Z - info: Rendering request 133 finished in 1698 ms
+2019-04-23T22:58:57.724Z - info: Starting rendering request 134 (user: null)
+2019-04-23T22:58:57.726Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:58:59.778Z - info: Rendering request 134 finished in 2053 ms
+2019-04-23T22:59:25.386Z - info: Starting rendering request 135 (user: null)
+2019-04-23T22:59:25.388Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:59:27.657Z - info: Rendering request 135 finished in 2271 ms
+2019-04-23T22:59:37.458Z - info: Starting rendering request 136 (user: null)
+2019-04-23T22:59:37.460Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:59:40.413Z - info: Rendering request 136 finished in 2958 ms
+2019-04-23T22:59:49.424Z - info: Starting rendering request 137 (user: null)
+2019-04-23T22:59:49.426Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T22:59:51.265Z - info: Rendering request 137 finished in 1841 ms
+2019-04-23T23:00:27.692Z - info: Starting rendering request 138 (user: null)
+2019-04-23T23:00:27.694Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:00:29.414Z - info: Rendering request 138 finished in 1723 ms
+2019-04-23T23:00:44.466Z - info: Starting rendering request 139 (user: null)
+2019-04-23T23:00:44.467Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:00:46.870Z - info: Rendering request 139 finished in 2405 ms
+2019-04-23T23:01:01.089Z - info: Starting rendering request 140 (user: null)
+2019-04-23T23:01:01.108Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:01:02.918Z - info: Rendering request 140 finished in 1828 ms
+2019-04-23T23:01:27.130Z - info: Starting rendering request 141 (user: null)
+2019-04-23T23:01:27.131Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:01:29.910Z - info: Rendering request 141 finished in 2780 ms
+2019-04-23T23:02:25.485Z - info: Starting rendering request 142 (user: null)
+2019-04-23T23:02:25.486Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:02:28.355Z - info: Rendering request 142 finished in 2870 ms
+2019-04-23T23:03:24.743Z - info: Starting rendering request 143 (user: null)
+2019-04-23T23:03:24.744Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:03:27.215Z - info: Rendering request 143 finished in 2473 ms
+2019-04-23T23:03:56.825Z - info: Starting rendering request 144 (user: null)
+2019-04-23T23:03:56.827Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:03:58.318Z - info: Rendering request 144 finished in 1493 ms
+2019-04-23T23:05:28.831Z - info: Starting rendering request 145 (user: null)
+2019-04-23T23:05:28.833Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:05:37.182Z - info: Rendering request 145 finished in 8351 ms
+2019-04-23T23:05:48.563Z - info: Starting rendering request 146 (user: null)
+2019-04-23T23:05:48.564Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:05:50.125Z - info: Rendering request 146 finished in 1562 ms
+2019-04-23T23:06:08.388Z - info: Starting rendering request 147 (user: null)
+2019-04-23T23:06:08.390Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:06:10.112Z - info: Rendering request 147 finished in 1726 ms
+2019-04-23T23:08:04.643Z - info: Starting rendering request 148 (user: null)
+2019-04-23T23:08:04.644Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:08:06.307Z - info: Rendering request 148 finished in 1665 ms
+2019-04-23T23:08:26.887Z - info: Starting rendering request 149 (user: null)
+2019-04-23T23:08:26.888Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:08:28.505Z - info: Rendering request 149 finished in 1619 ms
+2019-04-23T23:09:58.309Z - info: Starting rendering request 150 (user: null)
+2019-04-23T23:09:58.311Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:09:59.698Z - info: Rendering request 150 finished in 1389 ms
+2019-04-23T23:09:59.831Z - info: Starting rendering request 151 (user: null)
+2019-04-23T23:09:59.833Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:10:01.731Z - info: Rendering request 151 finished in 1907 ms
+2019-04-23T23:10:04.811Z - info: Starting rendering request 152 (user: null)
+2019-04-23T23:10:04.812Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:10:06.453Z - info: Rendering request 152 finished in 1643 ms
+2019-04-23T23:12:27.124Z - info: Starting rendering request 153 (user: null)
+2019-04-23T23:12:27.126Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:12:29.938Z - info: Rendering request 153 finished in 2814 ms
+2019-04-23T23:12:41.135Z - info: Starting rendering request 154 (user: null)
+2019-04-23T23:12:41.137Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:12:42.612Z - info: Rendering request 154 finished in 1481 ms
+2019-04-23T23:13:01.008Z - info: Starting rendering request 155 (user: null)
+2019-04-23T23:13:01.011Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:13:02.433Z - info: Rendering request 155 finished in 1439 ms
+2019-04-23T23:13:26.323Z - info: Starting rendering request 156 (user: null)
+2019-04-23T23:13:26.325Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:13:28.204Z - info: Rendering request 156 finished in 1880 ms
+2019-04-23T23:13:41.099Z - info: Starting rendering request 157 (user: null)
+2019-04-23T23:13:41.101Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:13:42.638Z - info: Rendering request 157 finished in 1552 ms
+2019-04-23T23:14:00.434Z - info: Starting rendering request 158 (user: null)
+2019-04-23T23:14:00.435Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:14:03.230Z - info: Rendering request 158 finished in 2810 ms
+2019-04-23T23:14:16.791Z - info: Starting rendering request 159 (user: null)
+2019-04-23T23:14:16.793Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:14:18.536Z - info: Rendering request 159 finished in 1744 ms
+2019-04-23T23:15:09.726Z - info: Starting rendering request 160 (user: null)
+2019-04-23T23:15:09.728Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:15:11.222Z - info: Rendering request 160 finished in 1510 ms
+2019-04-23T23:15:49.768Z - info: Starting rendering request 161 (user: null)
+2019-04-23T23:15:49.770Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:15:51.416Z - info: Rendering request 161 finished in 1663 ms
+2019-04-23T23:15:59.709Z - info: Starting rendering request 162 (user: null)
+2019-04-23T23:15:59.711Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:16:01.356Z - info: Rendering request 162 finished in 1647 ms
+2019-04-23T23:16:10.389Z - info: Starting rendering request 163 (user: null)
+2019-04-23T23:16:10.391Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:16:12.124Z - info: Rendering request 163 finished in 1750 ms
+2019-04-23T23:16:24.238Z - info: Starting rendering request 164 (user: null)
+2019-04-23T23:16:24.240Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:16:27.109Z - info: Rendering request 164 finished in 2872 ms
+2019-04-23T23:16:46.208Z - info: Starting rendering request 165 (user: null)
+2019-04-23T23:16:46.209Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:16:48.066Z - info: Rendering request 165 finished in 1859 ms
+2019-04-23T23:17:09.221Z - info: Starting rendering request 166 (user: null)
+2019-04-23T23:17:09.223Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:17:12.460Z - info: Rendering request 166 finished in 3239 ms
+2019-04-23T23:18:07.701Z - info: Starting rendering request 167 (user: null)
+2019-04-23T23:18:07.703Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-23T23:18:10.395Z - info: Rendering request 167 finished in 2710 ms
+2019-04-23T23:20:36.781Z - info: Starting rendering request 168 (user: null)
+2019-04-23T23:20:36.783Z - info: Rendering template { name: relatorio-de-funcionario, recipe: chrome-pdf, engine: handlebars, preview: false }
+2019-04-23T23:20:38.438Z - info: Rendering request 168 finished in 1659 ms

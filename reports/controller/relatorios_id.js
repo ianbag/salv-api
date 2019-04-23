@@ -60,16 +60,17 @@ class Relatorios_ID {
                     }
                 }
 
-                var options = {
-                    uri: REPORT_API,
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    json: data
-                }
+                // var options = {
+                //     uri: REPORT_API,
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     },
+                //     json: data
+                // }
 
-                request(options).pipe(res)
+                // request(options).pipe(res)
+                res.send(data.data)
             }).catch(error => res.json(error))
     }
 

@@ -9,8 +9,12 @@
     },
     "creationDate": "2019-04-23T02:33:30.846Z",
     "modificationDate": {
-        "$$date": 1555987038391
+        "$$date": 1556061487088
     },
     "_id": "Uz1e7PHZMSvtYUrH",
-    "$entitySet": "templates"
+    "$entitySet": "templates",
+    "resources": {
+        "defaultLanguage": "pt-br",
+        "items": []
+    }
 }

@@ -1,17 +1,17 @@
 const Handlebars = require('handlebars')
 
 //rg
-Handlebars.registerHelper('rg', function (rg) {
+Handlebars.registerHelper('rg', function(rg) {
     return `${rg.slice(0, 2)}.${rg.slice(2, 5)}.${rg.slice(5, 8)}-${rg.slice(8, 10)}`
 })
 
 //cpf
-Handlebars.registerHelper('cpf', function (cpf) {
+Handlebars.registerHelper('cpf', function(cpf) {
     return `${cpf.slice(0, 3)}.${cpf.slice(3, 6)}.${cpf.slice(6, 9)}-${cpf.slice(9, 12)}`
 })
 
 //sexo
-Handlebars.registerHelper('sexo', function (sexo) {
+Handlebars.registerHelper('sexo', function(sexo) {
     if (sexo == 'M') {
         return 'Masculino'
     } else {
@@ -20,7 +20,7 @@ Handlebars.registerHelper('sexo', function (sexo) {
 })
 
 //estado civil
-Handlebars.registerHelper('estadoCivil', function (ec) {
+Handlebars.registerHelper('estadoCivil', function(ec) {
     if (ec == 'S') {
         return 'Solteiro'
     } else if (ec == 'C') {
@@ -33,7 +33,7 @@ Handlebars.registerHelper('estadoCivil', function (ec) {
 })
 
 //data de nascimento
-Handlebars.registerHelper('dataNascimento', function (dn) {
+Handlebars.registerHelper('dataNascimento', function(dn) {
     const ano = dn.slice(0, 4)
     const mes = dn.slice(5, 7)
     const dia = dn.slice(8, 10)
@@ -41,7 +41,7 @@ Handlebars.registerHelper('dataNascimento', function (dn) {
 })
 
 //religiao
-Handlebars.registerHelper('religiao', function (religiao) {
+Handlebars.registerHelper('religiao', function(religiao) {
     if (religiao == 'CAT') {
         return 'Católico'
     } else if (religiao == 'EVG') {
@@ -60,7 +60,7 @@ Handlebars.registerHelper('religiao', function (religiao) {
 })
 
 //escolaridade
-Handlebars.registerHelper('escolaridade', function (esc) {
+Handlebars.registerHelper('escolaridade', function(esc) {
     if (esc == 'FI') {
         return 'Fundamental incompleto'
     } else if (esc == 'FC') {
