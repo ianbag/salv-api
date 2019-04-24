@@ -90,7 +90,113 @@ class Residente {
     }
 
 
+    uniqueTituloEleitor(req, res) {
+        ResidenteModel.findOne({
+            raw: true,
+            where: {
+                STATUS: 1,
+                TITULO_ELEITOR: req.body.TITULO_ELEITOR,
+            }
+        })
+            .then(residente => {
+                if (residente)
+                    res.json({ value: 0, message: 'TItulo de Eleitor não é único!' })
 
+                else
+                    res.json({ value: 1, message: 'TItulo de Eleitor é único!' })
+            })
+            .catch(error => res.json(error))
+    }
+
+    uniqueNumeroCertidaoNascimento(req, res) {
+        ResidenteModel.findOne({
+            raw: true,
+            where: {
+                STATUS: 1,
+                NUMERO_CERTIDAO_NASCIMENTO: req.body.NUMERO_CERTIDAO_NASCIMENTO,
+            }
+        })
+            .then(residente => {
+                if (residente)
+                    res.json({ value: 0, message: 'Número de Certidão de Nascimento não é único!' })
+
+                else
+                    res.json({ value: 1, message: 'Número de Certidão de Nascimento é único!' })
+            })
+            .catch(error => res.json(error))
+    }
+
+    uniqueCartaoSAMS(req, res) {
+        ResidenteModel.findOne({
+            raw: true,
+            where: {
+                STATUS: 1,
+                CARTAO_SAMS: req.body.CARTAO_SAMS,
+            }
+        })
+            .then(residente => {
+                if (residente)
+                    res.json({ value: 0, message: 'Cartão SAMS não é único!' })
+
+                else
+                    res.json({ value: 1, message: 'Cartão SAMS é único!' })
+            })
+            .catch(error => res.json(error))
+    }
+
+    uniqueCartaoSUS(req, res) {
+        ResidenteModel.findOne({
+            raw: true,
+            where: {
+                STATUS: 1,
+                CARTAO_SUS: req.body.CARTAO_SUS,
+            }
+        })
+            .then(residente => {
+                if (residente)
+                    res.json({ value: 0, message: 'Cartão SUS não é único!' })
+
+                else
+                    res.json({ value: 1, message: 'Cartão SUS é único!' })
+            })
+            .catch(error => res.json(error))
+    }
+
+    uniqueNumeroINSS(req, res) {
+        ResidenteModel.findOne({
+            raw: true,
+            where: {
+                STATUS: 1,
+                NUMERO_INSS: req.body.NUMERO_INSS,
+            }
+        })
+            .then(residente => {
+                if (residente)
+                    res.json({ value: 0, message: 'Número INSS não é único!' })
+
+                else
+                    res.json({ value: 1, message: 'Número INSS é único!' })
+            })
+            .catch(error => res.json(error))
+    }
+
+    uniqueContaINSS(req, res) {
+        ResidenteModel.findOne({
+            raw: true,
+            where: {
+                STATUS: 1,
+                CONTA_INSS: req.body.CONTA_INSS,
+            }
+        })
+            .then(residente => {
+                if (residente)
+                    res.json({ value: 0, message: 'Conta INSS não é único!' })
+
+                else
+                    res.json({ value: 1, message: 'Conta INSS é único!' })
+            })
+            .catch(error => res.json(error))
+    }
 
 
 }
