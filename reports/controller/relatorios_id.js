@@ -79,21 +79,27 @@ class Relatorios_ID {
                 CODIGO: req.params.codigoAcompanhamento
             }
         })
-        const residentes = AcompanhamentoResidenteModel.findAll({
-            where: {
-                ACOMPANHAMENTO_CODIGO: req.params.codigoAcompanhamento
-            },
-            include: {
-                model: ResidenteModel, as: 'RESIDENTE'
-            }
+        const residentes = ResidenteModel.findAll({
+            include: [
+                { model: PessoaModel, as: 'PESSOA' },
+                {
+                    model: AcompanhamentoResidenteModel, as: 'ACOMPANHAMENTO_RESIDENTE',
+                    where: {
+                        ACOMPANHAMENTO_CODIGO: req.params.codigoAcompanhamento
+                    }
+                }
+            ]
         })
-        const funcionarios = AcompanhamentoFuncionarioModel.findAll({
-            where: {
-                ACOMPANHAMENTO_CODIGO: req.params.codigoAcompanhamento
-            },
-            include: {
-                model: FuncionarioModel, as: 'FUNCIONARIO'
-            }
+        const funcionarios = FuncionarioModel.findAll({
+            include: [
+                { model: PessoaModel, as: 'PESSOA' },
+                {
+                    model: AcompanhamentoFuncionarioModel, as: 'ACOMPANHAMENTO_FUNCIONARIO',
+                    where: {
+                        ACOMPANHAMENTO_CODIGO: req.params.codigoAcompanhamento
+                    }
+                }
+            ]
         })
 
         Promise
@@ -120,9 +126,9 @@ class Relatorios_ID {
                     },
                     json: data
                 }
-
+                // res.send(data)
                 request(options).pipe(res)
-            }).catch(error => res.json(error))
+            })/*.catch(error => res.json(error))*/
     }
 
 }

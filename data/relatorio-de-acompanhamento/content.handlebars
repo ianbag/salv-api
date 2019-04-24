@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Relatório de acompanhamento</title>
+</head>
+
+<body>
+    <div class="col-sm-12 col-sm-12" style="margin-top: 25px">
+        <h1 style="text-align:center; font-size: 45px">Relatório de acompanhamento</h1>
+    </div>
+    <hr class="col-sm-12">
+    <div class="container" style="text-align: center; font-size: 25px">
+        <div class="box box-default">
+            <div class="box-header">
+
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col">
+                        <strong>Data do acompanhamento: </strong>
+                        {{dataAcompanhamento acompanhamento.DATA_ACOMPANHAMENTO}}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Descrição: </strong>
+                        {{acompanhamento.ATIVIDADE}}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Residentes participantes: </strong>
+                        {{#each residentes}}
+                        {{PESSOA.NOME}} {{#if APELIDO}}({{APELIDO}}){{/if}},
+                        {{/each}}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Funcionários participantes: </strong>
+                        {{#each funcionarios}}
+                        {{PESSOA.NOME}} {{PESSOA.SOBRENOME}},
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

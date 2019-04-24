@@ -4,3 +4,26 @@
 2019-04-23T22:23:07.608Z - error: Failed to run reaper: Error: ENOENT: no such file or directory, scandir 'C:\Users\mmpod\AppData\Local\Temp\jsreport\autocleanup'
 2019-04-23T22:23:37.603Z - error: Failed to run reaper: Error: ENOENT: no such file or directory, scandir 'C:\Users\mmpod\AppData\Local\Temp\jsreport\autocleanup'
 2019-04-23T22:24:07.603Z - error: Failed to run reaper: Error: ENOENT: no such file or directory, scandir 'C:\Users\mmpod\AppData\Local\Temp\jsreport\autocleanup'
+2019-04-24T02:43:33.193Z - error: Error during processing request at http://localhost:3660/api/report, details: Not initialized, you need to call jsreport.init().then before rendering, stack: Error: Not initialized, you need to call jsreport.init().then before rendering
+    at Reporter.render (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-core\lib\reporter.js:255:13)
+    at Object.reporter.express.render (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-express\lib\routes.js:41:14)
+    at app.post (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-express\lib\routes.js:74:22)
+    at Layer.handle [as handle_request] (P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\layer.js:95:5)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\index.js:281:22
+    at param (P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\index.js:354:14)
+    at param (P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\index.js:410:3)
+    at next (P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\index.js:275:10)
+    at app.use (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-express\lib\routes.js:16:5)
+    at Layer.handle [as handle_request] (P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\index.js:317:13)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\index.js:335:12)
+    at next (P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\index.js:275:10)
+    at reporter.express.app.use (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-studio\lib\studio.js:78:7)
+    at Layer.handle [as handle_request] (P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\index.js:317:13)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\express\lib\router\index.js:284:7
