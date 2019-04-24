@@ -3977,3 +3977,48 @@ Expecting 'ID', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', got 
     at evaluate-template-engine.js:1:41
     at Script.runInContext (vm.js:130:20)
 2019-04-24T02:51:09.661Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-acompanhamento
+2019-04-24T02:56:22.135Z - info: Initializing jsreport@2.4.0 in development mode using configuration file: jsreport.config.json
+2019-04-24T02:56:22.138Z - info: Searching for available extensions in P:\arquivos\fatec\gpes\salv-api\
+2019-04-24T02:56:22.150Z - info: Extensions location cache contains up to date information, skipping crawling in P:\arquivos\fatec\gpes\salv-api\
+2019-04-24T02:56:22.405Z - info: Found 31 extensions
+2019-04-24T02:56:22.810Z - info: Using extension cli
+2019-04-24T02:56:22.815Z - info: Using extension debug
+2019-04-24T02:56:22.818Z - info: Using extension express
+2019-04-24T02:56:22.945Z - info: Using extension freeze
+2019-04-24T02:56:22.948Z - info: Using extension handlebars
+2019-04-24T02:56:22.951Z - info: Using extension import-export
+2019-04-24T02:56:23.090Z - info: Using extension jsrender
+2019-04-24T02:56:23.091Z - info: Using extension tags
+2019-04-24T02:56:23.095Z - info: Using extension templates
+2019-04-24T02:56:23.099Z - info: Using extension authorization
+2019-04-24T02:56:23.104Z - info: Using extension base
+2019-04-24T02:56:23.106Z - info: Using extension browser-client
+2019-04-24T02:56:23.109Z - info: Using extension child-templates
+2019-04-24T02:56:23.118Z - info: Using extension chrome-pdf
+2019-04-24T02:56:23.223Z - info: Using extension data
+2019-04-24T02:56:23.225Z - info: Using extension fs-store
+2019-04-24T02:56:23.539Z - info: Using extension licensing
+2019-04-24T02:56:23.543Z - info: Using extension pdf-utils
+2019-04-24T02:56:23.636Z - info: Using extension reports
+2019-04-24T02:56:23.641Z - info: Using extension studio
+2019-04-24T02:56:23.657Z - info: Using extension text
+2019-04-24T02:56:23.658Z - info: Using extension version-control
+2019-04-24T02:56:23.753Z - info: Using extension assets
+2019-04-24T02:56:23.770Z - info: Using extension html-to-xlsx
+2019-04-24T02:56:23.904Z - info: html-to-xlsx detected chrome as available html engine
+2019-04-24T02:56:23.905Z - info: Using extension scheduling
+2019-04-24T02:56:24.005Z - info: Using extension scripts
+2019-04-24T02:56:24.019Z - info: Using extension xlsx
+2019-04-24T02:56:24.142Z - info: Using extension public-templates
+2019-04-24T02:56:24.146Z - info: Using extension resources
+2019-04-24T02:56:24.147Z - info: Using extension sample-template
+2019-04-24T02:56:24.157Z - info: fs store is persisting using fs
+2019-04-24T02:56:24.158Z - info: fs store is synchronizing using fs
+2019-04-24T02:56:24.161Z - info: fs store is loading data
+2019-04-24T02:56:24.254Z - info: fs store is initialized successfully
+2019-04-24T02:56:24.289Z - info: Creating default express app.
+2019-04-24T02:56:24.397Z - info: jsreport server successfully started on http port: 3660
+2019-04-24T02:56:24.399Z - info: fs store emits sockets to synchronize underlying changes with studio
+2019-04-24T02:56:24.420Z - info: Verifying license key free
+2019-04-24T02:56:25.535Z - info: Using enterprise trial license
+2019-04-24T02:56:25.545Z - info: reporter initialized
