@@ -1,6 +1,8 @@
 const sequelize = require('./../../database/sequelize_remote')
-const { AcompanhamentoResidenteModel } = require('./../models')
+const { AcompanhamentoResidenteModel, AcompanhamentosModel, ResidenteModel } = require('./../models')
 
+AcompanhamentoResidenteModel.belongsTo(ResidenteModel, { as: 'RESIDENTE', foreignKey: 'CODIGO_RESIDENTE' })
+AcompanhamentoResidenteModel.belongsTo(AcompanhamentosModel, { as: 'ACOMPANHAMENTO', foreignKey: 'ACOMPANHAMENTO_CODIGO' })
 class AcompanhamentoResidente {
 
     getById(req, res) {

@@ -2,8 +2,7 @@ const sequelize = require('./../../database/sequelize_remote')
 const request = require('request')
 const REPORT_API = 'http://localhost:3660/api/report'
 
-const { PessoaModel, FuncionarioModel, DependenteModel, TelefoneModel, EnderecoModel, TelefonePessoaModel, EnderecoPessoaModel } = require('./../../app/models')
-
+const { PessoaModel, FuncionarioModel, DependenteModel, TelefoneModel, EnderecoModel, TelefonePessoaModel, EnderecoPessoaModel, AcompanhamentosModel, AcompanhamentoResidenteModel, AcompanhamentoFuncionarioModel, ResidenteModel } = require('./../../app/models')
 
 class Relatorios_ID {
 
@@ -71,6 +70,58 @@ class Relatorios_ID {
 
                 request(options).pipe(res)
                 // res.send(data.data)
+            }).catch(error => res.json(error))
+    }
+
+    acompanhamento(req, res) {
+        const acompanhamento = AcompanhamentosModel.findOne({
+            where: {
+                CODIGO: req.params.codigoAcompanhamento
+            }
+        })
+        const residentes = AcompanhamentoResidenteModel.findAll({
+            where: {
+                ACOMPANHAMENTO_CODIGO: req.params.codigoAcompanhamento
+            },
+            include: {
+                model: ResidenteModel, as: 'RESIDENTE'
+            }
+        })
+        const funcionarios = AcompanhamentoFuncionarioModel.findAll({
+            where: {
+                ACOMPANHAMENTO_CODIGO: req.params.codigoAcompanhamento
+            },
+            include: {
+                model: FuncionarioModel, as: 'FUNCIONARIO'
+            }
+        })
+
+        Promise
+            .all([acompanhamento, residentes, funcionarios])
+            .then(responses => {
+
+                var data = {
+                    "template": { "name": "relatorio-de-acompanhamento" },
+                    "data": {
+                        "acompanhamento": responses[0],
+                        "residentes": responses[1],
+                        "funcionarios": responses[2]
+                    },
+                    options: {
+                        preview: true
+                    }
+                }
+
+                var options = {
+                    uri: REPORT_API,
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    json: data
+                }
+
+                request(options).pipe(res)
             }).catch(error => res.json(error))
     }
 

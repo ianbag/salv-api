@@ -12,7 +12,7 @@ route.get('/relatorio_residentes', RelatorioController.residentes)
 
 // RELATÓRIOS POR ID
 route.get('/relatorio_funcionario/:codigoPessoa/:codigoFuncionario', RelatorioIDController.funcionario),
-route.get('/relatorio_acompanhamento/:codigo_acompanhamento'),
+route.get('/relatorio_acompanhamento/:codigoAcompanhamento', RelatorioIDController.acompanhamento),
 route.get('/relatorio_convenio/:codigo_convenio'),
 route.get('/relatorio_residente/:codigo_residente')
 
