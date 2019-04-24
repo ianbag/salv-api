@@ -13,4 +13,8 @@
  route.put('/dependente/:id/:dependenteNome/:dependenteSobrenome', DependenteController.update)
  route.delete('/dependente/:dependenteNome/:dependenteSobrenome', DependenteController.delete)
 
+ route.post('/dependente/rg', DependenteController.uniqueRG)
+ route.post('/dependente/cpf', DependenteController.uniqueCPF)
+ route.post('/dependente/numero_certidao_nascimento', DependenteController.uniqueNumeroCertidaoNascimento)
+
  module.exports = route
