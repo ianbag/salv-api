@@ -2,7 +2,7 @@ const sequelize = require('./../../database/sequelize_remote')
 const request = require('request')
 const REPORT_API = 'http://localhost:3660/api/report'
 
-const { PessoaModel, FuncionarioModel, DependenteModel, TelefoneModel, EnderecoModel, TelefonePessoaModel, EnderecoPessoaModel, AcompanhamentosModel, AcompanhamentoResidenteModel, AcompanhamentoFuncionarioModel, ResidenteModel } = require('./../../app/models')
+const { PessoaModel, FuncionarioModel, DependenteModel, TelefoneModel, EnderecoModel, TelefonePessoaModel, EnderecoPessoaModel, AcompanhamentosModel, AcompanhamentoResidenteModel, AcompanhamentoFuncionarioModel, ResidenteModel, ConvenioModel, EnderecoConvenioModel, TelefoneConvenioModel } = require('./../../app/models')
 
 class Relatorios_ID {
 
@@ -126,6 +126,59 @@ class Relatorios_ID {
                     },
                     json: data
                 }
+                // res.send(data)
+                request(options).pipe(res)
+            }).catch(error => res.json(error))
+    }
+
+    convenio(req, res) {
+        const convenio = ConvenioModel.findOne({
+            where: {
+                CODIGO: req.params.codigoConvenio
+            }
+        })
+        const enderecos = EnderecoConvenioModel.findAll({
+            where: {
+                CONVENIO_CODIGO: req.params.codigoConvenio
+            },
+            include: {
+                model: EnderecoModel, as: 'ENDERECO'
+            }
+        })
+        const telefones = TelefoneConvenioModel.findAll({
+            where: {
+                CONVENIO_CODIGO: req.params.codigoConvenio
+            },
+            include: {
+                model: TelefoneModel, as: 'TELEFONE'
+            }
+        })
+
+        Promise
+            .all([convenio, enderecos, telefones])
+            .then(responses => {
+
+                var data = {
+                    "template": { "name": "relatorio-de-convenio" },
+                    "data": {
+                        "convenio": responses[0],
+                        "enderecos": responses[1],
+                        "telefones": responses[2]
+                    },
+                    options: {
+                        preview: true
+                    }
+                }
+
+                var options = {
+                    uri: REPORT_API,
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    json: data
+                }
+
                 // res.send(data)
                 request(options).pipe(res)
             }).catch(error => res.json(error))

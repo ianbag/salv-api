@@ -4022,3 +4022,251 @@ Expecting 'ID', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', got 
 2019-04-24T02:56:24.420Z - info: Verifying license key free
 2019-04-24T02:56:25.535Z - info: Using enterprise trial license
 2019-04-24T02:56:25.545Z - info: reporter initialized
+2019-04-24T03:11:27.844Z - info: Initializing jsreport@2.4.0 in development mode using configuration file: jsreport.config.json
+2019-04-24T03:11:27.847Z - info: Searching for available extensions in P:\arquivos\fatec\gpes\salv-api\
+2019-04-24T03:11:27.858Z - info: Extensions location cache contains up to date information, skipping crawling in P:\arquivos\fatec\gpes\salv-api\
+2019-04-24T03:11:28.146Z - info: Found 31 extensions
+2019-04-24T03:11:28.562Z - info: Using extension cli
+2019-04-24T03:11:28.566Z - info: Using extension debug
+2019-04-24T03:11:28.568Z - info: Using extension express
+2019-04-24T03:11:28.711Z - info: Using extension freeze
+2019-04-24T03:11:28.713Z - info: Using extension handlebars
+2019-04-24T03:11:28.716Z - info: Using extension import-export
+2019-04-24T03:11:28.890Z - info: Using extension jsrender
+2019-04-24T03:11:28.892Z - info: Using extension tags
+2019-04-24T03:11:28.895Z - info: Using extension templates
+2019-04-24T03:11:28.898Z - info: Using extension authorization
+2019-04-24T03:11:28.902Z - info: Using extension base
+2019-04-24T03:11:28.905Z - info: Using extension browser-client
+2019-04-24T03:11:28.908Z - info: Using extension child-templates
+2019-04-24T03:11:28.918Z - info: Using extension chrome-pdf
+2019-04-24T03:11:29.020Z - info: Using extension data
+2019-04-24T03:11:29.021Z - info: Using extension fs-store
+2019-04-24T03:11:29.330Z - info: Using extension licensing
+2019-04-24T03:11:29.334Z - info: Using extension pdf-utils
+2019-04-24T03:11:29.426Z - info: Using extension reports
+2019-04-24T03:11:29.432Z - info: Using extension studio
+2019-04-24T03:11:29.452Z - info: Using extension text
+2019-04-24T03:11:29.454Z - info: Using extension version-control
+2019-04-24T03:11:29.538Z - info: Using extension assets
+2019-04-24T03:11:29.556Z - info: Using extension html-to-xlsx
+2019-04-24T03:11:29.693Z - info: html-to-xlsx detected chrome as available html engine
+2019-04-24T03:11:29.694Z - info: Using extension scheduling
+2019-04-24T03:11:29.786Z - info: Using extension scripts
+2019-04-24T03:11:29.793Z - info: Using extension xlsx
+2019-04-24T03:11:29.929Z - info: Using extension public-templates
+2019-04-24T03:11:29.931Z - info: Using extension resources
+2019-04-24T03:11:29.933Z - info: Using extension sample-template
+2019-04-24T03:11:29.940Z - info: fs store is persisting using fs
+2019-04-24T03:11:29.941Z - info: fs store is synchronizing using fs
+2019-04-24T03:11:29.944Z - info: fs store is loading data
+2019-04-24T03:11:30.041Z - info: fs store is initialized successfully
+2019-04-24T03:11:30.072Z - info: Creating default express app.
+2019-04-24T03:11:30.202Z - info: jsreport server successfully started on http port: 3660
+2019-04-24T03:11:30.204Z - info: fs store emits sockets to synchronize underlying changes with studio
+2019-04-24T03:11:30.222Z - info: Verifying license key free
+2019-04-24T03:11:31.529Z - info: Using enterprise trial license
+2019-04-24T03:11:31.564Z - info: reporter initialized
+2019-04-24T03:11:44.929Z - info: Starting rendering request 1 (user: null)
+2019-04-24T03:11:44.934Z - info: Rendering template { name: relatorio-de-convenios, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:11:47.316Z - info: Rendering request 1 finished in 2387 ms
+2019-04-24T03:12:01.648Z - info: Starting rendering request 2 (user: null)
+2019-04-24T03:12:01.651Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:12:06.321Z - info: Rendering request 2 finished in 4674 ms
+2019-04-24T03:12:46.953Z - info: fs store is loading data
+2019-04-24T03:12:47.195Z - info: Starting rendering request 3 (user: null)
+2019-04-24T03:12:47.199Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:12:47.280Z - warn: Error when processing render request Error while executing templating engine. each doesn't match if - 34:19 Error: each doesn't match if - 34:19
+    at validateClose (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\helpers.js:28:11)
+    at Object.prepareBlock (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\helpers.js:142:5)
+    at Object.anonymous (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:65:33)
+    at Parser.parse (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:367:48)
+    at HandlebarsEnvironment.parse (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:46:43)
+    at compileInput (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:515:19)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:524:18)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+2019-04-24T03:12:47.286Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-convenio
+2019-04-24T03:12:54.952Z - info: fs store is loading data
+2019-04-24T03:12:55.205Z - info: Starting rendering request 4 (user: null)
+2019-04-24T03:12:55.209Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:12:57.154Z - info: Rendering request 4 finished in 1949 ms
+2019-04-24T03:12:57.334Z - info: Starting rendering request 5 (user: null)
+2019-04-24T03:12:57.338Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:12:59.998Z - info: Rendering request 5 finished in 2664 ms
+2019-04-24T03:13:00.975Z - info: fs store is loading data
+2019-04-24T03:13:01.194Z - info: Starting rendering request 6 (user: null)
+2019-04-24T03:13:01.200Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:13:01.256Z - warn: Error when processing render request Error while executing templating engine. each doesn't match if - 71:19 Error: each doesn't match if - 71:19
+    at validateClose (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\helpers.js:28:11)
+    at Object.prepareBlock (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\helpers.js:142:5)
+    at Object.anonymous (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:65:33)
+    at Parser.parse (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:367:48)
+    at HandlebarsEnvironment.parse (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:46:43)
+    at compileInput (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:515:19)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:524:18)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+2019-04-24T03:13:01.257Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-convenio
+2019-04-24T03:13:04.706Z - info: fs store is loading data
+2019-04-24T03:13:04.979Z - info: Starting rendering request 7 (user: null)
+2019-04-24T03:13:04.982Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:13:07.793Z - info: Rendering request 7 finished in 2816 ms
+2019-04-24T03:13:07.954Z - info: Starting rendering request 8 (user: null)
+2019-04-24T03:13:07.960Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:13:10.250Z - info: Rendering request 8 finished in 2296 ms
+2019-04-24T03:13:10.598Z - info: Starting rendering request 9 (user: null)
+2019-04-24T03:13:10.601Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:13:12.131Z - info: Rendering request 9 finished in 1548 ms
+2019-04-24T03:13:12.283Z - info: Starting rendering request 10 (user: null)
+2019-04-24T03:13:12.286Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:13:14.001Z - info: Rendering request 10 finished in 1722 ms
+2019-04-24T03:13:17.368Z - info: Starting rendering request 11 (user: null)
+2019-04-24T03:13:17.370Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:13:18.827Z - info: Rendering request 11 finished in 1458 ms
+2019-04-24T03:13:30.779Z - info: fs store is loading data
+2019-04-24T03:13:31.042Z - info: Starting rendering request 12 (user: null)
+2019-04-24T03:13:31.044Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:14:06.810Z - info: Initializing jsreport@2.4.0 in development mode using configuration file: jsreport.config.json
+2019-04-24T03:14:06.813Z - info: Searching for available extensions in P:\arquivos\fatec\gpes\salv-api\
+2019-04-24T03:14:06.823Z - info: Extensions location cache contains up to date information, skipping crawling in P:\arquivos\fatec\gpes\salv-api\
+2019-04-24T03:14:07.060Z - info: Found 31 extensions
+2019-04-24T03:14:07.475Z - info: Using extension cli
+2019-04-24T03:14:07.483Z - info: Using extension debug
+2019-04-24T03:14:07.486Z - info: Using extension express
+2019-04-24T03:14:07.621Z - info: Using extension freeze
+2019-04-24T03:14:07.624Z - info: Using extension handlebars
+2019-04-24T03:14:07.628Z - info: Using extension import-export
+2019-04-24T03:14:07.778Z - info: Using extension jsrender
+2019-04-24T03:14:07.779Z - info: Using extension tags
+2019-04-24T03:14:07.783Z - info: Using extension templates
+2019-04-24T03:14:07.786Z - info: Using extension authorization
+2019-04-24T03:14:07.792Z - info: Using extension base
+2019-04-24T03:14:07.808Z - info: Using extension browser-client
+2019-04-24T03:14:07.812Z - info: Using extension child-templates
+2019-04-24T03:14:07.828Z - info: Using extension chrome-pdf
+2019-04-24T03:14:07.934Z - info: Using extension data
+2019-04-24T03:14:07.936Z - info: Using extension fs-store
+2019-04-24T03:14:08.250Z - info: Using extension licensing
+2019-04-24T03:14:08.256Z - info: Using extension pdf-utils
+2019-04-24T03:14:08.395Z - info: Using extension reports
+2019-04-24T03:14:08.402Z - info: Using extension studio
+2019-04-24T03:14:08.422Z - info: Using extension text
+2019-04-24T03:14:08.424Z - info: Using extension version-control
+2019-04-24T03:14:08.534Z - info: Using extension assets
+2019-04-24T03:14:08.551Z - info: Using extension html-to-xlsx
+2019-04-24T03:14:08.704Z - info: html-to-xlsx detected chrome as available html engine
+2019-04-24T03:14:08.705Z - info: Using extension scheduling
+2019-04-24T03:14:08.769Z - info: Using extension scripts
+2019-04-24T03:14:08.776Z - info: Using extension xlsx
+2019-04-24T03:14:08.906Z - info: Using extension public-templates
+2019-04-24T03:14:08.909Z - info: Using extension resources
+2019-04-24T03:14:08.910Z - info: Using extension sample-template
+2019-04-24T03:14:08.918Z - info: fs store is persisting using fs
+2019-04-24T03:14:08.919Z - info: fs store is synchronizing using fs
+2019-04-24T03:14:08.939Z - info: fs store is loading data
+2019-04-24T03:14:09.078Z - info: fs store is initialized successfully
+2019-04-24T03:14:09.110Z - info: Creating default express app.
+2019-04-24T03:14:09.222Z - info: jsreport server successfully started on http port: 3660
+2019-04-24T03:14:09.224Z - info: fs store emits sockets to synchronize underlying changes with studio
+2019-04-24T03:14:09.241Z - info: Verifying license key free
+2019-04-24T03:14:10.404Z - info: Using enterprise trial license
+2019-04-24T03:14:10.414Z - info: reporter initialized
+2019-04-24T03:14:17.553Z - info: Starting rendering request 1 (user: null)
+2019-04-24T03:14:17.556Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:14:19.518Z - info: Rendering request 1 finished in 1966 ms
+2019-04-24T03:14:42.625Z - info: fs store is loading data
+2019-04-24T03:14:42.792Z - info: Starting rendering request 2 (user: null)
+2019-04-24T03:14:42.794Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:14:42.828Z - warn: Error when processing render request Error while executing templating engine. Parse error on line 67:
+...v>                {{/if}}           
+----------------------^
+Expecting 'EOF', got 'OPEN_ENDBLOCK' Error: Parse error on line 67:
+...v>                {{/if}}           
+----------------------^
+Expecting 'EOF', got 'OPEN_ENDBLOCK'
+    at Parser.parseError (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:267:19)
+    at Parser.parse (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:336:30)
+    at HandlebarsEnvironment.parse (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:46:43)
+    at compileInput (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:515:19)
+    at ret (P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:524:18)
+    at P:\arquivos\fatec\gpes\salv-api\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:25:14
+    at Object.apply (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib/contextify.js:288:34)
+    at evaluate-template-engine.js:1:41
+    at Script.runInContext (vm.js:130:20)
+    at VM.run (P:\arquivos\fatec\gpes\salv-api\node_modules\vm2\lib\main.js:212:72)
+2019-04-24T03:14:42.833Z - warn: Error during processing request at http://localhost:3660/api/report/relatorio-de-convenio
+2019-04-24T03:14:47.161Z - info: fs store is loading data
+2019-04-24T03:14:47.476Z - info: Starting rendering request 3 (user: null)
+2019-04-24T03:14:47.479Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:14:49.084Z - info: Rendering request 3 finished in 1609 ms
+2019-04-24T03:14:49.258Z - info: Starting rendering request 4 (user: null)
+2019-04-24T03:14:49.269Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:14:55.680Z - info: fs store is loading data
+2019-04-24T03:14:55.941Z - info: Starting rendering request 5 (user: null)
+2019-04-24T03:14:55.958Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:14:57.798Z - info: Rendering request 5 finished in 1856 ms
+2019-04-24T03:14:57.949Z - info: Starting rendering request 6 (user: null)
+2019-04-24T03:14:57.952Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:14:58.702Z - info: Rendering request 4 finished in 9457 ms
+2019-04-24T03:14:59.683Z - info: Rendering request 6 finished in 1717 ms
+2019-04-24T03:15:08.092Z - info: Starting rendering request 7 (user: null)
+2019-04-24T03:15:08.094Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:15:10.249Z - info: Rendering request 7 finished in 2137 ms
+2019-04-24T03:15:25.280Z - info: fs store is loading data
+2019-04-24T03:15:25.480Z - info: Starting rendering request 8 (user: null)
+2019-04-24T03:15:25.482Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:15:27.121Z - info: Rendering request 8 finished in 1642 ms
+2019-04-24T03:15:27.307Z - info: Starting rendering request 9 (user: null)
+2019-04-24T03:15:27.316Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:15:29.327Z - info: Rendering request 9 finished in 2022 ms
+2019-04-24T03:29:03.741Z - info: Initializing jsreport@2.4.0 in development mode using configuration file: jsreport.config.json
+2019-04-24T03:29:03.743Z - info: Searching for available extensions in P:\arquivos\fatec\gpes\salv-api\
+2019-04-24T03:29:03.752Z - info: Extensions location cache contains up to date information, skipping crawling in P:\arquivos\fatec\gpes\salv-api\
+2019-04-24T03:29:04.035Z - info: Found 31 extensions
+2019-04-24T03:29:04.403Z - info: Using extension cli
+2019-04-24T03:29:04.406Z - info: Using extension debug
+2019-04-24T03:29:04.408Z - info: Using extension express
+2019-04-24T03:29:04.538Z - info: Using extension freeze
+2019-04-24T03:29:04.542Z - info: Using extension handlebars
+2019-04-24T03:29:04.545Z - info: Using extension import-export
+2019-04-24T03:29:04.704Z - info: Using extension jsrender
+2019-04-24T03:29:04.705Z - info: Using extension tags
+2019-04-24T03:29:04.708Z - info: Using extension templates
+2019-04-24T03:29:04.712Z - info: Using extension authorization
+2019-04-24T03:29:04.718Z - info: Using extension base
+2019-04-24T03:29:04.721Z - info: Using extension browser-client
+2019-04-24T03:29:04.724Z - info: Using extension child-templates
+2019-04-24T03:29:04.735Z - info: Using extension chrome-pdf
+2019-04-24T03:29:04.854Z - info: Using extension data
+2019-04-24T03:29:04.856Z - info: Using extension fs-store
+2019-04-24T03:29:05.119Z - info: Using extension licensing
+2019-04-24T03:29:05.123Z - info: Using extension pdf-utils
+2019-04-24T03:29:05.213Z - info: Using extension reports
+2019-04-24T03:29:05.217Z - info: Using extension studio
+2019-04-24T03:29:05.233Z - info: Using extension text
+2019-04-24T03:29:05.234Z - info: Using extension version-control
+2019-04-24T03:29:05.326Z - info: Using extension assets
+2019-04-24T03:29:05.340Z - info: Using extension html-to-xlsx
+2019-04-24T03:29:05.472Z - info: html-to-xlsx detected chrome as available html engine
+2019-04-24T03:29:05.472Z - info: Using extension scheduling
+2019-04-24T03:29:05.573Z - info: Using extension scripts
+2019-04-24T03:29:05.581Z - info: Using extension xlsx
+2019-04-24T03:29:05.752Z - info: Using extension public-templates
+2019-04-24T03:29:05.755Z - info: Using extension resources
+2019-04-24T03:29:05.756Z - info: Using extension sample-template
+2019-04-24T03:29:05.764Z - info: fs store is persisting using fs
+2019-04-24T03:29:05.765Z - info: fs store is synchronizing using fs
+2019-04-24T03:29:05.768Z - info: fs store is loading data
+2019-04-24T03:29:05.890Z - info: fs store is initialized successfully
+2019-04-24T03:29:05.927Z - info: Creating default express app.
+2019-04-24T03:29:06.059Z - info: jsreport server successfully started on http port: 3660
+2019-04-24T03:29:06.061Z - info: fs store emits sockets to synchronize underlying changes with studio
+2019-04-24T03:29:06.082Z - info: Verifying license key free
+2019-04-24T03:29:08.191Z - info: Using enterprise trial license
+2019-04-24T03:29:08.198Z - info: reporter initialized
+2019-04-24T03:29:11.495Z - info: Starting rendering request 1 (user: null)
+2019-04-24T03:29:11.497Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-24T03:29:13.819Z - info: Rendering request 1 finished in 2324 ms
