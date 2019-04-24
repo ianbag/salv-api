@@ -52,6 +52,41 @@ class Pessoa {
             .then(pessoa => res.json(pessoa))
             .catch(error => res.json(error))
     }
+    uniqueCPF(req, res){
+        PessoaModel.findOne({
+            raw: true,
+            where: { 
+                STATUS: 1,
+                CPF: req.body.CPF,
+            }
+        })
+            .then(pessoa => {
+                if(pessoa)
+                    res.json({value: 0, message: 'CPF não é único!'})
+                    
+                else
+                    res.json({value: 1, message: 'CPF é único!'})
+            })
+            .catch(error => res.json(error))
+    }
+
+    uniqueRG(req, res){
+        PessoaModel.findOne({
+            raw: true,
+            where: { 
+                STATUS: 1,
+                RG: req.body.RG,
+            }
+        })
+            .then(pessoa => {
+                if(pessoa)
+                    res.json({value: 0, message: 'RG não é único!'})
+                    
+                else
+                    res.json({value: 1, message: 'RG é único!'})
+            })
+            .catch(error => res.json(error))
+    }
 }
 
 module.exports = new Pessoa()

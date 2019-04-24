@@ -17,4 +17,7 @@ route.post('/pessoa', PessoaController.create)
 route.put('/pessoa/:id', PessoaController.update)
 route.delete('/pessoa/:id', PessoaController.delete)
 
+route.post('/pessoa/cpf', PessoaController.uniqueCPF)
+route.post('/pessoa/rg', PessoaController.uniqueRG)
+
 module.exports = route

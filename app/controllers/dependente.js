@@ -61,6 +61,60 @@ class Dependente {
             .catch(error => res.json(error))
     }
 
+    uniqueCPF(req, res) {
+        DependenteModel.findOne({
+            raw: true,
+            where: {
+                STATUS: 1,
+                CPF: req.body.CPF,
+            }
+        })
+            .then(dependente => {
+                if (dependente)
+                    res.json({ value: 0, message: 'CPF não é único!' })
+
+                else
+                    res.json({ value: 1, message: 'CPF é único!' })
+            })
+            .catch(error => res.json(error))
+    }
+
+    uniqueRG(req, res) {
+        DependenteModel.findOne({
+            raw: true,
+            where: {
+                STATUS: 1,
+                RG: req.body.RG,
+            }
+        })
+            .then(dependente => {
+                if (dependente)
+                    res.json({ value: 0, message: 'RG não é único!' })
+
+                else
+                    res.json({ value: 1, message: 'RG é único!' })
+            })
+            .catch(error => res.json(error))
+    }
+
+    uniqueNumeroCertidaoNascimento(req, res) {
+        DependenteModel.findOne({
+            raw: true,
+            where: {
+                STATUS: 1,
+                NUMERO_CERTIDAO_NASCIMENTO: req.body.NUMERO_CERTIDAO_NASCIMENTO,
+            }
+        })
+            .then(dependente => {
+                if (dependente)
+                    res.json({ value: 0, message: 'Número de Certidão de Nascimento não é único!' })
+
+                else
+                    res.json({ value: 1, message: 'Número de Certidão de Nascimento é único!' })
+            })
+            .catch(error => res.json(error))
+    }
+
 }
 
 module.exports = new Dependente()
