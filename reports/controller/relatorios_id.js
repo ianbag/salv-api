@@ -128,7 +128,7 @@ class Relatorios_ID {
                 }
                 // res.send(data)
                 request(options).pipe(res)
-            })/*.catch(error => res.json(error))*/
+            }).catch(error => res.json(error))
     }
 
 }
