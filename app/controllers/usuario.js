@@ -55,6 +55,61 @@ class Usuario {
             .then(usuario => res.json(usuario))
             .catch(error => res.json(error))
     }
+
+    uniqueEmail(req, res) {
+        UsuarioModel.findOne({
+            raw: true,
+            where: {
+                STATUS: 1,
+                EMAIL: req.body.EMAIL,
+            }
+        })
+            .then(usuario => {
+                if (usuario)
+                    res.json({ value: 0, message: 'Email não é único!' })
+
+                else
+                    res.json({ value: 1, message: 'Email é único!' })
+            })
+            .catch(error => res.json(error))
+    }
+
+    uniqueLogin(req, res) {
+        UsuarioModel.findOne({
+            raw: true,
+            where: {
+                STATUS: 1,
+                LOGIN: req.body.LOGIN,
+            }
+        })
+            .then(usuario => {
+                if (usuario)
+                    res.json({ value: 0, message: 'Login não é único!' })
+
+                else
+                    res.json({ value: 1, message: 'Login é único!' })
+            })
+            .catch(error => res.json(error))
+    }
+
+    uniqueSenha(req, res) {
+        UsuarioModel.findOne({
+            raw: true,
+            where: {
+                STATUS: 1,
+                SENHA: req.body.SENHA,
+            }
+        })
+            .then(usuario => {
+                if (usuario)
+                    res.json({ value: 0, message: 'Senha não é único!' })
+
+                else
+                    res.json({ value: 1, message: 'Senha é único!' })
+            })
+            .catch(error => res.json(error))
+    }
+
 }
 
 module.exports = new Usuario()

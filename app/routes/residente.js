@@ -18,7 +18,14 @@ route.get('/residenteNome', ResidenteController.getName)
 route.post('/residente', ResidenteController.create)
 route.put('/residente/:id', ResidenteController.update)
 route.delete('/residente/:id', ResidenteController.delete)
-
 route.get('/aniversariante', ResidenteController.aniversariante)
+
+route.post('/residente/cartao_sams', ResidenteController.uniqueCartaoSAMS)
+route.post('/residente/cartao_sus', ResidenteController.uniqueCartaoSUS)
+route.post('/residente/conta_inss', ResidenteController.uniqueContaINSS)
+route.post('/residente/numero_certidao_nascimento', ResidenteController.uniqueNumeroCertidaoNascimento)
+route.post('/residente/numero_inss', ResidenteController.uniqueNumeroINSS)
+route.post('/residente/titulo_eleitor', ResidenteController.uniqueTituloEleitor)
+
 
 module.exports = route
