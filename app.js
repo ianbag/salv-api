@@ -131,8 +131,8 @@ app.use('/', ResidenteConvenioRoute)
 //API RELATÓRIOS
 app.use('/', RelatorioRoutes)
 
-app.listen(3000, function () {
-    console.log("API rodando na porta 3000")
+app.listen(port, function () {
+    console.log(`API LISTEN ON PORT ${port}`)
 })
 
 module.exports = app

@@ -4363,3 +4363,69 @@ Expecting 'EOF', got 'OPEN_ENDBLOCK'
 2019-04-24T04:11:44.427Z - info: Starting rendering request 16 (user: null)
 2019-04-24T04:11:44.428Z - info: Rendering template { name: relatorio-de-acompanhamentos, recipe: chrome-pdf, engine: handlebars, preview: true }
 2019-04-24T04:11:46.208Z - info: Rendering request 16 finished in 1784 ms
+2019-04-25T00:04:20.577Z - info: Initializing jsreport@2.4.0 in development mode using configuration file: jsreport.config.json
+2019-04-25T00:04:20.580Z - info: Searching for available extensions in P:\arquivos\fatec\gpes\salv-api\
+2019-04-25T00:04:20.620Z - info: Extensions location cache contains up to date information, skipping crawling in P:\arquivos\fatec\gpes\salv-api\
+2019-04-25T00:04:21.587Z - info: Found 31 extensions
+2019-04-25T00:04:22.149Z - info: Using extension cli
+2019-04-25T00:04:22.157Z - info: Using extension debug
+2019-04-25T00:04:22.170Z - info: Using extension express
+2019-04-25T00:04:22.874Z - info: Using extension freeze
+2019-04-25T00:04:22.886Z - info: Using extension handlebars
+2019-04-25T00:04:22.905Z - info: Using extension import-export
+2019-04-25T00:04:25.034Z - info: Using extension jsrender
+2019-04-25T00:04:25.043Z - info: Using extension tags
+2019-04-25T00:04:25.069Z - info: Using extension templates
+2019-04-25T00:04:25.089Z - info: Using extension authorization
+2019-04-25T00:04:25.159Z - info: Using extension base
+2019-04-25T00:04:25.173Z - info: Using extension browser-client
+2019-04-25T00:04:25.204Z - info: Using extension child-templates
+2019-04-25T00:04:25.314Z - info: Using extension chrome-pdf
+2019-04-25T00:04:26.728Z - info: Using extension data
+2019-04-25T00:04:26.741Z - info: Using extension fs-store
+2019-04-25T00:04:30.258Z - info: Using extension licensing
+2019-04-25T00:04:30.290Z - info: Using extension pdf-utils
+2019-04-25T00:04:31.427Z - info: Using extension reports
+2019-04-25T00:04:31.479Z - info: Using extension studio
+2019-04-25T00:04:31.634Z - info: Using extension text
+2019-04-25T00:04:31.645Z - info: Using extension version-control
+2019-04-25T00:04:33.328Z - info: Using extension assets
+2019-04-25T00:04:33.444Z - info: Using extension html-to-xlsx
+2019-04-25T00:04:35.044Z - info: html-to-xlsx detected chrome as available html engine
+2019-04-25T00:04:35.045Z - info: Using extension scheduling
+2019-04-25T00:04:35.272Z - info: Using extension scripts
+2019-04-25T00:04:35.317Z - info: Using extension xlsx
+2019-04-25T00:04:37.128Z - info: Using extension public-templates
+2019-04-25T00:04:37.138Z - info: Using extension resources
+2019-04-25T00:04:37.149Z - info: Using extension sample-template
+2019-04-25T00:04:37.168Z - info: fs store is persisting using fs
+2019-04-25T00:04:37.171Z - info: fs store is synchronizing using fs
+2019-04-25T00:04:37.202Z - info: fs store is loading data
+2019-04-25T00:04:37.386Z - info: fs store is initialized successfully
+2019-04-25T00:04:37.420Z - info: Creating default express app.
+2019-04-25T00:04:38.072Z - info: jsreport server successfully started on http port: 3660
+2019-04-25T00:04:38.078Z - info: fs store emits sockets to synchronize underlying changes with studio
+2019-04-25T00:04:38.433Z - info: Verifying license key free
+2019-04-25T00:04:38.467Z - info: The licensing server was not reachable during instance startup. The instance now runs in the enterprise mode.
+2019-04-25T00:04:38.474Z - info: reporter initialized
+2019-04-25T00:33:48.246Z - info: Starting rendering request 1 (user: null)
+2019-04-25T00:33:48.257Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-25T00:33:52.467Z - info: Rendering request 1 finished in 4224 ms
+2019-04-25T00:33:52.842Z - info: Starting rendering request 2 (user: null)
+2019-04-25T00:33:52.863Z - info: Rendering template { name: relatorio-de-convenio, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-25T00:33:54.774Z - info: Rendering request 2 finished in 1946 ms
+2019-04-25T00:38:54.106Z - info: Starting rendering request 3 (user: null)
+2019-04-25T00:38:54.125Z - info: Rendering template { name: relatorio-de-residentes, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-25T00:38:56.773Z - info: Rendering request 3 finished in 2678 ms
+2019-04-25T00:38:56.986Z - info: Starting rendering request 4 (user: null)
+2019-04-25T00:38:56.991Z - info: Rendering template { name: relatorio-de-residentes, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-25T00:38:59.699Z - info: Rendering request 4 finished in 2718 ms
+2019-04-25T00:40:22.548Z - info: Starting rendering request 5 (user: null)
+2019-04-25T00:40:22.553Z - info: Rendering template { name: relatorio-de-acompanhamento, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-25T00:40:25.818Z - info: Rendering request 5 finished in 3270 ms
+2019-04-25T00:40:26.035Z - info: Starting rendering request 6 (user: null)
+2019-04-25T00:40:26.039Z - info: Rendering template { name: relatorio-de-acompanhamento, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-25T00:40:26.123Z - info: Starting rendering request 7 (user: null)
+2019-04-25T00:40:26.128Z - info: Rendering template { name: relatorio-de-acompanhamento, recipe: chrome-pdf, engine: handlebars, preview: true }
+2019-04-25T00:40:29.470Z - info: Rendering request 6 finished in 3439 ms
+2019-04-25T00:40:29.471Z - info: Rendering request 7 finished in 3350 ms
