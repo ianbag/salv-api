@@ -37,8 +37,7 @@ class Residente {
     getById(req, res) {
         ResidenteModel.findOne({
             where: {
-                CODIGO_RESIDENTE: req.params.id,
-                STATUS: 1,
+                CODIGO_RESIDENTE: req.params.id
             },
             include: [{ model: PessoaModel, as: 'PESSOA' }],
         })

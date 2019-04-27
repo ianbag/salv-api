@@ -54,8 +54,7 @@ class Funcionario {
     getById(req, res) {
         FuncionarioModel.findOne({
             where: {
-                CODIGO_FUNCIONARIO: req.params.id,
-                STATUS: 1
+                CODIGO_FUNCIONARIO: req.params.id
             },
             include: [
                 { model: PessoaModel, as: 'PESSOA' },

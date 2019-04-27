@@ -20,8 +20,7 @@ class Pessoa {
     getById(req, res) {
         PessoaModel.findOne({
             where: { 
-                CODIGO: req.params.id,
-                STATUS: 1
+                CODIGO: req.params.id
             } 
         })
             .then(pessoa => res.json(pessoa))
