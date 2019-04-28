@@ -2,6 +2,9 @@
  * author: NathanBarsoti8
  */
 
+const sequelize = require('./../../database/sequelize_remote')
+const OP = sequelize.Op
+
 const { DependenteModel } = require('./../models')
 
 class Dependente {
@@ -67,6 +70,11 @@ class Dependente {
             where: {
                 STATUS: 1,
                 CPF: req.body.CPF,
+                [OP.or]: {
+                    CODIGO_FUNCIONARIO: { [OP.ne]: req.body.CODIGO },
+                    NOME: { [OP.ne]: req.body.NOME },
+                    SOBRENOME: { [OP.ne]: req.body.SOBRENOME }
+                }
             }
         })
             .then(dependente => {
@@ -85,6 +93,11 @@ class Dependente {
             where: {
                 STATUS: 1,
                 RG: req.body.RG,
+                [OP.or]: {
+                    CODIGO_FUNCIONARIO: { [OP.ne]: req.body.CODIGO },
+                    NOME: { [OP.ne]: req.body.NOME },
+                    SOBRENOME: { [OP.ne]: req.body.SOBRENOME }
+                }
             }
         })
             .then(dependente => {
@@ -103,6 +116,11 @@ class Dependente {
             where: {
                 STATUS: 1,
                 NUMERO_CERTIDAO_NASCIMENTO: req.body.NUMERO_CERTIDAO_NASCIMENTO,
+                [OP.or]: {
+                    CODIGO_FUNCIONARIO: { [OP.ne]: req.body.CODIGO },
+                    NOME: { [OP.ne]: req.body.NOME },
+                    SOBRENOME: { [OP.ne]: req.body.SOBRENOME }
+                }
             }
         })
             .then(dependente => {

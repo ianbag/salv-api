@@ -7,6 +7,7 @@
  */
 
 const sequelize = require('./../../database/sequelize_remote')
+const OP = sequelize.Op
 
 const { ResidenteModel, PessoaModel, AcompanhamentoResidenteModel } = require('./../models')
 
@@ -107,6 +108,7 @@ class Residente {
             where: {
                 STATUS: 1,
                 TITULO_ELEITOR: req.body.TITULO_ELEITOR,
+                CODIGO_RESIDENTE: {[OP.ne]: req.body.CODIGO}
             }
         })
             .then(residente => {
@@ -125,6 +127,7 @@ class Residente {
             where: {
                 STATUS: 1,
                 NUMERO_CERTIDAO_NASCIMENTO: req.body.NUMERO_CERTIDAO_NASCIMENTO,
+                CODIGO_RESIDENTE: {[OP.ne]: req.body.CODIGO}
             }
         })
             .then(residente => {
@@ -143,6 +146,7 @@ class Residente {
             where: {
                 STATUS: 1,
                 CARTAO_SAMS: req.body.CARTAO_SAMS,
+                CODIGO_RESIDENTE: {[OP.ne]: req.body.CODIGO}
             }
         })
             .then(residente => {
@@ -161,6 +165,7 @@ class Residente {
             where: {
                 STATUS: 1,
                 CARTAO_SUS: req.body.CARTAO_SUS,
+                CODIGO_RESIDENTE: {[OP.ne]: req.body.CODIGO}
             }
         })
             .then(residente => {
@@ -179,6 +184,7 @@ class Residente {
             where: {
                 STATUS: 1,
                 NUMERO_INSS: req.body.NUMERO_INSS,
+                CODIGO_RESIDENTE: {[OP.ne]: req.body.CODIGO}
             }
         })
             .then(residente => {
@@ -197,6 +203,7 @@ class Residente {
             where: {
                 STATUS: 1,
                 CONTA_INSS: req.body.CONTA_INSS,
+                CODIGO_RESIDENTE: {[OP.ne]: req.body.CODIGO}
             }
         })
             .then(residente => {

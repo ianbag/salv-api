@@ -7,6 +7,9 @@
  */
 
 const { PessoaModel } = require('./../models')
+const sequelize = require('./../../database/sequelize_remote')
+
+const OP = sequelize.Op
 
 class Pessoa {
     get(req, res) {
@@ -57,6 +60,7 @@ class Pessoa {
             where: { 
                 STATUS: 1,
                 CPF: req.body.CPF,
+                CODIGO: {[OP.ne]: req.body.CODIGO}
             }
         })
             .then(pessoa => {
@@ -75,6 +79,7 @@ class Pessoa {
             where: { 
                 STATUS: 1,
                 RG: req.body.RG,
+                CODIGO: {[OP.ne]: req.body.CODIGO}
             }
         })
             .then(pessoa => {

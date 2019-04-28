@@ -4,6 +4,8 @@
 
 const sequelize = require('./../../database/sequelize_remote')
 
+const OP = sequelize.Op
+
 const { UsuarioModel } = require('./../models')
 
 class Usuario {
@@ -52,6 +54,7 @@ class Usuario {
             where: {
                 STATUS: 1,
                 EMAIL: req.body.EMAIL,
+                CODIGO_FUNCIONARIO: {[OP.ne]: req.body.CODIGO}
             }
         })
             .then(usuario => {
@@ -70,6 +73,7 @@ class Usuario {
             where: {
                 STATUS: 1,
                 LOGIN: req.body.LOGIN,
+                CODIGO_FUNCIONARIO: {[OP.ne]: req.body.CODIGO}
             }
         })
             .then(usuario => {
@@ -88,6 +92,7 @@ class Usuario {
             where: {
                 STATUS: 1,
                 SENHA: req.body.SENHA,
+                CODIGO_FUNCIONARIO: {[OP.ne]: req.body.CODIGO}
             }
         })
             .then(usuario => {
