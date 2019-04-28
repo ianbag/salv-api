@@ -1,0 +1,16 @@
+{
+    "folder": null,
+    "shortid": "S1eSkmwc54",
+    "name": "relatorio-de-acompanhamentos",
+    "recipe": "chrome-pdf",
+    "engine": "handlebars",
+    "chrome": {
+        "printBackground": true
+    },
+    "creationDate": "2019-04-21T21:38:40.396Z",
+    "modificationDate": {
+        "$$date": 1555894294977
+    },
+    "_id": "cBcAG9VV2baABocl",
+    "$entitySet": "templates"
+}

@@ -1,0 +1,18 @@
+{
+    "folder": null,
+    "shortid": "BJxzkl59cE",
+    "name": "relatorio-de-residentes",
+    "recipe": "chrome-pdf",
+    "engine": "handlebars",
+    "chrome": {
+        "printBackground": true
+    },
+    "creationDate": {
+        "$$date": 1555894294973
+    },
+    "modificationDate": {
+        "$$date": 1555894294973
+    },
+    "_id": "M1Xr4796WoVq995m",
+    "$entitySet": "templates"
+}

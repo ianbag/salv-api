@@ -1,0 +1,16 @@
+{
+    "folder": null,
+    "shortid": "Hkgx_xIa5E",
+    "name": "relatorio-de-convenio",
+    "recipe": "chrome-pdf",
+    "engine": "handlebars",
+    "chrome": {
+        "printBackground": true
+    },
+    "creationDate": "2019-04-24T02:56:44.207Z",
+    "modificationDate": {
+        "$$date": 1556075705939
+    },
+    "_id": "naI2JPGjKsrpj7qJ",
+    "$entitySet": "templates"
+}

@@ -84,8 +84,8 @@ class Acompanhamento {
     update(req, res) {
         AcompanhamentosModel.update(req.body, {
             where: {
-                CODIGO: req.params.id,
-                STATUS: 1
+                CODIGO: req.params.id
+                
             }
         })
             .then(acompanhamento => res.json(acompanhamento))
@@ -102,7 +102,7 @@ class Acompanhamento {
             .catch(error => res.json(error))
     }
 
-    getCod(req, res){ sequelize.query(`SELECT MAX(CODIGO+1)as ACOMPANHAMENTO_CODIGO FROM ACOMPANHAMENTO`,
+    getCod(req, res){ sequelize.query(`SELECT MAX(CODIGO+1) as ACOMPANHAMENTO_CODIGO FROM ACOMPANHAMENTO`,
 
 
     )

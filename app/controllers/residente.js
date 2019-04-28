@@ -8,9 +8,10 @@
 
 const sequelize = require('./../../database/sequelize_remote')
 
-const { ResidenteModel, PessoaModel } = require('./../models')
+const { ResidenteModel, PessoaModel, AcompanhamentoResidenteModel } = require('./../models')
 
 ResidenteModel.belongsTo(PessoaModel, { as: 'PESSOA', foreignKey: 'PESSOA_CODIGO' })
+ResidenteModel.belongsTo(AcompanhamentoResidenteModel, {as: 'ACOMPANHAMENTO_RESIDENTE', foreignKey: 'CODIGO_RESIDENTE'})
 
 class Residente {
     get(req, res) {
@@ -22,6 +23,17 @@ class Residente {
             .then(residente => res.json(residente))
             .catch(error => res.json(error))
     }
+
+    getInativos(req, res) {
+        ResidenteModel.findAll({
+            where: { STATUS: 0 },
+            include: [{ model: PessoaModel, as: 'PESSOA' }],
+
+        })
+            .then(residente => res.json(residente))
+            .catch(error => res.json(error))
+    }
+
     getById(req, res) {
         ResidenteModel.findOne({
             where: {

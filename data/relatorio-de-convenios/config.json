@@ -1,0 +1,16 @@
+{
+    "folder": null,
+    "shortid": "B1gbLUK5cN",
+    "name": "relatorio-de-convenios",
+    "recipe": "chrome-pdf",
+    "engine": "handlebars",
+    "chrome": {
+        "printBackground": true
+    },
+    "creationDate": "2019-04-22T00:10:45.012Z",
+    "modificationDate": {
+        "$$date": 1556075503511
+    },
+    "_id": "GB2a9hhNpF4eFICh",
+    "$entitySet": "templates"
+}

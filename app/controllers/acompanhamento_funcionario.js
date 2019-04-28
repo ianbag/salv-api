@@ -1,6 +1,10 @@
 const sequelize = require('./../../database/sequelize_remote')
 
-const { AcompanhamentoFuncionarioModel } = require('./../models/')
+const { AcompanhamentoFuncionarioModel, AcompanhamentosModel, FuncionarioModel } = require('./../models/')
+
+AcompanhamentoFuncionarioModel.belongsTo(FuncionarioModel, { as: 'FUNCIONARIO', foreignKey: 'CODIGO_FUNCIONARIO' })
+AcompanhamentoFuncionarioModel.belongsTo(AcompanhamentosModel, { as: 'ACOMPANHAMENTO', foreignKey: 'ACOMPANHAMENTO_CODIGO' })
+
 
 class AcompanhamentoFuncionario {
 
@@ -37,11 +41,17 @@ class AcompanhamentoFuncionario {
         })
     }
 
-    delete(req, res) {
-        AcompanhamentoFuncionarioModel.destroy({ where: { CODIGO_FUNCIONARIO: req.params.id } })
-            .then(acompanhamento_funcionario => res.json(acompanhamento_funcionario))
-            .catch(error => res.json(error))
-    }
+    delete(req, res){ 
+        let idFu = req.params.idFuncionario
+        let idAc = req.params.idAcompanhamento
+        let deleteAc = 'DELETE FROM ACOMPANHAMENTO_FUNCIONARIO WHERE CODIGO_FUNCIONARIO = "' + idFu + '"  AND ACOMPANHAMENTO_CODIGO = "' + idAc + '" '
+
+      sequelize.query(deleteAc)
+       .then(result => {
+           res.json(result[0])
+           })
+        }      
+        
 
 
 }

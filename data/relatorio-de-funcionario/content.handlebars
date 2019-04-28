@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Relatório de funcionário</title>
+</head>
+
+<body>
+    <div class="col-sm-12 col-sm-12" style="margin-top: 25px">
+        <h1 style="text-align:center; font-size: 45px">Relatório de funcionário</h1>
+    </div>
+    <hr class="col-sm-12">
+    <div class="container" style="text-align: center; font-size: 25px">
+        <div class="box box-default">
+            <div class="box-header">
+                <h3 class="box-title" style="font-size: 35px">Informações Pessoais</h3>
+                <hr class="col-6">
+            </div>
+            <div class="box-body" style="text-align: center">
+                <div class="row">
+                    <div class="col">
+                        <strong>Nome: </strong> {{pessoa.NOME}} {{pessoa.SOBRENOME}}
+                    </div>
+                    <div class="col">
+                        <strong>CPF: </strong> {{cpf pessoa.CPF}}
+                    </div>
+                    <div class="col">
+                        <strong>RG: </strong> {{rg pessoa.RG}}
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Data de nascimento: </strong> {{dataNascimento pessoa.DATA_NASCIMENTO}}
+                    </div>
+                    <div class="col">
+                        <strong>Escolaridade: </strong> {{escolaridade pessoa.ESCOLARIDADE}}
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Sexo: </strong> {{sexo pessoa.SEXO}}
+                    </div>
+                    <div class="col">
+                        <strong>Estado civil: </strong> {{estadoCivil pessoa.ESTADO_CIVIL}}
+                    </div>
+                    <div class="col">
+                        <strong>Religião: </strong> {{religiao pessoa.RELIGIAO}}
+                    </div>
+                </div>
+                <br />
+                <br />
+                {{#each enderecos}}
+                {{#if ENDERECO.ENDERECO}}
+                <div class="row">
+                    <div class="col">
+                        <strong>Endereço: </strong> {{ENDERECO.ENDERECO}}
+                    </div>
+                    <div class="col">
+                        <strong>Nº: </strong> {{ENDERECO.NUMERO}}
+                    </div>
+                    <div class="col">
+                        <strong>Bairro: </strong> {{ENDERECO.BAIRRO}}
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    {{#if ENDERECO.COMPLEMENTO}}
+                    <div class="col">
+                        <strong>Complemento: </strong> {{ENDERECO.COMPLEMENTO}}
+                    </div>
+                    {{/if}}
+                    <div class="col">
+                        <strong>Cidade: </strong> {{ENDERECO.CIDADE}}
+                    </div>
+                    <div class="col">
+                        <strong>Estado: </strong> {{ENDERECO.ESTADO}}
+                    </div>
+                    {{#if ENDERECO.REFERENCIA}}
+                    <div class="col">
+                        <strong>Referência: </strong> {{ENDERECO.REFERENCIA}}
+                    </div>
+                    {{/if}}
+                </div>
+                {{/if}}
+                {{/each}}
+                <br />
+                <br />
+                {{#each telefones}}
+                {{#if TELEFONE.NUMERO}}
+                <div class="row">
+                    <div class="col">
+                        <strong>Telefone: </strong> ({{TELEFONE.DDD}}) {{TELEFONE.NUMERO}}
+                    </div>
+                </div>
+                {{/if}}
+                {{/each}}
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Cargo: </strong> {{funcionario.CARGO}}
+                    </div>
+                    <div class="col">
+                        <strong>Data de admissão: </strong> {{dataNascimento funcionario.DATA_ADMISSAO}}
+                    </div>
+                    {{#if funcionario.DATA_DEMISSAO}}
+                    <div class="col">
+                        <strong>Data de demissão: </strong> {{dataNascimento funcionario.DATA_DEMISSAO}}
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        {{#if dependentes}}
+        <div class="container" style="text-align: center; font-size: 25px">
+            <div class="box box-default">
+                <div class="box-header">
+                    <h3 class="box-title" style="font-size: 35px">Dependentes</h3>
+                    <hr class="col-6">
+                </div>
+                {{#each dependentes}}
+                <div class="box-body" style="text-align: center">
+                    <div class="row">
+                        <div class="col">
+                            <strong>Nome: </strong> {{NOME}} {{SOBRENOME}}
+                        </div>
+                        <div class="col">
+                            <strong>CPF: </strong> {{cpf CPF}}
+                        </div>
+                        <div class="col">
+                            <strong>RG: </strong> {{rg RG}}
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="row">
+                        <div class="col">
+                            <strong>Data de nascimento: </strong> {{dataNascimento DATA_NASCIMENTO}}
+                        </div>
+                    </div>
+                    <br />
+                    {{#if NUMERO_CERTIDAO_NASCIMENTO}}
+                    <h4 style="text-align: center">Certidão de nascimento</h4>
+                    <hr class="col-1">
+                    <div class="row">
+                        <div class="col">
+                            <strong>Nº: </strong> {{NUMERO_CERTIDAO_NASCIMENTO}}
+                        </div>
+                        <div class="col">
+                            <strong>Folha: </strong> {{FOLHA_CERTIDAO_NASCIMENTO}}
+                        </div>
+                        <div class="col">
+                            <strong>Livro: </strong> {{LIVRO_CERTIDAO_NASCIMENTO}}
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="row">
+                        <div class="col">
+                            <strong>Cidade: </strong> {{CIDADE_CERTIDAO_NASCIMENTO}}
+                        </div>
+                        <div class="col">
+                            <strong>Estado: </strong> {{ESTADO_CERTIDAO_NASCIMENTO}}
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+                <br/>
+                <hr class="col-3">
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+    </div>
+
+</body>
+
+</html>

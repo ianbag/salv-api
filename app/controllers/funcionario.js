@@ -9,14 +9,30 @@
  */
 const sequelize = require('./../../database/sequelize_remote')
 
-const { FuncionarioModel, PessoaModel, UsuarioModel } = require('./../models')
+const { FuncionarioModel, PessoaModel, UsuarioModel, AcompanhamentoFuncionarioModel } = require('./../models')
 
 FuncionarioModel.belongsTo(PessoaModel, { as: 'PESSOA', foreignKey: 'PESSOA_CODIGO' })
 FuncionarioModel.belongsTo(UsuarioModel, { as: 'USUARIO', foreignKey: 'CODIGO_FUNCIONARIO' })
+FuncionarioModel.belongsTo(AcompanhamentoFuncionarioModel, { as: 'ACOMPANHAMENTO_FUNCIONARIO', foreignKey: 'CODIGO_FUNCIONARIO' })
 
 class Funcionario {
 
     get(req, res) {
+        sequelize.query(`SELECT
+                            F.CODIGO_FUNCIONARIO CODIGO, F.DATA_ADMISSAO,
+                            P.NOME FUNCIONARIO_NOME, P.SOBRENOME FUNCIONARIO_SOBRENOME, P.CPF, P.RG
+                        FROM
+                            FUNCIONARIO F
+                            LEFT JOIN PESSOA P
+                            ON P.CODIGO = F.PESSOA_CODIGO
+                            WHERE F.STATUS = 1`,
+        )
+            .then(result => {
+                res.json(result[0])
+            })
+    }
+
+    getInativos(req, res) {
         sequelize.query(`SELECT
                             F.CODIGO_FUNCIONARIO CODIGO,
                             P.NOME FUNCIONARIO_NOME, P.SOBRENOME FUNCIONARIO_SOBRENOME, P.CPF, P.RG
@@ -24,7 +40,7 @@ class Funcionario {
                             FUNCIONARIO F
                             LEFT JOIN PESSOA P
                             ON P.CODIGO = F.PESSOA_CODIGO
-                            WHERE F.STATUS = 1`,
+                            WHERE F.STATUS = 0`,
         )
             .then(result => {
                 res.json(result[0])

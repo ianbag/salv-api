@@ -12,6 +12,7 @@ const route = express.Router()
 const ResidenteController = require('./../controllers/residente')
 
 route.get('/residente', ResidenteController.get)
+route.get('/residente-inativos', ResidenteController.getInativos)
 route.get('/residente/:id', ResidenteController.getById)
 route.get('/residenteNome', ResidenteController.getName)
 route.post('/residente', ResidenteController.create)

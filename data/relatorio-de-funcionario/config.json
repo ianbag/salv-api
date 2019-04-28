@@ -1,0 +1,20 @@
+{
+    "folder": null,
+    "shortid": "B1elttghqN",
+    "name": "relatorio-de-funcionario",
+    "recipe": "chrome-pdf",
+    "engine": "handlebars",
+    "chrome": {
+        "printBackground": true
+    },
+    "creationDate": "2019-04-23T02:33:30.846Z",
+    "modificationDate": {
+        "$$date": 1556061487088
+    },
+    "_id": "Uz1e7PHZMSvtYUrH",
+    "$entitySet": "templates",
+    "resources": {
+        "defaultLanguage": "pt-br",
+        "items": []
+    }
+}

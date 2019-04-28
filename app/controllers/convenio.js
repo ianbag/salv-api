@@ -20,6 +20,23 @@ class Convenio {
             })
     }
 
+    getDesativados(req, res) {
+        sequelize.query(`SELECT 
+                            C.CODIGO, C.NOME_CONVENIO, C.TIPO_CONVENIO,
+                            T.DDD, T.NUMERO TELEFONE
+                        FROM
+                            CONVENIO C
+                            LEFT JOIN TELEFONE_CONVENIO TC
+                            ON TC.CONVENIO_CODIGO = C.CODIGO
+                            LEFT JOIN TELEFONE T
+                            ON T.CODIGO = TC.TELEFONE_CODIGO
+                            WHERE STATUS = 0`,
+        )
+            .then(result => {
+                res.json(result[0])
+            })
+    }
+
     getConvenioFull(req, res) {
         sequelize.query(`SELECT 
                             C.CODIGO AS COD_CONV, C.NOME_CONVENIO, C.TIPO_CONVENIO,

@@ -1,6 +1,8 @@
 const sequelize = require('./../../database/sequelize_remote')
-const { AcompanhamentoResidenteModel } = require('./../models')
+const { AcompanhamentoResidenteModel, AcompanhamentosModel, ResidenteModel } = require('./../models')
 
+AcompanhamentoResidenteModel.belongsTo(ResidenteModel, { as: 'RESIDENTE', foreignKey: 'CODIGO_RESIDENTE' })
+AcompanhamentoResidenteModel.belongsTo(AcompanhamentosModel, { as: 'ACOMPANHAMENTO', foreignKey: 'ACOMPANHAMENTO_CODIGO' })
 class AcompanhamentoResidente {
 
     getById(req, res) {
@@ -33,13 +35,20 @@ class AcompanhamentoResidente {
                 })
                 .catch(error => res.json(error))
         })
-    }
-    
-    delete(req, res) {
-        AcompanhamentoResidenteModel.destroy({ where: { CODIGO_RESIDENTE: req.params.id, ACOMPANHAMENTO_CODIGO: req.params.id } })
-            .then(acompanhamento_residente => res.json(acompanhamento_residente))
-            .catch(error => res.json(error))
-    }
+    } 
+     
+
+      delete(req, res){ 
+          let idRe = req.params.idResidente
+          let idAc = req.params.idAcompanhamento
+          let deleteAc = 'DELETE FROM ACOMPANHAMENTO_RESIDENTE WHERE CODIGO_RESIDENTE = "' + idRe + '"  AND ACOMPANHAMENTO_CODIGO = "' + idAc + '" '
+
+        sequelize.query(deleteAc)
+         .then(result => {
+             res.json(result[0])
+             })
+          }      
+          
 
 
 }
