@@ -12,11 +12,11 @@ const route = express.Router()
 
 const BeneficioController = require('./../controllers/beneficio')
 
-route.get('/beneficio', BeneficioController.get)
-route.get('/beneficio/:name', BeneficioController.getByName)
+route.get('/beneficio/:id', BeneficioController.get)
+route.get('/beneficio/:id/:name', BeneficioController.getByName)
 route.post('/beneficio', BeneficioController.create)
-route.put('/beneficio/:name', BeneficioController.update)
-route.delete('/beneficio/:name', BeneficioController.delete)
+route.put('/beneficio/:id/:name', BeneficioController.update)
+route.delete('/beneficio/:id/:name', BeneficioController.delete)
 
 route.get('/prova-de-vida', BeneficioController.provaDeVida)
 
