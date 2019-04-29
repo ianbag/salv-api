@@ -15,5 +15,6 @@ route.get('/funcionarioNome', FuncionarioController.getName)
 route.post('/funcionario', FuncionarioController.create)
 route.put('/funcionario/:id', FuncionarioController.update)
 route.delete('/funcionario/:id', FuncionarioController.delete)
+route.delete('/funcionario-ativar/:id', FuncionarioController.ativar)
 
 module.exports = route
