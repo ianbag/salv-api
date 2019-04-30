@@ -93,6 +93,18 @@ class Funcionario {
             .catch(error => res.json(error))
     }
 
+    ativar(req, res) {
+        FuncionarioModel.update({ STATUS: 1 }, {
+            where: {
+                CODIGO_FUNCIONARIO: req.params.id,
+                STATUS: 0
+            }
+        })
+            .then(funcionario => res.json(funcionario))
+            .catch(error => res.json(error))
+    }
+
+
     getName(req, res) {
 
         sequelize.query(`SELECT P.NOME AS FNOME, F.CODIGO_FUNCIONARIO

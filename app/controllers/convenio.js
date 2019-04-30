@@ -105,6 +105,17 @@ class Convenio {
             .catch(error => res.json(error))
     }
 
+    ativar(req, res) {
+        ConvenioModel.update({ STATUS: 1 }, {
+            where: {
+                CODIGO: req.params.id,
+                STATUS: 0
+            } 
+        })
+            .then(convenio => res.json(convenio))
+            .catch(error => res.json(error))
+    }
+
     getName(req, res){
 
         sequelize.query(`SELECT NOME_CONVENIO FROM CONVENIO`)

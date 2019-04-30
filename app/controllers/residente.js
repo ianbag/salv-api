@@ -71,6 +71,17 @@ class Residente {
             .catch(error => res.json(error))
     }
 
+    ativar(req, res) {
+        ResidenteModel.update({ STATUS: 1 }, {
+            where: {
+                CODIGO_RESIDENTE: req.params.id,
+                STATUS: 0
+            }
+        })
+            .then(residente => res.json(residente))
+            .catch(error => res.json(error))
+    }
+
     aniversariante(req, res) {
         sequelize.query(`SELECT
                             P.NOME, P.SOBRENOME, P.DATA_NASCIMENTO
