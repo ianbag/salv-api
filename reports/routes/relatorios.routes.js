@@ -1,8 +1,8 @@
 const express = require('express')
 const route = express.Router()
 
-const RelatorioController = require('./../controller/relatorios')
-const RelatorioIDController = require('./../controller/relatorios_id')
+const RelatorioController = require('../../reports-old/controller/relatorios')
+const RelatorioIDController = require('../../reports-old/controller/relatorios_id')
 
 // RELATÓRIOS GERAIS
 route.get('/relatorio_funcionarios', RelatorioController.funcionarios),
