@@ -71,7 +71,8 @@ class Beneficio {
                             LEFT JOIN PESSOA P
                             ON P.CODIGO = R.PESSOA_CODIGO
                             WHERE MONTH(B.PROVA_VIDA_BENEFICIO) = :mes
-                            AND YEAR(B.PROVA_VIDA_BENEFICIO) = :ano`,
+                            AND YEAR(B.PROVA_VIDA_BENEFICIO) = :ano
+                            ORDER BY DAY(B.PROVA_VIDA_BENEFICIO) ASC`,
             { replacements: { mes: (data.getMonth() + 1), ano: data.getFullYear() } })
             .then(result => {
                 res.json(result[0])
