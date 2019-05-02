@@ -27,15 +27,11 @@ const DependenteRoute = require('./app/routes/dependente')
 const AcompanhamentoRoute = require('./app/routes/acompanhamentos')
 const AcompanhamentoFuncionario = require('./app/routes/acompanhamento_funcionario')
 const AcompanhamentoResidente = require('./app/routes/acompanhamento_residente')
-// const RelatorioRoutes = require('./reports/routes/report.routes')
+const reportRoute = require('./reports/routes/report.routes')
 
 const handleAuthentication = require('./auth/auth')
 const handleAuthorization = require('./auth/authz')
 const forgot = require('./auth/forgot')
-
-// const reportFuncionario = require('./reports/controllers/report-funcionario')
-
-const reportRoute = require('./reports/routes/report.routes')
 
 /*
 * CONFIG bodyParser
@@ -57,13 +53,7 @@ app.route('/esqueci-a-senha')
 app.route('/esqueci-a-senha/:token')
     .post(forgot.reset_password)
 
-// app.get('/pdf', function (req, res) {
-//     reportFuncionario().then(response => {
-//         res.type('application/pdf')
-//         res.send(response)
-//     })
-// })
-
+//API Relatórios
 app.use('/', reportRoute)
 
 //API Pessoa
