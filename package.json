@@ -29,6 +29,7 @@
     "nodemailer": "^6.1.0",
     "nodemailer-express-handlebars": "^3.0.0",
     "nodemon": "^1.18.10",
+    "request": "^2.88.0",
     "sequelize": "^4.38.0"
   },
   "devDependencies": {
