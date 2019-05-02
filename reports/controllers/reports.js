@@ -1,17 +1,24 @@
+//Requires
 const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
-const sequelize = require('./../../database/sequelize_remote');
 const hbs = require('handlebars');
 const path = require('path');
+const sequelize = require('./../../database/sequelize_remote');
+
+//Variable that receives the objects from database
 var funcionarios;
+
+//Function that compiles the template and data
 const compile = async function (templateName, data) {
-    const filePath = path.join(process.cwd(), './../templates', `${templateName}.hbs`)
+    const filePath = path.join(process.cwd(), './reports/templates', `${templateName}.hbs`)
     const html = await fs.readFile(filePath, 'utf-8')
     return hbs.compile(html)(data)
 };
 
-(async function () {
+//Function responsible for generating report
+const reportFuncionario = async () => {
     try {
+        //Database query
         var result = await sequelize.query(`
         SELECT 
         P.NOME,
@@ -28,18 +35,21 @@ const compile = async function (templateName, data) {
     WHERE
         F.STATUS = 1
     ORDER BY P.NOME;`)
+
+        //Set database result to variable
         funcionarios = {
             "funcionarios": result[0]
         }
 
+        //Launch puppeteer, create new page, call compile function
         const browser = await puppeteer.launch()
         const page = await browser.newPage()
         const content = await compile('funcionarios', funcionarios)
 
+        //Set page content, emulate screen, config page 
         await page.setContent(content)
         await page.emulateMedia('screen')
         const pdf = await page.pdf({
-            path: './../pdf/funcionarios.pdf',
             format: 'A4',
             printBackground: true,
             margin: {
@@ -48,11 +58,15 @@ const compile = async function (templateName, data) {
             }
         })
 
+        //Log done, close puppeteer, return result
         console.log('done')
         await browser.close()
-        process.exit()
         return pdf
     } catch (e) {
+        //Log error
         console.log(e)
     }
-})();
+};
+
+//Exports function reportFuncionario
+module.exports = reportFuncionario
