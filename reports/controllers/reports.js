@@ -8,6 +8,7 @@ const sequelize = require('./../../database/sequelize_remote');
 //Variable that receives the objects from database
 var funcionarios;
 var convenios;
+var acompanhamentos;
 
 //Function that compiles the template and data
 const compile = async function (templateName, data) {
@@ -124,5 +125,61 @@ const reportConvenio = async () => {
     }
 }
 
+//Function responsible for generating report
+const reportAcompanhamento = async () => {
+    try {
+        //Database query
+        var result = sequelize.query(
+            `SELECT 
+            DATE_FORMAT(A.DATA_ACOMPANHAMENTO, '%d/%m/%Y') AS DATA_ACOMPANHAMENTO,
+            A.ATIVIDADE,
+            (SELECT 
+                    COUNT(CODIGO_RESIDENTE)
+                FROM
+                    ACOMPANHAMENTO_RESIDENTE
+                WHERE
+                    ACOMPANHAMENTO_CODIGO = A.CODIGO) AS NUMERO_RESIDENTES_PARTICIPANTES,
+            (SELECT 
+                    COUNT(CODIGO_FUNCIONARIO)
+                FROM
+                    ACOMPANHAMENTO_FUNCIONARIO
+                WHERE
+                    ACOMPANHAMENTO_CODIGO = A.CODIGO) AS NUMERO_FUNCIONARIOS_PARTICIPANTES
+        FROM
+            ACOMPANHAMENTO AS A
+        ORDER BY A.DATA_ACOMPANHAMENTO;`
+        )
+
+        //Set database result to variable
+        acompanhamentos = {
+            "acompanhamentos": result[0]
+        }
+
+        //Launch puppeteer, create new page, call compile function
+        const browser = puppeteer.launch()
+        const page = await browser.newPage()
+        const content = await compile('acompanhamentos', acompanhamentos)
+
+        //Set page content, emulate screen, config page
+        await page.setContent(content)
+        await page.emulateMedia('screen')
+        const pdf = await page.pdf({
+            format: 'A4',
+            printBackground: true,
+            margin: {
+                left: '10px',
+                right: '10px'
+            }
+        })
+
+        //Log done, close puppeteer, return result
+        console.log('done')
+        await browser.close()
+        return pdf
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 //Exports function reportFuncionario
-module.exports = { reportFuncionario, reportConvenio }
+module.exports = { reportFuncionario, reportConvenio, reportAcompanhamento }
