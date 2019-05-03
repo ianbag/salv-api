@@ -118,6 +118,7 @@ const reportConvenio = async () => {
 
         //Log done, close puppeteer, return result
         console.log('done')
+        console.log(convenios)
         await browser.close()
         return pdf
 
@@ -130,7 +131,7 @@ const reportConvenio = async () => {
 const reportAcompanhamento = async () => {
     try {
         //Database query
-        var result = sequelize.query(
+        var result = await sequelize.query(
             `SELECT 
             DATE_FORMAT(A.DATA_ACOMPANHAMENTO, '%d/%m/%Y') AS DATA_ACOMPANHAMENTO,
             A.ATIVIDADE,
@@ -157,9 +158,9 @@ const reportAcompanhamento = async () => {
         }
 
         //Launch puppeteer, create new page, call compile function
-        const browser = puppeteer.launch()
+        const browser = await puppeteer.launch()
         const page = await browser.newPage()
-        const content = await compile('acompanhamentos', acompanhamentos)
+        const content = await (compile('acompanhamentos', acompanhamentos))
 
         //Set page content, emulate screen, config page
         await page.setContent(content)
@@ -185,7 +186,7 @@ const reportAcompanhamento = async () => {
 const reportResidente = async () => {
     try {
         //Database query
-        var result = sequelize.query(
+        var result = await sequelize.query(
             `SELECT 
             P.NOME,
             P.SOBRENOME,
@@ -200,7 +201,7 @@ const reportResidente = async () => {
             P.STATUS = 1 AND R.STATUS = 1
         ORDER BY P.NOME;`
         )
-
+            
         //Set database result to variable
         residentes = {
             "residentes": result[0]
@@ -209,7 +210,7 @@ const reportResidente = async () => {
         //Launch puppeteer, create new page, call compile function
         const browser = await puppeteer.launch()
         const page = await browser.newPage()
-        const content = await compile('acompanhamentos', acompanhamentos)
+        const content = await (compile('residentes', residentes))
 
         //Set page, emulate screen, config page
         await page.setContent(content)
