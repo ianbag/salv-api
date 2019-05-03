@@ -53,7 +53,7 @@ class Dependente {
     }
 
     delete(req, res) {
-        DependenteModel.update({ STATUS: 0 }, {
+        DependenteModel.destroy({
             where: {
                 NOME: req.params.dependenteNome,
                 SOBRENOME: req.params.dependenteSobrenome,

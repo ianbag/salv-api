@@ -1,14 +1,14 @@
 const express = require('express')
 const route = express.Router()
 
-const RelatorioController = require('./../controller/relatorios')
-const RelatorioIDController = require('./../controller/relatorios_id')
+const RelatorioController = require('../../reports/controller/relatorios')
+const RelatorioIDController = require('../../reports-old/controller/relatorios_id')
 
 // RELATÓRIOS GERAIS
 route.get('/relatorio_funcionarios', RelatorioController.funcionarios),
-route.get('/relatorio_acompanhamentos', RelatorioController.acompanhamentos),
-route.get('/relatorio_convenios', RelatorioController.convenios),
-route.get('/relatorio_residentes', RelatorioController.residentes)
+// route.get('/relatorio_acompanhamentos', RelatorioController.acompanhamentos),
+// route.get('/relatorio_convenios', RelatorioController.convenios),
+// route.get('/relatorio_residentes', RelatorioController.residentes)
 
 // RELATÓRIOS POR ID
 route.get('/relatorio_funcionario/:codigoPessoa/:codigoFuncionario', RelatorioIDController.funcionario),

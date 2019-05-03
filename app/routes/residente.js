@@ -18,6 +18,7 @@ route.get('/residenteNome', ResidenteController.getName)
 route.post('/residente', ResidenteController.create)
 route.put('/residente/:id', ResidenteController.update)
 route.delete('/residente/:id', ResidenteController.delete)
+route.delete('/residente-ativar/:id', ResidenteController.ativar)
 route.get('/aniversariante', ResidenteController.aniversariante)
 
 route.post('/residente/cartao_sams', ResidenteController.uniqueCartaoSAMS)

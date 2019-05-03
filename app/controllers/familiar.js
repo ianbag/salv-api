@@ -20,8 +20,7 @@ class Familiar {
     getById(req, res) {
         FamiliarModel.findOne({
             where: {
-                CODIGO: req.params.id,
-                STATUS: 1
+                CODIGO: req.params.id
             }
         })
             .then(familiar => res.json(familiar))
