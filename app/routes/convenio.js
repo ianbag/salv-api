@@ -11,5 +11,6 @@ route.get('/conveniooNome', ConvenioController.getName)
 route.post('/convenio', ConvenioController.create)
 route.put('/convenio/:id', ConvenioController.update)
 route.delete('/convenio/:id', ConvenioController.delete)
+route.delete('/convenio-ativar/:id', ConvenioController.ativar)
 
 module.exports = route

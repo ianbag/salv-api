@@ -54,8 +54,7 @@ class Funcionario {
     getById(req, res) {
         FuncionarioModel.findOne({
             where: {
-                CODIGO_FUNCIONARIO: req.params.id,
-                STATUS: 1
+                CODIGO_FUNCIONARIO: req.params.id
             },
             include: [
                 { model: PessoaModel, as: 'PESSOA' },
@@ -93,6 +92,18 @@ class Funcionario {
             .then(funcionario => res.json(funcionario))
             .catch(error => res.json(error))
     }
+
+    ativar(req, res) {
+        FuncionarioModel.update({ STATUS: 1 }, {
+            where: {
+                CODIGO_FUNCIONARIO: req.params.id,
+                STATUS: 0
+            }
+        })
+            .then(funcionario => res.json(funcionario))
+            .catch(error => res.json(error))
+    }
+
 
     getName(req, res) {
 

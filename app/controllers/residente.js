@@ -38,8 +38,7 @@ class Residente {
     getById(req, res) {
         ResidenteModel.findOne({
             where: {
-                CODIGO_RESIDENTE: req.params.id,
-                STATUS: 1,
+                CODIGO_RESIDENTE: req.params.id
             },
             include: [{ model: PessoaModel, as: 'PESSOA' }],
         })
@@ -66,6 +65,17 @@ class Residente {
             where: {
                 CODIGO_RESIDENTE: req.params.id,
                 STATUS: 1
+            }
+        })
+            .then(residente => res.json(residente))
+            .catch(error => res.json(error))
+    }
+
+    ativar(req, res) {
+        ResidenteModel.update({ STATUS: 1 }, {
+            where: {
+                CODIGO_RESIDENTE: req.params.id,
+                STATUS: 0
             }
         })
             .then(residente => res.json(residente))

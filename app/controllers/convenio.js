@@ -70,7 +70,7 @@ class Convenio {
                             ON EC.CONVENIO_CODIGO = C.CODIGO
                             LEFT JOIN ENDERECO E
                             ON E.CODIGO = EC.ENDERECO_CODIGO
-                            WHERE C.CODIGO = :CONVENIO_CODIGO AND STATUS = 1`,
+                            WHERE C.CODIGO = :CONVENIO_CODIGO`,
             { replacements: { CONVENIO_CODIGO: req.params.id } })
             .then(result => {
                 res.json(result[0])
@@ -99,6 +99,17 @@ class Convenio {
             where: {
                 CODIGO: req.params.id,
                 STATUS: 1
+            } 
+        })
+            .then(convenio => res.json(convenio))
+            .catch(error => res.json(error))
+    }
+
+    ativar(req, res) {
+        ConvenioModel.update({ STATUS: 1 }, {
+            where: {
+                CODIGO: req.params.id,
+                STATUS: 0
             } 
         })
             .then(convenio => res.json(convenio))
