@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Relatório de acompanhamento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+    <div class="col-sm-12 col-sm-12" style="margin-top: 25px">
+        <h1 style="text-align:center; font-size: 45px">Relatório de acompanhamento</h1>
+    </div>
+    <hr class="col-sm-12">
+    <div class="container" style="text-align: center; font-size: 25px">
+        <div class="box box-default">
+            <div class="box-header">
+
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col">
+                        <strong>Data do acompanhamento: </strong>
+                        {{dataAcompanhamento acompanhamento.DATA_ACOMPANHAMENTO}}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Descrição: </strong>
+                        {{acompanhamento.ATIVIDADE}}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Residentes participantes: </strong>
+                        {{#each residentes}}
+                        {{PESSOA.NOME}} {{#if APELIDO}}({{APELIDO}}){{/if}},
+                        {{/each}}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Funcionários participantes: </strong>
+                        {{#each funcionarios}}
+                        {{PESSOA.NOME}} {{PESSOA.SOBRENOME}},
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

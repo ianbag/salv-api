@@ -19,7 +19,7 @@ const compile = async function (templateName, data) {
 };
 
 //Function responsible for generating report
-const reportFuncionario = async () => {
+const reportFuncionarios = async () => {
     try {
         //Database query
         var result = await sequelize.query(`
@@ -72,7 +72,7 @@ const reportFuncionario = async () => {
 };
 
 //Function responsible for generating report
-const reportConvenio = async () => {
+const reportConvenios = async () => {
     try {
         //Database query
         var result = await sequelize.query(
@@ -128,7 +128,7 @@ const reportConvenio = async () => {
 }
 
 //Function responsible for generating report
-const reportAcompanhamento = async () => {
+const reportAcompanhamentos = async () => {
     try {
         //Database query
         var result = await sequelize.query(
@@ -183,7 +183,7 @@ const reportAcompanhamento = async () => {
     }
 }
 
-const reportResidente = async () => {
+const reportResidentes = async () => {
     try {
         //Database query
         var result = await sequelize.query(
@@ -234,4 +234,4 @@ const reportResidente = async () => {
 }
 
 //Exports function reportFuncionario
-module.exports = { reportFuncionario, reportConvenio, reportAcompanhamento, reportResidente }
+module.exports = { reportFuncionarios, reportConvenios, reportAcompanhamentos, reportResidentes }
