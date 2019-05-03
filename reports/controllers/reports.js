@@ -9,6 +9,7 @@ const sequelize = require('./../../database/sequelize_remote');
 var funcionarios;
 var convenios;
 var acompanhamentos;
+var residentes;
 
 //Function that compiles the template and data
 const compile = async function (templateName, data) {
@@ -181,5 +182,55 @@ const reportAcompanhamento = async () => {
     }
 }
 
+const reportResidente = async () => {
+    try {
+        //Database query
+        var result = sequelize.query(
+            `SELECT 
+            P.NOME,
+            P.SOBRENOME,
+            IF(P.DATA_NASCIMENTO, DATE_FORMAT(P.DATA_NASCIMENTO, "%d/%m/%Y"), "Não especificado") AS DATA_NASCIMENTO,
+            R.APELIDO,
+            DATE_FORMAT(R.DATA_ACOLHIMENTO, "%d/%m/%Y") AS DATA_ACOLHIMENTO
+        FROM
+            PESSOA AS P
+                INNER JOIN
+            RESIDENTE AS R ON P.CODIGO = R.PESSOA_CODIGO
+        WHERE
+            P.STATUS = 1 AND R.STATUS = 1
+        ORDER BY P.NOME;`
+        )
+
+        //Set database result to variable
+        residentes = {
+            "residentes": result[0]
+        }
+
+        //Launch puppeteer, create new page, call compile function
+        const browser = await puppeteer.launch()
+        const page = await browser.newPage()
+        const content = await compile('acompanhamentos', acompanhamentos)
+
+        //Set page, emulate screen, config page
+        await page.setContent(content)
+        await page.emulateMedia('screen')
+        const pdf = await page.pdf({
+            format: 'A4',
+            printBackground: true,
+            margin: {
+                left: '10px',
+                right: '10px'
+            }
+        })
+
+        //Log done, close puppeteer, return result
+        console.log('done')
+        await browser.close()
+        return pdf
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 //Exports function reportFuncionario
-module.exports = { reportFuncionario, reportConvenio, reportAcompanhamento }
+module.exports = { reportFuncionario, reportConvenio, reportAcompanhamento, reportResidente }
