@@ -3,8 +3,8 @@ const express = require('express')
 const route = express.Router()
 
 //Require function
-const reportFuncionario = require('../controllers/reports')
-const reportConvenio = require('../controllers/reports')
+const { reportFuncionario } = require('../controllers/reports')
+const { reportConvenio } = require('../controllers/reports')
 
 //HTTP method, call function
 route.get('/relatorio-funcionarios', function (req, res) {

@@ -100,7 +100,7 @@ const reportConvenio = async () => {
         //Launch puppeteer, create new page, call compile function
         const browser = await puppeteer.launch()
         const page = await browser.newPage()
-        const content = await(compile('convenios', convenios))
+        const content = await (compile('convenios', convenios))
 
         //Set page content, emulate screen, config page
         await page.setContent(content)
@@ -125,4 +125,4 @@ const reportConvenio = async () => {
 }
 
 //Exports function reportFuncionario
-module.exports = reportFuncionario, reportConvenio
+module.exports = { reportFuncionario, reportConvenio }
