@@ -22,14 +22,26 @@ const reportAcompanhamento = async (codigoAcompanhamento) => {
     try {
         //Database query
         const acompanhamento = await AcompanhamentosModel.findOne({
+            attributes: [
+                [sequelize.fn('date_format', sequelize.col('DATA_ACOMPANHAMENTO'), '%d/%m/%Y'), 'DATA_ACOMPANHAMENTO'],
+                'ATIVIDADE'
+            ],
             where: {
                 CODIGO: codigoAcompanhamento
             }
         })
         //Database query
         const residentes = await ResidenteModel.findAll({
+            attributes: [
+                'APELIDO'
+            ],
             include: [
-                { model: PessoaModel, as: 'PESSOA' },
+                {
+                    model: PessoaModel, as: 'PESSOA',
+                    attributes: [
+                        'NOME'
+                    ]
+                },
                 {
                     model: AcompanhamentoResidenteModel, as: 'ACOMPANHAMENTO_RESIDENTE',
                     where: {
@@ -41,7 +53,13 @@ const reportAcompanhamento = async (codigoAcompanhamento) => {
         //Database query
         const funcionarios = await FuncionarioModel.findAll({
             include: [
-                { model: PessoaModel, as: 'PESSOA' },
+                {
+                    model: PessoaModel, as: 'PESSOA',
+                    attributes: [
+                        'NOME',
+                        'SOBRENOME'
+                    ]
+                },
                 {
                     model: AcompanhamentoFuncionarioModel, as: 'ACOMPANHAMENTO_FUNCIONARIO',
                     where: {
