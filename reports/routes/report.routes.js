@@ -52,6 +52,7 @@ route.get('/relatorio-acompanhamento/:codigoAcompanhamento', function (req, res)
     var codigoAcompanhamento = req.params.codigoAcompanhamento
 
     reportAcompanhamento(codigoAcompanhamento).then(response => {
+        res.type('application/pdf')
         res.send(response)
     }).catch(error => {
         res.send(error)

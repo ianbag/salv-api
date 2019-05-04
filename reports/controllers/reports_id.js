@@ -65,7 +65,7 @@ const reportAcompanhamento = async (codigoAcompanhamento) => {
 
         //Set page content, emulate screen, config page
         await page.setContent(content)
-        await page.emulateMedia('screen')
+        await page.emulateMedia('print')
         const pdf = await page.pdf({
             format: 'A4',
             printBackground: true,
