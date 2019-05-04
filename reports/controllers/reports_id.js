@@ -9,6 +9,7 @@ const { PessoaModel, FuncionarioModel, DependenteModel, TelefoneModel, EnderecoM
 
 //Variable that receives the objects from database
 var data_acompanhamento;
+var data_convenio;
 
 //Function that compiles the template and data
 const compile = async function (templateName, data) {
@@ -97,9 +98,72 @@ const reportAcompanhamento = async (codigoAcompanhamento) => {
         console.log('done')
         await browser.close()
         return pdf
+
     } catch (e) {
         console.log(e)
     }
 };
 
-module.exports = { reportAcompanhamento }
+//Function responsible for generating report
+const reportConvenio = async (codigoConvenio) => {
+    try {
+        //Database query
+        const convenio = await ConvenioModel.findOne({
+            where: {
+                CODIGO: codigoConvenio
+            }
+        })
+        //Database query
+        const enderecos = await EnderecoConvenioModel.findAll({
+            where: {
+                CODIGO_CONVENIO: codigoConvenio
+            },
+            include: {
+                model: EnderecoModel, as: 'ENDERECO'
+            }
+        })
+        //Database query
+        const telefones = await TelefoneConvenioModel.findAll({
+            where: {
+                CODIGO_CONVENIO: codigoConvenio
+            },
+            include: {
+                model: TelefoneModel, as: 'TELEFONE'
+            }
+        })
+
+        //Set database result to variable
+        data_convenio = {
+            "convenio": convenio,
+            "enderecos": enderecos,
+            "telefones": telefones
+        }
+
+        //Launch puppeteer, create new page, call compile function
+        const browser = await puppeteer.launch()
+        const page = await browser.newPage()
+        const content = await compile('convenio', data_convenio)
+
+        //Set page content, emulate screen, config page
+        await page.setContent(content)
+        await page.emulateMedia('print')
+        const pdf = await page.pdf({
+            format: 'A4',
+            printBackground: true,
+            margin: {
+                left: '10px',
+                right: '10px'
+            }
+        })
+
+        //Log done, close puppeteer, return result
+        console.log('done')
+        await browser.close()
+        return pdf
+
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+module.exports = { reportAcompanhamento, reportConvenio }
