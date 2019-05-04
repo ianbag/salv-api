@@ -6,7 +6,7 @@ const route = express.Router()
 const { reportFuncionarios, reportConvenios, reportAcompanhamentos, reportResidentes } = require('../controllers/reports')
 
 //Require function
-const { reportAcompanhamento, reportConvenio } = require('../controllers/reports_id')
+const { reportAcompanhamento, reportConvenio, reportFuncionario } = require('../controllers/reports_id')
 
 //HTTP method, call function
 route.get('/relatorio-funcionarios', function (req, res) {
@@ -63,6 +63,18 @@ route.get('/relatorio-acompanhamento/:codigoAcompanhamento', function (req, res)
 route.get('/relatorio-convenio/:codigoConvenio', function (req, res) {
     var codigoConvenio = req.params.codigoConvenio
     reportConvenio(codigoConvenio).then(response => {
+        res.type('application/pdf')
+        res.send(response)
+    }).catch(error => {
+        res.send(error)
+    })
+})
+
+//HTTP method, call function
+route.get('/relatorio-funcionario/:codigoPessoa/:codigoFuncionario', function (req, res) {
+    var codigoPessoa = req.params.codigoPessoa
+    var codigoFuncionario = req.params.codigoFuncionario
+    reportFuncionario(codigoPessoa, codigoFuncionario).then(response => {
         res.type('application/pdf')
         res.send(response)
     }).catch(error => {
