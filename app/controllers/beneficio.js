@@ -80,7 +80,7 @@ class Beneficio {
                             ON P.CODIGO = R.PESSOA_CODIGO
                             WHERE MONTH(B.PROVA_VIDA_BENEFICIO) = :mes
                             AND YEAR(B.PROVA_VIDA_BENEFICIO) = :ano 
-                            AND STATUS = 1
+                            AND B.STATUS = 1
                             ORDER BY DAY(B.PROVA_VIDA_BENEFICIO) ASC`,
             { replacements: { mes: (data.getMonth() + 1), ano: data.getFullYear() } })
             .then(result => {
