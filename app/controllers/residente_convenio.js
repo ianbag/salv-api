@@ -12,7 +12,7 @@ class ResidenteConvenio {
                             C.NOME_CONVENIO, C.TIPO_CONVENIO,
                             E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO, E.CEP, E.REFERENCIA,
                             T.DDD, T.NUMERO TELEFONE,
-                            RC.NUMERO_CONVENIO, RC.TITULAR_CONVENIO, RC.PARENTESCO_TITULAR
+                            RC.NUMERO_CONVENIO, RC.TITULAR_CONVENIO, RC.PARENTESCO_TITULAR, RC.CONVENIO_CODIGO
                         FROM 
                             RESIDENTE_CONVENIO RC
                             INNER JOIN CONVENIO C
@@ -25,7 +25,8 @@ class ResidenteConvenio {
                             ON TC.CONVENIO_CODIGO = RC.CONVENIO_CODIGO
                             LEFT JOIN TELEFONE T
                             ON T.CODIGO = TC.TELEFONE_CODIGO
-                            WHERE RESIDENTE_CODIGO = :RESIDENTE_CODIGO`,
+                            WHERE RESIDENTE_CODIGO = :RESIDENTE_CODIGO
+                            AND RC.STATUS = 1`,
             { replacements: { RESIDENTE_CODIGO: req.params.id } })
             .then(result => {
                 res.json(result[0])
@@ -37,7 +38,7 @@ class ResidenteConvenio {
                             C.NOME_CONVENIO, C.TIPO_CONVENIO,
                             E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO, E.CEP, E.REFERENCIA,
                             T.DDD, T.NUMERO TELEFONE,
-                            RC.NUMERO_CONVENIO, RC.TITULAR_CONVENIO, RC.PARENTESCO_TITULAR
+                            RC.NUMERO_CONVENIO, RC.TITULAR_CONVENIO, RC.PARENTESCO_TITULAR, RC.CONVENIO_CODIGO
                         FROM 
                             RESIDENTE_CONVENIO RC
                             INNER JOIN CONVENIO C
