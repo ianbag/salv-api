@@ -20,11 +20,13 @@ const compile = async function (templateName, data) {
 //Function responsible for generating report
 const reportAcompanhamento = async (codigoAcompanhamento) => {
     try {
+        //Database query
         const acompanhamento = await AcompanhamentosModel.findOne({
             where: {
                 CODIGO: codigoAcompanhamento
             }
         })
+        //Database query
         const residentes = await ResidenteModel.findAll({
             include: [
                 { model: PessoaModel, as: 'PESSOA' },
@@ -36,6 +38,7 @@ const reportAcompanhamento = async (codigoAcompanhamento) => {
                 }
             ]
         })
+        //Database query
         const funcionarios = await FuncionarioModel.findAll({
             include: [
                 { model: PessoaModel, as: 'PESSOA' },
@@ -48,16 +51,37 @@ const reportAcompanhamento = async (codigoAcompanhamento) => {
             ]
         })
 
+        //Set database result to variable
         data_acompanhamento = {
             "acompanhamento": acompanhamento,
             "residentes": residentes,
             "funcionarios": funcionarios
         }
 
-        return data_acompanhamento
+        //Launch puppeteer, create new page, call compile function
+        const browser = await puppeteer.launch()
+        const page = await browser.newPage()
+        const content = await compile('acompanhamento', data_acompanhamento)
+
+        //Set page content, emulate screen, config page
+        await page.setContent(content)
+        await page.emulateMedia('screen')
+        const pdf = await page.pdf({
+            format: 'A4',
+            printBackground: true,
+            margin: {
+                left: '10px',
+                right: '10px'
+            }
+        })
+
+        //Log done, close puppeteer, return result
+        console.log('done')
+        await browser.close()
+        return pdf
     } catch (e) {
         console.log(e)
     }
-}
+};
 
 module.exports = { reportAcompanhamento }
