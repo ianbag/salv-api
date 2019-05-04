@@ -10,6 +10,7 @@ const { PessoaModel, FuncionarioModel, DependenteModel, TelefoneModel, EnderecoM
 //Variable that receives the objects from database
 var data_acompanhamento;
 var data_convenio;
+var data_funcionario;
 
 //Function that compiles the template and data
 const compile = async function (templateName, data) {
@@ -164,6 +165,110 @@ const reportConvenio = async (codigoConvenio) => {
     } catch (e) {
         console.log(e)
     }
+};
+
+//Function resposible for generating report
+const reportFuncionario = async (codigoPessoa, codigoFuncionario) => {
+    try {
+        //Database query
+        const pessoa = await PessoaModel.findOne({
+            attributes: [
+                'NOME',
+                'SOBRENOME',
+                'RG',
+                'CPF',
+                'SEXO',
+                'ESTADO_CIVIL',
+                [sequelize.fn('date_format', sequelize.col('DATA_NASCIMENTO'), '%d/%m/%Y'), 'DATA_NASCIMENTO'],
+                'RELIGIAO',
+                'ESCOLARIDADE'
+            ],
+            where: {
+                CODIGO: codigoPessoa
+            }
+        })
+        //Database query
+        const enderecos = await EnderecoPessoaModel.findAll({
+            where: {
+                PESSOA_CODIGO: codigoPessoa
+            },
+            include: {
+                model: EnderecoModel, as: 'ENDERECO'
+            }
+        })
+        //Database query
+        const telefones = await TelefonePessoaModel.findAll({
+            where: {
+                PESSOA_CODIGO: codigoPessoa
+            },
+            include: {
+                model: TelefoneModel, as: 'TELEFONE'
+            }
+        })
+        //Database query
+        const funcionario = await FuncionarioModel.findOne({
+            attributes: [
+                'CARGO',
+                [sequelize.fn('date_format', sequelize.col('DATA_ADMISSAO'), '%d/%m/%Y'), 'DATA_ADMISSAO'],
+                [sequelize.fn('date_format', sequelize.col('DATA_DEMISSAO'), '%d/%m/%Y'), 'DATA_DEMISSAO']
+            ],
+            where: {
+                CODIGO_FUNCIONARIO: codigoFuncionario
+            }
+        })
+        //Database query
+        const dependentes = DependenteModel.findAll({
+            attributes: [
+                'NOME',
+                'SOBRENOME',
+                [sequelize.fn('date_format', sequelize.col('DATA_NASCIMENTO'), '%d/%m/%Y'), 'DATA_NASCIMENTO'],
+                'RG',
+                'CPF',
+                'NUMERO_CERTIDAO_NASCIMENTO',
+                'FOLHA_CERTIDAO_NASCIMENTO',
+                'LIVRO_CERTIDAO_NASCIMENTO',
+                'CIDADE_CERTIDAO_NASCIMENTO',
+                'ESTADO_CERTIDAO_NASCIMENTO',
+            ],
+            where: {
+                CODIGO_FUNCIONARIO: codigoFuncionario
+            }
+        })
+
+        //Set database result to variable
+        data_funcionario = {
+            "pessoa": pessoa,
+            "enderecos": enderecos,
+            "telefones": telefones,
+            "funcionario": funcionario,
+            "dependentes": dependentes
+        }
+
+        //Launch puppeteer, create new page, call compile function
+        const browser = await puppeteer.launch()
+        const page = await browser.newPage()
+        const content = await compile('funcionario', data_funcionario)
+
+        //Set page content, emulate screen, config page
+        await page.setContent(content)
+        await page.emulateMedia('print')
+        const pdf = await page.pdf({
+            format: 'A4',
+            printBackground: true,
+            margin: {
+                left: '10px',
+                right: '10px'
+            }
+        })
+
+        //Log done, close puppeteer, return result
+        console.log('done')
+        browser.close()
+        return pdf
+
+    } catch (e) {
+        console.log(e)
+    }
 }
 
-module.exports = { reportAcompanhamento, reportConvenio }
+module.exports = { reportAcompanhamento, reportConvenio, reportFuncionario }
