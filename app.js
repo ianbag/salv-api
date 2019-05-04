@@ -27,7 +27,7 @@ const DependenteRoute = require('./app/routes/dependente')
 const AcompanhamentoRoute = require('./app/routes/acompanhamentos')
 const AcompanhamentoFuncionario = require('./app/routes/acompanhamento_funcionario')
 const AcompanhamentoResidente = require('./app/routes/acompanhamento_residente')
-const reportRoute = require('./reports/routes/report.routes')
+// const reportRoute = require('./reports/routes/report.routes')
 
 const handleAuthentication = require('./auth/auth')
 const handleAuthorization = require('./auth/authz')
@@ -54,7 +54,7 @@ app.route('/esqueci-a-senha/:token')
     .post(forgot.reset_password)
 
 //API Relatórios
-app.use('/', reportRoute)
+// app.use('/', reportRoute)
 
 //API Pessoa
 app.use('/', /*handleAuthorization,*/ PessoaRoute)
