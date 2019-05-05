@@ -399,7 +399,7 @@ const reportResidente = async (codigoPessoa, codigoResidente) => {
         //Log done, close puppeteer, return result
         console.log('done')
         await browser.close()
-        return data_residente
+        return pdf
 
     } catch (e) {
         console.log(e)

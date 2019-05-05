@@ -87,7 +87,7 @@ route.get('/relatorio-residente/:codigoPessoa/:codigoResidente', function (req, 
     var codigoPessoa = req.params.codigoPessoa
     var codigoResidente = req.params.codigoResidente
     reportResidente(codigoPessoa, codigoResidente).then(response => {
-        res.type('application/json')
+        res.type('application/pdf')
         res.send(response)
     }).catch(error => {
         res.send(error)
