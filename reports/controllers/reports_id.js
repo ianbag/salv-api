@@ -5,8 +5,28 @@ const hbs = require('handlebars')
 const path = require('path')
 const sequelize = require('./../../database/sequelize_remote')
 const helpers = require('./helpers')
-const { PessoaModel, FuncionarioModel, DependenteModel, TelefoneModel, EnderecoModel, TelefonePessoaModel, EnderecoPessoaModel, AcompanhamentosModel, AcompanhamentoResidenteModel, AcompanhamentoFuncionarioModel, ResidenteModel, ConvenioModel, EnderecoConvenioModel, TelefoneConvenioModel, ResidenteConvenioModel, BeneficioModel, ResidenteFamiliarModel, FamiliarModel, EnderecoFamiliarModel, TelefoneFamiliarModel } = require('./../../app/models')
-
+const {
+    PessoaModel,
+    FuncionarioModel,
+    DependenteModel,
+    TelefoneModel,
+    EnderecoModel,
+    TelefonePessoaModel,
+    EnderecoPessoaModel,
+    AcompanhamentosModel,
+    AcompanhamentoResidenteModel,
+    AcompanhamentoFuncionarioModel,
+    ResidenteModel,
+    ConvenioModel,
+    EnderecoConvenioModel,
+    TelefoneConvenioModel,
+    ResidenteConvenioModel,
+    BeneficioModel,
+    ResidenteFamiliarModel,
+    FamiliarModel,
+    EnderecoFamiliarModel,
+    TelefoneFamiliarModel
+} = require('./../../app/models')
 
 //Variable that receives the objects from database
 var data_acompanhamento;
