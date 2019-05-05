@@ -4,6 +4,7 @@ const fs = require('fs-extra')
 const hbs = require('handlebars')
 const path = require('path')
 const sequelize = require('./../../database/sequelize_remote')
+const helpers = require('./helpers')
 const { PessoaModel, FuncionarioModel, DependenteModel, TelefoneModel, EnderecoModel, TelefonePessoaModel, EnderecoPessoaModel, AcompanhamentosModel, AcompanhamentoResidenteModel, AcompanhamentoFuncionarioModel, ResidenteModel, ConvenioModel, EnderecoConvenioModel, TelefoneConvenioModel, ResidenteConvenioModel, BeneficioModel, ResidenteFamiliarModel, FamiliarModel, EnderecoFamiliarModel, TelefoneFamiliarModel } = require('./../../app/models')
 
 
@@ -14,7 +15,7 @@ var data_funcionario;
 var data_residente;
 
 //Function that compiles the template and data
-const compile = async function(templateName, data) {
+const compile = async function (templateName, data) {
     const filePath = path.join(process.cwd(), './reports/templates', `${templateName}.hbs`)
     const html = await fs.readFile(filePath, 'utf-8')
     return hbs.compile(html)(data)
@@ -383,7 +384,7 @@ const reportResidente = async (codigoPessoa, codigoResidente) => {
         const browser = await puppeteer.launch()
         const page = await browser.newPage()
         const content = await compile('residente', data_residente)
-        
+
         //Set page content, emulate screen, config page
         await page.setContent(content)
         await page.emulateMedia('print')
@@ -400,7 +401,7 @@ const reportResidente = async (codigoPessoa, codigoResidente) => {
         console.log('done')
         await browser.close()
         return pdf
-        
+
     } catch (e) {
         console.log(e)
     }

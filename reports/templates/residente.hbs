@@ -29,7 +29,7 @@
                         <strong>Nome: </strong> {{pessoa.NOME}} {{pessoa.SOBRENOME}}
                     </div>
                     <div class="col">
-                        <strong>CPF: </strong> {{pessoa.CPF}}
+                        <strong>CPF: </strong> {{cpf pessoa.CPF}}
                     </div>
                     <div class="col">
                         <strong>RG: </strong> {{pessoa.RG}}
@@ -271,6 +271,15 @@
                     </div>
                     <div class="col">
                         <strong>Parentesco: </strong> {{this.FAMILIAR.PARENTESCO}}
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col">
+                        <strong>DDD: </strong> {{this.FAMILIAR.TELEFONE_FAMILIAR.TELEFONE.DDD}}
+                    </div>
+                    <div class="col">
+                        <strong>Telefone: </strong> {{this.FAMILIAR.TELEFONE_FAMILIAR.TELEFONE.NUMERO}}
                     </div>
                 </div>
                 <br />
