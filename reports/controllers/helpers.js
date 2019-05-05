@@ -37,3 +37,12 @@ Handlebars.registerHelper('escolaridade', function (esc) {
         return 'Não especificado'
     }
 })
+
+//Helper option Sexo
+Handlebars.registerHelper('sexo', function (sexo) {
+    if (sexo == 'M') {
+        return 'Masculino'
+    } else {
+        return 'Feminino'
+    }
+})
