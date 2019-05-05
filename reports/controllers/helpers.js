@@ -18,3 +18,22 @@ Handlebars.registerHelper('rg', function (rg) {
         return 'Não especificado'
     }
 })
+
+//Helper option Escolaridade
+Handlebars.registerHelper('escolaridade', function (esc) {
+    if (esc == 'FI') {
+        return 'Fundamental incompleto'
+    } else if (esc == 'FC') {
+        return 'Fundamental completo'
+    } else if (esc == 'MI') {
+        return 'Médio incompleto'
+    } else if (esc == 'MC') {
+        return 'Médio completo'
+    } else if (esc == 'SI') {
+        return 'Superior incompleto'
+    } else if (esc == 'SC') {
+        return 'Superior completo'
+    } else {
+        return 'Não especificado'
+    }
+})
