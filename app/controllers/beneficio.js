@@ -69,20 +69,34 @@ class Beneficio {
 
     provaDeVida(req, res) {
         let data = new Date()
-        sequelize.query(`SELECT
-                            B.NOME_BENEFICIO, B.PROVA_VIDA_BENEFICIO,
-                            P.NOME, P.SOBRENOME
-                        FROM 
-                            BENEFICIO B
-                            LEFT JOIN RESIDENTE R
-                            ON R.CODIGO_RESIDENTE = B.CODIGO_RESIDENTE
-                            LEFT JOIN PESSOA P
-                            ON P.CODIGO = R.PESSOA_CODIGO
-                            WHERE MONTH(B.PROVA_VIDA_BENEFICIO) = :mes
-                            AND YEAR(B.PROVA_VIDA_BENEFICIO) = :ano 
-                            AND B.STATUS = 1
-                            ORDER BY DAY(B.PROVA_VIDA_BENEFICIO) ASC`,
-            { replacements: { mes: (data.getMonth() + 1), ano: data.getFullYear() } })
+        sequelize.query(`SELECT 
+                            CONCAT(P.NOME, ' ', P.SOBRENOME) AS NOME,
+                            'INSS' AS NOME_BENEFICIO,
+                            DATE_FORMAT(R.PROVA_VIDA_INSS, '%d/%m') AS PROVAS_VIDA
+                        FROM
+                            RESIDENTE AS R
+                                INNER JOIN
+                            PESSOA AS P ON R.PESSOA_CODIGO = P.CODIGO
+                        WHERE
+                            R.PROVA_VIDA_INSS IS NOT NULL
+                                AND R.STATUS = 1
+                                AND MONTH(R.PROVA_VIDA_INSS) = 5 
+                        UNION ALL SELECT 
+                            CONCAT(P.NOME, ' ', P.SOBRENOME),
+                            B.NOME_BENEFICIO,
+                            DATE_FORMAT(B.PROVA_VIDA_BENEFICIO, '%d/%m')
+                        FROM
+                            BENEFICIO AS B
+                                INNER JOIN
+                            RESIDENTE AS R ON R.CODIGO_RESIDENTE = B.CODIGO_RESIDENTE
+                                INNER JOIN
+                            PESSOA AS P ON R.PESSOA_CODIGO = P.CODIGO
+                        WHERE
+                            B.PROVA_VIDA_BENEFICIO IS NOT NULL
+                                AND B.STATUS = 1
+                                AND MONTH(B.PROVA_VIDA_BENEFICIO) = :mes
+                        ORDER BY PROVAS_VIDA`,
+            { replacements: { mes: (data.getMonth() + 1)} })
             .then(result => {
                 res.json(result[0])
             })
