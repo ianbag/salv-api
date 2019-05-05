@@ -201,7 +201,7 @@ const reportResidentes = async () => {
             P.STATUS = 1 AND R.STATUS = 1
         ORDER BY P.NOME;`
         )
-            
+
         //Set database result to variable
         residentes = {
             "residentes": result[0]
