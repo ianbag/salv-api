@@ -82,5 +82,17 @@ route.get('/relatorio-funcionario/:codigoPessoa/:codigoFuncionario', function (r
     })
 })
 
+//HTTP method, call function
+route.get('/relatorio-residente/:codigoPessoa/:codigoResidente', function (req, res) {
+    var codigoPessoa = req.params.codigoPessoa
+    var codigoResidente = req.params.codigoResidente
+    reportResidente(codigoPessoa, codigoResidente).then(response => {
+        res.type('application/json')
+        res.send(response)
+    }).catch(error => {
+        res.send(error)
+    })
+})
+
 //Export routes
 module.exports = route
