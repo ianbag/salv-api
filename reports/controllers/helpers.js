@@ -59,3 +59,22 @@ Handlebars.registerHelper('estado_civil', function (ec) {
         return 'Viúvo'
     }
 })
+
+//Helper option Religião
+Handlebars.registerHelper('religiao', function (religiao) {
+    if (religiao == 'CAT') {
+        return 'Católico'
+    } else if (religiao == 'EVG') {
+        return 'Evangélico'
+    } else if (religiao == 'ESP') {
+        return 'Espirita'
+    } else if (religiao == 'UBC') {
+        return 'Umbanda e Candomblé'
+    } else if (religiao == 'OUT') {
+        return 'Outras religiões'
+    } else if (religiao == 'SRG') {
+        return 'Sem religião'
+    } else {
+        return 'Não especificado'
+    }
+})
