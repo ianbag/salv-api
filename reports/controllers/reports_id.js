@@ -314,18 +314,19 @@ const reportResidente = async (codigoPessoa, codigoResidente) => {
                 'VALOR_INSS',
                 'SITUACAO_INSS',
                 [sequelize.fn('date_format', sequelize.col('PROVA_VIDA_INSS'), '%d/%m/%Y'), 'PROVA_VIDA_INSS'],
-                [sequelize.fn('date_format', sequelize.col('DATA_ACOLHIMENTO'), '%d/$m/%Y'), 'DATA_ACOLHIMENTO'],
+                [sequelize.fn('date_format', sequelize.col('DATA_ACOLHIMENTO'), '%d/%m/%Y'), 'DATA_ACOLHIMENTO'],
                 [sequelize.fn('date_format', sequelize.col('DATA_DESACOLHIMENTO'), '%d/%m/%Y'), 'DATA_DESACOLHIMENTO'],
                 'MOTIVO_DESACOLHIMENTO'
             ],
             where: {
-                PESSOA_CODIGO: codigoPessoa
+                CODIGO_RESIDENTE: codigoResidente
             }
         })
         //Database query
         const convenios = await ResidenteConvenioModel.findAll({
             where: {
-                RESIDENTE_CODIGO: codigoResidente
+                RESIDENTE_CODIGO: codigoResidente,
+                STATUS: 1
             },
             include: {
                 model: ConvenioModel, as: 'CONVENIO'
@@ -398,7 +399,7 @@ const reportResidente = async (codigoPessoa, codigoResidente) => {
         //Log done, close puppeteer, return result
         console.log('done')
         await browser.close()
-        return pdf
+        return data_residente
 
     } catch (e) {
         console.log(e)
