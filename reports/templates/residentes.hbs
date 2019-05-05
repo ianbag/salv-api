@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <title>Relatório de residentes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+    <h4 style="margin-top: 10px; margin-bottom: 6px; text-align:center">Relatório de
+        residentes</h4>
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Data de nascimento</th>
+                <th>Apelido</th>
+                <th>Data de acolhimento</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each residentes}}
+            <tr>
+                <td>{{NOME}} {{SOBRENOME}}</td>
+                <td>{{DATA_NASCIMENTO}}</td>
+                <td>{{APELIDO}}</td>
+                <td>{{DATA_ACOLHIMENTO}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+
+</html>

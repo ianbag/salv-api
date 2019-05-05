@@ -4,7 +4,10 @@
  * file: controllers/familiar.js
  */
 
-const { FamiliarModel } = require('./../models')
+const { FamiliarModel, EnderecoFamiliarModel, TelefoneFamiliarModel } = require('./../models')
+
+FamiliarModel.belongsTo(EnderecoFamiliarModel, {as: 'ENDERECO_FAMILIAR', foreignKey: 'CODIGO'})
+FamiliarModel.belongsTo(TelefoneFamiliarModel, {as: 'TELEFONE_FAMILIAR', foreignKey: 'CODIGO'})
 
 class Familiar {
 

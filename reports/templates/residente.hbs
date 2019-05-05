@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Relatório de residente</title>
+</head>
+
+<body>
+    <div class="col-sm-12 col-sm-12" style="margin-top: 25px">
+        <h1 style="text-align: center; font-size: 45px">Relatório de residente</h1>
+    </div>
+    <hr class="col-sm-12">
+    <div class="container" style="text-align: center; font-size: 25px">
+        <div class="box box-default">
+            <div class="box-header">
+                <h3 class="box-title" style="font-size: 35px">
+                    Informações Pessoais
+                </h3>
+                <hr class="col-6">
+            </div>
+            <div class="box-body" style="text-align: center">
+                <div class="row">
+                    <div class="col">
+                        <strong>Nome: </strong> {{pessoa.NOME}} {{pessoa.SOBRENOME}}
+                    </div>
+                    <div class="col">
+                        <strong>CPF: </strong> {{cpf pessoa.CPF}}
+                    </div>
+                    <div class="col">
+                        <strong>RG: </strong> {{rg pessoa.RG}}
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Data de nascimento: </strong> {{pessoa.DATA_NASCIMENTO}}
+                    </div>
+                    <div class="col">
+                        <strong>Escolaridade: </strong> {{escolaridade pessoa.ESCOLARIDADE}}
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Sexo: </strong> {{sexo pessoa.SEXO}}
+                    </div>
+                    <div class="col">
+                        <strong>Estado civil: </strong> {{estado_civil pessoa.ESTADO_CIVIL}}
+                    </div>
+                    <div class="col">
+                        <strong>Religião: </strong> {{religiao pessoa.RELIGIAO}}
+                    </div>
+                </div>
+                <br />
+                <br />
+                {{#if residente}}
+                <div class="row">
+                    <div class="col">
+                        <strong>Apelido: </strong> {{residente.APELIDO}}
+                    </div>
+                    <div class="col">
+                        <strong>Profissão: </strong> {{residente.PROFISSAO}}
+                    </div>
+                </div>
+                <br />
+                <h5 style="font-size: 35px">
+                    Eleitoral
+                </h5>
+                <hr class="col-4">
+                <div class="row">
+                    <div class="col">
+                        <strong>Titulo: </strong> {{residente.TITULO_ELEITOR}}
+                    </div>
+                    <div class="col">
+                        <strong>Zona: </strong> {{residente.ZONA_ELEITORAL}}
+                    </div>
+                    <div class="col">
+                        <strong>Seção: </strong> {{residente.SECAO_ELEITORAL}}
+                    </div>
+                </div>
+                <br />
+                <h5 style="font-size: 35px">
+                    Certidão de Nascimento
+                </h5>
+                <hr class="col-6">
+                <div class="row">
+                    <div class="col">
+                        <strong>Número: </strong> {{residente.NUMERO_CERTIDAO_NASCIMENTO}}
+                    </div>
+                    <div class="col">
+                        <strong>Folha: </strong> {{residente.FOLHA_CERTIDAO_NASCIMENTO}}
+                    </div>
+                    <div class="col">
+                        <strong>Livro: </strong> {{residente.LIVRO_CERTIDAO_NASCIMENTO}}
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Cidade: </strong> {{residente.CIDADE_CERTIDAO_NASCIMENTO}}
+                    </div>
+                    <div class="col">
+                        <strong>Estado: </strong> {{residente.ESTADO_CERTIDAO_NASCIMENTO}}
+                    </div>
+                </div>
+                <br />
+                <h5 style="font-size: 35px">
+                    INSS
+                </h5>
+                <hr class="col-4">
+                <div class="row">
+                    <div class="col">
+                        <strong>Número: </strong> {{residente.NUMERO_INSS}}
+                    </div>
+                    <div class="col">
+                        <strong>Situação: </strong> {{situacao_inss residente.SITUACAO_INSS}}
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Banco: </strong> {{residente.BANCO_INSS}}
+                    </div>
+                    <div class="col">
+                        <strong>Agência: </strong> {{residente.AGENCIA_INSS}}
+                    </div>
+                    <div class="col">
+                        <strong>Conta: </strong> {{residente.CONTA_INSS}}
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Valor: </strong> {{formatNumber residente.VALOR_INSS style="currency" currency="BRL"}}
+                    </div>
+                    <div class="col">
+                        <strong>Prova de vida: </strong> {{residente.PROVA_VIDA_INSS}}
+                    </div>
+                </div>
+                <br />
+                <h5 style="font-size: 35px">
+                    SAMS & SUS
+                </h5>
+                <hr class="col-6">
+                <div class="row">
+                    <div class="col">
+                        <strong>SAMS: </strong> {{residente.CARTAO_SAMS}}
+                    </div>
+                    <div class="col">
+                        <strong>SUS: </strong> {{residente.CARTAO_SUS}}
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <h5 style="font-size: 35px">
+                    Acolhimento
+                </h5>
+                <hr class="col-6">
+                <div class="row">
+                    <div class="col">
+                        <strong>Data: </strong> {{residente.DATA_ACOLHIMENTO}}
+                    </div>
+                </div>
+                <br />
+                <h5 style="font-size: 35px">
+                    Desacolhimento
+                </h5>
+                <hr class="col-6">
+                <div class="row">
+                    <div class="col">
+                        <strong>Data: </strong> {{residente.DATA_DESACOLHIMENTO}}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Motivo: </strong> {{residente.MOTIVO_DESACOLHIMENTO}}
+                    </div>
+                </div>
+                <br />
+                <br />
+                {{/if}}
+                {{#if convenios}}
+                <h5 style="font-size: 35px">
+                    Convênios
+                </h5>
+                <hr class="col-6">
+                {{#each convenios}}
+                <div class="row">
+                    <div class="col">
+                        <strong>Convênio: </strong> {{this.CONVENIO.NOME_CONVENIO}}
+                    </div>
+                    <div class="col">
+                        <strong>Tipo: </strong> {{this.CONVENIO.TIPO_CONVENIO}}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Número: </strong> {{this.NUMERO_CONVENIO}}
+                    </div>
+                    <div class="col">
+                        <strong>Titular: </strong> {{this.TITULAR_CONVENIO}}
+                    </div>
+                    <div class="col">
+                        <strong>Parentesco: </strong> {{this.PARENTESCO_TITULAR}}
+                    </div>
+                </div>
+                <br />
+                <hr class="col-11">
+                {{/each}}
+                <br />
+                <br />
+                {{/if}}
+                {{#if beneficios}}
+                <h5 style="font-size: 35px">
+                    Beneficios
+                </h5>
+                <hr class="col-6">
+                {{#each beneficios}}
+                <div class="row">
+                    <div class="col">
+                        <strong>Beneficio: </strong> {{this.NOME_BENEFICIO}}
+                    </div>
+                    <div class="col">
+                        <strong>Valor: </strong> {{formatNumber this.VALOR_BENEFICIO style="currency" currency="BRL"}}
+                    </div>
+                    <div class="col">
+                        <strong>Prova de vida: </strong> {{this.PROVA_VIDA_BENEFICIO}}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Banco: </strong> {{this.BANCO_BENEFICIO}}
+                    </div>
+                    <div class="col">
+                        <strong>Agência: </strong> {{this.AGENCIA_BENEFICIO}}
+                    </div>
+                    <div class="col">
+                        <strong>Conta: </strong> {{this.CONTA_BENEFICIO}}
+                    </div>
+                </div>
+                <br />
+                <hr class="col-11">
+                {{/each}}
+                <br />
+                <br />
+                {{/if}}
+                {{#if familiares}}
+                <h5 style="font-size: 35px">
+                    Familiares
+                </h5>
+                <hr class="col-6">
+                {{#each familiares}}
+                <div class="row">
+                    <div class="col">
+                        <strong>Nome: </strong> {{this.FAMILIAR.NOME}} {{this.FAMILIAR.SOBRENOME}}
+                    </div>
+                    <div class="col">
+                        <strong>Parentesco: </strong> {{this.FAMILIAR.PARENTESCO}}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Telefone: </strong> {{this.FAMILIAR.TELEFONE_FAMILIAR.TELEFONE.DDD}}
+                        {{telefone this.FAMILIAR.TELEFONE_FAMILIAR.TELEFONE.NUMERO}}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Endereço: </strong> {{this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.ENDERECO}}
+                    </div>
+                    <div class="col">
+                        <strong>Nº: </strong> {{this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.NUMERO}}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Bairro: </strong> {{this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.BAIRRO}}
+                    </div>
+                    {{#if this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.COMPLEMENTO}}
+                    <div class="col">
+                        <strong>Complemento: </strong> {{this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.COMPLEMENTO}}
+                    </div>
+                    {{/if}}
+                    <div class="col">
+                        <strong>Cidade: </strong> {{this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.CIDADE}}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>UF: </strong> {{this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.ESTADO}}
+                    </div>
+                    <div class="col">
+                        <strong>CEP: </strong> {{cep this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.CEP}}
+                    </div>
+                    {{#if this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.REFERENCIA}}
+                    <div class="col">
+                        <strong>Referência: </strong> {{this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.REFERENCIA}}
+                    </div>
+                    {{/if}}
+                </div>
+                <br />
+                <hr class="col-11">
+                {{/each}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

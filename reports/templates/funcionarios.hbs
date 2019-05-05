@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Relatório de Funcionários</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+    <h4 style="margin-top: 10px; margin-bottom: 6px; text-align: center;">Relatório de funcionários</h4>
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>RG</th>
+                <th>CPF</th>
+                <th>Data de Nascimento</th>
+                <th>Cargo</th>
+                <th>Data de Admissão</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each funcionarios}}
+            <tr>
+                <td>{{NOME}} {{SOBRENOME}}</td>
+                <td>{{RG}}</td>
+                <td>{{CPF}}</td>
+                <td>{{DATA_NASCIMENTO}}</td>
+                <td>{{CARGO}}</td>
+                <td>{{DATA_ADMISSAO}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+
+</html>

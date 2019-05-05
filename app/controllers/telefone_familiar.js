@@ -6,16 +6,17 @@
 
 const { TelefoneFamiliarModel, TelefoneModel, FamiliarModel } = require('./../models')
 
-TelefoneFamiliarModel.belongsTo(TelefoneModel, {as: 'TELEFONE', foreignKey: 'TELEFONE_CODIGO'})
+TelefoneFamiliarModel.belongsTo(TelefoneModel, { as: 'TELEFONE', foreignKey: 'TELEFONE_CODIGO' })
+TelefoneFamiliarModel.belongsTo(FamiliarModel, { as: 'FAMILIAR', foreignKey: 'FAMILIAR_CODIGO' })
 
 class TelefoneFamiliar {
 
     getById(req, res) {
         TelefoneFamiliarModel.findAll({
             include: [
-                {model: TelefoneModel, as: 'TELEFONE'}
+                { model: TelefoneModel, as: 'TELEFONE' }
             ],
-            where: {FAMILIAR_CODIGO: req.params.id}
+            where: { FAMILIAR_CODIGO: req.params.id }
         })
             .then(telefoneFamiliar => res.json(telefoneFamiliar))
             .catch(error => res.json(error))

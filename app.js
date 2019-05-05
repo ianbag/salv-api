@@ -27,7 +27,7 @@ const DependenteRoute = require('./app/routes/dependente')
 const AcompanhamentoRoute = require('./app/routes/acompanhamentos')
 const AcompanhamentoFuncionario = require('./app/routes/acompanhamento_funcionario')
 const AcompanhamentoResidente = require('./app/routes/acompanhamento_residente')
-const RelatorioRoutes = require('./reports/routes/relatorios.routes')
+const reportRoute = require('./reports/routes/report.routes')
 
 const handleAuthentication = require('./auth/auth')
 const handleAuthorization = require('./auth/authz')
@@ -52,6 +52,9 @@ app.route('/esqueci-a-senha')
 
 app.route('/esqueci-a-senha/:token')
     .post(forgot.reset_password)
+
+//API Relatórios
+app.use('/', reportRoute)
 
 //API Pessoa
 app.use('/', /*handleAuthorization,*/ PessoaRoute)
@@ -129,7 +132,7 @@ app.use('/', EnderecoConvenioRoute)
 app.use('/', ResidenteConvenioRoute)
 
 //API RELATÓRIOS
-app.use('/', RelatorioRoutes)
+// app.use('/', RelatorioRoutes)
 
 app.listen(port, function () {
     console.log(`API LISTEN ON PORT ${port}`)
