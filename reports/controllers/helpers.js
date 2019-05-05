@@ -103,3 +103,10 @@ Handlebars.registerHelper('telefone', function (telefones) {
         }
     }
 })
+
+//Helper format CEP
+Handlebars.registerHelper('cep', function (cep) {
+    if (cep) {
+        return `${cep.slice(0, 2)}.${cep.slice(2, 5)}-${cep.slice(5, 8)}`
+    }
+})
