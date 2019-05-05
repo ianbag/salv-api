@@ -273,11 +273,45 @@
                         <strong>Parentesco: </strong> {{this.FAMILIAR.PARENTESCO}}
                     </div>
                 </div>
-                <br/>
-                <br/>
+                <br />
                 <div class="row">
-                    <div class
+                    <div class="col">
+                        <strong>Endereço: </strong> {{this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.ENDERECO}}
+                    </div>
+                    <div class="col">
+                        <strong>Nº: </strong> {{this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.NUMERO}}
+                    </div>
                 </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>Bairro: </strong> {{this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.BAIRRO}}
+                    </div>
+                    {{#if this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.COMPLEMENTO}}
+                    <div class="col">
+                        <strong>Complemento: </strong> {{this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.COMPLEMENTO}}
+                    </div>
+                    {{/if}}
+                    <div class="col">
+                        <strong>Cidade: </strong> {{this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.CIDADE}}
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <strong>UF: </strong> {{this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.ESTADO}}
+                    </div>
+                    <div class="col">
+                        <strong>CEP: </strong> {{this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.CEP}}
+                    </div>
+                    {{#if this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.REFERENCIA}}
+                    <div class="col">
+                        <strong>Referência: </strong> {{this.FAMILIAR.ENDERECO_FAMILIAR.ENDERECO.REFERENCIA}}
+                    </div>
+                    {{/if}}
+                </div>
+                <br />
+                <hr class="col-11">
                 {{/each}}
                 {{/if}}
             </div>
