@@ -78,3 +78,16 @@ Handlebars.registerHelper('religiao', function (religiao) {
         return 'Não especificado'
     }
 })
+
+//Helper option Situação INSS
+Handlebars.registerHelper('situacao_inss', function (st_inss) {
+    if (st_inss == 'AIV') {
+        return 'Aposentado por invalidez'
+    } else if (st_inss == 'BPC') {
+        return 'Beneficio de prestação continuada'
+    } else if (st_inss == 'AID') {
+        return 'Aposentado por idade'
+    } else {
+        return 'Não especificado'
+    }
+})
