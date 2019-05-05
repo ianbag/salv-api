@@ -91,3 +91,15 @@ Handlebars.registerHelper('situacao_inss', function (st_inss) {
         return 'Não especificado'
     }
 })
+
+//Helper format Telefone
+Handlebars.registerHelper('telefone', function (telefones) {
+    if (telefones) {
+        var telefone = telefones.toString()
+        if (telefone.length == '9') {
+            return `${telefone.substr(0, 5)}-${telefone.substr(5, 4)}`
+        } else {
+            return `${telefone.substr(0, 4)}-${telefone.substr(4, 4)}`
+        }
+    }
+})
