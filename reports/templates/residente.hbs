@@ -141,7 +141,7 @@
                 <br />
                 <div class="row">
                     <div class="col">
-                        <strong>Valor: </strong> {{residente.VALOR_INSS}}
+                        <strong>Valor: </strong> {{formatNumber residente.VALOR_INSS style="currency" currency="BRL"}}
                     </div>
                     <div class="col">
                         <strong>Prova de vida: </strong> {{residente.PROVA_VIDA_INSS}}
@@ -235,7 +235,7 @@
                         <strong>Beneficio: </strong> {{this.NOME_BENEFICIO}}
                     </div>
                     <div class="col">
-                        <strong>Valor: </strong> {{this.VALOR_BENEFICIO}}
+                        <strong>Valor: </strong> {{formatNumber this.VALOR_BENEFICIO style="currency" currency="BRL"}}
                     </div>
                     <div class="col">
                         <strong>Prova de vida: </strong> {{this.PROVA_VIDA_BENEFICIO}}

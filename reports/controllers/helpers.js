@@ -1,5 +1,9 @@
 //Requires
 const Handlebars = require('handlebars')
+const HandlebarsIntl = require('handlebars-intl')
+
+//Register helper intl
+HandlebarsIntl.registerWith(Handlebars)
 
 //Helper format CPF
 Handlebars.registerHelper('cpf', function (cpf) {
