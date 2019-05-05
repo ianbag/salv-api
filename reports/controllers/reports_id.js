@@ -4,16 +4,17 @@ const fs = require('fs-extra')
 const hbs = require('handlebars')
 const path = require('path')
 const sequelize = require('./../../database/sequelize_remote')
-const { PessoaModel, FuncionarioModel, DependenteModel, TelefoneModel, EnderecoModel, TelefonePessoaModel, EnderecoPessoaModel, AcompanhamentosModel, AcompanhamentoResidenteModel, AcompanhamentoFuncionarioModel, ResidenteModel, ConvenioModel, EnderecoConvenioModel, TelefoneConvenioModel } = require('./../../app/models')
+const { PessoaModel, FuncionarioModel, DependenteModel, TelefoneModel, EnderecoModel, TelefonePessoaModel, EnderecoPessoaModel, AcompanhamentosModel, AcompanhamentoResidenteModel, AcompanhamentoFuncionarioModel, ResidenteModel, ConvenioModel, EnderecoConvenioModel, TelefoneConvenioModel, ResidenteConvenioModel, BeneficioModel, ResidenteFamiliarModel, FamiliarModel, EnderecoFamiliarModel, TelefoneFamiliarModel } = require('./../../app/models')
 
 
 //Variable that receives the objects from database
 var data_acompanhamento;
 var data_convenio;
 var data_funcionario;
+var data_residente;
 
 //Function that compiles the template and data
-const compile = async function (templateName, data) {
+const compile = async function(templateName, data) {
     const filePath = path.join(process.cwd(), './reports/templates', `${templateName}.hbs`)
     const html = await fs.readFile(filePath, 'utf-8')
     return hbs.compile(html)(data)
@@ -269,6 +270,139 @@ const reportFuncionario = async (codigoPessoa, codigoFuncionario) => {
     } catch (e) {
         console.log(e)
     }
+};
+
+//Function resposible for generating report
+const reportResidente = async (codigoPessoa, codigoResidente) => {
+    try {
+        //Database query
+        const pessoa = await PessoaModel.findOne({
+            attributes: [
+                'NOME',
+                'SOBRENOME',
+                'RG',
+                'CPF',
+                'SEXO',
+                'ESTADO_CIVIL',
+                [sequelize.fn('date_format', sequelize.col('DATA_NASCIMENTO'), '%d/%m/%Y'), 'DATA_NASCIMENTO'],
+                'RELIGIAO',
+                'ESCOLARIDADE'
+            ],
+            where: {
+                CODIGO: codigoPessoa
+            }
+        })
+        //Database query
+        const residente = await ResidenteModel.findOne({
+            attributes: [
+                'APELIDO',
+                'PROFISSAO',
+                'TITULO_ELEITOR',
+                'ZONA_ELEITORAL',
+                'SECAO_ELEITORAL',
+                'NUMERO_CERTIDAO_NASCIMENTO',
+                'FOLHA_CERTIDAO_NASCIMENTO',
+                'LIVRO_CERTIDAO_NASCIMENTO',
+                'CIDADE_CERTIDAO_NASCIMENTO',
+                'ESTADO_CERTIDAO_NASCIMENTO',
+                'CARTAO_SAMS',
+                'CARTAO_SUS',
+                'NUMERO_INSS',
+                'BANCO_INSS',
+                'AGENCIA_INSS',
+                'CONTA_INSS',
+                'VALOR_INSS',
+                'SITUACAO_INSS',
+                [sequelize.fn('date_format', sequelize.col('PROVA_VIDA_INSS'), '%d/%m/%Y'), 'PROVA_VIDA_INSS'],
+                [sequelize.fn('date_format', sequelize.col('DATA_ACOLHIMENTO'), '%d/$m/%Y'), 'DATA_ACOLHIMENTO'],
+                [sequelize.fn('date_format', sequelize.col('DATA_DESACOLHIMENTO'), '%d/%m/%Y'), 'DATA_DESACOLHIMENTO'],
+                'MOTIVO_DESACOLHIMENTO'
+            ],
+            where: {
+                PESSOA_CODIGO: codigoPessoa
+            }
+        })
+        //Database query
+        const convenios = await ResidenteConvenioModel.findAll({
+            where: {
+                RESIDENTE_CODIGO: codigoResidente
+            },
+            include: {
+                model: ConvenioModel, as: 'CONVENIO'
+            }
+        })
+        //Database query
+        const beneficios = await BeneficioModel.findAll({
+            attributes: [
+                'NOME_BENEFICIO',
+                'BANCO_BENEFICIO',
+                'AGENCIA_BENEFICIO',
+                'CONTA_BENEFICIO',
+                'VALOR_BENEFICIO',
+                [sequelize.fn('date_format', sequelize.col('PROVA_VIDA_BENEFICIO'), '%d/%m/%Y'), 'PROVA_VIDA_BENEFICIO']
+            ],
+            where: {
+                CODIGO_RESIDENTE: codigoResidente
+            }
+        })
+        //Database query
+        const familiares = await ResidenteFamiliarModel.findAll({
+            where: {
+                RESIDENTE_CODIGO: codigoResidente
+            },
+            include: [{
+                model: FamiliarModel, as: 'FAMILIAR',
+                include: [
+                    {
+                        model: TelefoneFamiliarModel, as: 'TELEFONE_FAMILIAR',
+                        include: {
+                            model: TelefoneModel, as: 'TELEFONE'
+                        }
+                    },
+                    {
+                        model: EnderecoFamiliarModel, as: 'ENDERECO_FAMILIAR',
+                        include: {
+                            model: EnderecoModel, as: 'ENDERECO'
+                        }
+                    }
+                ]
+            }]
+        })
+
+        //Set database result to variable
+        data_residente = {
+            "pessoa": pessoa,
+            "residente": residente,
+            "convenios": convenios,
+            "beneficios": beneficios,
+            "familiares": familiares
+        }
+
+        //Launch puppeteer, create new page, call compile function
+        const browser = await puppeteer.launch()
+        const page = await browser.newPage()
+        const content = await compile('residente', data_residente)
+        
+        //Set page content, emulate screen, config page
+        await page.setContent(content)
+        await page.emulateMedia('print')
+        const pdf = await page.pdf({
+            format: 'A4',
+            printBackground: true,
+            margin: {
+                left: '10px',
+                right: '10px'
+            }
+        })
+
+        //Log done, close puppeteer, return result
+        console.log('done')
+        await browser.close()
+        return pdf
+
+    } catch (e) {
+        console.log(e)
+    }
 }
 
-module.exports = { reportAcompanhamento, reportConvenio, reportFuncionario }
+module.exports = { reportAcompanhamento, reportConvenio, reportFuncionario, reportResidente }

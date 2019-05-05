@@ -5,10 +5,11 @@
  */
 const sequelize = require('./../../database/sequelize_remote')
 
-const { ResidenteFamiliarModel, ResidenteModel } = require('./../models')
+const { ResidenteFamiliarModel, ResidenteModel, FamiliarModel } = require('./../models')
 
 
 ResidenteFamiliarModel.belongsTo(ResidenteModel, { as: 'RESIDENTE', foreignKey: 'RESIDENTE_CODIGO' })
+ResidenteFamiliarModel.belongsTo(FamiliarModel, { as: 'FAMILIAR', foreignKey: 'FAMILIAR_CODIGO' })
 
 class ResidenteFamiliar {
     getById(req, res) {
