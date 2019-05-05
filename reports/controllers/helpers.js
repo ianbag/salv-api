@@ -46,3 +46,16 @@ Handlebars.registerHelper('sexo', function (sexo) {
         return 'Feminino'
     }
 })
+
+//Helper option Estado civil
+Handlebars.registerHelper('estado_civil', function (ec) {
+    if (ec == 'S') {
+        return 'Solteiro'
+    } else if (ec == 'C') {
+        return 'Casado'
+    } else if (ec == 'D') {
+        return 'Divorciado'
+    } else {
+        return 'Viúvo'
+    }
+})
