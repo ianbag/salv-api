@@ -400,7 +400,7 @@ const reportResidente = async (codigoPessoa, codigoResidente) => {
         console.log('done')
         await browser.close()
         return pdf
-        // return data_residente
+        
     } catch (e) {
         console.log(e)
     }
