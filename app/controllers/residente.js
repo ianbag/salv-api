@@ -116,7 +116,9 @@ class Residente {
 
     aniversariante(req, res) {
         sequelize.query(`SELECT
-                            P.NOME, P.SOBRENOME, P.DATA_NASCIMENTO
+                            P.NOME, P.SOBRENOME,
+                            DATE_FORMAT(P.DATA_NASCIMENTO, '%d/%m') DATA_NASCIMENTO,
+                            floor(datediff(curdate(),P.DATA_NASCIMENTO) / 365) IDADE
                         FROM
                             RESIDENTE R
                             LEFT JOIN PESSOA P
