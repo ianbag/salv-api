@@ -239,7 +239,7 @@ const reportFuncionario = async (codigoPessoa, codigoFuncionario) => {
             }
         })
         //Database query
-        const dependentes = DependenteModel.findAll({
+        const dependentes = await DependenteModel.findAll({
             attributes: [
                 'NOME',
                 'SOBRENOME',
@@ -265,7 +265,7 @@ const reportFuncionario = async (codigoPessoa, codigoFuncionario) => {
             "funcionario": funcionario,
             "dependentes": dependentes
         }
-
+        
         //Launch puppeteer, create new page, call compile function
         const browser = await puppeteer.launch()
         const page = await browser.newPage()

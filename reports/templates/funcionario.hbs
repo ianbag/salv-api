@@ -134,45 +134,43 @@
                 <div class="box-body" style="text-align: center">
                     <div class="row">
                         <div class="col">
-                            <strong>Nome: </strong> {{NOME}} {{SOBRENOME}}
+                            <strong>Nome: </strong> {{this.NOME}} {{this.SOBRENOME}}
                         </div>
                         <div class="col">
-                            <strong>CPF: </strong> {{cpf CPF}}
+                            <strong>CPF: </strong> {{cpf this.CPF}}
                         </div>
                         <div class="col">
-                            <strong>RG: </strong> {{rg RG}}
+                            <strong>RG: </strong> {{rg this.RG}}
                         </div>
                     </div>
-                    <br />
                     <br />
                     <div class="row">
                         <div class="col">
-                            <strong>Data de nascimento: </strong> {{DATA_NASCIMENTO}}
+                            <strong>Data de nascimento: </strong> {{this.DATA_NASCIMENTO}}
                         </div>
                     </div>
                     <br />
-                    {{#if NUMERO_CERTIDAO_NASCIMENTO}}
+                    {{#if this.NUMERO_CERTIDAO_NASCIMENTO}}
                     <h4 style="text-align: center">Certidão de nascimento</h4>
                     <hr class="col-1">
                     <div class="row">
                         <div class="col">
-                            <strong>Nº: </strong> {{NUMERO_CERTIDAO_NASCIMENTO}}
+                            <strong>Nº: </strong> {{this.NUMERO_CERTIDAO_NASCIMENTO}}
                         </div>
                         <div class="col">
-                            <strong>Folha: </strong> {{FOLHA_CERTIDAO_NASCIMENTO}}
+                            <strong>Folha: </strong> {{this.FOLHA_CERTIDAO_NASCIMENTO}}
                         </div>
                         <div class="col">
-                            <strong>Livro: </strong> {{LIVRO_CERTIDAO_NASCIMENTO}}
+                            <strong>Livro: </strong> {{this.LIVRO_CERTIDAO_NASCIMENTO}}
                         </div>
                     </div>
                     <br />
-                    <br />
                     <div class="row">
                         <div class="col">
-                            <strong>Cidade: </strong> {{CIDADE_CERTIDAO_NASCIMENTO}}
+                            <strong>Cidade: </strong> {{this.CIDADE_CERTIDAO_NASCIMENTO}}
                         </div>
                         <div class="col">
-                            <strong>Estado: </strong> {{ESTADO_CERTIDAO_NASCIMENTO}}
+                            <strong>Estado: </strong> {{this.ESTADO_CERTIDAO_NASCIMENTO}}
                         </div>
                     </div>
                     {{/if}}
