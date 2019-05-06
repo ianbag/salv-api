@@ -1,7 +1,7 @@
 const express = require('express')
 const route = express.Router()
 
-const AcompanhamentoController = require('../../../salv-api/app/controllers/acompanhamentos')
+const AcompanhamentoController = require('./../controllers/acompanhamentos')
 route.get('/acompanhamento', AcompanhamentoController.getAll)
 route.get('/acompanhamento/:id', AcompanhamentoController.getById)
 route.get('/acompanhamento-funcionario/:id', AcompanhamentoController.getFuncionarioByIdAc)
