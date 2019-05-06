@@ -25,7 +25,8 @@ class ResidenteConvenio {
                             ON TC.CONVENIO_CODIGO = RC.CONVENIO_CODIGO
                             LEFT JOIN TELEFONE T
                             ON T.CODIGO = TC.TELEFONE_CODIGO
-                            WHERE RESIDENTE_CODIGO = :RESIDENTE_CODIGO`,
+                            WHERE RESIDENTE_CODIGO = :RESIDENTE_CODIGO
+                            AND RC.STATUS = 1`,
             { replacements: { RESIDENTE_CODIGO: req.params.id } })
             .then(result => {
                 res.json(result[0])
@@ -50,7 +51,8 @@ class ResidenteConvenio {
                             ON TC.CONVENIO_CODIGO = RC.CONVENIO_CODIGO
                             LEFT JOIN TELEFONE T
                             ON T.CODIGO = TC.TELEFONE_CODIGO
-                            WHERE RC.NUMERO_CONVENIO = :NUMERO_CONVENIO`,
+                            WHERE RC.NUMERO_CONVENIO = :NUMERO_CONVENIO
+                            AND RC.STATUS = 1`,
             { replacements: { NUMERO_CONVENIO: req.params.id } })
             .then(result => {
                 res.json(result[0])
