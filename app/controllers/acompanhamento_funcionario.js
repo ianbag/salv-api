@@ -51,6 +51,17 @@ class AcompanhamentoFuncionario {
            res.json(result[0])
            })
         }      
+
+        deleteAll(req, res){ 
+            
+            let idAc = req.params.idAcompanhamento
+            let deleteAc = 'DELETE FROM ACOMPANHAMENTO_FUNCIONARIO WHERE ACOMPANHAMENTO_CODIGO = "' + idAc + '" '
+    
+          sequelize.query(deleteAc)
+           .then(result => {
+               res.json(result[0])
+               })
+            }      
         
 
 

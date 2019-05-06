@@ -5,5 +5,6 @@ const AcompanhamentoResidenteController = require('../../../salv-api/app/control
 route.get('/acompanhamento_residente/:id', AcompanhamentoResidenteController.getById)
 route.post('/acompanhamento_residente', AcompanhamentoResidenteController.create)
 route.delete('/acompanhamento_residente/:idResidente/:idAcompanhamento', AcompanhamentoResidenteController.delete)
+route.delete('/acompanhamento_residenteAll/:idAcompanhamento', AcompanhamentoResidenteController.deleteAll)
 
 module.exports = route
