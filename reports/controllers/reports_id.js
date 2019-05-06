@@ -139,7 +139,7 @@ const reportConvenio = async (codigoConvenio) => {
         //Database query
         const enderecos = await EnderecoConvenioModel.findAll({
             where: {
-                CODIGO_CONVENIO: codigoConvenio
+                CONVENIO_CODIGO: codigoConvenio
             },
             include: {
                 model: EnderecoModel, as: 'ENDERECO'
@@ -148,7 +148,7 @@ const reportConvenio = async (codigoConvenio) => {
         //Database query
         const telefones = await TelefoneConvenioModel.findAll({
             where: {
-                CODIGO_CONVENIO: codigoConvenio
+                CONVENIO_CODIGO: codigoConvenio
             },
             include: {
                 model: TelefoneModel, as: 'TELEFONE'
