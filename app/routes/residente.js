@@ -17,7 +17,7 @@ route.get('/residente/:id', ResidenteController.getById)
 route.get('/residenteNome', ResidenteController.getName)
 route.post('/residente', ResidenteController.create)
 route.put('/residente/:id', ResidenteController.update)
-route.delete('/residente/:id', ResidenteController.delete)
+route.post('/residente-inativar/:id', ResidenteController.inativar)
 route.delete('/residente-ativar/:id', ResidenteController.ativar)
 route.get('/aniversariante', ResidenteController.aniversariante)
 
