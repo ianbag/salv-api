@@ -45,13 +45,22 @@ class Residente {
     }
 
     getInativos(req, res) {
-        ResidenteModel.findAll({
-            where: { STATUS: 0 },
-            include: [{ model: PessoaModel, as: 'PESSOA' }],
-
-        })
-            .then(residente => res.json(residente))
-            .catch(error => res.json(error))
+        sequelize.query(`SELECT
+                            R.CODIGO_RESIDENTE CODIGO,
+                            P.NOME RESIDENTE_NOME,
+                            P.SOBRENOME RESIDENTE_SOBRENOME,
+                            R.APELIDO,
+                            P.CPF RESIDENTE_CPF,
+                            P.RG RESIDENTE_RG
+                        FROM
+                            RESIDENTE R
+                            LEFT JOIN PESSOA P
+                            ON P.CODIGO = R.PESSOA_CODIGO
+                            WHERE R.STATUS = 0`
+                        )
+                .then(result => {
+                    res.json(result[0])
+                })
     }
 
     getById(req, res) {
