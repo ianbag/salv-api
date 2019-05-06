@@ -8,7 +8,7 @@
 
 const sequelize = require('./../../database/sequelize_remote')
 
-const OP = sequelize.Op 
+const OP = sequelize.Op
 
 const { BeneficioModel } = require('./../models')
 
@@ -18,8 +18,8 @@ class Beneficio {
             raw: true,
             where: {
                 CODIGO_RESIDENTE: req.params.id,
-                STATUS: 1 
-                }
+                STATUS: 1
+            }
         })
             .then(beneficio => res.json(beneficio))
             .catch(error => res.json(error))
@@ -96,7 +96,7 @@ class Beneficio {
                                 AND B.STATUS = 1
                                 AND MONTH(B.PROVA_VIDA_BENEFICIO) = :mes
                         ORDER BY PROVAS_VIDA`,
-            { replacements: { mes: (data.getMonth() + 1)} })
+            { replacements: { mes: (data.getMonth() + 1) } })
             .then(result => {
                 res.json(result[0])
             })
@@ -108,12 +108,12 @@ class Beneficio {
             where: {
                 STATUS: 1,
                 CODIGO_RESIDENTE: req.body.CODIGO,
-                NOME_BENEFICIO:  req.body.NOME_BENEFICIO ,
+                NOME_BENEFICIO: req.body.NOME_BENEFICIO,
             }
         })
             .then(beneficio => {
                 if (beneficio && req.body.NOME_BENEFICIO != req.body.NOME_BENEFICIO_EDITAR)
-                    res.json({beneficio, value: 0, message: 'Nome Benefício não é único!' })
+                    res.json({ beneficio, value: 0, message: 'Nome Benefício não é único!' })
 
                 else
                     res.json({ value: 1, message: 'Nome Benefício é único!' })
