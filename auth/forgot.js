@@ -9,7 +9,7 @@ const nodemailer = require('nodemailer')
 
 const email = 'drvidaredefinicao@gmail.com'
 const senha = 'drvida2019'
-const url = "https://drvida-api.herokuapp.com/#/esqueci-a-senha/"
+const url = "https://drvida-app.herokuapp.com/#/esqueci-a-senha/"
 
 const readtHTMLFile = function (path, callback) {
   fs.readFile(path, { encoding: 'utf-8' }, function (err, html) {

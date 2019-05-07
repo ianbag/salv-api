@@ -45,7 +45,12 @@ const reportFuncionarios = async () => {
         }
 
         //Launch puppeteer, create new page, call compile function
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+            'args': [
+                '--no-sandbox',
+                '--disable-setuid-sandbox'
+            ]
+        })
         const page = await browser.newPage()
         const content = await compile('funcionarios', funcionarios)
 
