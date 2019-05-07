@@ -30,7 +30,8 @@ class TelefoneConvenio {
     delete(req, res) {
         TelefoneConvenioModel.destroy({
             where: {
-                CONVENIO_CODIGO: req.params.id
+                CONVENIO_CODIGO: req.params.convenioId,
+                TELEFONE_CODIGO: req.params.telefoneId
             }
         })
             .then(telefoneConvenio => res.json(telefoneConvenio))
