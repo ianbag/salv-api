@@ -105,7 +105,12 @@ const reportConvenios = async () => {
         }
 
         //Launch puppeteer, create new page, call compile function
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+            'args': [
+                '--no-sandbox',
+                '--disable-setuid-sandbox'
+            ]
+        })
         const page = await browser.newPage()
         const content = await (compile('convenios', convenios))
 
@@ -163,7 +168,12 @@ const reportAcompanhamentos = async () => {
         }
 
         //Launch puppeteer, create new page, call compile function
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+            'args': [
+                '--no-sandbox',
+                '--disable-setuid-sandbox'
+            ]
+        })
         const page = await browser.newPage()
         const content = await (compile('acompanhamentos', acompanhamentos))
 
@@ -213,7 +223,12 @@ const reportResidentes = async () => {
         }
 
         //Launch puppeteer, create new page, call compile function
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+            'args': [
+                '--no-sandbox',
+                '--disable-setuid-sandbox'
+            ]
+        })
         const page = await browser.newPage()
         const content = await (compile('residentes', residentes))
 
