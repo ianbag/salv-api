@@ -1,5 +1,5 @@
-const sequelize = require('./../../database/sequelize_remote')
-const { ConvenioModel } = require('./../models')
+const sequelize = require('./../../database/sequelize_remote');
+const { ConvenioModel } = require('./../models');
 
 class Convenio {
 
@@ -99,7 +99,7 @@ class Convenio {
             where: {
                 CODIGO: req.params.id,
                 STATUS: 1
-            } 
+            }
         })
             .then(convenio => res.json(convenio))
             .catch(error => res.json(error))
@@ -110,21 +110,42 @@ class Convenio {
             where: {
                 CODIGO: req.params.id,
                 STATUS: 0
-            } 
+            }
         })
             .then(convenio => res.json(convenio))
             .catch(error => res.json(error))
     }
 
-    getName(req, res){
-
+    getName(req, res) {
         sequelize.query(`SELECT NOME_CONVENIO FROM CONVENIO`)
 
-        .then(result => {
-            res.json(result[0])
-        })
+            .then(result => {
+                res.json(result[0])
+            })
     }
 
+    conveniosTratados(req, res) {
+        sequelize.query(
+            `SELECT 
+            C.CODIGO,
+            C.NOME_CONVENIO,
+            C.TIPO_CONVENIO,
+            GROUP_CONCAT(' ','(', T.DDD, ')',' ', T.NUMERO) AS TELEFONES
+        FROM
+            CONVENIO AS C
+                JOIN
+            TELEFONE_CONVENIO AS TC ON TC.CONVENIO_CODIGO = C.CODIGO
+                JOIN
+            TELEFONE AS T ON T.CODIGO = TC.TELEFONE_CODIGO
+        WHERE
+            C.STATUS = 1
+        GROUP BY C.CODIGO;`
+        ).then(result => {
+            res.send(result[0])
+        }).catch(error => {
+            res.send(error)
+        })
+    }
 }
 
 module.exports = new Convenio()
