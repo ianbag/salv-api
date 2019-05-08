@@ -99,7 +99,7 @@ class Convenio {
             where: {
                 CODIGO: req.params.id,
                 STATUS: 1
-            } 
+            }
         })
             .then(convenio => res.json(convenio))
             .catch(error => res.json(error))
@@ -110,19 +110,19 @@ class Convenio {
             where: {
                 CODIGO: req.params.id,
                 STATUS: 0
-            } 
+            }
         })
             .then(convenio => res.json(convenio))
             .catch(error => res.json(error))
     }
 
-    getName(req, res){
+    getName(req, res) {
 
         sequelize.query(`SELECT NOME_CONVENIO FROM CONVENIO`)
 
-        .then(result => {
-            res.json(result[0])
-        })
+            .then(result => {
+                res.json(result[0])
+            })
     }
 
 }
