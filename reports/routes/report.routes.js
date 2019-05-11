@@ -9,8 +9,9 @@ const { reportFuncionarios, reportConvenios, reportAcompanhamentos, reportReside
 const { reportAcompanhamento, reportConvenio, reportFuncionario, reportResidente } = require('../controllers/reports_id')
 
 //HTTP method, call function
-route.get('/relatorio-funcionarios', function (req, res) {
-    reportFuncionarios().then(response => {
+route.post('/relatorio-funcionarios', function (req, res) {
+    var status = req.body.status
+    reportFuncionarios(status).then(response => {
         res.type('application/pdf')
         res.send(response)
     }).catch(error => {
@@ -19,8 +20,9 @@ route.get('/relatorio-funcionarios', function (req, res) {
 })
 
 //HTTP method, call function
-route.get('/relatorio-convenios', function (req, res) {
-    reportConvenios().then(response => {
+route.post('/relatorio-convenios', function (req, res) {
+    var status = req.body.status
+    reportConvenios(status).then(response => {
         res.type('application/pdf')
         res.send(response)
     }).catch(error => {
@@ -39,8 +41,9 @@ route.get('/relatorio-acompanhamentos', function (req, res) {
 })
 
 //HTTP method, call function
-route.get('/relatorio-residentes', function (req, res) {
-    reportResidentes().then(response => {
+route.post('/relatorio-residentes', function (req, res) {
+    var status = req.body.status
+    reportResidentes(status).then(response => {
         res.type('application/pdf')
         res.send(response)
     }).catch(error => {
