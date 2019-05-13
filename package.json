@@ -4,6 +4,7 @@
   "description": "API do sistema SALV",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "mocha tests/*.test.js --timeout=10000",
     "dev": "nodemon app.js"
   },

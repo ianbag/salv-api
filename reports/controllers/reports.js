@@ -19,7 +19,7 @@ const compile = async function (templateName, data) {
 };
 
 //Function responsible for generating report
-const reportFuncionarios = async () => {
+const reportFuncionarios = async (status) => {
     try {
         //Database query
         var result = await sequelize.query(`
@@ -36,7 +36,7 @@ const reportFuncionarios = async () => {
             INNER JOIN
         FUNCIONARIO AS F ON F.PESSOA_CODIGO = P.CODIGO
     WHERE
-        F.STATUS = 1
+        F.STATUS = ${status}
     ORDER BY P.NOME;`)
 
         //Set database result to variable
@@ -45,7 +45,12 @@ const reportFuncionarios = async () => {
         }
 
         //Launch puppeteer, create new page, call compile function
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+            'args': [
+                '--no-sandbox',
+                '--disable-setuid-sandbox'
+            ]
+        })
         const page = await browser.newPage()
         const content = await compile('funcionarios', funcionarios)
 
@@ -72,7 +77,7 @@ const reportFuncionarios = async () => {
 };
 
 //Function responsible for generating report
-const reportConvenios = async () => {
+const reportConvenios = async (status) => {
     try {
         //Database query
         var result = await sequelize.query(
@@ -90,7 +95,7 @@ const reportConvenios = async () => {
                 INNER JOIN
             TELEFONE AS T ON T.CODIGO = TC.TELEFONE_CODIGO
         WHERE
-            C.STATUS = 1
+            C.STATUS = ${status}
         ORDER BY C.NOME_CONVENIO;`
         )
 
@@ -100,7 +105,12 @@ const reportConvenios = async () => {
         }
 
         //Launch puppeteer, create new page, call compile function
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+            'args': [
+                '--no-sandbox',
+                '--disable-setuid-sandbox'
+            ]
+        })
         const page = await browser.newPage()
         const content = await (compile('convenios', convenios))
 
@@ -158,7 +168,12 @@ const reportAcompanhamentos = async () => {
         }
 
         //Launch puppeteer, create new page, call compile function
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+            'args': [
+                '--no-sandbox',
+                '--disable-setuid-sandbox'
+            ]
+        })
         const page = await browser.newPage()
         const content = await (compile('acompanhamentos', acompanhamentos))
 
@@ -183,7 +198,7 @@ const reportAcompanhamentos = async () => {
     }
 }
 
-const reportResidentes = async () => {
+const reportResidentes = async (status) => {
     try {
         //Database query
         var result = await sequelize.query(
@@ -198,7 +213,7 @@ const reportResidentes = async () => {
                 INNER JOIN
             RESIDENTE AS R ON P.CODIGO = R.PESSOA_CODIGO
         WHERE
-            P.STATUS = 1 AND R.STATUS = 1
+            P.STATUS = ${status} AND R.STATUS = ${status}
         ORDER BY P.NOME;`
         )
 
@@ -208,7 +223,12 @@ const reportResidentes = async () => {
         }
 
         //Launch puppeteer, create new page, call compile function
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+            'args': [
+                '--no-sandbox',
+                '--disable-setuid-sandbox'
+            ]
+        })
         const page = await browser.newPage()
         const content = await (compile('residentes', residentes))
 

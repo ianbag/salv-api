@@ -9,8 +9,9 @@ const { reportFuncionarios, reportConvenios, reportAcompanhamentos, reportReside
 const { reportAcompanhamento, reportConvenio, reportFuncionario, reportResidente } = require('../controllers/reports_id')
 
 //HTTP method, call function
-route.get('/relatorio-funcionarios', function (req, res) {
-    reportFuncionarios().then(response => {
+route.get('/relatorio-funcionarios/:status', function(req, res) {
+    var status = req.params.status
+    reportFuncionarios(status).then(response => {
         res.type('application/pdf')
         res.send(response)
     }).catch(error => {
@@ -19,8 +20,9 @@ route.get('/relatorio-funcionarios', function (req, res) {
 })
 
 //HTTP method, call function
-route.get('/relatorio-convenios', function (req, res) {
-    reportConvenios().then(response => {
+route.get('/relatorio-convenios/:status', function(req, res) {
+    var status = req.params.status
+    reportConvenios(status).then(response => {
         res.type('application/pdf')
         res.send(response)
     }).catch(error => {
@@ -29,7 +31,7 @@ route.get('/relatorio-convenios', function (req, res) {
 })
 
 //HTTP method, call function
-route.get('/relatorio-acompanhamentos', function (req, res) {
+route.get('/relatorio-acompanhamentos', function(req, res) {
     reportAcompanhamentos().then(response => {
         res.type('application/pdf')
         res.send(response)
@@ -39,8 +41,9 @@ route.get('/relatorio-acompanhamentos', function (req, res) {
 })
 
 //HTTP method, call function
-route.get('/relatorio-residentes', function (req, res) {
-    reportResidentes().then(response => {
+route.get('/relatorio-residentes/:status', function(req, res) {
+    var status = req.params.status
+    reportResidentes(status).then(response => {
         res.type('application/pdf')
         res.send(response)
     }).catch(error => {
@@ -49,7 +52,7 @@ route.get('/relatorio-residentes', function (req, res) {
 })
 
 //HTTP method, call function
-route.get('/relatorio-acompanhamento/:codigoAcompanhamento', function (req, res) {
+route.get('/relatorio-acompanhamento/:codigoAcompanhamento', function(req, res) {
     var codigoAcompanhamento = req.params.codigoAcompanhamento
     reportAcompanhamento(codigoAcompanhamento).then(response => {
         res.type('application/pdf')
@@ -60,7 +63,7 @@ route.get('/relatorio-acompanhamento/:codigoAcompanhamento', function (req, res)
 })
 
 //HTTP method, call function
-route.get('/relatorio-convenio/:codigoConvenio', function (req, res) {
+route.get('/relatorio-convenio/:codigoConvenio', function(req, res) {
     var codigoConvenio = req.params.codigoConvenio
     reportConvenio(codigoConvenio).then(response => {
         res.type('application/pdf')
@@ -71,7 +74,7 @@ route.get('/relatorio-convenio/:codigoConvenio', function (req, res) {
 })
 
 //HTTP method, call function
-route.get('/relatorio-funcionario/:codigoPessoa/:codigoFuncionario', function (req, res) {
+route.get('/relatorio-funcionario/:codigoPessoa/:codigoFuncionario', function(req, res) {
     var codigoPessoa = req.params.codigoPessoa
     var codigoFuncionario = req.params.codigoFuncionario
     reportFuncionario(codigoPessoa, codigoFuncionario).then(response => {
@@ -83,7 +86,7 @@ route.get('/relatorio-funcionario/:codigoPessoa/:codigoFuncionario', function (r
 })
 
 //HTTP method, call function
-route.get('/relatorio-residente/:codigoPessoa/:codigoResidente', function (req, res) {
+route.get('/relatorio-residente/:codigoPessoa/:codigoResidente', function(req, res) {
     var codigoPessoa = req.params.codigoPessoa
     var codigoResidente = req.params.codigoResidente
     reportResidente(codigoPessoa, codigoResidente).then(response => {

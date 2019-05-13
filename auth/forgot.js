@@ -9,7 +9,7 @@ const nodemailer = require('nodemailer')
 
 const email = 'drvidaredefinicao@gmail.com'
 const senha = 'drvida2019'
-const url = "http://localhost:4200/esqueci-a-senha/"
+const url = "https://drvida-app.herokuapp.com/#/esqueci-a-senha/"
 
 const readtHTMLFile = function (path, callback) {
   fs.readFile(path, { encoding: 'utf-8' }, function (err, html) {
@@ -57,7 +57,7 @@ exports.forgot_password = function (req, res) {
           if (!updated) {
             res.status(442).json({ message: 'Tivemos um problema ao processar sua operação. Tente novamente mais tarde' })
           } else {
-            readtHTMLFile(__dirname + './../templates/forgot-password-email.html', function (err, html) {
+            readtHTMLFile(__dirname + '/templates/forgot-password-email.html', function (err, html) {
               var template = handlebars.compile(html)
               var replacements = {
                 url: url + token,
@@ -111,7 +111,7 @@ exports.reset_password = function (req, res, next) {
               STATUS: 1
             }
           }).then((updated) => {
-            readtHTMLFile(__dirname + './../templates/reset-password-email.html', function (err, html) {
+            readtHTMLFile(__dirname + '/templates/reset-password-email.html', function (err, html) {
               var template = handlebars.compile(html)
               var replacements = {
                 name: user.LOGIN

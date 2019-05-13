@@ -101,7 +101,12 @@ const reportAcompanhamento = async (codigoAcompanhamento) => {
         }
 
         //Launch puppeteer, create new page, call compile function
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+            'args': [
+                '--no-sandbox',
+                '--disable-setuid-sandbox'
+            ]
+        })
         const page = await browser.newPage()
         const content = await compile('acompanhamento', data_acompanhamento)
 
@@ -163,7 +168,12 @@ const reportConvenio = async (codigoConvenio) => {
         }
 
         //Launch puppeteer, create new page, call compile function
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+            'args': [
+                '--no-sandbox',
+                '--disable-setuid-sandbox'
+            ]
+        })
         const page = await browser.newPage()
         const content = await compile('convenio', data_convenio)
 
@@ -265,9 +275,14 @@ const reportFuncionario = async (codigoPessoa, codigoFuncionario) => {
             "funcionario": funcionario,
             "dependentes": dependentes
         }
-        
+
         //Launch puppeteer, create new page, call compile function
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+            'args': [
+                '--no-sandbox',
+                '--disable-setuid-sandbox'
+            ]
+        })
         const page = await browser.newPage()
         const content = await compile('funcionario', data_funcionario)
 
@@ -401,7 +416,12 @@ const reportResidente = async (codigoPessoa, codigoResidente) => {
         }
 
         //Launch puppeteer, create new page, call compile function
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+            'args': [
+                '--no-sandbox',
+                '--disable-setuid-sandbox'
+            ]
+        })
         const page = await browser.newPage()
         const content = await compile('residente', data_residente)
 
