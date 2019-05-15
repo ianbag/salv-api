@@ -11,7 +11,7 @@ class ResidenteConvenio {
         sequelize.query(`SELECT
                             C.NOME_CONVENIO, C.TIPO_CONVENIO,
                             E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO, E.CEP, E.REFERENCIA,
-                            T.DDD, T.NUMERO TELEFONE,
+                            
                             RC.NUMERO_CONVENIO, RC.TITULAR_CONVENIO, RC.PARENTESCO_TITULAR, RC.CONVENIO_CODIGO
                         FROM 
                             RESIDENTE_CONVENIO RC
@@ -21,10 +21,7 @@ class ResidenteConvenio {
                             ON EC.CONVENIO_CODIGO = RC.CONVENIO_CODIGO
                             LEFT JOIN ENDERECO E
                             ON E.CODIGO = EC.ENDERECO_CODIGO
-                            LEFT JOIN TELEFONE_CONVENIO TC
-                            ON TC.CONVENIO_CODIGO = RC.CONVENIO_CODIGO
-                            LEFT JOIN TELEFONE T
-                            ON T.CODIGO = TC.TELEFONE_CODIGO
+                            
                             WHERE RESIDENTE_CODIGO = :RESIDENTE_CODIGO
                             AND RC.STATUS = 1`,
             { replacements: { RESIDENTE_CODIGO: req.params.id } })
@@ -37,7 +34,7 @@ class ResidenteConvenio {
         sequelize.query(`SELECT
                             C.NOME_CONVENIO, C.TIPO_CONVENIO,
                             E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO, E.CEP, E.REFERENCIA,
-                            T.DDD, T.NUMERO TELEFONE,
+                            
                             RC.NUMERO_CONVENIO, RC.TITULAR_CONVENIO, RC.PARENTESCO_TITULAR, RC.CONVENIO_CODIGO
                         FROM 
                             RESIDENTE_CONVENIO RC
@@ -47,10 +44,7 @@ class ResidenteConvenio {
                             ON EC.CONVENIO_CODIGO = RC.CONVENIO_CODIGO
                             LEFT JOIN ENDERECO E
                             ON E.CODIGO = EC.ENDERECO_CODIGO
-                            LEFT JOIN TELEFONE_CONVENIO TC
-                            ON TC.CONVENIO_CODIGO = RC.CONVENIO_CODIGO
-                            LEFT JOIN TELEFONE T
-                            ON T.CODIGO = TC.TELEFONE_CODIGO
+                            
                             WHERE RC.NUMERO_CONVENIO = :NUMERO_CONVENIO
                             AND RC.STATUS = 1`,
             { replacements: { NUMERO_CONVENIO: req.params.id } })
