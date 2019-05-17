@@ -1,4 +1,3 @@
-//REMOTO
 {
   "development": {
     "username": "admin-dev",
@@ -25,31 +24,3 @@
     "dialect": "mysql"
   }
 }
-
-// LOCAL
-{
-    "development": {
-      "username": "admin-dev",
-      "password": "salv2018gpes10",
-      "database": "salv-bd",
-      "host": "mysql995.umbler.com",
-      "port": "41890",
-      "dialect": "mysql"
-    },
-    "test": {
-      "username": "admin-dev",
-      "password": "salv2018gpes10",
-      "database": "salv-bd",
-      "host": "mysql995.umbler.com",
-      "port": "41890",
-      "dialect": "mysql"
-    },
-    "production": {
-      "username": "admin-dev",
-      "password": "salv2018gpes10",
-      "database": "salv-bd",
-      "host": "mysql995.umbler.com",
-      "port": "41890",
-      "dialect": "mysql"
-    }
-  }
