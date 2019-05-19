@@ -10,5 +10,6 @@ route.get('/acompanhamento-codigo', AcompanhamentoController.getCod)
 route.post('/acompanhamento', AcompanhamentoController.create)
 route.put('/acompanhamento-editar/:id', AcompanhamentoController.update)
 route.delete('/acompanhamento/:id', AcompanhamentoController.delete)
+route.get('/atividade/:codigo', AcompanhamentoController.getAcompanhamento)
 
 module.exports = route
