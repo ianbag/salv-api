@@ -85,7 +85,7 @@ class Acompanhamento {
         AcompanhamentosModel.update(req.body, {
             where: {
                 CODIGO: req.params.id
-                
+
             }
         })
             .then(acompanhamento => res.json(acompanhamento))
@@ -102,18 +102,30 @@ class Acompanhamento {
             .catch(error => res.json(error))
     }
 
-    getCod(req, res){ 
-        
-        
+    getCod(req, res) {
+
+
         var cod = 'SELECT MAX(CODIGO+1) as ACOMPANHAMENTO_CODIGO FROM ACOMPANHAMENTO'
 
- 
+
         sequelize.query(cod)
-        .then(result => {
-            res.json(result[0])
+            .then(result => {
+                res.json(result[0])
             })
-       
-    }    
+
+    }
+
+    getAcompanhamento(req, res) {
+        sequelize.query(
+            `SELECT A.ATIVIDADE
+            FROM ACOMPANHAMENTO AS A
+            WHERE A.CODIGO =: CODIGO`,
+            { replacements: { CODIGO: req.params.codigo } }
+        )
+            .then((atividade) => {
+                res.json(atividade[0])
+            }).catch((error) => res.json(error))
+    }
 }
 
 module.exports = new Acompanhamento()
