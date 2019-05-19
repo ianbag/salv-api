@@ -1,4 +1,4 @@
-REMOTO
+//REMOTO
 const Sequelize = require('sequelize')
 
 const sequelize = new Sequelize('salv-bd', 'admin-dev', 'salv2018gpes10', {
