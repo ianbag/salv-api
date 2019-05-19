@@ -1,26 +1,10 @@
 {
   "development": {
-    "username": "root",
-    "password": "",
+    "username": "admin-dev",
+    "password": "salv2018gpes10",
     "database": "salv-bd",
-    "host": "127.0.0.1",
-    "port": "3306",
-    "dialect": "mysql"
-  },
-  "test": {
-    "username": "root",
-    "password": "",
-    "database": "salv-bd",
-    "host": "127.0.0.1",
-    "port": "3306",
-    "dialect": "mysql"
-  },
-  "production": {
-    "username": "root",
-    "password": "",
-    "database": "salv-bd",
-    "host": "127.0.0.1",
-    "port": "3306",
+    "host": "mysql995.umbler.com",
+    "port": "41890",
     "dialect": "mysql"
   }
 }
