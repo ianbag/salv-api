@@ -119,7 +119,7 @@ class Acompanhamento {
         sequelize.query(
             `SELECT A.ATIVIDADE
             FROM ACOMPANHAMENTO AS A
-            WHERE A.CODIGO =: CODIGO`,
+            WHERE A.CODIGO = :CODIGO`,
             { replacements: { CODIGO: req.params.codigo } }
         )
             .then((atividade) => {
