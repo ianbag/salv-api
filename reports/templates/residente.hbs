@@ -62,103 +62,149 @@
                 <br />
                 {{#if residente}}
                 <div class="row">
+                    {{#if residente.APELIDO}}
                     <div class="col">
                         <strong>Apelido: </strong> {{residente.APELIDO}}
                     </div>
+                    {{/if}}
+                    {{#if residente.PROFISSAO}}
                     <div class="col">
                         <strong>Profissão: </strong> {{residente.PROFISSAO}}
                     </div>
+                    {{/if}}
                 </div>
                 <br />
+                {{#if residente.TITULO_ELEITOR}}
                 <h5 style="font-size: 35px">
                     Eleitoral
                 </h5>
+                {{/if}}
                 <hr class="col-4">
                 <div class="row">
+                    {{#if residente.TITULO_ELEITOR}}
                     <div class="col">
                         <strong>Titulo: </strong> {{residente.TITULO_ELEITOR}}
                     </div>
+                    {{/if}}
+                    {{#if residente.ZONA_ELEITORAL}}
                     <div class="col">
                         <strong>Zona: </strong> {{residente.ZONA_ELEITORAL}}
                     </div>
+                    {{/if}}
+                    {{#if residente.SECAO_ELEITORAL}}
                     <div class="col">
                         <strong>Seção: </strong> {{residente.SECAO_ELEITORAL}}
                     </div>
+                    {{/if}}
                 </div>
                 <br />
+                {{#if residente.NUMERO_CERTIDAO_NASCIMENTO}}
                 <h5 style="font-size: 35px">
                     Certidão de Nascimento
                 </h5>
+                {{/if}}
                 <hr class="col-6">
                 <div class="row">
+                    {{#if residente.NUMERO_CERTIDAO_NASCIMENTO}}
                     <div class="col">
                         <strong>Número: </strong> {{residente.NUMERO_CERTIDAO_NASCIMENTO}}
                     </div>
+                    {{/if}}
+                    {{#if residente.FOLHA_CERTIDAO_NASCIMENTO}}
                     <div class="col">
                         <strong>Folha: </strong> {{residente.FOLHA_CERTIDAO_NASCIMENTO}}
                     </div>
+                    {{/if}}
+                    {{#if residente.LIVRO_CERTIDAO_NASCIMENTO}}
                     <div class="col">
                         <strong>Livro: </strong> {{residente.LIVRO_CERTIDAO_NASCIMENTO}}
                     </div>
+                    {{/if}}
                 </div>
                 <br />
                 <br />
                 <div class="row">
+                    {{#if residente.CIDADE_CERTIDAO_NASCIMENTO}}
                     <div class="col">
                         <strong>Cidade: </strong> {{residente.CIDADE_CERTIDAO_NASCIMENTO}}
                     </div>
+                    {{/if}}
+                    {{#if residente.ESTADO_CERTIDAO_NASCIMENTO}}
                     <div class="col">
                         <strong>Estado: </strong> {{residente.ESTADO_CERTIDAO_NASCIMENTO}}
                     </div>
+                    {{/if}}
                 </div>
                 <br />
+                {{#if residente.NUMERO_INSS}}
                 <h5 style="font-size: 35px">
                     INSS
                 </h5>
+                {{/if}}
                 <hr class="col-4">
                 <div class="row">
+                    {{#if residente.NUMERO_INSS}}
                     <div class="col">
                         <strong>Número: </strong> {{residente.NUMERO_INSS}}
                     </div>
+                    {{/if}}
+                    {{#if residente.situacao_inss}}
                     <div class="col">
                         <strong>Situação: </strong> {{situacao_inss residente.SITUACAO_INSS}}
                     </div>
+                    {{/if}}
                 </div>
                 <br />
                 <br />
                 <div class="row">
+                    {{#if residente.BANCO_INSS}}
                     <div class="col">
                         <strong>Banco: </strong> {{residente.BANCO_INSS}}
                     </div>
+                    {{/if}}
+                    {{#if residente.AGENCIA_INSS}}
                     <div class="col">
                         <strong>Agência: </strong> {{residente.AGENCIA_INSS}}
                     </div>
+                    {{/if}}
+                    {{#if residente.CONTA_INSS}}
                     <div class="col">
                         <strong>Conta: </strong> {{residente.CONTA_INSS}}
                     </div>
+                    {{/if}}
                 </div>
                 <br />
                 <br />
                 <div class="row">
+                    {{#if residente.VALOR_INSS}}
                     <div class="col">
                         <strong>Valor: </strong> {{formatNumber residente.VALOR_INSS style="currency" currency="BRL"}}
                     </div>
+                    {{/if}}
+                    {{#if residente.PROVA_VIDA_INSS}}
                     <div class="col">
                         <strong>Prova de vida: </strong> {{residente.PROVA_VIDA_INSS}}
                     </div>
+                    {{/if}}
                 </div>
                 <br />
+                {{#if residente.CARTAO_SAMS || residente.CARTAO_SUS}}
                 <h5 style="font-size: 35px">
                     SAMS & SUS
                 </h5>
+                {{/if}}
                 <hr class="col-6">
                 <div class="row">
+                    {{#if residente.CARTAO_SAMS}}
                     <div class="col">
                         <strong>SAMS: </strong> {{residente.CARTAO_SAMS}}
                     </div>
+                    {{/if}}
+                    {{#if residente.CARTAO_SUS}}
                     <div class="col">
                         <strong>SUS: </strong> {{residente.CARTAO_SUS}}
                     </div>
+                    {{/if}}
                 </div>
                 <br />
                 <br />
@@ -174,20 +220,26 @@
                     </div>
                 </div>
                 <br />
+                {{#if residente.DATA_DESACOLHIMENTO}}
                 <h5 style="font-size: 35px">
                     Desacolhimento
                 </h5>
+                {{/if}}
                 <hr class="col-6">
                 <div class="row">
+                    {{#if residente;DATA_DESACOLHIMENTO}}
                     <div class="col">
                         <strong>Data: </strong> {{residente.DATA_DESACOLHIMENTO}}
                     </div>
+                    {{/if}}
                 </div>
                 <br />
                 <div class="row">
+                    {{#if residente.MOTIVO_DESACOLHIMENTO}}
                     <div class="col">
                         <strong>Motivo: </strong> {{residente.MOTIVO_DESACOLHIMENTO}}
                     </div>
+                    {{/if}}
                 </div>
                 <br />
                 <br />
