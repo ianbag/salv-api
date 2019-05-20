@@ -138,3 +138,35 @@ exports.reset_password = function (req, res, next) {
     }
   })
 }
+
+exports.define_password = function (req, res, next) {
+  UsuarioModel.findOne({
+    where: {
+      LOGIN: req.params.username
+    }
+  }).then(async (user) => {
+    if (!user) {
+      res.status(422).json({ message: 'Ocorreu um erro' })
+    } else {
+      if (req.body.senha === req.body.confirmaSenha) {
+        JSON.stringify(req.body.senha)
+        const salt = await bcrypt.genSaltSync(10)
+        hashPass = await bcrypt.hash(req.body.senha, salt)
+        UsuarioModel.update({
+          SENHA: hashPass,
+          PRIMEIRO_ACESSO: 0
+        },
+          {
+            where: {
+              LOGIN: user.LOGIN,
+              STATUS: 1
+            }
+          }).then((updated) => {
+            res.status(200).json({ message: 'senha definida com sucesso' })
+          }).catch((error) => {
+            res.status(422).json({ message: 'Serviço indisponível' + error })
+          })
+      }
+    }
+  })
+}

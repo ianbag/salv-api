@@ -16,6 +16,4 @@ route.post('/usuario/email', UsuarioController.uniqueEmail)
 route.post('/usuario/login', UsuarioController.uniqueLogin)
 route.post('/usuario/senha', UsuarioController.uniqueSenha)
 
-route.put('/usuario/:username', UsuarioController.definePass)
-
 module.exports = route
