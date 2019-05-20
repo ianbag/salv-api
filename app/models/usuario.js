@@ -42,6 +42,12 @@ module.exports = (sequelize, DataTypes) => {
             },
             RESET_PASSWORD_EXPIRES: {
                 type: Sequelize.DATE
+            },
+            PRIMEIRO_ACESSO: {
+                type: Sequelize.TINYINT,
+                required: true,
+                allowNull: false,
+                defaultValue: 1
             }
         },
         {
