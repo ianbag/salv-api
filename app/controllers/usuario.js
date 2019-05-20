@@ -3,6 +3,8 @@
  */
 
 const sequelize = require('./../../database/sequelize_remote')
+const bcrypt = require('bcrypt')
+
 
 const OP = sequelize.Op
 
@@ -36,6 +38,25 @@ class Usuario {
             .catch(error => res.json(error))
     }
 
+    definePass(req, res) {
+        if (req.body.senha == req.body.confirmaSenha) {
+            JSON.stringify(req.body.senha)
+            const salt = await bcrypt.genSaltSync(10)
+            hashPass = await bcrypt.hash(req.body.senha, salt)
+            UsuarioModel.update({
+                SENHA: hashPass,
+                PRIMEIRO_ACESSO: 0
+            },
+                {
+                    where: {
+                        LOGIN: req.params.username,
+                        STATUS: 1
+                    }
+                }).then((updated) => res.status(200).json({ message: 'Senha definida com sucesso.' }))
+                .catch((error) => res.status(422).json({ message: 'Serviço indisponível' + error }))
+        }
+    }
+
 
     delete(req, res) {
         UsuarioModel.update({ STATUS: 0 }, {
@@ -54,7 +75,7 @@ class Usuario {
             where: {
                 STATUS: 1,
                 EMAIL: req.body.EMAIL,
-                CODIGO_FUNCIONARIO: {[OP.ne]: req.body.CODIGO}
+                CODIGO_FUNCIONARIO: { [OP.ne]: req.body.CODIGO }
             }
         })
             .then(usuario => {
@@ -73,7 +94,7 @@ class Usuario {
             where: {
                 STATUS: 1,
                 LOGIN: req.body.LOGIN,
-                CODIGO_FUNCIONARIO: {[OP.ne]: req.body.CODIGO}
+                CODIGO_FUNCIONARIO: { [OP.ne]: req.body.CODIGO }
             }
         })
             .then(usuario => {
@@ -92,7 +113,7 @@ class Usuario {
             where: {
                 STATUS: 1,
                 SENHA: req.body.SENHA,
-                CODIGO_FUNCIONARIO: {[OP.ne]: req.body.CODIGO}
+                CODIGO_FUNCIONARIO: { [OP.ne]: req.body.CODIGO }
             }
         })
             .then(usuario => {
