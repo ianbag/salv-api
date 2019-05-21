@@ -21,14 +21,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             max: 100
         },
-        DDD_TITULAR: {
-            type: DataTypes.STRING,
-            max: 3,
-        },
-        NUMERO_TITULAR: {
-            type: DataTypes.STRING,
-            max: 9
-        },
         CONVENIO_CODIGO: {
             type: DataTypes.INTEGER,
             required: true,

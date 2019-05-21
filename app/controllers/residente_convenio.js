@@ -12,7 +12,7 @@ class ResidenteConvenio {
                             C.NOME_CONVENIO, C.TIPO_CONVENIO,
                             E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO, E.CEP, E.REFERENCIA,
                             
-                            RC.NUMERO_CONVENIO, RC.TITULAR_CONVENIO, RC.PARENTESCO_TITULAR, RC.DDD_TITULAR,RC.NUMERO_TITULAR RC.CONVENIO_CODIGO
+                            RC.NUMERO_CONVENIO, RC.TITULAR_CONVENIO, RC.PARENTESCO_TITULAR, RC.CONVENIO_CODIGO
                         FROM 
                             RESIDENTE_CONVENIO RC
                             INNER JOIN CONVENIO C
@@ -35,7 +35,7 @@ class ResidenteConvenio {
                             C.NOME_CONVENIO, C.TIPO_CONVENIO,
                             E.ENDERECO, E.NUMERO, E.BAIRRO, E.COMPLEMENTO, E.CIDADE, E.ESTADO, E.CEP, E.REFERENCIA,
                             
-                            RC.NUMERO_CONVENIO, RC.TITULAR_CONVENIO, RC.PARENTESCO_TITULAR, RC.DDD_TITULAR,RC.NUMERO_TITULAR RC.CONVENIO_CODIGO
+                            RC.NUMERO_CONVENIO, RC.TITULAR_CONVENIO, RC.PARENTESCO_TITULAR, RC.CONVENIO_CODIGO
                         FROM 
                             RESIDENTE_CONVENIO RC
                             INNER JOIN CONVENIO C
