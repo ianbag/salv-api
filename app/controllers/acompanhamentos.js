@@ -126,6 +126,39 @@ class Acompanhamento {
                 res.json(atividade[0])
             }).catch((error) => res.json(error))
     }
+
+    dateStart(req, res) {
+        const dateStart = req.body.dateStart
+
+        sequelize.query(
+            `SELECT 
+            *
+        FROM
+            ACOMPANHAMENTO
+        WHERE
+            DATA_ACOMPANHAMENTO BETWEEN '${dateStart}' AND NOW()
+        ORDER BY DATA_ACOMPANHAMENTO DESC`
+        )
+            .then((result) => res.json(result[0]))
+            .catch((error) => res.json(error))
+    }
+
+    dateStartAndDateFinish(req, res) {
+        const dateStart = req.body.dateStart
+        const dateFinish = req.body.dateFinish
+
+        sequelize.query(
+            `SELECT 
+            *
+        FROM
+            ACOMPANHAMENTO
+        WHERE
+            DATA_ACOMPANHAMENTO BETWEEN '${dateStart}' AND '${dateFinish}'
+        ORDER BY DATA_ACOMPANHAMENTO DESC`
+        )
+            .then((result) => res.json(result[0]))
+            .catch((error) => res.json(error))
+    }
 }
 
 module.exports = new Acompanhamento()
