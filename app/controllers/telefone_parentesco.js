@@ -14,7 +14,7 @@ class TelefoneParentesco {
             include: [
                 { model: TelefoneModel, as: 'TELEFONE' }
             ],
-            where: { NUMERO_CONVENIO: req.params.id }
+            where: { NUMERO_CONVENIO: req.params.NUMERO_CONVENIO }
         })
             .then(telefoneParentesco => res.json(telefoneParentesco))
             .catch(error => res.json(error))
@@ -30,7 +30,7 @@ class TelefoneParentesco {
         TelefoneParentescoModel.destroy({
             where: {
                 TELEFONE_CODIGO: req.params.idTelefone,
-                NUMERO_CONVENIO: req.params.id
+                NUMERO_CONVENIO: req.params.NUMERO_CONVENIO
             }
         })
             .then(telefoneParentesco => res.json(telefoneParentesco))
