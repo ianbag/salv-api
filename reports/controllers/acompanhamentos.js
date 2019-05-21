@@ -97,7 +97,7 @@ const dateStart = async (dateStart) => {
                     ACOMPANHAMENTO_CODIGO = A.CODIGO) AS NUMERO_FUNCIONARIOS_PARTICIPANTES
         FROM
             ACOMPANHAMENTO AS A
-            WHERE A.DATA_ACOMPANHAMENTO BETWEEN ${dateStart} AND NOW()
+            WHERE A.DATA_ACOMPANHAMENTO BETWEEN '${dateStart}' AND NOW()
         ORDER BY A.DATA_ACOMPANHAMENTO DESC;`
         )
 

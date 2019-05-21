@@ -35,14 +35,14 @@ route.get('/relatorio-convenios/:status', function (req, res) {
 
 //HTTP method, call function
 route.get('/relatorio-acompanhamentos', function (req, res) {
-    const dateStart = req.body.dateStart
+    const start = req.body.dateStart
     // noDate().then(response => {
     //     res.type('application/pdf')
     //     res.send(response)
     // }).catch(error => {
     //     res.send(error)
     // })
-    dateStart(dateStart).then(response => {
+    dateStart(start).then(response => {
         res.type('application/pdf')
         res.send(response)
     }).catch(error => {
