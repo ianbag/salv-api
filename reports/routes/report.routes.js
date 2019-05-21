@@ -34,6 +34,16 @@ route.get('/relatorio-convenios/:status', function (req, res) {
 })
 
 //HTTP method, call function
+route.get('/relatorio-acompanhamentos', function (req, res) {
+    noDate().then(response => {
+        res.type('application/pdf')
+        res.send(response)
+    }).catch(error => {
+        res.send(error)
+    })
+})
+
+//HTTP method, call function
 // route.get('/relatorio-acompanhamentos', function(req, res) {
 //     reportAcompanhamentos().then(response => {
 //         res.type('application/pdf')
