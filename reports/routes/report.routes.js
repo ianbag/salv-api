@@ -34,7 +34,7 @@ route.get('/relatorio-convenios/:status', function (req, res) {
 })
 
 //HTTP method, call function
-route.get('/relatorio-acompanhamentos', function (req, res) {
+route.post('/relatorio-acompanhamentos', function (req, res) {
     const start = req.body.dateStart
     const finish = req.body.dateFinish
 
