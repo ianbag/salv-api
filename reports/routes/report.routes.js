@@ -37,35 +37,30 @@ route.get('/relatorio-convenios/:status', function (req, res) {
 route.get('/relatorio-acompanhamentos', function (req, res) {
     const start = req.body.dateStart
     const finish = req.body.dateFinish
-    // noDate().then(response => {
-    //     res.type('application/pdf')
-    //     res.send(response)
-    // }).catch(error => {
-    //     res.send(error)
-    // })
-    // dateStart(start).then(response => {
-    //     res.type('application/pdf')
-    //     res.send(response)
-    // }).catch(error => {
-    //     res.send(error)
-    // })
-    // dateStartAndDateFinish(start, finish).then(response => {
-    //     res.type('application/pdf')
-    //     res.send(response)
-    // }).catch(error => {
-    //     res.send(error)
-    // })
-})
 
-//HTTP method, call function
-// route.get('/relatorio-acompanhamentos', function(req, res) {
-//     reportAcompanhamentos().then(response => {
-//         res.type('application/pdf')
-//         res.send(response)
-//     }).catch(error => {
-//         res.send(error)
-//     })
-// })
+    if (start != null && finish != null) {
+        dateStartAndDateFinish(start, finish).then((response) => {
+            res.type('application/pdf')
+            res.send(response)
+        }).catch((error) => {
+            res.send(error)
+        })
+    } else if (start != null && finish == null) {
+        dateStart(start).then((response) => {
+            res.type('application/pdf')
+            res.send(response)
+        }).catch((error) => {
+            res.send(error)
+        })
+    } else {
+        noDate().then((response) => {
+            res.type('application/pdf')
+            res.send(response)
+        }).catch((error) => {
+            res.send(error)
+        })
+    }
+})
 
 //HTTP method, call function
 route.get('/relatorio-residentes/:status', function (req, res) {
