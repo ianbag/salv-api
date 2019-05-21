@@ -17,6 +17,7 @@ const EnderecoFamiliarRoute = require('./app/routes/endereco_familiar')
 const ResidenteFamiliarRoute = require('./app/routes/residente_familiar')
 const ConvenioRoute = require('./app/routes/convenio')
 const TelefoneConvenioRoute = require('./app/routes/telefone_convenio')
+const TelefoneParentescoRoute = require('./app/routes/telefone_parentesco')
 const EnderecoConvenioRoute = require('./app/routes/endereco_convenio')
 const ResidenteConvenioRoute = require('./app/routes/residente_convenio')
 const TelefonePessoaRoute = require('./app/routes/telefone_pessoa')
@@ -133,6 +134,9 @@ app.use('/', EnderecoConvenioRoute)
 
 //API RESIDENTE_CONVENIO
 app.use('/', ResidenteConvenioRoute)
+
+//API TELEFONE_PARENTESCO
+app.use('/', TelefoneParentescoRoute)
 
 //API RELATÓRIOS
 // app.use('/', RelatorioRoutes)
