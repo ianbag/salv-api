@@ -3,6 +3,8 @@
  */
 
 const sequelize = require('./../../database/sequelize_remote')
+const bcrypt = require('bcrypt')
+
 
 const OP = sequelize.Op
 
@@ -36,7 +38,6 @@ class Usuario {
             .catch(error => res.json(error))
     }
 
-
     delete(req, res) {
         UsuarioModel.update({ STATUS: 0 }, {
             where: {
@@ -54,7 +55,7 @@ class Usuario {
             where: {
                 STATUS: 1,
                 EMAIL: req.body.EMAIL,
-                CODIGO_FUNCIONARIO: {[OP.ne]: req.body.CODIGO}
+                CODIGO_FUNCIONARIO: { [OP.ne]: req.body.CODIGO }
             }
         })
             .then(usuario => {
@@ -73,7 +74,7 @@ class Usuario {
             where: {
                 STATUS: 1,
                 LOGIN: req.body.LOGIN,
-                CODIGO_FUNCIONARIO: {[OP.ne]: req.body.CODIGO}
+                CODIGO_FUNCIONARIO: { [OP.ne]: req.body.CODIGO }
             }
         })
             .then(usuario => {
@@ -92,7 +93,7 @@ class Usuario {
             where: {
                 STATUS: 1,
                 SENHA: req.body.SENHA,
-                CODIGO_FUNCIONARIO: {[OP.ne]: req.body.CODIGO}
+                CODIGO_FUNCIONARIO: { [OP.ne]: req.body.CODIGO }
             }
         })
             .then(usuario => {

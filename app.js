@@ -53,6 +53,9 @@ app.route('/esqueci-a-senha')
 app.route('/esqueci-a-senha/:token')
     .post(forgot.reset_password)
 
+app.route('/usuario/:username')
+    .post(forgot.define_password)
+
 //API Relatórios
 app.use('/', reportRoute)
 
