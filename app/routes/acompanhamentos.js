@@ -12,6 +12,6 @@ route.put('/acompanhamento-editar/:id', AcompanhamentoController.update)
 route.delete('/acompanhamento/:id', AcompanhamentoController.delete)
 route.get('/atividade/:codigo', AcompanhamentoController.getAcompanhamento)
 route.post('/acompanhamento-data-inicial', AcompanhamentoController.dateStart)
-route.get('/acompanhamento-data-inicial-final', AcompanhamentoController.dateStartAndDateFinish)
+route.post('/acompanhamento-data-inicial-final', AcompanhamentoController.dateStartAndDateFinish)
 
 module.exports = route
