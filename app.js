@@ -28,6 +28,7 @@ const AcompanhamentoRoute = require('./app/routes/acompanhamentos')
 const AcompanhamentoFuncionario = require('./app/routes/acompanhamento_funcionario')
 const AcompanhamentoResidente = require('./app/routes/acompanhamento_residente')
 const reportRoute = require('./reports/routes/report.routes')
+const CertidaoCasamento = require('./app/routes/certidao_casamento')
 
 const handleAuthentication = require('./auth/auth')
 const handleAuthorization = require('./auth/authz')
@@ -133,6 +134,9 @@ app.use('/', EnderecoConvenioRoute)
 
 //API RESIDENTE_CONVENIO
 app.use('/', ResidenteConvenioRoute)
+
+// API CERTIDAO_CASAMENTO
+app.use('/', CertidaoCasamento)
 
 //API RELATÓRIOS
 // app.use('/', RelatorioRoutes)
