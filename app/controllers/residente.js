@@ -9,10 +9,11 @@
 const sequelize = require('./../../database/sequelize_remote')
 const OP = sequelize.Op
 
-const { ResidenteModel, PessoaModel, AcompanhamentoResidenteModel } = require('./../models')
+const { ResidenteModel, PessoaModel, AcompanhamentoResidenteModel, CertidaoCasamentoModel } = require('./../models')
 
 ResidenteModel.belongsTo(PessoaModel, { as: 'PESSOA', foreignKey: 'PESSOA_CODIGO' })
 ResidenteModel.belongsTo(AcompanhamentoResidenteModel, { as: 'ACOMPANHAMENTO_RESIDENTE', foreignKey: 'CODIGO_RESIDENTE' })
+ResidenteModel.belongsTo(CertidaoCasamentoModel, { as: 'CERTIDAO_CASAMENTO', foreignKey: 'CODIGO_RESIDENTE' })
 
 class Residente {
     //get(req, res) {
@@ -68,7 +69,10 @@ class Residente {
             where: {
                 CODIGO_RESIDENTE: req.params.id
             },
-            include: [{ model: PessoaModel, as: 'PESSOA' }],
+            include: [
+                { model: PessoaModel, as: 'PESSOA' },
+                { model: CertidaoCasamentoModel, as: 'CERTIDAO_CASAMENTO' }
+            ],
         })
             .then(residente => res.json(residente))
             .catch(error => res.json(erro))
