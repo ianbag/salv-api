@@ -89,10 +89,11 @@ class Residente {
             .catch(error => res.json(error))
     }
     inativar(req, res) {
+        console.log(req.body)
         ResidenteModel.update({
             STATUS: 0,
             MOTIVO_DESACOLHIMENTO: req.body.MOTIVO_DESACOLHIMENTO,
-            DATA_DESACOLHIMENTO: sequelize.fn('NOW')
+            DATA_DESACOLHIMENTO: req.body.DATA_DESACOLHIMENTO
         }, {
                 where: {
                     CODIGO_RESIDENTE: req.params.id,
