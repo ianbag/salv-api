@@ -9,10 +9,11 @@
 const sequelize = require('./../../database/sequelize_remote')
 const OP = sequelize.Op
 
-const { ResidenteModel, PessoaModel, AcompanhamentoResidenteModel } = require('./../models')
+const { ResidenteModel, PessoaModel, AcompanhamentoResidenteModel, CertidaoCasamentoModel } = require('./../models')
 
 ResidenteModel.belongsTo(PessoaModel, { as: 'PESSOA', foreignKey: 'PESSOA_CODIGO' })
 ResidenteModel.belongsTo(AcompanhamentoResidenteModel, { as: 'ACOMPANHAMENTO_RESIDENTE', foreignKey: 'CODIGO_RESIDENTE' })
+ResidenteModel.belongsTo(CertidaoCasamentoModel, { as: 'CERTIDAO_CASAMENTO', foreignKey: 'CODIGO_RESIDENTE' })
 
 class Residente {
     //get(req, res) {
@@ -68,7 +69,10 @@ class Residente {
             where: {
                 CODIGO_RESIDENTE: req.params.id
             },
-            include: [{ model: PessoaModel, as: 'PESSOA' }],
+            include: [
+                { model: PessoaModel, as: 'PESSOA' },
+                { model: CertidaoCasamentoModel, as: 'CERTIDAO_CASAMENTO' }
+            ],
         })
             .then(residente => res.json(residente))
             .catch(error => res.json(erro))
@@ -89,10 +93,11 @@ class Residente {
             .catch(error => res.json(error))
     }
     inativar(req, res) {
+        console.log(req.body)
         ResidenteModel.update({
             STATUS: 0,
             MOTIVO_DESACOLHIMENTO: req.body.MOTIVO_DESACOLHIMENTO,
-            DATA_DESACOLHIMENTO: sequelize.fn('NOW')
+            DATA_DESACOLHIMENTO: req.body.DATA_DESACOLHIMENTO
         }, {
                 where: {
                     CODIGO_RESIDENTE: req.params.id,
