@@ -139,6 +139,9 @@ app.use('/', ResidenteConvenioRoute)
 // API CERTIDAO_CASAMENTO
 app.use('/', CertidaoCasamento)
 
+//API TELEFONE_PARENTESCO
+app.use('/', TelefoneParentescoRoute)
+
 //API RELATÓRIOS
 // app.use('/', RelatorioRoutes)
 
