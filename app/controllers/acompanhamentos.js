@@ -138,8 +138,8 @@ class Acompanhamento {
                 INNER JOIN RESIDENTE R
                 ON R.CODIGO_RESIDENTE = AR.CODIGO_RESIDENTE
             WHERE
-                A.CODIGO = :R.CODIGO_RESIDENTE`,
-                { replacements: { CODIGO_RESIDENTE: req.params.codigo } }
+                AR.CODIGO_RESIDENTE = :CODIGO_RESIDENTE`,
+                { replacements: { CODIGO_RESIDENTE: req.params.id } }
         )
             .then(result => {
                 res.json(result[0])

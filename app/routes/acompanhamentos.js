@@ -13,7 +13,7 @@ route.delete('/acompanhamento/:id', AcompanhamentoController.delete)
 route.get('/atividade/:codigo', AcompanhamentoController.getAcompanhamento)
 route.post('/acompanhamento-data-inicial', AcompanhamentoController.dateStart)
 route.post('/acompanhamento-data-inicial-final', AcompanhamentoController.dateStartAndDateFinish)
-route.get('/residente-acomp', AcompanhamentoController.getAllResidenteAcomp)
+route.get('/residente-acomp/:id', AcompanhamentoController.getAllResidenteAcomp)
 
 
 module.exports = route
