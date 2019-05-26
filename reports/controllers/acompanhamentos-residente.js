@@ -56,7 +56,7 @@ const noDateResidente = async (codigoResidente) => {
             ]
         })
         const page = await browser.newPage()
-        const content = await (compile('acompanhamentos-residente', acompanhamentos))
+        const content = await (compile('prontuario', acompanhamentos))
 
         //Set page content, emulate screen, config page
         await page.setContent(content)
@@ -124,7 +124,7 @@ const dateStartResidente = async (codigoResidente, dateStart) => {
             ]
         })
         const page = await browser.newPage()
-        const content = await (compile('acompanhamentos-residente', acompanhamentos))
+        const content = await (compile('prontuario', acompanhamentos))
 
         //Set page, emulate screen, config page
         await page.setContent(content)
@@ -190,7 +190,7 @@ const dateStartAndDateFinishResidente = async (codigoResidente, dateStart, dateF
             ]
         })
         const page = await browser.newPage()
-        const content = await (compile('acompanhamentos-residente', acompanhamentos))
+        const content = await (compile('prontuario', acompanhamentos))
 
         //Set page, emulate screen, config page
         await page.setContent(content)

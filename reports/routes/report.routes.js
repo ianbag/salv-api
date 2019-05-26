@@ -66,7 +66,7 @@ route.post('/relatorio-acompanhamentos', function (req, res) {
 })
 
 //HTTP method, call function
-route.post('/relatorio-acompanhamentos-residente', function (req, res) {
+route.post('/prontuario', function (req, res) {
     const codigoResidente = req.body.codigoResidente
     const start = req.body.dateStart
     const finish = req.body.dateFinish
