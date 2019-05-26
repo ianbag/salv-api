@@ -9,6 +9,9 @@ const { reportFuncionarios, reportConvenios, reportResidentes } = require('../co
 const { noDate, dateStart, dateStartAndDateFinish } = require('../controllers/acompanhamentos')
 
 //Require function
+const { noDateResidente, dateStartResidente, dateStartAndDateFinishResidente } = require('../controllers/acompanhamentos-residente')
+
+//Require function
 const { reportAcompanhamento, reportConvenio, reportFuncionario, reportResidente } = require('../controllers/reports_id')
 
 //HTTP method, call function
@@ -54,6 +57,36 @@ route.post('/relatorio-acompanhamentos', function (req, res) {
         })
     } else {
         noDate().then((response) => {
+            res.type('application/pdf')
+            res.send(response)
+        }).catch((error) => {
+            res.send(error)
+        })
+    }
+})
+
+//HTTP method, call function
+route.post('/relatorio-acompanhamentos-residente', function (req, res) {
+    const codigoResidente = req.body.codigoResidente
+    const start = req.body.dateStart
+    const finish = req.body.dateFinish
+
+    if (start != null && finish != null) {
+        dateStartAndDateFinishResidente(codigoResidente, start, finish).then((response) => {
+            res.type('application/pdf')
+            res.send(response)
+        }).catch((error) => {
+            res.send(error)
+        })
+    } else if (start != null && finish == null) {
+        dateStartResidente(codigoResidente, start).then((response) => {
+            res.type('application/pdf')
+            res.send(response)
+        }).catch((error) => {
+            res.send(error)
+        })
+    } else {
+        noDateResidente(codigoResidente).then((response) => {
             res.type('application/pdf')
             res.send(response)
         }).catch((error) => {
