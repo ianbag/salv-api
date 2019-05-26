@@ -127,6 +127,25 @@ class Acompanhamento {
             }).catch((error) => res.json(error))
     }
 
+    getAllResidenteAcomp(req, res) {
+        sequelize.query(
+            `SELECT 
+                A.*
+            FROM 
+                ACOMPANHAMENTO AS A
+                INNER JOIN ACOMPANHAMENTO_RESIDENTE AR
+                ON AR.ACOMPANHAMENTO_CODIGO = A.CODIGO
+                INNER JOIN RESIDENTE R
+                ON R.CODIGO_RESIDENTE = AR.CODIGO_RESIDENTE
+            WHERE
+                A.CODIGO = :R.CODIGO_RESIDENTE`,
+                { replacements: { CODIGO_RESIDENTE: req.params.codigo } }
+        )
+            .then(result => {
+                res.json(result[0])
+            }) 
+    }
+
     dateStart(req, res) {
         const dateStart = req.body.dateStart
 
