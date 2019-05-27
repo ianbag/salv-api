@@ -6,7 +6,5 @@ route.get('/acompanhamento_residente/:id', AcompanhamentoResidenteController.get
 route.post('/acompanhamento_residente', AcompanhamentoResidenteController.create)
 route.delete('/acompanhamento_residente/:idResidente/:idAcompanhamento', AcompanhamentoResidenteController.delete)
 route.delete('/acompanhamento_residenteAll/:idAcompanhamento', AcompanhamentoResidenteController.deleteAll)
-route.post('/acompanhamento-data-inicial', AcompanhamentoResidenteController.dateStart)
-route.post('/acompanhamento-data-inicial-final', AcompanhamentoResidenteController.dateStartandDateFinish)
 
 module.exports = route
