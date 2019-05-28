@@ -185,17 +185,18 @@ class Acompanhamento {
 
         sequelize.query(
             `SELECT 
-                A.*
-            FROM 
-                ACOMPANHAMENTO AS A
-                INNER JOIN ACOMPANHAMENTO_RESIDENTE AR
-                ON AR.ACOMPANHAMENTO_CODIGO = A.CODIGO
-                INNER JOIN RESIDENTE R
-                ON R.CODIGO_RESIDENTE = AR.CODIGO_RESIDENTE
-            WHERE
-                AR.CODIGO_RESIDENTE = ${codigoResidente}
-                AND DATA_ACOMPANHAMENTO BETWEEN '${dateStart}' AND NOW()
-                ORDER BY A.DATA_ACOMPANHAMENTO DESC`
+            A.*
+        FROM 
+            ACOMPANHAMENTO AS A
+            INNER JOIN ACOMPANHAMENTO_RESIDENTE AR
+            ON AR.ACOMPANHAMENTO_CODIGO = A.CODIGO
+            INNER JOIN RESIDENTE R
+            ON R.CODIGO_RESIDENTE = AR.CODIGO_RESIDENTE
+        WHERE
+            AR.CODIGO_RESIDENTE = :CODIGO_RESIDENTE
+            AND DATA_ACOMPANHAMENTO BETWEEN '${dateStart}' AND NOW()
+            ORDER BY A.DATA_ACOMPANHAMENTO DESC`,
+                { replacements: { CODIGO_RESIDENTE: req.params.id } }
             )
                 .then((result) => res.json(result[0]))
                 .catch((error) => res.json(error))
@@ -215,9 +216,10 @@ class Acompanhamento {
                 INNER JOIN RESIDENTE R
                 ON R.CODIGO_RESIDENTE = AR.CODIGO_RESIDENTE
             WHERE
-                AR.CODIGO_RESIDENTE = ${codigoResidente}
+                AR.CODIGO_RESIDENTE = :CODIGO_RESIDENTE
                 AND DATA_ACOMPANHAMENTO BETWEEN '${dateStart}' AND '${dateFinish}'
-                ORDER BY A.DATA_ACOMPANHAMENTO DESC`
+                ORDER BY A.DATA_ACOMPANHAMENTO DESC`,
+                { replacements: { CODIGO_RESIDENTE: req.params.id } }
         )
             .then((result) => res.json(result[0]))
             .catch((error) => res.json(error))
