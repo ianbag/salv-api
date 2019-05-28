@@ -25,7 +25,7 @@ const handleAuthentication = (req, res) => {
                         sub: mailUser,
                         iss: "salv-api"
                     }, apiConfig.secret)
-                    res.status(200).json({ login: login.LOGIN, accessToken: token, primeiro_acesso: login.PRIMEIRO_ACESSO })
+                    res.status(200).json({ login: login.LOGIN, accessToken: token, primeiro_acesso: login.PRIMEIRO_ACESSO, access: login.PERMISSAO_ACESSO })
                 } else {
                     res.status(401).json({ message: "Não autenticado. Verifique seus dados" })
                 }
