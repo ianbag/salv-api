@@ -53,7 +53,8 @@ module.exports = (sequelize, DataTypes) => {
                 type: Sequelize.STRING,
                 required: true,
                 max: 20,
-                allowNull: false
+                allowNull: false,
+                defaultValue: 'FUN'
             }
         },
         {
