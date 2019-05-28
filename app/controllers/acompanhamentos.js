@@ -219,7 +219,7 @@ class Acompanhamento {
                 AR.CODIGO_RESIDENTE = :CODIGO_RESIDENTE
                 AND DATA_ACOMPANHAMENTO BETWEEN '${dateStart}' AND '${dateFinish}'
                 ORDER BY A.DATA_ACOMPANHAMENTO DESC`,
-                { replacements: { CODIGO_RESIDENTE: req.params.id } }
+                { replacements: { CODIGO_RESIDENTE: req.body.CODIGO_RESIDENTE } }
         )
             .then((result) => res.json(result[0]))
             .catch((error) => res.json(error))
