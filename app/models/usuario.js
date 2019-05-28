@@ -48,6 +48,12 @@ module.exports = (sequelize, DataTypes) => {
                 required: true,
                 allowNull: false,
                 defaultValue: 1
+            },
+            PERMISSAO_ACESSO: {
+                type: Sequelize.STRING,
+                required: true,
+                max: 20,
+                allowNull: false
             }
         },
         {
