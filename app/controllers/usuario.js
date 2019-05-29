@@ -13,7 +13,7 @@ const { UsuarioModel } = require('./../models')
 class Usuario {
 
     getById(req, res) {
-        sequelize.query(`SELECT EMAIL, LOGIN FROM USUARIO WHERE CODIGO_FUNCIONARIO = :CODIGO_FUNCIONARIO`,
+        sequelize.query(`SELECT EMAIL, LOGIN, PERMISSAO_ACESSO AS ACESSO FROM USUARIO WHERE CODIGO_FUNCIONARIO = :CODIGO_FUNCIONARIO`,
             { replacements: { CODIGO_FUNCIONARIO: req.params.id } })
             .then(result => {
                 res.json(result[0])
