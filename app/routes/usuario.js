@@ -11,6 +11,7 @@ route.get('/usuario/:id', UsuarioController.getById)
 route.post('/usuario', UsuarioController.create)
 route.put('/usuario/:id', UsuarioController.update)
 route.delete('/usuario', UsuarioController.delete)
+route.post('/alterar-senha', UsuarioController.alterarSenha)
 
 route.post('/usuario/email', UsuarioController.uniqueEmail)
 route.post('/usuario/login', UsuarioController.uniqueLogin)
