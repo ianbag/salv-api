@@ -49,6 +49,38 @@ class Usuario {
             .catch(error => res.json(error))
     }
 
+    alterarSenha(req, res) {
+        UsuarioModel.findOne({
+            raw: true,
+            where: {
+                LOGIN: req.body.LOGIN
+            }
+        })
+            .then(usuario => {
+                bcrypt.compare(req.body.SENHA_ATUAL, usuario.SENHA, (err, result) => {
+                    if (result) {
+                        bcrypt.hash(req.body.NOVA_SENHA, bcrypt.genSaltSync(10), (error, hash) => {
+
+                            UsuarioModel.update({
+                                SENHA: hash,
+                                PRIMEIRO_ACESSO: 0
+                            }, {
+                                where: {
+                                    CODIGO_FUNCIONARIO: usuario.CODIGO_FUNCIONARIO
+                                }
+                                })
+                                .then(user => res.json({changed: true, message: "Senha alterada com sucesso!" }))
+                                .catch(error => res.json(error))
+                        })
+                    }
+                    else
+                        res.json({ message: "A senha atual informada não está correta!" })
+                })
+            })
+            .catch(error => res.json(error))
+
+    }
+
     uniqueEmail(req, res) {
         UsuarioModel.findOne({
             raw: true,

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Prontuário</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h4 style="margin-top: 10px; margin-bottom: 6px; text-align: center;">Prontuário</h4>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Data</th>
+                <th></th>
+                <th>Atividade realizada</th>
+                <th></th>
+                <th>Responsável</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each acompanhamentos}}
+            <tr>
+                <td></td>
+                <td>{{this.DATA_ACOMPANHAMENTO}}</td>
+                <td></td>
+                <td>{{this.ATIVIDADE}}</td>
+                <td></td>
+                <td><br />_______________________________ <br /> {{this.NOME_FUNCIONARIO}} ({{this.CARGO}})</td>
+                <td></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+
+</html>
