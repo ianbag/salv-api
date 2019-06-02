@@ -245,8 +245,8 @@ class Acompanhamento {
                             ON R.CODIGO_RESIDENTE = AR.CODIGO_RESIDENTE
                             INNER JOIN PESSOA PR
                             ON PR.CODIGO = R.PESSOA_CODIGO
-                            WHERE A.CODIGO = :ACOMPANHAMENTO_CODIGO`,
-            { replacements: { ACOMPANHAMENTO_CODIGO: req.body.ACOMPANHAMENTO_CODIGO } })
+                            WHERE A.CODIGO = :CODIGO`,
+            { replacements: { CODIGO: req.body.CODIGO } })
             .then(result => {
                 res.json(result[0])
             })
