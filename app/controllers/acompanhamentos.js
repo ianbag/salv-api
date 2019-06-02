@@ -224,6 +224,35 @@ class Acompanhamento {
             .then((result) => res.json(result[0]))
             .catch((error) => res.json(error))
     }
+
+    getAcompFull(req, res) {
+        sequelize.query(`SELECT 
+                            A.*,                                            
+                            PF.NOME FUNCIONARIO_NOME , 
+                            PR.NOME RESIDENTE_NOME ,
+                            AR.CODIGO_RESIDENTE, AF.CODIGO_FUNCIONARIO
+                        FROM
+                            ACOMPANHAMENTO A
+                            INNER JOIN ACOMPANHAMENTO_FUNCIONARIO AF
+                            ON AF.ACOMPANHAMENTO_CODIGO = A.CODIGO
+                            INNER JOIN FUNCIONARIO F
+                            ON F.CODIGO_FUNCIONARIO = AF.CODIGO_FUNCIONARIO
+                            INNER JOIN PESSOA PF
+                            ON PF.CODIGO = F.PESSOA_CODIGO
+                            INNER JOIN ACOMPANHAMENTO_RESIDENTE AR
+                            ON AR.ACOMPANHAMENTO_CODIGO = A.CODIGO
+                            INNER JOIN RESIDENTE R
+                            ON R.CODIGO_RESIDENTE = AR.CODIGO_RESIDENTE
+                            INNER JOIN PESSOA PR
+                            ON PR.CODIGO = R.PESSOA_CODIGO
+                            WHERE A.CODIGO = :ACOMPANHAMENTO_CODIGO`,
+            { replacements: { ACOMPANHAMENTO_CODIGO: req.body.ACOMPANHAMENTO_CODIGO } })
+            .then(result => {
+                res.json(result[0])
+            })
+    }
+
+
 }
 
 module.exports = new Acompanhamento()
