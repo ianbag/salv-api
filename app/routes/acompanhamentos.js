@@ -13,5 +13,10 @@ route.delete('/acompanhamento/:id', AcompanhamentoController.delete)
 route.get('/atividade/:codigo', AcompanhamentoController.getAcompanhamento)
 route.post('/acompanhamento-data-inicial', AcompanhamentoController.dateStart)
 route.post('/acompanhamento-data-inicial-final', AcompanhamentoController.dateStartAndDateFinish)
+route.get('/residente-acomp/:id', AcompanhamentoController.getAllResidenteAcomp)
+route.post('/acompanhamento-data-inicial-residente', AcompanhamentoController.dateStartResidente)
+route.post('/acompanhamento-data-inicial-final-residente', AcompanhamentoController.dateStartandDateFinishResidente)
+route.get('/acompanhamento-residente', AcompanhamentoController.getAcompFull)
+
 
 module.exports = route

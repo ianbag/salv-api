@@ -58,8 +58,7 @@ class AcompanhamentoResidente {
            .then(result => {
                res.json(result[0])
                })
-            }         
-          
+            }
 
 
 }
