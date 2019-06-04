@@ -127,6 +127,25 @@ class Acompanhamento {
             }).catch((error) => res.json(error))
     }
 
+    getAllResidenteAcomp(req, res) {
+        sequelize.query(
+            `SELECT 
+                A.*
+            FROM 
+                ACOMPANHAMENTO AS A
+                INNER JOIN ACOMPANHAMENTO_RESIDENTE AR
+                ON AR.ACOMPANHAMENTO_CODIGO = A.CODIGO
+                INNER JOIN RESIDENTE R
+                ON R.CODIGO_RESIDENTE = AR.CODIGO_RESIDENTE
+            WHERE
+                AR.CODIGO_RESIDENTE = :CODIGO_RESIDENTE`,
+                { replacements: { CODIGO_RESIDENTE: req.params.id } }
+        )
+            .then(result => {
+                res.json(result[0])
+            }) 
+    }
+
     dateStart(req, res) {
         const dateStart = req.body.dateStart
 
@@ -159,6 +178,81 @@ class Acompanhamento {
             .then((result) => res.json(result[0]))
             .catch((error) => res.json(error))
     }
+
+
+    dateStartResidente(req, res) {
+        const dateStart = req.body.dateStart
+
+        sequelize.query(
+            `SELECT 
+            A.*
+        FROM 
+            ACOMPANHAMENTO AS A
+            INNER JOIN ACOMPANHAMENTO_RESIDENTE AR
+            ON AR.ACOMPANHAMENTO_CODIGO = A.CODIGO
+            INNER JOIN RESIDENTE R
+            ON R.CODIGO_RESIDENTE = AR.CODIGO_RESIDENTE
+        WHERE
+            AR.CODIGO_RESIDENTE = :CODIGO_RESIDENTE
+            AND DATA_ACOMPANHAMENTO BETWEEN '${dateStart}' AND NOW()
+            ORDER BY A.DATA_ACOMPANHAMENTO DESC`,
+                { replacements: { CODIGO_RESIDENTE: req.body.CODIGO_RESIDENTE } }
+            )
+                .then((result) => res.json(result[0]))
+                .catch((error) => res.json(error))
+    }
+
+    dateStartandDateFinishResidente(req, res) {
+        const dateStart = req.body.dateStart
+        const dateFinish = req.body.dateFinish
+
+        sequelize.query(
+            `SELECT 
+                A.*
+            FROM 
+                ACOMPANHAMENTO AS A
+                INNER JOIN ACOMPANHAMENTO_RESIDENTE AR
+                ON AR.ACOMPANHAMENTO_CODIGO = A.CODIGO
+                INNER JOIN RESIDENTE R
+                ON R.CODIGO_RESIDENTE = AR.CODIGO_RESIDENTE
+            WHERE
+                AR.CODIGO_RESIDENTE = :CODIGO_RESIDENTE
+                AND DATA_ACOMPANHAMENTO BETWEEN '${dateStart}' AND '${dateFinish}'
+                ORDER BY A.DATA_ACOMPANHAMENTO DESC`,
+                { replacements: { CODIGO_RESIDENTE: req.body.CODIGO_RESIDENTE } }
+        )
+            .then((result) => res.json(result[0]))
+            .catch((error) => res.json(error))
+    }
+
+    getAcompFull(req, res) {
+        sequelize.query(`SELECT 
+                            A.*,                                            
+                            PF.NOME FUNCIONARIO_NOME , 
+                            PR.NOME RESIDENTE_NOME ,
+                            AR.CODIGO_RESIDENTE, AF.CODIGO_FUNCIONARIO
+                        FROM
+                            ACOMPANHAMENTO A
+                            INNER JOIN ACOMPANHAMENTO_FUNCIONARIO AF
+                            ON AF.ACOMPANHAMENTO_CODIGO = A.CODIGO
+                            INNER JOIN FUNCIONARIO F
+                            ON F.CODIGO_FUNCIONARIO = AF.CODIGO_FUNCIONARIO
+                            INNER JOIN PESSOA PF
+                            ON PF.CODIGO = F.PESSOA_CODIGO
+                            INNER JOIN ACOMPANHAMENTO_RESIDENTE AR
+                            ON AR.ACOMPANHAMENTO_CODIGO = A.CODIGO
+                            INNER JOIN RESIDENTE R
+                            ON R.CODIGO_RESIDENTE = AR.CODIGO_RESIDENTE
+                            INNER JOIN PESSOA PR
+                            ON PR.CODIGO = R.PESSOA_CODIGO
+                            WHERE A.CODIGO = :CODIGO`,
+            { replacements: { CODIGO: req.body.CODIGO } })
+            .then(result => {
+                res.json(result[0])
+            })
+    }
+
+
 }
 
 module.exports = new Acompanhamento()
