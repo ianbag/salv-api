@@ -9,7 +9,7 @@ TelefoneParentescoModel.belongsTo(ResidenteConvenioModel, { as: 'RESIDENTE_CONVE
 
 class TelefoneParentesco {
 
-    getById(req, res) {
+    getAll(req, res) {
         TelefoneParentescoModel.findAll({
             include: [
                 { model: TelefoneModel, as: 'TELEFONE' }
@@ -30,7 +30,7 @@ class TelefoneParentesco {
         TelefoneParentescoModel.destroy({
             where: {
                 TELEFONE_CODIGO: req.params.idTelefone,
-                NUMERO_CONVENIO: req.params.id
+                NUMERO_CONVENIO: req.params.idNumero
             }
         })
             .then(telefoneParentesco => res.json(telefoneParentesco))
