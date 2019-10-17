@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Listagem</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="estilo.css" />
+	<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript">
+		$.ajaxSetup({
+			cache: false,		
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader('charset','UTF-8');
+				xhr.setRequestHeader('Encoding','UTF-8');
+			}
+		});
+		
+		$(document).ajaxComplete(function() {
+			//alert('ajaxComplete!');
+		});		
+	
+		$(document).ready(function() {					    
+
+		});		
+	</script>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul id="menu">
+				<li><a href="cadastro.html">Home</a></li>
+				<li><a href="listagem.html">Listagem</a></li>				
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<h3>Listagem</h3>
+		<button id="btCarregar" class="botao">Carregar Dados</button>		
+		<table id="tabelaLista",border="1">
+			<tr>
+				<td>RA</td>
+				<td>Nome</td>
+				<td>E-mail</td>
+			</tr>
+		</table>
+	</section>
+	<footer>
+	</footer>		
+</body>
+</html>
