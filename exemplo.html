@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="keywords" content="Emporio do homem, emporio, homem, masculino, sao mateus, loja, roupas, camisas">
+		<meta name="description" content="jQuery - A biblioteca do programador javascript">
+		<meta name="author" content="Alan Andrade">
+		<meta name="reply-to" content="alan.andradebispo@gmail.com">
+		<meta name="robots" content="index,follow">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
+		<title>Exemplo Simples de clique com Jquery</title>
+	</head>
+	<body>
+<button id="btn1">Enable</button>
+<button id="btn2">Disable</button>
+<button id="btn3">Button 1</button>
+<button id="btn4">Button 2</button>
+
+<script>
+$("#btn1").click(function(){
+    $("#btn3,#btn4").attr("disabled","false");
+
+});
+
+$("#btn2").click(function(){
+    $("#btn3,#btn4").removeAttr("disabled");
+});
+
+
+</script>
+	</body>
+</html>
