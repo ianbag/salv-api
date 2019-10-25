@@ -28,12 +28,12 @@ const DependenteRoute = require('./app/routes/dependente')
 const AcompanhamentoRoute = require('./app/routes/acompanhamentos')
 const AcompanhamentoFuncionario = require('./app/routes/acompanhamento_funcionario')
 const AcompanhamentoResidente = require('./app/routes/acompanhamento_residente')
-const reportRoute = require('./reports/routes/report.routes')
+const ReportRoute = require('./reports/routes/report.routes')
 const CertidaoCasamento = require('./app/routes/certidao_casamento')
 
-const handleAuthentication = require('./auth/auth')
-const handleAuthorization = require('./auth/authz')
-const forgot = require('./auth/forgot')
+const HandleAuthentication = require('./auth/auth')
+const HandleAuthorization = require('./auth/authz')
+const forgotPassword = require('./auth/forgot')
 
 /*
 * CONFIG bodyParser
