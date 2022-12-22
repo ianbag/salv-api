@@ -22,7 +22,7 @@
     "fs-extra": "^7.0.1",
     "handlebars": "^4.1.2",
     "handlebars-intl": "^1.1.2",
-    "jsonwebtoken": "^8.5.0",
+    "jsonwebtoken": "^9.0.0",
     "mocha": "^5.2.0",
     "monk": "^6.0.6",
     "mysql2": "^1.6.5",
